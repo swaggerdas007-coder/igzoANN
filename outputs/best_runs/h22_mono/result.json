@@ -1,0 +1,20 @@
+{
+  "config": {
+    "name": "h22_mono",
+    "n_hidden": 22,
+    "lam": 0.5
+  },
+  "best_epoch": 2496,
+  "epochs_no_improve_stop": 250,
+  "val_score": 0.046511872322298586,
+  "test_rmse_log10ID": 0.6709396243095398,
+  "test_mae_log10ID": 0.4503222405910492,
+  "test_r2_log10ID": 0.9522925019264221,
+  "gds_negative_fraction_on_region": 0.24152778089046478,
+  "worst_gds_S": -6.770084291929379e-05,
+  "train_seconds": 130.13760209083557,
+  "target_standardization": {
+    "y_mean_log10_absID": -8.94205379486084,
+    "y_std_log10_absID": 3.0613157749176025
+  }
+}
