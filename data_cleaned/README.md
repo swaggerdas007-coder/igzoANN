@@ -10,44 +10,70 @@ python scripts/plot_transistor_curves.py
 
 ## What's here
 
-For each of the 19 measured (W, L) geometries there are exactly two files:
+For each of the 19 measured (W, L) geometries there are three files:
 
-- `W{W}_L{L}_linear_clean.csv` — Id-Vg transfer sweeps (fixed VD=0.1V)
-- `W{W}_L{L}_output_clean.csv` — Id-Vd output curve families (VD sweep per VG)
+- `W{W}_L{L}_linear_clean.csv` — Id-Vg transfer sweep, VD=0.1V
+- `W{W}_L{L}_saturation_clean.csv` — Id-Vg transfer sweep, VD=5V
+- `W{W}_L{L}_output_clean.csv` — Id-Vd output curve families (VD swept per fixed VG)
 
 Each file concatenates every retained device replicate for that geometry,
 tagged by a `device` column (`top1`, `top2`, `bot1`, `bot2`, and `*rep` for
 repeat runs — these refer to wafer die position, not W/L).
 
+`merged_ann_dataset.csv` combines all three cleaned sweep kinds into one
+long-format table (`VG, VD, W, L, ID, abs_ID, log_ID, sweep, device`) —
+this is the dataset to train the ANN on (compatible with
+`src/dataset.py`'s `load_and_split`, which reads `VG,VD,W,L` as features
+and `log_ID`/`ID` as target).
+
 `cleaning_manifest.json` records exactly which device replicates were kept
 vs. dropped per geometry, and why. `qc_results.json` has the full per-device
 metrics. `plots/` has before/after diagnostic grids for all 19 geometries:
 
-- `overview_id_vg_raw.png` / `overview_id_vd_raw.png` — every raw device,
-  flagged ones dashed and labeled `[BAD]`
-- `cleaned_id_vg.png` / `cleaned_id_vd.png` — retained data only
+- `overview_id_vg_linear_raw.png` / `overview_id_vg_saturation_raw.png` /
+  `overview_id_vd_raw.png` — every raw device, flagged ones dashed and
+  labeled `[BAD]`
+- `cleaned_id_vg_linear.png` / `cleaned_id_vg_saturation.png` /
+  `cleaned_id_vd.png` — retained data only
+
+## VG sweep trimming (linear & saturation only)
+
+The raw `linear` and `saturation` exports sweep VG **-5V → +5V → -5V** (202
+rows: 101 forward + 101 return). Only the forward leg is kept, and it's
+further restricted to **VG in [-2, 5]** (the -5..-2V region is off-state
+floor noise with no diagnostic value). This is applied before QC scoring,
+before the cleaned csvs are written, and before the merged dataset — so
+every downstream file already reflects the trim. `output` sweeps VD (not
+VG) and has no return leg, so it's untouched by this step.
 
 ## How devices were filtered
 
-Each raw device instance ships one `linear` (Id-Vg) and one `output` (Id-Vd)
-csv. A device is kept only if **both** pass these transistor sanity checks:
+Each raw device instance ships a `linear`, a `saturation`, and an `output`
+csv — three views of the same physical device. A device replicate is kept
+only if **all three** pass these transistor sanity checks:
 
-- **on/off ratio** ≥ 100 (max-VG current vs. min-VG/off current)
+- **on/off ratio** ≥ 100 (max-VG current vs. min-VG/off current, or
+  max-VD/max-VG vs. min-VG for output)
 - **monotonic turn-on**: smoothed log|Id| vs VG doesn't decrease more than
   35% of the time
-- **net rise** ≥ 1 decade of current across the VG sweep
+- **net rise** ≥ 1 decade of current across the VG sweep (transfer curves)
 - **no sign flips once genuinely on** (Id should be non-negative once well
   above the off-state noise floor — VD ≥ 0 always in this dataset)
-- **stable off-state**: off-region current should sit at the simulator's tiny
-  numerical noise floor, not show large-magnitude oscillation (a sign of
-  measurement instability, not real leakage noise)
-- Output curves additionally check that curves at high VD/VG order correctly
-  (higher VG ⇒ higher current) and don't crash downward
+- **stable off-state**: off-region current should sit at the simulator's
+  tiny numerical noise floor, not show large-magnitude oscillation (a sign
+  of measurement instability, not real leakage noise)
+- Output curves additionally check that curves at high VD/VG order
+  correctly (higher VG ⇒ higher current) and don't crash downward
 
-80 raw device×kind combinations were scored; 55 device replicates (out of 76
-distinct device instances) passed and were kept, 25 were dropped. Every one
-of the 19 geometries has at least one usable device left (W160_L15 has all 4;
-W160_L20 has only `bot2`).
+Requiring all three sweeps to pass (rather than scoring each in isolation)
+matters: a couple of devices only look reasonable in one sweep type (e.g.
+`W40_L20_top2` passes `linear` but is clearly dead in both `saturation` and
+`output`) — those are physically the same broken device and are dropped
+everywhere.
+
+80 raw devices were scored; 56 device replicates passed and were kept, 24
+were dropped. Every one of the 19 geometries has at least one usable device
+left (`W160_L15` has all 4; `W160_L20` has 2).
 
 **Observation**: dropped devices are overwhelmingly at the `top1`/`top2`
 wafer position (dead — flat current with no gate modulation at all, i.e. a

@@ -6,14 +6,25 @@
     "linear_ok": true,
     "linear_reasons": [],
     "linear_metrics": {
-      "on_off_ratio": 60095.93931280678,
-      "frac_decreasing": 0.10052910052910052,
-      "net_rise_decades": 5.07966302172694,
+      "on_off_ratio": 70613.45564224642,
+      "frac_decreasing": 0.04477611940298507,
+      "net_rise_decades": 5.061536953799221,
       "frac_negative_on": 0.0,
-      "off_median": 3.5856e-12,
-      "off_log_std": 0.27137206469664593
+      "off_median": 4.0117e-12,
+      "off_log_std": 0.21200294813735346
     },
     "linear_path": "/home/user/igzoANN/data/tft linear [s5tft5-5bot1(1) ; 6_5_2026 1_58_19 pm].csv_s5_W5_L5_bot_1.csv",
+    "saturation_ok": true,
+    "saturation_reasons": [],
+    "saturation_metrics": {
+      "on_off_ratio": 1208604.5810729356,
+      "frac_decreasing": 0.04477611940298507,
+      "net_rise_decades": 6.22442244779959,
+      "frac_negative_on": 0.0,
+      "off_median": 3.318e-12,
+      "off_log_std": 0.1712194773206436
+    },
+    "saturation_path": "/home/user/igzoANN/data/TFT Saturation [S5TFT5-5BOT1(1) ; 6_5_2026 2_00_03 PM].csv",
     "output_ok": true,
     "output_reasons": [],
     "output_metrics": {
@@ -31,14 +42,25 @@
     "linear_ok": true,
     "linear_reasons": [],
     "linear_metrics": {
-      "on_off_ratio": 33453.95532737305,
-      "frac_decreasing": 0.164021164021164,
-      "net_rise_decades": 4.862691990510754,
+      "on_off_ratio": 40362.65632757275,
+      "frac_decreasing": 0.07462686567164178,
+      "net_rise_decades": 4.876259662672055,
       "frac_negative_on": 0.0,
-      "off_median": 3.3890999999999998e-12,
-      "off_log_std": 0.41960648431348224
+      "off_median": 4.2299e-12,
+      "off_log_std": 0.2665346381735919
     },
     "linear_path": "/home/user/igzoANN/data/tft linear [s5tft5-5bot1rep(2) ; 6_5_2026 2_02_03 pm].csv_s5_W5_L5_bot_1.csv",
+    "saturation_ok": true,
+    "saturation_reasons": [],
+    "saturation_metrics": {
+      "on_off_ratio": 542522.8858587799,
+      "frac_decreasing": 0.04477611940298507,
+      "net_rise_decades": 5.872130431586422,
+      "frac_negative_on": 0.0,
+      "off_median": 3.1242e-12,
+      "off_log_std": 0.16479339143945812
+    },
+    "saturation_path": "/home/user/igzoANN/data/TFT Saturation [S5TFT5-5BOT1REP(2) ; 6_5_2026 2_03_59 PM].csv",
     "output_ok": true,
     "output_reasons": [],
     "output_metrics": {
@@ -55,18 +77,32 @@
     "device": "bot2",
     "linear_ok": false,
     "linear_reasons": [
-      "low_on_off_ratio(9.2e-01)",
-      "flat_curve(net_rise=-0.15dec)"
+      "low_on_off_ratio(1.3e+00)",
+      "flat_curve(net_rise=0.02dec)"
     ],
     "linear_metrics": {
-      "on_off_ratio": 0.9153482475370435,
-      "frac_decreasing": 0.21693121693121692,
-      "net_rise_decades": -0.1514963642710292,
+      "on_off_ratio": 1.2514589450990594,
+      "frac_decreasing": 0.2537313432835821,
+      "net_rise_decades": 0.01834504298802031,
       "frac_negative_on": 0.0,
-      "off_median": 3.7861e-12,
-      "off_log_std": 0.20276410840217804
+      "off_median": 2.6903000000000004e-12,
+      "off_log_std": 0.21099015903225207
     },
     "linear_path": "/home/user/igzoANN/data/tft linear [s5tft5-5bot2(1) ; 6_5_2026 3_31_49 pm].csv_s5_W5_L5_bot_2.csv",
+    "saturation_ok": false,
+    "saturation_reasons": [
+      "low_on_off_ratio(1.3e+00)",
+      "flat_curve(net_rise=0.08dec)"
+    ],
+    "saturation_metrics": {
+      "on_off_ratio": 1.2522469782017285,
+      "frac_decreasing": 0.1791044776119403,
+      "net_rise_decades": 0.08386238238170307,
+      "frac_negative_on": 0.0,
+      "off_median": 2.9039e-12,
+      "off_log_std": 0.4849469719549795
+    },
+    "saturation_path": "/home/user/igzoANN/data/TFT Saturation [S5TFT5-5BOT2(1) ; 6_5_2026 3_34_16 PM].csv",
     "output_ok": false,
     "output_reasons": [
       "non_monotonic_on_curves(frac_decr=0.42)",
@@ -89,17 +125,32 @@
     "linear_ok": false,
     "linear_reasons": [
       "low_on_off_ratio(1.0e+00)",
-      "flat_curve(net_rise=-0.05dec)"
+      "non_monotonic(frac_decr=0.51)",
+      "flat_curve(net_rise=-0.08dec)"
     ],
     "linear_metrics": {
-      "on_off_ratio": 0.996755654430849,
-      "frac_decreasing": 0.2857142857142857,
-      "net_rise_decades": -0.05409857656082018,
+      "on_off_ratio": 1.0131177741074833,
+      "frac_decreasing": 0.5074626865671642,
+      "net_rise_decades": -0.07914049885649099,
       "frac_negative_on": 0.0,
-      "off_median": 3.2364000000000002e-12,
-      "off_log_std": 0.23502290807198367
+      "off_median": 3.1483999999999998e-12,
+      "off_log_std": 0.24870849621258104
     },
     "linear_path": "/home/user/igzoANN/data/tft linear [s5tft5-5bot2rep(2) ; 6_5_2026 3_35_42 pm].csv_s5_W5_L5_bot_2.csv",
+    "saturation_ok": false,
+    "saturation_reasons": [
+      "low_on_off_ratio(1.1e+00)",
+      "flat_curve(net_rise=0.06dec)"
+    ],
+    "saturation_metrics": {
+      "on_off_ratio": 1.0997908844534519,
+      "frac_decreasing": 0.04477611940298507,
+      "net_rise_decades": 0.05672862566497194,
+      "frac_negative_on": 0.0,
+      "off_median": 4.65293e-11,
+      "off_log_std": 0.03491330376247905
+    },
+    "saturation_path": "/home/user/igzoANN/data/TFT Saturation [S5TFT5-5BOT2REP(2) ; 6_5_2026 3_38_10 PM].csv",
     "output_ok": false,
     "output_reasons": [
       "bad_vg_ordering(on/off=1.2e+00)",
@@ -120,14 +171,25 @@
     "linear_ok": true,
     "linear_reasons": [],
     "linear_metrics": {
-      "on_off_ratio": 52810.024485092894,
-      "frac_decreasing": 0.10582010582010581,
-      "net_rise_decades": 4.960103131542359,
+      "on_off_ratio": 67807.32647458473,
+      "frac_decreasing": 0.08955223880597014,
+      "net_rise_decades": 4.992112543140739,
       "frac_negative_on": 0.0,
-      "off_median": 3.4715e-12,
-      "off_log_std": 0.29606795023621885
+      "off_median": 3.6061e-12,
+      "off_log_std": 0.7518867516580185
     },
     "linear_path": "/home/user/igzoANN/data/tft linear [s5tft5-5top1(1) ; 6_5_2026 9_54_02 am].csv_s5_W5_L5_top_1.csv",
+    "saturation_ok": true,
+    "saturation_reasons": [],
+    "saturation_metrics": {
+      "on_off_ratio": 2034285.9211701383,
+      "frac_decreasing": 0.04477611940298507,
+      "net_rise_decades": 6.550987745404482,
+      "frac_negative_on": 0.0,
+      "off_median": 4.143100000000001e-12,
+      "off_log_std": 0.2581365275674309
+    },
+    "saturation_path": "/home/user/igzoANN/data/TFT Saturation [S5TFT5-5TOP1(1) ; 6_5_2026 9_55_26 AM].csv",
     "output_ok": true,
     "output_reasons": [],
     "output_metrics": {
@@ -145,14 +207,25 @@
     "linear_ok": true,
     "linear_reasons": [],
     "linear_metrics": {
-      "on_off_ratio": 41038.924670960514,
-      "frac_decreasing": 0.07407407407407407,
-      "net_rise_decades": 4.788015377604772,
+      "on_off_ratio": 43498.61495844875,
+      "frac_decreasing": 0.014925373134328358,
+      "net_rise_decades": 4.744220967780291,
       "frac_negative_on": 0.0,
-      "off_median": 3.571e-12,
-      "off_log_std": 0.4745877705209626
+      "off_median": 3.61e-12,
+      "off_log_std": 0.1662906767314927
     },
     "linear_path": "/home/user/igzoANN/data/tft linear [s5tft5-5top1rep(2) ; 6_5_2026 9_57_52 am].csv_s5_W5_L5_top_1.csv",
+    "saturation_ok": true,
+    "saturation_reasons": [],
+    "saturation_metrics": {
+      "on_off_ratio": 2437256.079255479,
+      "frac_decreasing": 0.04477611940298507,
+      "net_rise_decades": 6.484053358547074,
+      "frac_negative_on": 0.0,
+      "off_median": 3.3310000000000002e-12,
+      "off_log_std": 0.24281351425131956
+    },
+    "saturation_path": "/home/user/igzoANN/data/TFT Saturation [S5TFT5-5TOP1REP(2) ; 6_5_2026 9_59_16 AM].csv",
     "output_ok": true,
     "output_reasons": [],
     "output_metrics": {
@@ -170,14 +243,25 @@
     "linear_ok": true,
     "linear_reasons": [],
     "linear_metrics": {
-      "on_off_ratio": 124188.74620312173,
-      "frac_decreasing": 0.0582010582010582,
-      "net_rise_decades": 5.299147792208894,
+      "on_off_ratio": 143979.98321946544,
+      "frac_decreasing": 0.04477611940298507,
+      "net_rise_decades": 5.231974958703078,
       "frac_negative_on": 0.0,
-      "off_median": 3.3251e-12,
-      "off_log_std": 0.2531223800892172
+      "off_median": 3.3372e-12,
+      "off_log_std": 0.37422993164948043
     },
     "linear_path": "/home/user/igzoANN/data/tft linear [s5tft5-5top2(1) ; 6_5_2026 11_06_56 am].csv_s5_W5_L5_top_2.csv",
+    "saturation_ok": true,
+    "saturation_reasons": [],
+    "saturation_metrics": {
+      "on_off_ratio": 3136169.1556021753,
+      "frac_decreasing": 0.029850746268656716,
+      "net_rise_decades": 6.6567428397656805,
+      "frac_negative_on": 0.0,
+      "off_median": 3.6227e-12,
+      "off_log_std": 0.3191666498787032
+    },
+    "saturation_path": "/home/user/igzoANN/data/TFT Saturation [S5TFT5-5TOP2(1) ; 6_5_2026 11_08_19 AM].csv",
     "output_ok": true,
     "output_reasons": [],
     "output_metrics": {
@@ -195,14 +279,25 @@
     "linear_ok": true,
     "linear_reasons": [],
     "linear_metrics": {
-      "on_off_ratio": 1907.274074074074,
-      "frac_decreasing": 0.13227513227513227,
-      "net_rise_decades": 3.366324047142923,
+      "on_off_ratio": 2067.006318136769,
+      "frac_decreasing": 0.04477611940298507,
+      "net_rise_decades": 3.333626367370405,
       "frac_negative_on": 0.0,
-      "off_median": 3.375e-12,
-      "off_log_std": 0.2499526945581214
+      "off_median": 3.2288e-12,
+      "off_log_std": 0.20698532191253055
     },
     "linear_path": "/home/user/igzoANN/data/tft linear [s5tft5-5top2rep(2) ; 6_5_2026 11_11_13 am].csv_s5_W5_L5_top_2.csv",
+    "saturation_ok": true,
+    "saturation_reasons": [],
+    "saturation_metrics": {
+      "on_off_ratio": 687115.7692022814,
+      "frac_decreasing": 0.029850746268656716,
+      "net_rise_decades": 5.915509207345166,
+      "frac_negative_on": 0.0,
+      "off_median": 2.7002e-12,
+      "off_log_std": 0.207148514610716
+    },
+    "saturation_path": "/home/user/igzoANN/data/TFT Saturation [S5TFT5-5TOP2REP(2) ; 6_5_2026 11_12_38 AM].csv",
     "output_ok": true,
     "output_reasons": [],
     "output_metrics": {
@@ -220,14 +315,25 @@
     "linear_ok": true,
     "linear_reasons": [],
     "linear_metrics": {
-      "on_off_ratio": 188831.71817292215,
-      "frac_decreasing": 0.12169312169312169,
-      "net_rise_decades": 5.455917281818344,
+      "on_off_ratio": 222242.29250221964,
+      "frac_decreasing": 0.08955223880597014,
+      "net_rise_decades": 5.394037641777302,
       "frac_negative_on": 0.0,
-      "off_median": 3.1679e-12,
-      "off_log_std": 0.21328019712501012
+      "off_median": 3.2663e-12,
+      "off_log_std": 0.18855222818050357
     },
     "linear_path": "/home/user/igzoANN/data/tft linear [s5tft10-5bot1(1) ; 6_5_2026 2_23_56 pm].csv_s5_W10_L5_bot_1.csv",
+    "saturation_ok": true,
+    "saturation_reasons": [],
+    "saturation_metrics": {
+      "on_off_ratio": 5293882.925661386,
+      "frac_decreasing": 0.07462686567164178,
+      "net_rise_decades": 6.709614736557212,
+      "frac_negative_on": 0.0,
+      "off_median": 2.5061e-12,
+      "off_log_std": 0.19230492432046586
+    },
+    "saturation_path": "/home/user/igzoANN/data/TFT Saturation [S5TFT10-5BOT1(1) ; 6_5_2026 2_25_31 PM].csv",
     "output_ok": true,
     "output_reasons": [],
     "output_metrics": {
@@ -245,14 +351,25 @@
     "linear_ok": true,
     "linear_reasons": [],
     "linear_metrics": {
-      "on_off_ratio": 9134.09683966367,
-      "frac_decreasing": 0.23809523809523808,
-      "net_rise_decades": 4.6297581871852405,
+      "on_off_ratio": 33340.346146610646,
+      "frac_decreasing": 0.1791044776119403,
+      "net_rise_decades": 4.744961388041519,
       "frac_negative_on": 0.0,
-      "off_median": 3.4490000000000003e-12,
-      "off_log_std": 0.24497174804025776
+      "off_median": 3.1894e-12,
+      "off_log_std": 0.2059826176429014
     },
     "linear_path": "/home/user/igzoANN/data/tft linear [s5tft10-5bot2(1) ; 6_5_2026 3_42_13 pm].csv_s5_W10_L5_bot_2.csv",
+    "saturation_ok": true,
+    "saturation_reasons": [],
+    "saturation_metrics": {
+      "on_off_ratio": 134534.06635485898,
+      "frac_decreasing": 0.16417910447761194,
+      "net_rise_decades": 5.561649669715991,
+      "frac_negative_on": 0.0,
+      "off_median": 3.6561e-12,
+      "off_log_std": 0.2332890690034218
+    },
+    "saturation_path": "/home/user/igzoANN/data/TFT Saturation [S5TFT10-5BOT2(1) ; 6_5_2026 3_44_20 PM].csv",
     "output_ok": true,
     "output_reasons": [],
     "output_metrics": {
@@ -270,14 +387,25 @@
     "linear_ok": true,
     "linear_reasons": [],
     "linear_metrics": {
-      "on_off_ratio": 237257.19424460432,
-      "frac_decreasing": 0.1111111111111111,
-      "net_rise_decades": 5.638883525250251,
+      "on_off_ratio": 280537.19889149436,
+      "frac_decreasing": 0.04477611940298507,
+      "net_rise_decades": 5.6805806495438755,
       "frac_negative_on": 0.0,
-      "off_median": 3.336e-12,
-      "off_log_std": 0.3243399463390734
+      "off_median": 3.2837e-12,
+      "off_log_std": 0.31241917757025955
     },
     "linear_path": "/home/user/igzoANN/data/tft linear [s5tft10-5top1(1) ; 6_5_2026 10_02_14 am].csv_s5_W10_L5_top_1.csv",
+    "saturation_ok": true,
+    "saturation_reasons": [],
+    "saturation_metrics": {
+      "on_off_ratio": 7122239.082785365,
+      "frac_decreasing": 0.05970149253731343,
+      "net_rise_decades": 6.957807133628833,
+      "frac_negative_on": 0.0,
+      "off_median": 2.9655e-12,
+      "off_log_std": 0.27565676083177076
+    },
+    "saturation_path": "/home/user/igzoANN/data/TFT Saturation [S5TFT10-5TOP1(1) ; 6_5_2026 10_03_37 AM].csv",
     "output_ok": true,
     "output_reasons": [],
     "output_metrics": {
@@ -295,14 +423,25 @@
     "linear_ok": true,
     "linear_reasons": [],
     "linear_metrics": {
-      "on_off_ratio": 227249.9933491181,
-      "frac_decreasing": 0.0582010582010582,
-      "net_rise_decades": 5.571520367991559,
+      "on_off_ratio": 332933.23080009356,
+      "frac_decreasing": 0.05970149253731343,
+      "net_rise_decades": 5.572066772556475,
       "frac_negative_on": 0.0,
-      "off_median": 3.7589e-12,
-      "off_log_std": 0.1966806666091259
+      "off_median": 2.9909e-12,
+      "off_log_std": 0.23249231910150345
     },
     "linear_path": "/home/user/igzoANN/data/tft linear [s5tft10-5top2(1) ; 6_5_2026 11_16_03 am].csv_s5_W10_L5_top_2.csv",
+    "saturation_ok": true,
+    "saturation_reasons": [],
+    "saturation_metrics": {
+      "on_off_ratio": 6645425.330293625,
+      "frac_decreasing": 0.029850746268656716,
+      "net_rise_decades": 6.975768138928887,
+      "frac_negative_on": 0.0,
+      "off_median": 3.6407e-12,
+      "off_log_std": 0.1853405343710228
+    },
+    "saturation_path": "/home/user/igzoANN/data/TFT Saturation [S5TFT10-5TOP2(1) ; 6_5_2026 11_17_26 AM].csv",
     "output_ok": true,
     "output_reasons": [],
     "output_metrics": {
@@ -320,14 +459,25 @@
     "linear_ok": true,
     "linear_reasons": [],
     "linear_metrics": {
-      "on_off_ratio": 124628.38726650883,
-      "frac_decreasing": 0.12169312169312169,
-      "net_rise_decades": 5.318638202021105,
+      "on_off_ratio": 114436.11705924339,
+      "frac_decreasing": 0.029850746268656716,
+      "net_rise_decades": 5.202756751120406,
       "frac_negative_on": 0.0,
-      "off_median": 3.0407999999999997e-12,
-      "off_log_std": 0.23428152866748955
+      "off_median": 3.9228e-12,
+      "off_log_std": 0.19643214197268308
     },
     "linear_path": "/home/user/igzoANN/data/tft linear [s5tft10-10bot1(1) ; 6_5_2026 2_41_46 pm].csv_s5_W10_L10_bot_1.csv",
+    "saturation_ok": true,
+    "saturation_reasons": [],
+    "saturation_metrics": {
+      "on_off_ratio": 2792954.0905679264,
+      "frac_decreasing": 0.04477611940298507,
+      "net_rise_decades": 6.5063961913704444,
+      "frac_negative_on": 0.0,
+      "off_median": 3.1976e-12,
+      "off_log_std": 0.1667422218133014
+    },
+    "saturation_path": "/home/user/igzoANN/data/TFT Saturation [S5TFT10-10BOT1(1) ; 6_5_2026 2_43_19 PM].csv",
     "output_ok": true,
     "output_reasons": [],
     "output_metrics": {
@@ -345,14 +495,25 @@
     "linear_ok": true,
     "linear_reasons": [],
     "linear_metrics": {
-      "on_off_ratio": 8457.162962528588,
-      "frac_decreasing": 0.08465608465608465,
-      "net_rise_decades": 4.26348599447966,
+      "on_off_ratio": 18457.311052031906,
+      "frac_decreasing": 0.05970149253731343,
+      "net_rise_decades": 4.26521820340267,
       "frac_negative_on": 0.0,
-      "off_median": 3.4106e-12,
-      "off_log_std": 0.23026433870342722
+      "off_median": 2.6329999999999998e-12,
+      "off_log_std": 0.21023742887961075
     },
     "linear_path": "/home/user/igzoANN/data/tft linear [s5tft10-10bot2(1) ; 6_5_2026 4_01_55 pm].csv_s5_W10_L10_bot_2.csv",
+    "saturation_ok": true,
+    "saturation_reasons": [],
+    "saturation_metrics": {
+      "on_off_ratio": 906248.056229396,
+      "frac_decreasing": 0.029850746268656716,
+      "net_rise_decades": 6.104738630244023,
+      "frac_negative_on": 0.0,
+      "off_median": 3.2154000000000002e-12,
+      "off_log_std": 0.17547191150223254
+    },
+    "saturation_path": "/home/user/igzoANN/data/TFT Saturation [S5TFT10-10BOT2(1) ; 6_5_2026 4_03_41 PM].csv",
     "output_ok": true,
     "output_reasons": [],
     "output_metrics": {
@@ -370,14 +531,25 @@
     "linear_ok": true,
     "linear_reasons": [],
     "linear_metrics": {
-      "on_off_ratio": 112832.3184316055,
-      "frac_decreasing": 0.1164021164021164,
-      "net_rise_decades": 5.2571171433442805,
+      "on_off_ratio": 130984.64054196111,
+      "frac_decreasing": 0.04477611940298507,
+      "net_rise_decades": 5.266803805605908,
       "frac_negative_on": 0.0,
-      "off_median": 3.3665000000000002e-12,
-      "off_log_std": 0.20121652027522388
+      "off_median": 3.4245999999999998e-12,
+      "off_log_std": 0.2790072128018726
     },
     "linear_path": "/home/user/igzoANN/data/tft linear [s5tft10-10top1(1) ; 6_5_2026 10_31_34 am].csv_s5_W10_L10_top_1.csv",
+    "saturation_ok": true,
+    "saturation_reasons": [],
+    "saturation_metrics": {
+      "on_off_ratio": 2792484.385637747,
+      "frac_decreasing": 0.014925373134328358,
+      "net_rise_decades": 6.568966807705927,
+      "frac_negative_on": 0.0,
+      "off_median": 3.3783e-12,
+      "off_log_std": 0.17425273093628635
+    },
+    "saturation_path": "/home/user/igzoANN/data/TFT Saturation [S5TFT10-10TOP1(1) ; 6_5_2026 10_32_57 AM].csv",
     "output_ok": true,
     "output_reasons": [],
     "output_metrics": {
@@ -395,14 +567,25 @@
     "linear_ok": true,
     "linear_reasons": [],
     "linear_metrics": {
-      "on_off_ratio": 114872.83655183927,
-      "frac_decreasing": 0.06878306878306878,
-      "net_rise_decades": 5.217394459799372,
+      "on_off_ratio": 208861.469433539,
+      "frac_decreasing": 0.014925373134328358,
+      "net_rise_decades": 5.240087846090189,
       "frac_negative_on": 0.0,
-      "off_median": 3.5938e-12,
-      "off_log_std": 0.22467271818899212
+      "off_median": 2.3179e-12,
+      "off_log_std": 0.16897262746984312
     },
     "linear_path": "/home/user/igzoANN/data/tft linear [s5tft10-10top2(1) ; 6_5_2026 11_44_39 am].csv_s5_W10_L10_top_2.csv",
+    "saturation_ok": true,
+    "saturation_reasons": [],
+    "saturation_metrics": {
+      "on_off_ratio": 3427984.869548349,
+      "frac_decreasing": 0.014925373134328358,
+      "net_rise_decades": 6.632686817348656,
+      "frac_negative_on": 0.0,
+      "off_median": 3.0931000000000002e-12,
+      "off_log_std": 0.24549830087607155
+    },
+    "saturation_path": "/home/user/igzoANN/data/TFT Saturation [S5TFT10-10TOP2(1) ; 6_5_2026 11_46_02 AM].csv",
     "output_ok": true,
     "output_reasons": [],
     "output_metrics": {
@@ -420,14 +603,25 @@
     "linear_ok": true,
     "linear_reasons": [],
     "linear_metrics": {
-      "on_off_ratio": 452177.88210745965,
-      "frac_decreasing": 0.1164021164021164,
-      "net_rise_decades": 5.8183285052990925,
+      "on_off_ratio": 884564.6727904013,
+      "frac_decreasing": 0.0,
+      "net_rise_decades": 5.8662814043565055,
       "frac_negative_on": 0.0,
-      "off_median": 3.834e-12,
-      "off_log_std": 0.21116608880496954
+      "off_median": 2.2753000000000002e-12,
+      "off_log_std": 0.17821207630889663
     },
     "linear_path": "/home/user/igzoANN/data/tft linear [s5tft20-5bot1(1) ; 6_5_2026 2_27_31 pm].csv_s5_W20_L5_bot_1.csv",
+    "saturation_ok": true,
+    "saturation_reasons": [],
+    "saturation_metrics": {
+      "on_off_ratio": 10785736.084700802,
+      "frac_decreasing": 0.029850746268656716,
+      "net_rise_decades": 7.3391464320406605,
+      "frac_negative_on": 0.0,
+      "off_median": 4.2597e-12,
+      "off_log_std": 0.3227222415566124
+    },
+    "saturation_path": "/home/user/igzoANN/data/TFT Saturation [S5TFT20-5BOT1(1) ; 6_5_2026 2_28_54 PM].csv",
     "output_ok": true,
     "output_reasons": [],
     "output_metrics": {
@@ -445,14 +639,25 @@
     "linear_ok": true,
     "linear_reasons": [],
     "linear_metrics": {
-      "on_off_ratio": 224333.2618879941,
-      "frac_decreasing": 0.14285714285714285,
-      "net_rise_decades": 5.6985723545491425,
+      "on_off_ratio": 334103.6915840066,
+      "frac_decreasing": 0.1044776119402985,
+      "net_rise_decades": 5.664476967606963,
       "frac_negative_on": 0.0,
-      "off_median": 3.2659e-12,
-      "off_log_std": 0.2943651921785102
+      "off_median": 2.9337e-12,
+      "off_log_std": 0.22600358884427854
     },
     "linear_path": "/home/user/igzoANN/data/tft linear [s5tft20-5bot2(1) ; 6_5_2026 3_46_34 pm].csv_s5_W20_L5_bot_2.csv",
+    "saturation_ok": true,
+    "saturation_reasons": [],
+    "saturation_metrics": {
+      "on_off_ratio": 4151113.4853594205,
+      "frac_decreasing": 0.11940298507462686,
+      "net_rise_decades": 6.733132939803492,
+      "frac_negative_on": 0.0,
+      "off_median": 2.9951e-12,
+      "off_log_std": 0.24067077473415865
+    },
+    "saturation_path": "/home/user/igzoANN/data/TFT Saturation [S5TFT20-5BOT2(1) ; 6_5_2026 3_48_18 PM].csv",
     "output_ok": true,
     "output_reasons": [],
     "output_metrics": {
@@ -470,14 +675,25 @@
     "linear_ok": true,
     "linear_reasons": [],
     "linear_metrics": {
-      "on_off_ratio": 419527.4956116371,
-      "frac_decreasing": 0.08994708994708994,
-      "net_rise_decades": 5.800867361994979,
+      "on_off_ratio": 522680.47480620164,
+      "frac_decreasing": 0.05970149253731343,
+      "net_rise_decades": 5.836780442898404,
       "frac_negative_on": 0.0,
-      "off_median": 3.4751e-12,
-      "off_log_std": 0.29923286181018394
+      "off_median": 3.3024e-12,
+      "off_log_std": 0.3870838191271777
     },
     "linear_path": "/home/user/igzoANN/data/tft linear [s5tft20-5top1(2) ; 6_5_2026 10_06_26 am].csv_s5_W20_L5_top_1_run2.csv",
+    "saturation_ok": true,
+    "saturation_reasons": [],
+    "saturation_metrics": {
+      "on_off_ratio": 10162692.161442772,
+      "frac_decreasing": 0.05970149253731343,
+      "net_rise_decades": 7.338939605128053,
+      "frac_negative_on": 0.0,
+      "off_median": 3.6818e-12,
+      "off_log_std": 0.3718605622188443
+    },
+    "saturation_path": "/home/user/igzoANN/data/TFT Saturation [S5TFT20-5TOP1(2) ; 6_5_2026 10_07_49 AM].csv",
     "output_ok": true,
     "output_reasons": [],
     "output_metrics": {
@@ -494,18 +710,32 @@
     "device": "top2",
     "linear_ok": false,
     "linear_reasons": [
-      "low_on_off_ratio(1.4e+00)",
-      "flat_curve(net_rise=0.16dec)"
+      "low_on_off_ratio(1.6e+00)",
+      "flat_curve(net_rise=0.31dec)"
     ],
     "linear_metrics": {
-      "on_off_ratio": 1.4055058639827558,
-      "frac_decreasing": 0.037037037037037035,
-      "net_rise_decades": 0.1609907744206751,
+      "on_off_ratio": 1.5697744608461834,
+      "frac_decreasing": 0.13432835820895522,
+      "net_rise_decades": 0.3100533583470053,
       "frac_negative_on": 0.0,
-      "off_median": 2.94595e-09,
-      "off_log_std": 0.15055765109275165
+      "off_median": 2.73345e-09,
+      "off_log_std": 0.15020864282045898
     },
     "linear_path": "/home/user/igzoANN/data/tft linear [s5tft20-5top2(1) ; 6_5_2026 11_18_51 am].csv_s5_W20_L5_top_2.csv",
+    "saturation_ok": false,
+    "saturation_reasons": [
+      "low_on_off_ratio(9.9e-01)",
+      "flat_curve(net_rise=-0.00dec)"
+    ],
+    "saturation_metrics": {
+      "on_off_ratio": 0.9921440726035168,
+      "frac_decreasing": 0.0,
+      "net_rise_decades": -0.004224303082584591,
+      "frac_negative_on": 0.0,
+      "off_median": 7.052e-05,
+      "off_log_std": 0.000228252775774353
+    },
+    "saturation_path": "/home/user/igzoANN/data/TFT Saturation [S5TFT20-5TOP2(1) ; 6_5_2026 11_19_12 AM].csv",
     "output_ok": false,
     "output_reasons": [
       "bad_vg_ordering(on/off=9.6e-01)",
@@ -526,14 +756,25 @@
     "linear_ok": true,
     "linear_reasons": [],
     "linear_metrics": {
-      "on_off_ratio": 64434.737253879255,
-      "frac_decreasing": 0.1164021164021164,
-      "net_rise_decades": 4.8910770585434715,
+      "on_off_ratio": 62181.566931026195,
+      "frac_decreasing": 0.014925373134328358,
+      "net_rise_decades": 4.828221360794458,
       "frac_negative_on": 0.0,
-      "off_median": 3.0676e-12,
-      "off_log_std": 0.19690189223631382
+      "off_median": 3.3288e-12,
+      "off_log_std": 0.17005820037891015
     },
     "linear_path": "/home/user/igzoANN/data/tft linear [s5tft20-10bot1(1) ; 6_5_2026 2_45_18 pm].csv_s5_W20_L10_bot_1.csv",
+    "saturation_ok": true,
+    "saturation_reasons": [],
+    "saturation_metrics": {
+      "on_off_ratio": 4049431.2363344496,
+      "frac_decreasing": 0.04477611940298507,
+      "net_rise_decades": 6.7635243528982,
+      "frac_negative_on": 0.0,
+      "off_median": 3.6131e-12,
+      "off_log_std": 0.30596036795717846
+    },
+    "saturation_path": "/home/user/igzoANN/data/TFT Saturation [S5TFT20-10BOT1(1) ; 6_5_2026 2_46_42 PM].csv",
     "output_ok": true,
     "output_reasons": [],
     "output_metrics": {
@@ -551,14 +792,25 @@
     "linear_ok": true,
     "linear_reasons": [],
     "linear_metrics": {
-      "on_off_ratio": 128788.33660673816,
-      "frac_decreasing": 0.18518518518518517,
-      "net_rise_decades": 5.3375179997133895,
+      "on_off_ratio": 197779.55961265654,
+      "frac_decreasing": 0.014925373134328358,
+      "net_rise_decades": 5.356739898562795,
       "frac_negative_on": 0.0,
-      "off_median": 3.9714e-12,
-      "off_log_std": 0.17725645089649697
+      "off_median": 3.2426e-12,
+      "off_log_std": 0.1719521855245622
     },
     "linear_path": "/home/user/igzoANN/data/tft linear [s5tft20-10bot2(1) ; 6_5_2026 4_06_08 pm].csv_s5_W20_L10_bot_2.csv",
+    "saturation_ok": true,
+    "saturation_reasons": [],
+    "saturation_metrics": {
+      "on_off_ratio": 2808265.985262657,
+      "frac_decreasing": 0.08955223880597014,
+      "net_rise_decades": 6.565615298208803,
+      "frac_negative_on": 0.0,
+      "off_median": 3.3656e-12,
+      "off_log_std": 0.2251482545216632
+    },
+    "saturation_path": "/home/user/igzoANN/data/TFT Saturation [S5TFT20-10BOT2(1) ; 6_5_2026 4_07_51 PM].csv",
     "output_ok": true,
     "output_reasons": [],
     "output_metrics": {
@@ -576,14 +828,25 @@
     "linear_ok": true,
     "linear_reasons": [],
     "linear_metrics": {
-      "on_off_ratio": 242069.79691508762,
-      "frac_decreasing": 0.08994708994708994,
-      "net_rise_decades": 5.5889044127305665,
+      "on_off_ratio": 278359.7435587275,
+      "frac_decreasing": 0.0,
+      "net_rise_decades": 5.5205721310246485,
       "frac_negative_on": 0.0,
-      "off_median": 3.2351000000000002e-12,
-      "off_log_std": 0.2342910409435213
+      "off_median": 3.3068e-12,
+      "off_log_std": 0.1742702445730281
     },
     "linear_path": "/home/user/igzoANN/data/tft linear [s5tft20-10top1(1) ; 6_5_2026 10_35_51 am].csv_s5_W20_L10_top_1.csv",
+    "saturation_ok": true,
+    "saturation_reasons": [],
+    "saturation_metrics": {
+      "on_off_ratio": 6290040.398256831,
+      "frac_decreasing": 0.014925373134328358,
+      "net_rise_decades": 6.90501908709059,
+      "frac_negative_on": 0.0,
+      "off_median": 3.1437e-12,
+      "off_log_std": 0.25438201339441757
+    },
+    "saturation_path": "/home/user/igzoANN/data/TFT Saturation [S5TFT20-10TOP1(1) ; 6_5_2026 10_37_14 AM].csv",
     "output_ok": true,
     "output_reasons": [],
     "output_metrics": {
@@ -600,18 +863,32 @@
     "device": "top2",
     "linear_ok": false,
     "linear_reasons": [
-      "low_on_off_ratio(7.8e-01)",
-      "flat_curve(net_rise=-0.11dec)"
+      "low_on_off_ratio(7.7e-01)",
+      "flat_curve(net_rise=-0.12dec)"
     ],
     "linear_metrics": {
-      "on_off_ratio": 0.7795140457049949,
-      "frac_decreasing": 0.0,
-      "net_rise_decades": -0.10993994549245656,
+      "on_off_ratio": 0.7689857277079326,
+      "frac_decreasing": 0.05970149253731343,
+      "net_rise_decades": -0.11642099529515537,
       "frac_negative_on": 0.0,
-      "off_median": 1.1071000000000002e-06,
-      "off_log_std": 0.005751665173286475
+      "off_median": 1.11755e-06,
+      "off_log_std": 0.007882251039724213
     },
     "linear_path": "/home/user/igzoANN/data/tft linear [s5tft20-10top2(1) ; 6_5_2026 11_47_21 am].csv_s5_W20_L10_top_2.csv",
+    "saturation_ok": false,
+    "saturation_reasons": [
+      "low_on_off_ratio(9.9e-01)",
+      "flat_curve(net_rise=-0.00dec)"
+    ],
+    "saturation_metrics": {
+      "on_off_ratio": 0.9860541427399507,
+      "frac_decreasing": 0.0,
+      "net_rise_decades": -0.0008411552366993647,
+      "frac_negative_on": 0.0,
+      "off_median": 2.5599e-05,
+      "off_log_std": 0.003942264622145518
+    },
+    "saturation_path": "/home/user/igzoANN/data/TFT Saturation [S5TFT20-10TOP2(1) ; 6_5_2026 11_47_42 AM].csv",
     "output_ok": false,
     "output_reasons": [
       "bad_vg_ordering(on/off=6.5e-01)",
@@ -632,14 +909,25 @@
     "linear_ok": true,
     "linear_reasons": [],
     "linear_metrics": {
-      "on_off_ratio": 158208.91293877666,
-      "frac_decreasing": 0.13227513227513227,
-      "net_rise_decades": 5.432100194270294,
+      "on_off_ratio": 197738.4434460091,
+      "frac_decreasing": 0.05970149253731343,
+      "net_rise_decades": 5.336095307194353,
       "frac_negative_on": 0.0,
-      "off_median": 3.5297e-12,
-      "off_log_std": 0.2379229639361412
+      "off_median": 3.3163e-12,
+      "off_log_std": 0.19840208813153207
     },
     "linear_path": "/home/user/igzoANN/data/tft linear [s5tft20-15bot1(1) ; 6_5_2026 2_59_43 pm].csv_s5_W20_L15_bot_1.csv",
+    "saturation_ok": true,
+    "saturation_reasons": [],
+    "saturation_metrics": {
+      "on_off_ratio": 5100729.485580375,
+      "frac_decreasing": 0.014925373134328358,
+      "net_rise_decades": 6.6993101233773285,
+      "frac_negative_on": 0.0,
+      "off_median": 2.6457000000000003e-12,
+      "off_log_std": 0.1744805723685706
+    },
+    "saturation_path": "/home/user/igzoANN/data/TFT Saturation [S5TFT20-15BOT1(1) ; 6_5_2026 3_01_07 PM].csv",
     "output_ok": true,
     "output_reasons": [],
     "output_metrics": {
@@ -657,14 +945,25 @@
     "linear_ok": true,
     "linear_reasons": [],
     "linear_metrics": {
-      "on_off_ratio": 128551.81155593111,
-      "frac_decreasing": 0.09523809523809523,
-      "net_rise_decades": 5.310794473649456,
+      "on_off_ratio": 193371.78675024174,
+      "frac_decreasing": 0.04477611940298507,
+      "net_rise_decades": 5.403108152817072,
       "frac_negative_on": 0.0,
-      "off_median": 3.7868e-12,
-      "off_log_std": 0.21439464255363122
+      "off_median": 2.9993e-12,
+      "off_log_std": 0.3172234541402973
     },
     "linear_path": "/home/user/igzoANN/data/tft linear [s5tft20-15bot2(1) ; 6_5_2026 4_21_04 pm].csv_s5_W20_L15_bot_2.csv",
+    "saturation_ok": true,
+    "saturation_reasons": [],
+    "saturation_metrics": {
+      "on_off_ratio": 3081700.2442002436,
+      "frac_decreasing": 0.04477611940298507,
+      "net_rise_decades": 6.576889391693605,
+      "frac_negative_on": 0.0,
+      "off_median": 3.276e-12,
+      "off_log_std": 0.16653438892506012
+    },
+    "saturation_path": "/home/user/igzoANN/data/TFT Saturation [S5TFT20-15BOT2(1) ; 6_5_2026 4_22_37 PM].csv",
     "output_ok": true,
     "output_reasons": [],
     "output_metrics": {
@@ -685,14 +984,28 @@
       "flat_curve(net_rise=-0.00dec)"
     ],
     "linear_metrics": {
-      "on_off_ratio": 0.9993202718912436,
+      "on_off_ratio": 0.999300293876572,
       "frac_decreasing": 0.0,
-      "net_rise_decades": -0.0002218172658041695,
+      "net_rise_decades": -0.00028878454141167964,
       "frac_negative_on": 0.0,
-      "off_median": 1.0004e-06,
-      "off_log_std": 5.808209340324543e-05
+      "off_median": 1.00042e-06,
+      "off_log_std": 2.1195964265380193e-05
     },
     "linear_path": "/home/user/igzoANN/data/tft linear [s5tft20-15top1(2) ; 6_5_2026 10_50_39 am].csv_s5_W20_L15_top_1_run2.csv",
+    "saturation_ok": false,
+    "saturation_reasons": [
+      "low_on_off_ratio(1.0e+00)",
+      "flat_curve(net_rise=-0.00dec)"
+    ],
+    "saturation_metrics": {
+      "on_off_ratio": 0.9990140845070422,
+      "frac_decreasing": 0.0,
+      "net_rise_decades": -0.002062271131253901,
+      "frac_negative_on": 0.0,
+      "off_median": 1.42e-05,
+      "off_log_std": 2.4465571867793304e-05
+    },
+    "saturation_path": "/home/user/igzoANN/data/TFT Saturation [S5TFT20-15TOP1(2) ; 6_5_2026 10_51_02 AM].csv",
     "output_ok": false,
     "output_reasons": [
       "bad_vg_ordering(on/off=1.0e+00)",
@@ -716,14 +1029,28 @@
       "flat_curve(net_rise=-0.00dec)"
     ],
     "linear_metrics": {
-      "on_off_ratio": 0.9994101297714503,
-      "frac_decreasing": 0.010582010582010581,
-      "net_rise_decades": -0.00016705692676488582,
+      "on_off_ratio": 0.9993901341704824,
+      "frac_decreasing": 0.014925373134328358,
+      "net_rise_decades": -0.0002779696735082382,
       "frac_negative_on": 0.0,
       "off_median": 1.00022e-06,
-      "off_log_std": 7.73204847326228e-05
+      "off_log_std": 2.8592514765155327e-05
     },
     "linear_path": "/home/user/igzoANN/data/tft linear [s5tft20-15top2(1) ; 6_5_2026 11_57_02 am].csv_s5_W20_L15_top_2.csv",
+    "saturation_ok": false,
+    "saturation_reasons": [
+      "low_on_off_ratio(1.0e+00)",
+      "flat_curve(net_rise=-0.00dec)"
+    ],
+    "saturation_metrics": {
+      "on_off_ratio": 0.9995990376904571,
+      "frac_decreasing": 0.0,
+      "net_rise_decades": -0.0008149082965740462,
+      "frac_negative_on": 0.0,
+      "off_median": 1.4964e-05,
+      "off_log_std": 3.716799694408619e-05
+    },
+    "saturation_path": "/home/user/igzoANN/data/TFT Saturation [S5TFT20-15TOP2(1) ; 6_5_2026 11_57_24 AM].csv",
     "output_ok": false,
     "output_reasons": [
       "bad_vg_ordering(on/off=1.0e+00)",
@@ -744,14 +1071,25 @@
     "linear_ok": true,
     "linear_reasons": [],
     "linear_metrics": {
-      "on_off_ratio": 121361.13643716362,
-      "frac_decreasing": 0.13227513227513227,
-      "net_rise_decades": 5.250613525007048,
+      "on_off_ratio": 148114.24386671552,
+      "frac_decreasing": 0.07462686567164178,
+      "net_rise_decades": 5.2141923360440545,
       "frac_negative_on": 0.0,
-      "off_median": 3.4001e-12,
-      "off_log_std": 0.20476539740469923
+      "off_median": 3.2772e-12,
+      "off_log_std": 0.16845316916803346
     },
     "linear_path": "/home/user/igzoANN/data/tft linear [s5tft20-20bot1(1) ; 6_5_2026 3_14_42 pm].csv_s5_W20_L20_bot_1.csv",
+    "saturation_ok": true,
+    "saturation_reasons": [],
+    "saturation_metrics": {
+      "on_off_ratio": 2533398.367305027,
+      "frac_decreasing": 0.029850746268656716,
+      "net_rise_decades": 6.586961229769047,
+      "frac_negative_on": 0.0,
+      "off_median": 3.8954e-12,
+      "off_log_std": 0.17248702333420898
+    },
+    "saturation_path": "/home/user/igzoANN/data/TFT Saturation [S5TFT20-20BOT1(1) ; 6_5_2026 3_16_06 PM].csv",
     "output_ok": true,
     "output_reasons": [],
     "output_metrics": {
@@ -769,14 +1107,25 @@
     "linear_ok": true,
     "linear_reasons": [],
     "linear_metrics": {
-      "on_off_ratio": 109499.28095175842,
-      "frac_decreasing": 0.047619047619047616,
-      "net_rise_decades": 5.214817541399749,
+      "on_off_ratio": 165437.33791384596,
+      "frac_decreasing": 0.07462686567164178,
+      "net_rise_decades": 5.251821670102075,
       "frac_negative_on": 0.0,
-      "off_median": 3.824499999999999e-12,
-      "off_log_std": 0.1983263139709093
+      "off_median": 2.9691e-12,
+      "off_log_std": 0.2205112633599062
     },
     "linear_path": "/home/user/igzoANN/data/tft linear [s5tft20-20bot2(1) ; 6_5_2026 4_35_30 pm].csv_s5_W20_L20_bot_2.csv",
+    "saturation_ok": true,
+    "saturation_reasons": [],
+    "saturation_metrics": {
+      "on_off_ratio": 3141929.6877648574,
+      "frac_decreasing": 0.07462686567164178,
+      "net_rise_decades": 6.562409855261003,
+      "frac_negative_on": 0.0,
+      "off_median": 2.9497e-12,
+      "off_log_std": 0.2362698472445207
+    },
+    "saturation_path": "/home/user/igzoANN/data/TFT Saturation [S5TFT20-20BOT2(1) ; 6_5_2026 4_37_03 PM].csv",
     "output_ok": true,
     "output_reasons": [],
     "output_metrics": {
@@ -797,14 +1146,28 @@
       "flat_curve(net_rise=-0.00dec)"
     ],
     "linear_metrics": {
-      "on_off_ratio": 0.9998100303951368,
+      "on_off_ratio": 0.9998200287953929,
       "frac_decreasing": 0.0,
-      "net_rise_decades": -6.480628507965491e-05,
+      "net_rise_decades": -8.03381610028353e-05,
       "frac_negative_on": 0.0,
       "off_median": 1.00016e-06,
-      "off_log_std": 2.8336562715352485e-05
+      "off_log_std": 2.3688226938326472e-05
     },
     "linear_path": "/home/user/igzoANN/data/tft linear [s5tft20-20top1(2) ; 6_5_2026 10_59_56 am].csv_s5_W20_L20_top_1_run2.csv",
+    "saturation_ok": false,
+    "saturation_reasons": [
+      "low_on_off_ratio(1.0e+00)",
+      "flat_curve(net_rise=-0.00dec)"
+    ],
+    "saturation_metrics": {
+      "on_off_ratio": 0.999911339657771,
+      "frac_decreasing": 0.0,
+      "net_rise_decades": -0.001981538143446926,
+      "frac_negative_on": 0.0,
+      "off_median": 1.1279e-05,
+      "off_log_std": 5.107937222415489e-05
+    },
+    "saturation_path": "/home/user/igzoANN/data/TFT Saturation [S5TFT20-20TOP1(2) ; 6_5_2026 11_00_19 AM].csv",
     "output_ok": false,
     "output_reasons": [
       "bad_vg_ordering(on/off=1.0e+00)",
@@ -825,14 +1188,25 @@
     "linear_ok": true,
     "linear_reasons": [],
     "linear_metrics": {
-      "on_off_ratio": 107716.0041073786,
-      "frac_decreasing": 0.08994708994708994,
-      "net_rise_decades": 5.305720404522867,
+      "on_off_ratio": 128194.34851806251,
+      "frac_decreasing": 0.05970149253731343,
+      "net_rise_decades": 5.197231638160306,
       "frac_negative_on": 0.0,
-      "off_median": 3.4085000000000003e-12,
-      "off_log_std": 0.29158176937965996
+      "off_median": 3.3301e-12,
+      "off_log_std": 0.18075922464609576
     },
     "linear_path": "/home/user/igzoANN/data/tft linear [s5tft20-20top2(1) ; 6_5_2026 12_06_28 pm].csv_s5_W20_L20_top_2.csv",
+    "saturation_ok": true,
+    "saturation_reasons": [],
+    "saturation_metrics": {
+      "on_off_ratio": 2318285.2305494566,
+      "frac_decreasing": 0.029850746268656716,
+      "net_rise_decades": 6.645615395029534,
+      "frac_negative_on": 0.0,
+      "off_median": 3.7801e-12,
+      "off_log_std": 0.3460632423157907
+    },
+    "saturation_path": "/home/user/igzoANN/data/TFT Saturation [S5TFT20-20TOP2(1) ; 6_5_2026 12_07_52 PM].csv",
     "output_ok": true,
     "output_reasons": [],
     "output_metrics": {
@@ -850,14 +1224,25 @@
     "linear_ok": true,
     "linear_reasons": [],
     "linear_metrics": {
-      "on_off_ratio": 1170423.5090751946,
-      "frac_decreasing": 0.1164021164021164,
-      "net_rise_decades": 6.182346915607214,
+      "on_off_ratio": 1195418.2840725007,
+      "frac_decreasing": 0.0,
+      "net_rise_decades": 6.140181815239732,
       "frac_negative_on": 0.0,
-      "off_median": 2.8925e-12,
-      "off_log_std": 0.18673118931359095
+      "off_median": 3.2717e-12,
+      "off_log_std": 0.17767156845130752
     },
     "linear_path": "/home/user/igzoANN/data/tft linear [s5tft40-5bot1(1) ; 6_5_2026 2_30_53 pm].csv_s5_W40_L5_bot_1.csv",
+    "saturation_ok": true,
+    "saturation_reasons": [],
+    "saturation_metrics": {
+      "on_off_ratio": 33735931.044308305,
+      "frac_decreasing": 0.029850746268656716,
+      "net_rise_decades": 7.573674046837331,
+      "frac_negative_on": 0.0,
+      "off_median": 2.8076e-12,
+      "off_log_std": 0.20626256261249043
+    },
+    "saturation_path": "/home/user/igzoANN/data/TFT Saturation [S5TFT40-5BOT1(1) ; 6_5_2026 2_32_16 PM].csv",
     "output_ok": true,
     "output_reasons": [],
     "output_metrics": {
@@ -875,14 +1260,25 @@
     "linear_ok": true,
     "linear_reasons": [],
     "linear_metrics": {
-      "on_off_ratio": 378344.3774600169,
-      "frac_decreasing": 0.164021164021164,
-      "net_rise_decades": 5.7421704133929286,
+      "on_off_ratio": 767639.6332550826,
+      "frac_decreasing": 0.04477611940298507,
+      "net_rise_decades": 5.784004954047354,
       "frac_negative_on": 0.0,
-      "off_median": 4.0142000000000004e-12,
-      "off_log_std": 0.19413059943013813
+      "off_median": 2.2577e-12,
+      "off_log_std": 0.17130780860069902
     },
     "linear_path": "/home/user/igzoANN/data/tft linear [s5tft40-5bot2(1) ; 6_5_2026 3_50_23 pm].csv_s5_W40_L5_bot_2.csv",
+    "saturation_ok": true,
+    "saturation_reasons": [],
+    "saturation_metrics": {
+      "on_off_ratio": 10759890.565921737,
+      "frac_decreasing": 0.05970149253731343,
+      "net_rise_decades": 7.152941938904548,
+      "frac_negative_on": 0.0,
+      "off_median": 3.2531e-12,
+      "off_log_std": 0.2328825678900554
+    },
+    "saturation_path": "/home/user/igzoANN/data/TFT Saturation [S5TFT40-5BOT2(1) ; 6_5_2026 3_51_57 PM].csv",
     "output_ok": true,
     "output_reasons": [],
     "output_metrics": {
@@ -900,14 +1296,25 @@
     "linear_ok": true,
     "linear_reasons": [],
     "linear_metrics": {
-      "on_off_ratio": 878382.6260894415,
-      "frac_decreasing": 0.1164021164021164,
-      "net_rise_decades": 6.070461850779523,
+      "on_off_ratio": 1066102.0450320183,
+      "frac_decreasing": 0.05970149253731343,
+      "net_rise_decades": 6.178405063184076,
       "frac_negative_on": 0.0,
-      "off_median": 3.4994999999999998e-12,
-      "off_log_std": 0.2727524973602207
+      "off_median": 3.3887e-12,
+      "off_log_std": 0.22826631371221703
     },
     "linear_path": "/home/user/igzoANN/data/tft linear [s5tft40-5top1(1) ; 6_5_2026 10_21_00 am].csv_s5_W40_L5_top_1.csv",
+    "saturation_ok": true,
+    "saturation_reasons": [],
+    "saturation_metrics": {
+      "on_off_ratio": 35047992.83307026,
+      "frac_decreasing": 0.05970149253731343,
+      "net_rise_decades": 7.517112907552667,
+      "frac_negative_on": 0.0,
+      "off_median": 2.3441e-12,
+      "off_log_std": 0.19599321831944908
+    },
+    "saturation_path": "/home/user/igzoANN/data/TFT Saturation [S5TFT40-5TOP1(1) ; 6_5_2026 10_22_23 AM].csv",
     "output_ok": true,
     "output_reasons": [],
     "output_metrics": {
@@ -928,14 +1335,28 @@
       "flat_curve(net_rise=-0.00dec)"
     ],
     "linear_metrics": {
-      "on_off_ratio": 0.9966159221362616,
+      "on_off_ratio": 0.9968254918990146,
       "frac_decreasing": 0.0,
-      "net_rise_decades": -0.0013910823300351538,
+      "net_rise_decades": -0.0014220826539714793,
       "frac_negative_on": 0.0,
-      "off_median": 1.00175e-06,
-      "off_log_std": 0.00012089388293955003
+      "off_median": 1.00173e-06,
+      "off_log_std": 4.000590618817245e-05
     },
     "linear_path": "/home/user/igzoANN/data/tft linear [s5tft40-5top2(1) ; 6_5_2026 11_20_40 am].csv_s5_W40_L5_top_2.csv",
+    "saturation_ok": false,
+    "saturation_reasons": [
+      "low_on_off_ratio(1.0e+00)",
+      "flat_curve(net_rise=-0.00dec)"
+    ],
+    "saturation_metrics": {
+      "on_off_ratio": 0.9991239775493781,
+      "frac_decreasing": 0.0,
+      "net_rise_decades": -0.0006620206389680305,
+      "frac_negative_on": 0.0,
+      "off_median": 9.8171e-05,
+      "off_log_std": 3.0404777596810173e-05
+    },
+    "saturation_path": "/home/user/igzoANN/data/TFT Saturation [S5TFT40-5TOP2(1) ; 6_5_2026 11_21_02 AM].csv",
     "output_ok": false,
     "output_reasons": [
       "bad_vg_ordering(on/off=1.0e+00)",
@@ -956,14 +1377,25 @@
     "linear_ok": true,
     "linear_reasons": [],
     "linear_metrics": {
-      "on_off_ratio": 571412.5602420892,
-      "frac_decreasing": 0.13756613756613756,
-      "net_rise_decades": 5.858052362148499,
+      "on_off_ratio": 562476.7801857586,
+      "frac_decreasing": 0.0,
+      "net_rise_decades": 5.800676789827789,
       "frac_negative_on": 0.0,
-      "off_median": 2.6767e-12,
-      "off_log_std": 0.18960978572297627
+      "off_median": 3.2299999999999998e-12,
+      "off_log_std": 0.16135670967855362
     },
     "linear_path": "/home/user/igzoANN/data/tft linear [s5tft40-10bot1(1) ; 6_5_2026 2_48_49 pm].csv_s5_W40_L10_bot_1.csv",
+    "saturation_ok": true,
+    "saturation_reasons": [],
+    "saturation_metrics": {
+      "on_off_ratio": 15288189.381593617,
+      "frac_decreasing": 0.0,
+      "net_rise_decades": 7.121364354415657,
+      "frac_negative_on": 0.0,
+      "off_median": 2.3318000000000002e-12,
+      "off_log_std": 0.1628033628984349
+    },
+    "saturation_path": "/home/user/igzoANN/data/TFT Saturation [S5TFT40-10BOT1(1) ; 6_5_2026 2_50_22 PM].csv",
     "output_ok": true,
     "output_reasons": [],
     "output_metrics": {
@@ -981,14 +1413,25 @@
     "linear_ok": true,
     "linear_reasons": [],
     "linear_metrics": {
-      "on_off_ratio": 469204.25595684105,
-      "frac_decreasing": 0.07936507936507936,
-      "net_rise_decades": 5.926038426735136,
+      "on_off_ratio": 492028.027498678,
+      "frac_decreasing": 0.029850746268656716,
+      "net_rise_decades": 5.883281568652752,
       "frac_negative_on": 0.0,
-      "off_median": 3.3364999999999998e-12,
-      "off_log_std": 0.25594601269396117
+      "off_median": 3.782e-12,
+      "off_log_std": 0.2394933540960012
     },
     "linear_path": "/home/user/igzoANN/data/tft linear [s5tft40-10bot2(1) ; 6_5_2026 4_09_54 pm].csv_s5_W40_L10_bot_2.csv",
+    "saturation_ok": true,
+    "saturation_reasons": [],
+    "saturation_metrics": {
+      "on_off_ratio": 10912401.196009355,
+      "frac_decreasing": 0.07462686567164178,
+      "net_rise_decades": 7.203105936553863,
+      "frac_negative_on": 0.0,
+      "off_median": 3.3779e-12,
+      "off_log_std": 0.2129873709874471
+    },
+    "saturation_path": "/home/user/igzoANN/data/TFT Saturation [S5TFT40-10BOT2(1) ; 6_5_2026 4_11_26 PM].csv",
     "output_ok": true,
     "output_reasons": [],
     "output_metrics": {
@@ -1006,14 +1449,25 @@
     "linear_ok": true,
     "linear_reasons": [],
     "linear_metrics": {
-      "on_off_ratio": 433521.06134061026,
-      "frac_decreasing": 0.1111111111111111,
-      "net_rise_decades": 5.909292205093073,
+      "on_off_ratio": 479658.7200619504,
+      "frac_decreasing": 0.029850746268656716,
+      "net_rise_decades": 5.867732526475894,
       "frac_negative_on": 0.0,
-      "off_median": 3.4447e-12,
-      "off_log_std": 0.3440953360543669
+      "off_median": 3.6158e-12,
+      "off_log_std": 0.32482199903061537
     },
     "linear_path": "/home/user/igzoANN/data/tft linear [s5tft40-10top1(2) ; 6_5_2026 10_40_42 am].csv_s5_W40_L10_top_1_run2.csv",
+    "saturation_ok": true,
+    "saturation_reasons": [],
+    "saturation_metrics": {
+      "on_off_ratio": 9380208.20753122,
+      "frac_decreasing": 0.029850746268656716,
+      "net_rise_decades": 7.2702768223630425,
+      "frac_negative_on": 0.0,
+      "off_median": 4.1401e-12,
+      "off_log_std": 0.3137603737167264
+    },
+    "saturation_path": "/home/user/igzoANN/data/TFT Saturation [S5TFT40-10TOP1(2) ; 6_5_2026 10_42_04 AM].csv",
     "output_ok": true,
     "output_reasons": [],
     "output_metrics": {
@@ -1030,18 +1484,32 @@
     "device": "top2",
     "linear_ok": false,
     "linear_reasons": [
-      "low_on_off_ratio(2.3e-01)",
-      "flat_curve(net_rise=-0.64dec)"
+      "low_on_off_ratio(2.4e-01)",
+      "flat_curve(net_rise=-0.63dec)"
     ],
     "linear_metrics": {
-      "on_off_ratio": 0.23037911435887823,
-      "frac_decreasing": 0.06878306878306878,
-      "net_rise_decades": -0.6422059469717594,
+      "on_off_ratio": 0.2354884047786367,
+      "frac_decreasing": 0.08955223880597014,
+      "net_rise_decades": -0.6266751907320618,
       "frac_negative_on": 0.0,
-      "off_median": 1.6011000000000002e-06,
-      "off_log_std": 0.012435134567430358
+      "off_median": 1.5653e-06,
+      "off_log_std": 0.005133006518626135
     },
     "linear_path": "/home/user/igzoANN/data/tft linear [s5tft40-10top2(1) ; 6_5_2026 11_48_37 am].csv_s5_W40_L10_top_2.csv",
+    "saturation_ok": false,
+    "saturation_reasons": [
+      "low_on_off_ratio(9.6e-01)",
+      "flat_curve(net_rise=-0.02dec)"
+    ],
+    "saturation_metrics": {
+      "on_off_ratio": 0.9591140804147746,
+      "frac_decreasing": 0.0,
+      "net_rise_decades": -0.021804525678920328,
+      "frac_negative_on": 0.0,
+      "off_median": 5.7477e-05,
+      "off_log_std": 0.005516554979438911
+    },
+    "saturation_path": "/home/user/igzoANN/data/TFT Saturation [S5TFT40-10TOP2(1) ; 6_5_2026 11_48_58 AM].csv",
     "output_ok": false,
     "output_reasons": [
       "bad_vg_ordering(on/off=7.3e-01)",
@@ -1062,14 +1530,25 @@
     "linear_ok": true,
     "linear_reasons": [],
     "linear_metrics": {
-      "on_off_ratio": 322495.285071812,
-      "frac_decreasing": 0.08994708994708994,
-      "net_rise_decades": 5.882475973796314,
+      "on_off_ratio": 333043.9001966443,
+      "frac_decreasing": 0.0,
+      "net_rise_decades": 5.694523800210297,
       "frac_negative_on": 0.0,
-      "off_median": 3.4465e-12,
-      "off_log_std": 0.39074530286816694
+      "off_median": 3.9157e-12,
+      "off_log_std": 0.18330729001309956
     },
     "linear_path": "/home/user/igzoANN/data/tft linear [s5tft40-15bot1(1) ; 6_5_2026 3_03_08 pm].csv_s5_W40_L15_bot_1.csv",
+    "saturation_ok": true,
+    "saturation_reasons": [],
+    "saturation_metrics": {
+      "on_off_ratio": 8307701.75277036,
+      "frac_decreasing": 0.0,
+      "net_rise_decades": 7.028755107720087,
+      "frac_negative_on": 0.0,
+      "off_median": 3.2577e-12,
+      "off_log_std": 0.18885431978534983
+    },
+    "saturation_path": "/home/user/igzoANN/data/TFT Saturation [S5TFT40-15BOT1(1) ; 6_5_2026 3_04_31 PM].csv",
     "output_ok": true,
     "output_reasons": [],
     "output_metrics": {
@@ -1087,14 +1566,25 @@
     "linear_ok": true,
     "linear_reasons": [],
     "linear_metrics": {
-      "on_off_ratio": 246722.46750061316,
-      "frac_decreasing": 0.12169312169312169,
-      "net_rise_decades": 5.568921949706336,
+      "on_off_ratio": 250296.12872067312,
+      "frac_decreasing": 0.04477611940298507,
+      "net_rise_decades": 5.577489558487384,
       "frac_negative_on": 0.0,
-      "off_median": 3.2616e-12,
-      "off_log_std": 0.25328907324268823
+      "off_median": 3.9340999999999996e-12,
+      "off_log_std": 0.18658979621847807
     },
     "linear_path": "/home/user/igzoANN/data/tft linear [s5tft40-15bot2(1) ; 6_5_2026 4_24_39 pm].csv_s5_W40_L15_bot_2.csv",
+    "saturation_ok": true,
+    "saturation_reasons": [],
+    "saturation_metrics": {
+      "on_off_ratio": 4419081.065261926,
+      "frac_decreasing": 0.07462686567164178,
+      "net_rise_decades": 6.8724125401732765,
+      "frac_negative_on": 0.0,
+      "off_median": 3.417e-12,
+      "off_log_std": 0.31133095889027834
+    },
+    "saturation_path": "/home/user/igzoANN/data/TFT Saturation [S5TFT40-15BOT2(1) ; 6_5_2026 4_26_13 PM].csv",
     "output_ok": true,
     "output_reasons": [],
     "output_metrics": {
@@ -1115,14 +1605,28 @@
       "flat_curve(net_rise=-0.01dec)"
     ],
     "linear_metrics": {
-      "on_off_ratio": 0.9731716097034179,
-      "frac_decreasing": 0.06878306878306878,
-      "net_rise_decades": -0.011793310548970481,
+      "on_off_ratio": 0.9732226777322268,
+      "frac_decreasing": 0.07462686567164178,
+      "net_rise_decades": -0.0118899248897959,
       "frac_negative_on": 0.0,
-      "off_median": 1.00006e-06,
-      "off_log_std": 0.00010560176941700841
+      "off_median": 1.0001e-06,
+      "off_log_std": 7.920791361461429e-05
     },
     "linear_path": "/home/user/igzoANN/data/tft linear [s5tft40-15top1(1) ; 6_5_2026 10_52_05 am].csv_s5_W40_L15_top_1.csv",
+    "saturation_ok": false,
+    "saturation_reasons": [
+      "low_on_off_ratio(1.0e+00)",
+      "flat_curve(net_rise=0.00dec)"
+    ],
+    "saturation_metrics": {
+      "on_off_ratio": 0.9953151618398636,
+      "frac_decreasing": 0.0,
+      "net_rise_decades": 0.0019185939560593113,
+      "frac_negative_on": 0.0,
+      "off_median": 2.8176000000000003e-05,
+      "off_log_std": 0.0012163669668894444
+    },
+    "saturation_path": "/home/user/igzoANN/data/TFT Saturation [S5TFT40-15TOP1(1) ; 6_5_2026 10_52_29 AM].csv",
     "output_ok": false,
     "output_reasons": [
       "bad_vg_ordering(on/off=1.0e+00)",
@@ -1142,18 +1646,32 @@
     "device": "top2",
     "linear_ok": false,
     "linear_reasons": [
-      "low_on_off_ratio(4.8e-01)",
+      "low_on_off_ratio(4.9e-01)",
       "flat_curve(net_rise=-0.31dec)"
     ],
     "linear_metrics": {
-      "on_off_ratio": 0.4778950526373206,
-      "frac_decreasing": 0.06878306878306878,
-      "net_rise_decades": -0.31441203562880826,
+      "on_off_ratio": 0.4896139972635682,
+      "frac_decreasing": 0.05970149253731343,
+      "net_rise_decades": -0.31091315319979973,
       "frac_negative_on": 0.0,
-      "off_median": 3.6666000000000006e-06,
-      "off_log_std": 0.01990991066907615
+      "off_median": 3.61785e-06,
+      "off_log_std": 0.0030994650426437137
     },
     "linear_path": "/home/user/igzoANN/data/tft linear [s5tft40-15top2(1) ; 6_5_2026 11_58_14 am].csv_s5_W40_L15_top_2.csv",
+    "saturation_ok": false,
+    "saturation_reasons": [
+      "low_on_off_ratio(9.8e-01)",
+      "flat_curve(net_rise=-0.02dec)"
+    ],
+    "saturation_metrics": {
+      "on_off_ratio": 0.9790995456422965,
+      "frac_decreasing": 0.0,
+      "net_rise_decades": -0.015578745558388007,
+      "frac_negative_on": 0.0,
+      "off_median": 0.00012105,
+      "off_log_std": 0.01109752753925547
+    },
+    "saturation_path": "/home/user/igzoANN/data/TFT Saturation [S5TFT40-15TOP2(1) ; 6_5_2026 11_58_35 AM].csv",
     "output_ok": false,
     "output_reasons": [
       "bad_vg_ordering(on/off=8.2e-01)",
@@ -1174,14 +1692,25 @@
     "linear_ok": true,
     "linear_reasons": [],
     "linear_metrics": {
-      "on_off_ratio": 221254.56922543293,
-      "frac_decreasing": 0.10582010582010581,
-      "net_rise_decades": 5.528895413287046,
+      "on_off_ratio": 252784.04522938872,
+      "frac_decreasing": 0.014925373134328358,
+      "net_rise_decades": 5.556385981492554,
       "frac_negative_on": 0.0,
-      "off_median": 3.7479e-12,
-      "off_log_std": 0.4675032062078996
+      "off_median": 3.8559e-12,
+      "off_log_std": 0.1746840772425235
     },
     "linear_path": "/home/user/igzoANN/data/tft linear [s5tft40-20bot1(1) ; 6_5_2026 3_18_15 pm].csv_s5_W40_L20_bot_1.csv",
+    "saturation_ok": true,
+    "saturation_reasons": [],
+    "saturation_metrics": {
+      "on_off_ratio": 4777780.460130846,
+      "frac_decreasing": 0.029850746268656716,
+      "net_rise_decades": 7.015441461753362,
+      "frac_negative_on": 0.0,
+      "off_median": 4.1422999999999994e-12,
+      "off_log_std": 0.40216087842057907
+    },
+    "saturation_path": "/home/user/igzoANN/data/TFT Saturation [S5TFT40-20BOT1(1) ; 6_5_2026 3_19_38 PM].csv",
     "output_ok": true,
     "output_reasons": [],
     "output_metrics": {
@@ -1199,14 +1728,25 @@
     "linear_ok": true,
     "linear_reasons": [],
     "linear_metrics": {
-      "on_off_ratio": 8588.485497104908,
-      "frac_decreasing": 0.2275132275132275,
-      "net_rise_decades": 4.360788337483372,
+      "on_off_ratio": 20256.28982641178,
+      "frac_decreasing": 0.07462686567164178,
+      "net_rise_decades": 4.509862022911861,
       "frac_negative_on": 0.0,
-      "off_median": 3.6441e-12,
-      "off_log_std": 0.3442798252855046
+      "off_median": 3.6407999999999996e-12,
+      "off_log_std": 0.17051737826959534
     },
     "linear_path": "/home/user/igzoANN/data/tft linear [s5tft40-20bot2(1) ; 6_5_2026 4_39_19 pm].csv_s5_W40_L20_bot_2.csv",
+    "saturation_ok": true,
+    "saturation_reasons": [],
+    "saturation_metrics": {
+      "on_off_ratio": 2023030.7865035753,
+      "frac_decreasing": 0.11940298507462686,
+      "net_rise_decades": 6.42298689891676,
+      "frac_negative_on": 0.0,
+      "off_median": 3.3846e-12,
+      "off_log_std": 0.25595344776842915
+    },
+    "saturation_path": "/home/user/igzoANN/data/TFT Saturation [S5TFT40-20BOT2(1) ; 6_5_2026 4_41_04 PM].csv",
     "output_ok": true,
     "output_reasons": [],
     "output_metrics": {
@@ -1227,14 +1767,28 @@
       "flat_curve(net_rise=-0.01dec)"
     ],
     "linear_metrics": {
-      "on_off_ratio": 0.9755409783608655,
-      "frac_decreasing": 0.07936507936507936,
-      "net_rise_decades": -0.010664403321499094,
+      "on_off_ratio": 0.9755792673780213,
+      "frac_decreasing": 0.08955223880597014,
+      "net_rise_decades": -0.010757030687661207,
       "frac_negative_on": 0.0,
-      "off_median": 1.00004e-06,
-      "off_log_std": 7.974530746736026e-05
+      "off_median": 9.9997e-07,
+      "off_log_std": 8.232593198201891e-05
     },
     "linear_path": "/home/user/igzoANN/data/tft linear [s5tft40-20top1(1) ; 6_5_2026 11_01_15 am].csv_s5_W40_L20_top_1.csv",
+    "saturation_ok": false,
+    "saturation_reasons": [
+      "low_on_off_ratio(1.0e+00)",
+      "flat_curve(net_rise=0.02dec)"
+    ],
+    "saturation_metrics": {
+      "on_off_ratio": 0.9965438976581037,
+      "frac_decreasing": 0.0,
+      "net_rise_decades": 0.01703404408581477,
+      "frac_negative_on": 0.0,
+      "off_median": 1.9386e-05,
+      "off_log_std": 0.0004736425577315138
+    },
+    "saturation_path": "/home/user/igzoANN/data/TFT Saturation [S5TFT40-20TOP1(1) ; 6_5_2026 11_01_39 AM].csv",
     "output_ok": false,
     "output_reasons": [
       "bad_vg_ordering(on/off=1.1e+00)",
@@ -1255,14 +1809,28 @@
     "linear_ok": true,
     "linear_reasons": [],
     "linear_metrics": {
-      "on_off_ratio": 25754.451685739212,
-      "frac_decreasing": 0.1111111111111111,
-      "net_rise_decades": 4.514941462159116,
+      "on_off_ratio": 27537.49072011878,
+      "frac_decreasing": 0.08955223880597014,
+      "net_rise_decades": 4.540440572253602,
       "frac_negative_on": 0.0,
-      "off_median": 3.8974e-12,
-      "off_log_std": 0.33532895734644724
+      "off_median": 3.6369e-12,
+      "off_log_std": 0.1811975616564837
     },
     "linear_path": "/home/user/igzoANN/data/tft linear [s5tft40-20top2(2) ; 6_5_2026 12_10_18 pm].csv_s5_W40_L20_top_2_run2.csv",
+    "saturation_ok": false,
+    "saturation_reasons": [
+      "low_on_off_ratio(1.0e+00)",
+      "flat_curve(net_rise=-0.01dec)"
+    ],
+    "saturation_metrics": {
+      "on_off_ratio": 1.0069692869455618,
+      "frac_decreasing": 0.0,
+      "net_rise_decades": -0.011137705469169035,
+      "frac_negative_on": 0.0,
+      "off_median": 2.69755e-10,
+      "off_log_std": 0.01661952790391271
+    },
+    "saturation_path": "/home/user/igzoANN/data/TFT Saturation [S5TFT40-20TOP2(2) ; 6_5_2026 12_10_53 PM].csv",
     "output_ok": false,
     "output_reasons": [
       "bad_vg_ordering(on/off=9.3e-01)",
@@ -1283,14 +1851,25 @@
     "linear_ok": true,
     "linear_reasons": [],
     "linear_metrics": {
-      "on_off_ratio": 1827559.6300503006,
-      "frac_decreasing": 0.12169312169312169,
-      "net_rise_decades": 6.488691349024175,
+      "on_off_ratio": 2453316.0313936397,
+      "frac_decreasing": 0.014925373134328358,
+      "net_rise_decades": 6.562828809048605,
       "frac_negative_on": 0.0,
-      "off_median": 3.6978e-12,
-      "off_log_std": 0.2462178966146225
+      "off_median": 3.1981000000000003e-12,
+      "off_log_std": 0.22881604781125456
     },
     "linear_path": "/home/user/igzoANN/data/tft linear [s5tft80-5bot1(1) ; 6_5_2026 2_34_31 pm].csv_s5_W80_L5_bot_1.csv",
+    "saturation_ok": true,
+    "saturation_reasons": [],
+    "saturation_metrics": {
+      "on_off_ratio": 55426653.318414696,
+      "frac_decreasing": 0.014925373134328358,
+      "net_rise_decades": 7.853328181044731,
+      "frac_negative_on": 0.0,
+      "off_median": 3.3962e-12,
+      "off_log_std": 0.178838222041023
+    },
+    "saturation_path": "/home/user/igzoANN/data/TFT Saturation [S5TFT80-5BOT1(1) ; 6_5_2026 2_35_52 PM].csv",
     "output_ok": true,
     "output_reasons": [],
     "output_metrics": {
@@ -1308,14 +1887,25 @@
     "linear_ok": true,
     "linear_reasons": [],
     "linear_metrics": {
-      "on_off_ratio": 789590.7359595083,
-      "frac_decreasing": 0.1164021164021164,
-      "net_rise_decades": 6.0330686105550715,
+      "on_off_ratio": 1354756.4347182745,
+      "frac_decreasing": 0.05970149253731343,
+      "net_rise_decades": 6.079227956090199,
       "frac_negative_on": 0.0,
-      "off_median": 3.9119e-12,
-      "off_log_std": 0.19696037151251458
+      "off_median": 2.5681e-12,
+      "off_log_std": 0.18347592187271633
     },
     "linear_path": "/home/user/igzoANN/data/tft linear [s5tft80-5bot2(1) ; 6_5_2026 3_54_11 pm].csv_s5_W80_L5_bot_2.csv",
+    "saturation_ok": true,
+    "saturation_reasons": [],
+    "saturation_metrics": {
+      "on_off_ratio": 27305091.06401108,
+      "frac_decreasing": 0.07462686567164178,
+      "net_rise_decades": 7.7039078545838455,
+      "frac_negative_on": 0.0,
+      "off_median": 3.7556e-12,
+      "off_log_std": 0.28469170381954034
+    },
+    "saturation_path": "/home/user/igzoANN/data/TFT Saturation [S5TFT80-5BOT2(1) ; 6_5_2026 3_55_44 PM].csv",
     "output_ok": true,
     "output_reasons": [],
     "output_metrics": {
@@ -1332,18 +1922,32 @@
     "device": "top1",
     "linear_ok": false,
     "linear_reasons": [
-      "low_on_off_ratio(5.7e+00)",
-      "flat_curve(net_rise=0.97dec)"
+      "low_on_off_ratio(3.6e+00)",
+      "flat_curve(net_rise=0.61dec)"
     ],
     "linear_metrics": {
-      "on_off_ratio": 5.72540931428717,
+      "on_off_ratio": 3.561634924230544,
       "frac_decreasing": 0.0,
-      "net_rise_decades": 0.9745598167129419,
+      "net_rise_decades": 0.6089688387668035,
       "frac_negative_on": 0.0,
-      "off_median": 9.81825e-09,
-      "off_log_std": 0.11638188591659612
+      "off_median": 1.7216699999999998e-08,
+      "off_log_std": 0.03185701528746852
     },
     "linear_path": "/home/user/igzoANN/data/tft linear [s5tft80-5top1(1) ; 6_5_2026 10_24_53 am].csv_s5_W80_L5_top_1.csv",
+    "saturation_ok": false,
+    "saturation_reasons": [
+      "low_on_off_ratio(1.2e+00)",
+      "flat_curve(net_rise=0.10dec)"
+    ],
+    "saturation_metrics": {
+      "on_off_ratio": 1.2298612707902201,
+      "frac_decreasing": 0.0,
+      "net_rise_decades": 0.09883445920370448,
+      "frac_negative_on": 0.0,
+      "off_median": 2.6093999999999998e-05,
+      "off_log_std": 0.004395793751216679
+    },
+    "saturation_path": "/home/user/igzoANN/data/TFT Saturation [S5TFT80-5TOP1(1) ; 6_5_2026 10_25_20 AM].csv",
     "output_ok": false,
     "output_reasons": [
       "bad_vg_ordering(on/off=1.4e+00)",
@@ -1367,14 +1971,28 @@
       "flat_curve(net_rise=-0.00dec)"
     ],
     "linear_metrics": {
-      "on_off_ratio": 0.9942864550095722,
+      "on_off_ratio": 0.9943460008176859,
       "frac_decreasing": 0.0,
-      "net_rise_decades": -0.002448839585088791,
+      "net_rise_decades": -0.002464647025583133,
       "frac_negative_on": 0.0,
-      "off_median": 1.00288e-06,
-      "off_log_std": 8.010766934828848e-05
+      "off_median": 1.00283e-06,
+      "off_log_std": 1.8596368090255785e-05
     },
     "linear_path": "/home/user/igzoANN/data/tft linear [s5tft80-5top2(1) ; 6_5_2026 11_22_29 am].csv_s5_W80_L5_top_2.csv",
+    "saturation_ok": false,
+    "saturation_reasons": [
+      "low_on_off_ratio(1.0e+00)",
+      "flat_curve(net_rise=0.00dec)"
+    ],
+    "saturation_metrics": {
+      "on_off_ratio": 1.0008832946891906,
+      "frac_decreasing": 0.0,
+      "net_rise_decades": 0.0003474620679964069,
+      "frac_negative_on": 0.0,
+      "off_median": 0.00018114,
+      "off_log_std": 8.317667907124485e-05
+    },
+    "saturation_path": "/home/user/igzoANN/data/TFT Saturation [S5TFT80-5TOP2(1) ; 6_5_2026 11_22_52 AM].csv",
     "output_ok": false,
     "output_reasons": [
       "bad_vg_ordering(on/off=1.0e+00)",
@@ -1395,14 +2013,25 @@
     "linear_ok": true,
     "linear_reasons": [],
     "linear_metrics": {
-      "on_off_ratio": 617698.2723438989,
-      "frac_decreasing": 0.08465608465608465,
-      "net_rise_decades": 5.933785707931726,
+      "on_off_ratio": 594701.892856299,
+      "frac_decreasing": 0.029850746268656716,
+      "net_rise_decades": 5.948736361615112,
       "frac_negative_on": 0.0,
-      "off_median": 3.6755e-12,
-      "off_log_std": 0.24127639808171222
+      "off_median": 4.2317e-12,
+      "off_log_std": 0.2149751709772954
     },
     "linear_path": "/home/user/igzoANN/data/tft linear [s5tft80-10bot1(2) ; 6_5_2026 2_52_38 pm].csv_s5_W80_L10_bot_1_run2.csv",
+    "saturation_ok": true,
+    "saturation_reasons": [],
+    "saturation_metrics": {
+      "on_off_ratio": 24658738.970373396,
+      "frac_decreasing": 0.029850746268656716,
+      "net_rise_decades": 7.673234747131965,
+      "frac_negative_on": 0.0,
+      "off_median": 3.4226000000000004e-12,
+      "off_log_std": 0.3160837899987141
+    },
+    "saturation_path": "/home/user/igzoANN/data/TFT Saturation [S5TFT80-10BOT1(2) ; 6_5_2026 2_54_00 PM].csv",
     "output_ok": true,
     "output_reasons": [],
     "output_metrics": {
@@ -1420,14 +2049,25 @@
     "linear_ok": true,
     "linear_reasons": [],
     "linear_metrics": {
-      "on_off_ratio": 678739.6181179896,
-      "frac_decreasing": 0.10052910052910052,
-      "net_rise_decades": 6.014745310162997,
+      "on_off_ratio": 1206009.2893254966,
+      "frac_decreasing": 0.07462686567164178,
+      "net_rise_decades": 6.041950571694113,
       "frac_negative_on": 0.0,
-      "off_median": 3.5037e-12,
-      "off_log_std": 0.3504832274831445
+      "off_median": 2.4329e-12,
+      "off_log_std": 0.19535803005166105
     },
     "linear_path": "/home/user/igzoANN/data/tft linear [s5tft80-10bot2(1) ; 6_5_2026 4_13_36 pm].csv_s5_W80_L10_bot_2.csv",
+    "saturation_ok": true,
+    "saturation_reasons": [],
+    "saturation_metrics": {
+      "on_off_ratio": 13399122.161015702,
+      "frac_decreasing": 0.07462686567164178,
+      "net_rise_decades": 7.344705335084319,
+      "frac_negative_on": 0.0,
+      "off_median": 3.3947e-12,
+      "off_log_std": 0.24876231389178421
+    },
+    "saturation_path": "/home/user/igzoANN/data/TFT Saturation [S5TFT80-10BOT2(1) ; 6_5_2026 4_15_09 PM].csv",
     "output_ok": true,
     "output_reasons": [],
     "output_metrics": {
@@ -1445,14 +2085,25 @@
     "linear_ok": true,
     "linear_reasons": [],
     "linear_metrics": {
-      "on_off_ratio": 808742.7025487685,
-      "frac_decreasing": 0.08994708994708994,
-      "net_rise_decades": 6.0372652997255045,
+      "on_off_ratio": 842932.8122187654,
+      "frac_decreasing": 0.05970149253731343,
+      "net_rise_decades": 6.082940494708986,
       "frac_negative_on": 0.0,
-      "off_median": 3.5115e-12,
-      "off_log_std": 0.2773559709581776
+      "off_median": 3.8891e-12,
+      "off_log_std": 0.19253308610723782
     },
     "linear_path": "/home/user/igzoANN/data/tft linear [s5tft80-10top1(1) ; 6_5_2026 10_44_23 am].csv_s5_W80_L10_top_1.csv",
+    "saturation_ok": true,
+    "saturation_reasons": [],
+    "saturation_metrics": {
+      "on_off_ratio": 18024489.00887003,
+      "frac_decreasing": 0.029850746268656716,
+      "net_rise_decades": 7.486772350114996,
+      "frac_negative_on": 0.0,
+      "off_median": 4.1488e-12,
+      "off_log_std": 0.25540205364382346
+    },
+    "saturation_path": "/home/user/igzoANN/data/TFT Saturation [S5TFT80-10TOP1(1) ; 6_5_2026 10_45_44 AM].csv",
     "output_ok": true,
     "output_reasons": [],
     "output_metrics": {
@@ -1470,14 +2121,25 @@
     "linear_ok": true,
     "linear_reasons": [],
     "linear_metrics": {
-      "on_off_ratio": 905518.0342003162,
-      "frac_decreasing": 0.12169312169312169,
-      "net_rise_decades": 6.1764790418087205,
+      "on_off_ratio": 1109915.4726934833,
+      "frac_decreasing": 0.05970149253731343,
+      "net_rise_decades": 6.234222263931734,
       "frac_negative_on": 0.0,
-      "off_median": 3.4795000000000003e-12,
-      "off_log_std": 0.38206189020360265
+      "off_median": 3.3362000000000003e-12,
+      "off_log_std": 0.2546751294487662
     },
     "linear_path": "/home/user/igzoANN/data/tft linear [s5tft80-10top2(1) ; 6_5_2026 11_51_16 am].csv_s5_W80_L10_top_2.csv",
+    "saturation_ok": true,
+    "saturation_reasons": [],
+    "saturation_metrics": {
+      "on_off_ratio": 22066293.70629371,
+      "frac_decreasing": 0.04477611940298507,
+      "net_rise_decades": 7.5838887251353055,
+      "frac_negative_on": 0.0,
+      "off_median": 3.575e-12,
+      "off_log_std": 0.27692130769053075
+    },
+    "saturation_path": "/home/user/igzoANN/data/TFT Saturation [S5TFT80-10TOP2(1) ; 6_5_2026 11_52_39 AM].csv",
     "output_ok": true,
     "output_reasons": [],
     "output_metrics": {
@@ -1495,14 +2157,25 @@
     "linear_ok": true,
     "linear_reasons": [],
     "linear_metrics": {
-      "on_off_ratio": 649773.261672825,
-      "frac_decreasing": 0.05291005291005291,
-      "net_rise_decades": 5.999608662160167,
+      "on_off_ratio": 1020799.5168170322,
+      "frac_decreasing": 0.04477611940298507,
+      "net_rise_decades": 5.976701402836236,
       "frac_negative_on": 0.0,
-      "off_median": 3.5724e-12,
-      "off_log_std": 0.2880797871911466
+      "off_median": 2.6491e-12,
+      "off_log_std": 0.1950376738638934
     },
     "linear_path": "/home/user/igzoANN/data/tft linear [s5tft80-15bot1(2) ; 6_5_2026 3_07_39 pm].csv_s5_W80_L15_bot_1_run2.csv",
+    "saturation_ok": true,
+    "saturation_reasons": [],
+    "saturation_metrics": {
+      "on_off_ratio": 18351351.35135135,
+      "frac_decreasing": 0.029850746268656716,
+      "net_rise_decades": 7.381819177930549,
+      "frac_negative_on": 0.0,
+      "off_median": 3.182e-12,
+      "off_log_std": 0.23009065447624769
+    },
+    "saturation_path": "/home/user/igzoANN/data/TFT Saturation [S5TFT80-15BOT1(2) ; 6_5_2026 3_09_02 PM].csv",
     "output_ok": true,
     "output_reasons": [],
     "output_metrics": {
@@ -1520,14 +2193,25 @@
     "linear_ok": true,
     "linear_reasons": [],
     "linear_metrics": {
-      "on_off_ratio": 595275.9482171247,
-      "frac_decreasing": 0.08465608465608465,
-      "net_rise_decades": 5.981515537701613,
+      "on_off_ratio": 730511.6606943547,
+      "frac_decreasing": 0.07462686567164178,
+      "net_rise_decades": 5.939063148014694,
       "frac_negative_on": 0.0,
-      "off_median": 3.5224e-12,
-      "off_log_std": 0.247280452484785
+      "off_median": 3.4046000000000003e-12,
+      "off_log_std": 0.2892180075554818
     },
     "linear_path": "/home/user/igzoANN/data/tft linear [s5tft80-15bot2(1) ; 6_5_2026 4_28_23 pm].csv_s5_W80_L15_bot_2.csv",
+    "saturation_ok": true,
+    "saturation_reasons": [],
+    "saturation_metrics": {
+      "on_off_ratio": 14581116.054552328,
+      "frac_decreasing": 0.07462686567164178,
+      "net_rise_decades": 7.376632364472665,
+      "frac_negative_on": 0.0,
+      "off_median": 3.4389e-12,
+      "off_log_std": 0.2540873168337624
+    },
+    "saturation_path": "/home/user/igzoANN/data/TFT Saturation [S5TFT80-15BOT2(1) ; 6_5_2026 4_29_56 PM].csv",
     "output_ok": true,
     "output_reasons": [],
     "output_metrics": {
@@ -1548,14 +2232,28 @@
       "flat_curve(net_rise=-0.00dec)"
     ],
     "linear_metrics": {
-      "on_off_ratio": 0.9986210204448708,
+      "on_off_ratio": 0.9986509713006637,
       "frac_decreasing": 0.0,
-      "net_rise_decades": -0.0005785922038876734,
+      "net_rise_decades": -0.0005797620940386494,
       "frac_negative_on": 0.0,
-      "off_median": 1.00074e-06,
-      "off_log_std": 4.005718333103176e-05
+      "off_median": 1.00072e-06,
+      "off_log_std": 2.2566823360361702e-05
     },
     "linear_path": "/home/user/igzoANN/data/tft linear [s5tft80-15top1(1) ; 6_5_2026 10_53_26 am].csv_s5_W80_L15_top_1.csv",
+    "saturation_ok": false,
+    "saturation_reasons": [
+      "low_on_off_ratio(1.0e+00)",
+      "flat_curve(net_rise=-0.00dec)"
+    ],
+    "saturation_metrics": {
+      "on_off_ratio": 0.9993367121330656,
+      "frac_decreasing": 0.0,
+      "net_rise_decades": -0.0006657214904910447,
+      "frac_negative_on": 0.0,
+      "off_median": 5.8798e-05,
+      "off_log_std": 2.5417132750446954e-05
+    },
+    "saturation_path": "/home/user/igzoANN/data/TFT Saturation [S5TFT80-15TOP1(1) ; 6_5_2026 10_53_48 AM].csv",
     "output_ok": false,
     "output_reasons": [
       "bad_vg_ordering(on/off=1.0e+00)",
@@ -1575,18 +2273,32 @@
     "device": "top2",
     "linear_ok": false,
     "linear_reasons": [
-      "low_on_off_ratio(8.8e-01)",
+      "low_on_off_ratio(8.9e-01)",
       "flat_curve(net_rise=-0.05dec)"
     ],
     "linear_metrics": {
-      "on_off_ratio": 0.8841358407384445,
+      "on_off_ratio": 0.8883749827419578,
       "frac_decreasing": 0.0,
-      "net_rise_decades": -0.046294337930982365,
+      "net_rise_decades": -0.052754774776319735,
       "frac_negative_on": 0.0,
-      "off_median": 1.4517e-05,
-      "off_log_std": 0.009656871731762991
+      "off_median": 1.4486e-05,
+      "off_log_std": 0.001921167666037436
     },
     "linear_path": "/home/user/igzoANN/data/tft linear [s5tft80-15top2(1) ; 6_5_2026 11_59_28 am].csv_s5_W80_L15_top_2.csv",
+    "saturation_ok": false,
+    "saturation_reasons": [
+      "low_on_off_ratio(8.6e-01)",
+      "flat_curve(net_rise=-0.07dec)"
+    ],
+    "saturation_metrics": {
+      "on_off_ratio": 0.8632609868448355,
+      "frac_decreasing": 0.0,
+      "net_rise_decades": -0.06676993372917783,
+      "frac_negative_on": 0.0,
+      "off_median": 0.00024097,
+      "off_log_std": 0.018111899280276435
+    },
+    "saturation_path": "/home/user/igzoANN/data/TFT Saturation [S5TFT80-15TOP2(1) ; 6_5_2026 11_59_50 AM].csv",
     "output_ok": false,
     "output_reasons": [
       "bad_vg_ordering(on/off=8.7e-01)",
@@ -1607,14 +2319,25 @@
     "linear_ok": true,
     "linear_reasons": [],
     "linear_metrics": {
-      "on_off_ratio": 436955.84977590025,
-      "frac_decreasing": 0.1164021164021164,
-      "net_rise_decades": 5.908273211648131,
+      "on_off_ratio": 600911.1824181147,
+      "frac_decreasing": 0.04477611940298507,
+      "net_rise_decades": 5.833964358013273,
       "frac_negative_on": 0.0,
-      "off_median": 3.8822000000000006e-12,
-      "off_log_std": 0.2816020710694088
+      "off_median": 3.3034e-12,
+      "off_log_std": 0.17420137686604725
     },
     "linear_path": "/home/user/igzoANN/data/tft linear [s5tft80-20bot1(1) ; 6_5_2026 3_22_03 pm].csv_s5_W80_L20_bot_1.csv",
+    "saturation_ok": true,
+    "saturation_reasons": [],
+    "saturation_metrics": {
+      "on_off_ratio": 12538824.306869725,
+      "frac_decreasing": 0.029850746268656716,
+      "net_rise_decades": 7.191297797854927,
+      "frac_negative_on": 0.0,
+      "off_median": 3.3290999999999996e-12,
+      "off_log_std": 0.23002935466335103
+    },
+    "saturation_path": "/home/user/igzoANN/data/TFT Saturation [S5TFT80-20BOT1(1) ; 6_5_2026 3_23_27 PM].csv",
     "output_ok": true,
     "output_reasons": [],
     "output_metrics": {
@@ -1632,14 +2355,25 @@
     "linear_ok": true,
     "linear_reasons": [],
     "linear_metrics": {
-      "on_off_ratio": 528800.8772495646,
-      "frac_decreasing": 0.13756613756613756,
-      "net_rise_decades": 5.948533360950348,
+      "on_off_ratio": 473092.4200453287,
+      "frac_decreasing": 0.07462686567164178,
+      "net_rise_decades": 5.828757678228842,
       "frac_negative_on": 0.0,
-      "off_median": 3.1006e-12,
-      "off_log_std": 0.25616783373945134
+      "off_median": 3.971e-12,
+      "off_log_std": 0.204796036315528
     },
     "linear_path": "/home/user/igzoANN/data/tft linear [s5tft80-20bot2(1) ; 6_5_2026 4_43_08 pm].csv_s5_W80_L20_bot_2.csv",
+    "saturation_ok": true,
+    "saturation_reasons": [],
+    "saturation_metrics": {
+      "on_off_ratio": 13212857.354466006,
+      "frac_decreasing": 0.07462686567164178,
+      "net_rise_decades": 7.202874554453734,
+      "frac_negative_on": 0.0,
+      "off_median": 3.3755e-12,
+      "off_log_std": 0.21565444562468847
+    },
+    "saturation_path": "/home/user/igzoANN/data/TFT Saturation [S5TFT80-20BOT2(1) ; 6_5_2026 4_44_40 PM].csv",
     "output_ok": true,
     "output_reasons": [],
     "output_metrics": {
@@ -1660,14 +2394,28 @@
       "flat_curve(net_rise=-0.00dec)"
     ],
     "linear_metrics": {
-      "on_off_ratio": 0.9991004138096478,
-      "frac_decreasing": 0.010582010582010581,
-      "net_rise_decades": -0.00033675300579094625,
+      "on_off_ratio": 0.9991104092117628,
+      "frac_decreasing": 0.014925373134328358,
+      "net_rise_decades": -0.00038868718325613116,
       "frac_negative_on": 0.0,
       "off_median": 1.00046e-06,
-      "off_log_std": 4.609539227371207e-05
+      "off_log_std": 2.5885651885040594e-05
     },
     "linear_path": "/home/user/igzoANN/data/tft linear [s5tft80-20top1(1) ; 6_5_2026 11_02_44 am].csv_s5_W80_L20_top_1.csv",
+    "saturation_ok": false,
+    "saturation_reasons": [
+      "low_on_off_ratio(1.0e+00)",
+      "flat_curve(net_rise=-0.00dec)"
+    ],
+    "saturation_metrics": {
+      "on_off_ratio": 0.9991266993957704,
+      "frac_decreasing": 0.0,
+      "net_rise_decades": -0.0008625533598323187,
+      "frac_negative_on": 0.0,
+      "off_median": 4.2368e-05,
+      "off_log_std": 1.702947796421369e-05
+    },
+    "saturation_path": "/home/user/igzoANN/data/TFT Saturation [S5TFT80-20TOP1(1) ; 6_5_2026 11_03_06 AM].csv",
     "output_ok": false,
     "output_reasons": [
       "bad_vg_ordering(on/off=1.0e+00)",
@@ -1691,14 +2439,28 @@
       "flat_curve(net_rise=-0.01dec)"
     ],
     "linear_metrics": {
-      "on_off_ratio": 0.9872615262321144,
+      "on_off_ratio": 0.987191971383148,
       "frac_decreasing": 0.0,
-      "net_rise_decades": -0.005517992006975447,
+      "net_rise_decades": -0.005700853200087508,
       "frac_negative_on": 0.0,
       "off_median": 1.0064e-06,
-      "off_log_std": 0.00020690428274179327
+      "off_log_std": 9.80359183623442e-05
     },
     "linear_path": "/home/user/igzoANN/data/tft linear [s5tft80-20top2(1) ; 6_5_2026 12_12_05 pm].csv_s5_W80_L20_top_2.csv",
+    "saturation_ok": false,
+    "saturation_reasons": [
+      "low_on_off_ratio(1.0e+00)",
+      "flat_curve(net_rise=0.03dec)"
+    ],
+    "saturation_metrics": {
+      "on_off_ratio": 1.0160927191213611,
+      "frac_decreasing": 0.0,
+      "net_rise_decades": 0.030102564989187286,
+      "frac_negative_on": 0.0,
+      "off_median": 5.1079000000000003e-05,
+      "off_log_std": 0.00978106399852164
+    },
+    "saturation_path": "/home/user/igzoANN/data/TFT Saturation [S5TFT80-20TOP2(1) ; 6_5_2026 12_12_25 PM].csv",
     "output_ok": false,
     "output_reasons": [
       "bad_vg_ordering(on/off=1.1e+00)",
@@ -1719,14 +2481,25 @@
     "linear_ok": true,
     "linear_reasons": [],
     "linear_metrics": {
-      "on_off_ratio": 3878556.956666364,
-      "frac_decreasing": 0.06878306878306878,
-      "net_rise_decades": 6.767921472936474,
+      "on_off_ratio": 3735506.4262179625,
+      "frac_decreasing": 0.029850746268656716,
+      "net_rise_decades": 6.731313122493406,
       "frac_negative_on": 0.0,
-      "off_median": 3.3069e-12,
-      "off_log_std": 0.22223805515154588
+      "off_median": 3.9759000000000005e-12,
+      "off_log_std": 0.19824939886969636
     },
     "linear_path": "/home/user/igzoANN/data/tft linear [s5tft160-5bot1(1) ; 6_5_2026 2_37_59 pm].csv_s5_W160_L5_bot_1.csv",
+    "saturation_ok": true,
+    "saturation_reasons": [],
+    "saturation_metrics": {
+      "on_off_ratio": 107072402.93809025,
+      "frac_decreasing": 0.029850746268656716,
+      "net_rise_decades": 8.141965994492352,
+      "frac_negative_on": 0.0,
+      "off_median": 3.3355e-12,
+      "off_log_std": 0.20563474170123125
+    },
+    "saturation_path": "/home/user/igzoANN/data/TFT Saturation [S5TFT160-5BOT1(1) ; 6_5_2026 2_39_20 PM].csv",
     "output_ok": true,
     "output_reasons": [],
     "output_metrics": {
@@ -1744,14 +2517,25 @@
     "linear_ok": true,
     "linear_reasons": [],
     "linear_metrics": {
-      "on_off_ratio": 2952633.4341861764,
-      "frac_decreasing": 0.08994708994708994,
-      "net_rise_decades": 6.660327868073381,
+      "on_off_ratio": 3324679.5835269038,
+      "frac_decreasing": 0.04477611940298507,
+      "net_rise_decades": 6.663485089213152,
       "frac_negative_on": 0.0,
-      "off_median": 3.4043e-12,
-      "off_log_std": 0.37654260157200714
+      "off_median": 3.6593e-12,
+      "off_log_std": 0.37549711802651636
     },
     "linear_path": "/home/user/igzoANN/data/tft linear [s5tft160-5bot2(2) ; 6_5_2026 3_58_04 pm].csv_s5_W160_L5_bot_2_run2.csv",
+    "saturation_ok": true,
+    "saturation_reasons": [],
+    "saturation_metrics": {
+      "on_off_ratio": 76592402.17080835,
+      "frac_decreasing": 0.07462686567164178,
+      "net_rise_decades": 7.934391404491481,
+      "frac_negative_on": 0.0,
+      "off_median": 2.8008e-12,
+      "off_log_std": 0.2094213575174003
+    },
+    "saturation_path": "/home/user/igzoANN/data/TFT Saturation [S5TFT160-5BOT2(2) ; 6_5_2026 3_59_36 PM].csv",
     "output_ok": true,
     "output_reasons": [],
     "output_metrics": {
@@ -1769,14 +2553,25 @@
     "linear_ok": true,
     "linear_reasons": [],
     "linear_metrics": {
-      "on_off_ratio": 3113175.96322987,
-      "frac_decreasing": 0.06878306878306878,
-      "net_rise_decades": 6.901912876464465,
+      "on_off_ratio": 3168676.2279477087,
+      "frac_decreasing": 0.029850746268656716,
+      "net_rise_decades": 6.779832585844392,
       "frac_negative_on": 0.0,
-      "off_median": 3.5246e-12,
-      "off_log_std": 0.4676323411769979
+      "off_median": 3.9395e-12,
+      "off_log_std": 0.33228964574798153
     },
     "linear_path": "/home/user/igzoANN/data/tft linear [s5tft160-5top1(1) ; 6_5_2026 10_27_53 am].csv_s5_W160_L5_top_1.csv",
+    "saturation_ok": true,
+    "saturation_reasons": [],
+    "saturation_metrics": {
+      "on_off_ratio": 93247919.46692596,
+      "frac_decreasing": 0.029850746268656716,
+      "net_rise_decades": 8.24322148530797,
+      "frac_negative_on": 0.0,
+      "off_median": 3.4967e-12,
+      "off_log_std": 0.5438562222953436
+    },
+    "saturation_path": "/home/user/igzoANN/data/TFT Saturation [S5TFT160-5TOP1(1) ; 6_5_2026 10_29_15 AM].csv",
     "output_ok": true,
     "output_reasons": [],
     "output_metrics": {
@@ -1797,14 +2592,28 @@
       "flat_curve(net_rise=-0.01dec)"
     ],
     "linear_metrics": {
-      "on_off_ratio": 0.9676748487726841,
-      "frac_decreasing": 0.031746031746031744,
-      "net_rise_decades": -0.014277474021872294,
+      "on_off_ratio": 0.9676445297658327,
+      "frac_decreasing": 0.05970149253731343,
+      "net_rise_decades": -0.01426656749165467,
       "frac_negative_on": 0.0,
-      "off_median": 1.00015e-06,
-      "off_log_std": 2.387894045842938e-05
+      "off_median": 1.00014e-06,
+      "off_log_std": 3.0692348791080264e-05
     },
     "linear_path": "/home/user/igzoANN/data/tft linear [s5tft160-5top2(1) ; 6_5_2026 11_42_00 am].csv_s5_W160_L5_top_2.csv",
+    "saturation_ok": false,
+    "saturation_reasons": [
+      "low_on_off_ratio(1.0e+00)",
+      "flat_curve(net_rise=0.00dec)"
+    ],
+    "saturation_metrics": {
+      "on_off_ratio": 0.9992866158151787,
+      "frac_decreasing": 0.0,
+      "net_rise_decades": 0.0034278004648955473,
+      "frac_negative_on": 0.0,
+      "off_median": 0.00036446,
+      "off_log_std": 4.452132744234033e-05
+    },
+    "saturation_path": "/home/user/igzoANN/data/TFT Saturation [S5TFT160-5TOP2(1) ; 6_5_2026 11_42_23 AM].csv",
     "output_ok": false,
     "output_reasons": [
       "bad_vg_ordering(on/off=1.0e+00)",
@@ -1825,14 +2634,25 @@
     "linear_ok": true,
     "linear_reasons": [],
     "linear_metrics": {
-      "on_off_ratio": 1660124.5941451313,
-      "frac_decreasing": 0.08994708994708994,
-      "net_rise_decades": 6.460769742947995,
+      "on_off_ratio": 2155077.2465757425,
+      "frac_decreasing": 0.014925373134328358,
+      "net_rise_decades": 6.403191469820454,
       "frac_negative_on": 0.0,
-      "off_median": 3.7883e-12,
-      "off_log_std": 0.30483876985139285
+      "off_median": 3.4241000000000003e-12,
+      "off_log_std": 0.1690477675146876
     },
     "linear_path": "/home/user/igzoANN/data/tft linear [s5tft160-10bot1(1) ; 6_5_2026 2_56_11 pm].csv_s5_W160_L10_bot_1.csv",
+    "saturation_ok": true,
+    "saturation_reasons": [],
+    "saturation_metrics": {
+      "on_off_ratio": 51840227.302761994,
+      "frac_decreasing": 0.04477611940298507,
+      "net_rise_decades": 7.778013489011509,
+      "frac_negative_on": 0.0,
+      "off_median": 3.0268e-12,
+      "off_log_std": 0.21898065757105134
+    },
+    "saturation_path": "/home/user/igzoANN/data/TFT Saturation [S5TFT160-10BOT1(1) ; 6_5_2026 2_57_33 PM].csv",
     "output_ok": true,
     "output_reasons": [],
     "output_metrics": {
@@ -1850,14 +2670,25 @@
     "linear_ok": true,
     "linear_reasons": [],
     "linear_metrics": {
-      "on_off_ratio": 1238867.3697305552,
-      "frac_decreasing": 0.07936507936507936,
-      "net_rise_decades": 6.249807415376782,
+      "on_off_ratio": 1964326.833797586,
+      "frac_decreasing": 0.029850746268656716,
+      "net_rise_decades": 6.287193000820454,
       "frac_negative_on": 0.0,
-      "off_median": 3.5369e-12,
-      "off_log_std": 0.25866154431060406
+      "off_median": 2.6924999999999997e-12,
+      "off_log_std": 0.24938021734128338
     },
     "linear_path": "/home/user/igzoANN/data/tft linear [s5tft160-10bot2(1) ; 6_5_2026 4_17_19 pm].csv_s5_W160_L10_bot_2.csv",
+    "saturation_ok": true,
+    "saturation_reasons": [],
+    "saturation_metrics": {
+      "on_off_ratio": 25870673.38834596,
+      "frac_decreasing": 0.05970149253731343,
+      "net_rise_decades": 7.798623086576773,
+      "frac_negative_on": 0.0,
+      "off_median": 3.5507000000000002e-12,
+      "off_log_std": 0.7180961457670503
+    },
+    "saturation_path": "/home/user/igzoANN/data/TFT Saturation [S5TFT160-10BOT2(1) ; 6_5_2026 4_18_53 PM].csv",
     "output_ok": true,
     "output_reasons": [],
     "output_metrics": {
@@ -1878,14 +2709,28 @@
       "flat_curve(net_rise=0.04dec)"
     ],
     "linear_metrics": {
-      "on_off_ratio": 1.092018204765365,
+      "on_off_ratio": 1.0838631086071033,
       "frac_decreasing": 0.0,
-      "net_rise_decades": 0.038022607806921016,
+      "net_rise_decades": 0.035957400327792044,
       "frac_negative_on": 0.0,
-      "off_median": 1.30735e-09,
-      "off_log_std": 0.0070278949922416385
+      "off_median": 1.31345e-09,
+      "off_log_std": 0.006239985539344675
     },
     "linear_path": "/home/user/igzoANN/data/tft linear [s5tft160-10top1(3) ; 6_5_2026 10_48_28 am].csv_s5_W160_L10_top_1_run3.csv",
+    "saturation_ok": false,
+    "saturation_reasons": [
+      "low_on_off_ratio(1.0e+00)",
+      "flat_curve(net_rise=0.01dec)"
+    ],
+    "saturation_metrics": {
+      "on_off_ratio": 1.0125385610508508,
+      "frac_decreasing": 0.0,
+      "net_rise_decades": 0.0054511433628654515,
+      "frac_negative_on": 0.0,
+      "off_median": 1.50735e-09,
+      "off_log_std": 0.003463546791907381
+    },
+    "saturation_path": "/home/user/igzoANN/data/TFT Saturation [S5TFT160-10TOP1(3) ; 6_5_2026 10_49_03 AM].csv",
     "output_ok": false,
     "output_reasons": [
       "bad_vg_ordering(on/off=1.0e+00)",
@@ -1909,14 +2754,28 @@
       "flat_curve(net_rise=-0.00dec)"
     ],
     "linear_metrics": {
-      "on_off_ratio": 0.9924580560315627,
+      "on_off_ratio": 0.9927539120901026,
       "frac_decreasing": 0.0,
-      "net_rise_decades": -0.003226397491403077,
+      "net_rise_decades": -0.0031344932980328366,
       "frac_negative_on": 0.0,
-      "off_median": 1.00372e-06,
-      "off_log_std": 0.0002263830037796506
+      "off_median": 1.0033000000000002e-06,
+      "off_log_std": 4.661877467976045e-05
     },
     "linear_path": "/home/user/igzoANN/data/tft linear [s5tft160-10top2(2) ; 6_5_2026 11_55_26 am].csv_s5_W160_L10_top_2_run2.csv",
+    "saturation_ok": false,
+    "saturation_reasons": [
+      "low_on_off_ratio(1.0e+00)",
+      "flat_curve(net_rise=-0.00dec)"
+    ],
+    "saturation_metrics": {
+      "on_off_ratio": 0.9993935049897998,
+      "frac_decreasing": 0.0,
+      "net_rise_decades": -0.00026356394290028007,
+      "frac_negative_on": 0.0,
+      "off_median": 0.00018137,
+      "off_log_std": 0.00014174609465807383
+    },
+    "saturation_path": "/home/user/igzoANN/data/TFT Saturation [S5TFT160-10TOP2(2) ; 6_5_2026 11_55_48 AM].csv",
     "output_ok": false,
     "output_reasons": [
       "bad_vg_ordering(on/off=1.0e+00)",
@@ -1937,14 +2796,25 @@
     "linear_ok": true,
     "linear_reasons": [],
     "linear_metrics": {
-      "on_off_ratio": 1031175.5361397936,
-      "frac_decreasing": 0.09523809523809523,
-      "net_rise_decades": 6.210410898037684,
+      "on_off_ratio": 1587322.1216041401,
+      "frac_decreasing": 0.05970149253731343,
+      "net_rise_decades": 6.174332873100166,
       "frac_negative_on": 0.0,
-      "off_median": 3.5252e-12,
-      "off_log_std": 0.3153955583812389
+      "off_median": 2.6281999999999996e-12,
+      "off_log_std": 0.20666020931411827
     },
     "linear_path": "/home/user/igzoANN/data/tft linear [s5tft160-15bot1(1) ; 6_5_2026 3_11_13 pm].csv_s5_W160_L15_bot_1.csv",
+    "saturation_ok": true,
+    "saturation_reasons": [],
+    "saturation_metrics": {
+      "on_off_ratio": 26852178.491509806,
+      "frac_decreasing": 0.05970149253731343,
+      "net_rise_decades": 7.635108945251751,
+      "frac_negative_on": 0.0,
+      "off_median": 3.7985e-12,
+      "off_log_std": 0.2357641528796046
+    },
+    "saturation_path": "/home/user/igzoANN/data/TFT Saturation [S5TFT160-15BOT1(1) ; 6_5_2026 3_12_37 PM].csv",
     "output_ok": true,
     "output_reasons": [],
     "output_metrics": {
@@ -1962,14 +2832,25 @@
     "linear_ok": true,
     "linear_reasons": [],
     "linear_metrics": {
-      "on_off_ratio": 1262482.0680149645,
-      "frac_decreasing": 0.12169312169312169,
-      "net_rise_decades": 6.272210385632821,
+      "on_off_ratio": 1678019.2695496303,
+      "frac_decreasing": 0.0,
+      "net_rise_decades": 6.283385796222134,
       "frac_negative_on": 0.0,
-      "off_median": 3.5551e-12,
-      "off_log_std": 0.23076442993477222
+      "off_median": 3.1241000000000004e-12,
+      "off_log_std": 0.1778115359265074
     },
     "linear_path": "/home/user/igzoANN/data/tft linear [s5tft160-15bot2(1) ; 6_5_2026 4_32_01 pm].csv_s5_W160_L15_bot_2.csv",
+    "saturation_ok": true,
+    "saturation_reasons": [],
+    "saturation_metrics": {
+      "on_off_ratio": 32661302.519737437,
+      "frac_decreasing": 0.014925373134328358,
+      "net_rise_decades": 7.633341317647172,
+      "frac_negative_on": 0.0,
+      "off_median": 3.3059000000000003e-12,
+      "off_log_std": 0.207404519041142
+    },
+    "saturation_path": "/home/user/igzoANN/data/TFT Saturation [S5TFT160-15BOT2(1) ; 6_5_2026 4_33_23 PM].csv",
     "output_ok": true,
     "output_reasons": [],
     "output_metrics": {
@@ -1987,14 +2868,25 @@
     "linear_ok": true,
     "linear_reasons": [],
     "linear_metrics": {
-      "on_off_ratio": 1100053.6264914868,
-      "frac_decreasing": 0.09523809523809523,
-      "net_rise_decades": 6.245003233460907,
+      "on_off_ratio": 1238756.4102564103,
+      "frac_decreasing": 0.05970149253731343,
+      "net_rise_decades": 6.261658758985593,
       "frac_negative_on": 0.0,
-      "off_median": 3.7295e-12,
-      "off_log_std": 0.3546273524461501
+      "off_median": 3.9e-12,
+      "off_log_std": 0.2457412873503899
     },
     "linear_path": "/home/user/igzoANN/data/tft linear [s5tft160-15top1(1) ; 6_5_2026 10_56_14 am].csv_s5_W160_L15_top_1.csv",
+    "saturation_ok": true,
+    "saturation_reasons": [],
+    "saturation_metrics": {
+      "on_off_ratio": 25072037.489406254,
+      "frac_decreasing": 0.014925373134328358,
+      "net_rise_decades": 8.18099593741779,
+      "frac_negative_on": 0.0,
+      "off_median": 4.0117999999999995e-12,
+      "off_log_std": 0.8557829810450913
+    },
+    "saturation_path": "/home/user/igzoANN/data/TFT Saturation [S5TFT160-15TOP1(1) ; 6_5_2026 10_57_36 AM].csv",
     "output_ok": true,
     "output_reasons": [],
     "output_metrics": {
@@ -2012,14 +2904,25 @@
     "linear_ok": true,
     "linear_reasons": [],
     "linear_metrics": {
-      "on_off_ratio": 90427.61434755038,
-      "frac_decreasing": 0.1164021164021164,
-      "net_rise_decades": 5.111968448705068,
+      "on_off_ratio": 92048.86112122826,
+      "frac_decreasing": 0.1044776119402985,
+      "net_rise_decades": 5.006866939615758,
       "frac_negative_on": 0.0,
-      "off_median": 3.6271e-12,
-      "off_log_std": 0.2864667548359094
+      "off_median": 3.5693e-12,
+      "off_log_std": 0.1853052271250511
     },
     "linear_path": "/home/user/igzoANN/data/tft linear [s5tft160-15top2(2) ; 6_5_2026 12_01_51 pm].csv_s5_W160_L15_top_2_run2.csv",
+    "saturation_ok": true,
+    "saturation_reasons": [],
+    "saturation_metrics": {
+      "on_off_ratio": 67412.01376025403,
+      "frac_decreasing": 0.08955223880597014,
+      "net_rise_decades": 4.8708458549914155,
+      "frac_negative_on": 0.0,
+      "off_median": 2.2674e-12,
+      "off_log_std": 0.09852484288651853
+    },
+    "saturation_path": "/home/user/igzoANN/data/TFT Saturation [S5TFT160-15TOP2(2) ; 6_5_2026 12_03_15 PM].csv",
     "output_ok": true,
     "output_reasons": [],
     "output_metrics": {
@@ -2034,19 +2937,28 @@
     "W": 160,
     "L": 20,
     "device": "bot1",
-    "linear_ok": false,
-    "linear_reasons": [
-      "unstable_off_state(median=8.0e-09,std=2.36dec)"
-    ],
+    "linear_ok": true,
+    "linear_reasons": [],
     "linear_metrics": {
-      "on_off_ratio": 402.24604689348604,
-      "frac_decreasing": 0.25396825396825395,
-      "net_rise_decades": 3.402355371828312,
+      "on_off_ratio": 470.09867870881425,
+      "frac_decreasing": 0.23880597014925373,
+      "net_rise_decades": 2.544455936319049,
       "frac_negative_on": 0.0,
-      "off_median": 7.9804389e-09,
-      "off_log_std": 2.3619218621489617
+      "off_median": 7.473750000000001e-09,
+      "off_log_std": 0.22049005033944616
     },
     "linear_path": "/home/user/igzoANN/data/tft linear [s5tft160-20bot1(2) ; 6_5_2026 3_27_39 pm].csv_s5_W160_L20_bot_1_run2.csv",
+    "saturation_ok": true,
+    "saturation_reasons": [],
+    "saturation_metrics": {
+      "on_off_ratio": 27594984.671557993,
+      "frac_decreasing": 0.014925373134328358,
+      "net_rise_decades": 7.493002874675248,
+      "frac_negative_on": 0.0,
+      "off_median": 2.9031e-12,
+      "off_log_std": 0.26791128629583316
+    },
+    "saturation_path": "/home/user/igzoANN/data/TFT Saturation [S5TFT160-20BOT1(2) ; 6_5_2026 3_29_02 PM].csv",
     "output_ok": true,
     "output_reasons": [],
     "output_metrics": {
@@ -2064,14 +2976,25 @@
     "linear_ok": true,
     "linear_reasons": [],
     "linear_metrics": {
-      "on_off_ratio": 552573.1362926,
-      "frac_decreasing": 0.08994708994708994,
-      "net_rise_decades": 5.910086177701537,
+      "on_off_ratio": 650642.7614514151,
+      "frac_decreasing": 0.07462686567164178,
+      "net_rise_decades": 5.944545323981352,
       "frac_negative_on": 0.0,
-      "off_median": 3.6473000000000004e-12,
-      "off_log_std": 0.27678226603374634
+      "off_median": 3.5083000000000003e-12,
+      "off_log_std": 0.5114917429298113
     },
     "linear_path": "/home/user/igzoANN/data/tft linear [s5tft160-20bot2(1) ; 6_5_2026 4_47_05 pm].csv_s5_W160_L20_bot_2.csv",
+    "saturation_ok": true,
+    "saturation_reasons": [],
+    "saturation_metrics": {
+      "on_off_ratio": 14627317.339149399,
+      "frac_decreasing": 0.04477611940298507,
+      "net_rise_decades": 7.430364973919319,
+      "frac_negative_on": 0.0,
+      "off_median": 3.668e-12,
+      "off_log_std": 0.463777853836843
+    },
+    "saturation_path": "/home/user/igzoANN/data/TFT Saturation [S5TFT160-20BOT2(1) ; 6_5_2026 4_48_38 PM].csv",
     "output_ok": true,
     "output_reasons": [],
     "output_metrics": {
@@ -2088,18 +3011,32 @@
     "device": "top1",
     "linear_ok": false,
     "linear_reasons": [
-      "low_on_off_ratio(1.0e+00)",
+      "low_on_off_ratio(9.9e-01)",
       "flat_curve(net_rise=-0.00dec)"
     ],
     "linear_metrics": {
-      "on_off_ratio": 0.9950583119193517,
+      "on_off_ratio": 0.9949594781577387,
       "frac_decreasing": 0.0,
-      "net_rise_decades": -0.002095232843488226,
+      "net_rise_decades": -0.0021300632682250686,
       "frac_negative_on": 0.0,
       "off_median": 0.00020236,
-      "off_log_std": 9.515175425619762e-05
+      "off_log_std": 5.239718884675196e-05
     },
     "linear_path": "/home/user/igzoANN/data/tft linear [s5tft160-20top1(1) ; 6_5_2026 11_04_13 am].csv_s5_W160_L20_top_1.csv",
+    "saturation_ok": false,
+    "saturation_reasons": [
+      "low_on_off_ratio(1.0e+00)",
+      "flat_curve(net_rise=-0.00dec)"
+    ],
+    "saturation_metrics": {
+      "on_off_ratio": 0.998041230052736,
+      "frac_decreasing": 0.0,
+      "net_rise_decades": -0.0012541833131995972,
+      "frac_negative_on": 0.0,
+      "off_median": 7.300500000000001e-05,
+      "off_log_std": 4.87062061167851e-05
+    },
+    "saturation_path": "/home/user/igzoANN/data/TFT Saturation [S5TFT160-20TOP1(1) ; 6_5_2026 11_04_34 AM].csv",
     "output_ok": false,
     "output_reasons": [
       "bad_vg_ordering(on/off=7.3e-03)",
@@ -2119,18 +3056,32 @@
     "device": "top2",
     "linear_ok": false,
     "linear_reasons": [
-      "low_on_off_ratio(1.2e-01)",
-      "flat_curve(net_rise=-0.91dec)"
+      "low_on_off_ratio(1.3e-01)",
+      "flat_curve(net_rise=-0.87dec)"
     ],
     "linear_metrics": {
-      "on_off_ratio": 0.11726254760416072,
-      "frac_decreasing": 0.07936507936507936,
-      "net_rise_decades": -0.9060329115265704,
+      "on_off_ratio": 0.1309016737656728,
+      "frac_decreasing": 0.08955223880597014,
+      "net_rise_decades": -0.8693203786345611,
       "frac_negative_on": 0.0,
-      "off_median": 1.7593000000000002e-06,
-      "off_log_std": 0.025402955831048468
+      "off_median": 1.6669e-06,
+      "off_log_std": 0.00396548284279719
     },
     "linear_path": "/home/user/igzoANN/data/tft linear [s5tft160-20top2(1) ; 6_5_2026 12_13_26 pm].csv_s5_W160_L20_top_2.csv",
+    "saturation_ok": false,
+    "saturation_reasons": [
+      "low_on_off_ratio(9.8e-01)",
+      "flat_curve(net_rise=-0.01dec)"
+    ],
+    "saturation_metrics": {
+      "on_off_ratio": 0.9837974192296497,
+      "frac_decreasing": 0.0,
+      "net_rise_decades": -0.00755969887553487,
+      "frac_negative_on": 0.0,
+      "off_median": 0.00010307,
+      "off_log_std": 0.002836072465613752
+    },
+    "saturation_path": "/home/user/igzoANN/data/TFT Saturation [S5TFT160-20TOP2(1) ; 6_5_2026 12_13_47 PM].csv",
     "output_ok": false,
     "output_reasons": [
       "bad_vg_ordering(on/off=9.5e-01)",
