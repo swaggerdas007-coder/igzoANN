@@ -2,268 +2,443 @@
   {
     "W": 5,
     "L": 5,
-    "chosen_device": "top2",
-    "chosen_score": 18.125755673681994,
+    "chosen_device": "bot1rep",
+    "chosen_score": 15.864567463838995,
+    "chosen_vt_linear": 2.6967096104176007,
+    "chosen_vt_saturation": 2.829838319852976,
+    "positive_vt_available": true,
+    "chosen_is_positive_vt": true,
     "candidates": [
       {
-        "device": "top2",
-        "score": 18.125755673681994
+        "device": "bot1rep",
+        "score": 15.864567463838995,
+        "vt_linear": 2.6967096104176007,
+        "vt_saturation": 2.829838319852976,
+        "positive_vt": true
+      },
+      {
+        "device": "bot1",
+        "score": 17.220874228115665,
+        "vt_linear": 1.7139139064022684,
+        "vt_saturation": 1.9154770302897965,
+        "positive_vt": true
       },
       {
         "device": "top1rep",
-        "score": 17.794392970047433
+        "score": 17.794392970047433,
+        "vt_linear": 0.01433460465176448,
+        "vt_saturation": 0.20856286445665284,
+        "positive_vt": true
+      },
+      {
+        "device": "top2",
+        "score": 18.125755673681994,
+        "vt_linear": -0.23433861834752812,
+        "vt_saturation": -0.09967478665579846,
+        "positive_vt": false
       },
       {
         "device": "top1",
-        "score": 17.30535197312626
-      },
-      {
-        "device": "bot1",
-        "score": 17.220874228115665
-      },
-      {
-        "device": "bot1rep",
-        "score": 15.864567463838995
+        "score": 17.30535197312626,
+        "vt_linear": -0.026593677891518494,
+        "vt_saturation": 0.13204740119679875,
+        "positive_vt": false
       },
       {
         "device": "top2rep",
-        "score": 14.821622511476177
+        "score": 14.821622511476177,
+        "vt_linear": -0.13940894465895304,
+        "vt_saturation": 0.2868320035294556,
+        "positive_vt": false
       }
     ]
   },
   {
     "W": 10,
     "L": 5,
-    "chosen_device": "top2",
-    "chosen_score": 20.22800561480626,
+    "chosen_device": "bot2",
+    "chosen_score": 14.614156053424297,
+    "chosen_vt_linear": 3.4865663487969742,
+    "chosen_vt_saturation": 3.715184441059596,
+    "positive_vt_available": true,
+    "chosen_is_positive_vt": true,
     "candidates": [
       {
-        "device": "top2",
-        "score": 20.22800561480626
-      },
-      {
-        "device": "top1",
-        "score": 19.81069451470483
+        "device": "bot2",
+        "score": 14.614156053424297,
+        "vt_linear": 3.4865663487969742,
+        "vt_saturation": 3.715184441059596,
+        "positive_vt": true
       },
       {
         "device": "bot1",
-        "score": 18.3160391829215
+        "score": 18.3160391829215,
+        "vt_linear": 0.9750331770715974,
+        "vt_saturation": 1.0753717824814903,
+        "positive_vt": true
       },
       {
-        "device": "bot2",
-        "score": 14.614156053424297
+        "device": "top2",
+        "score": 20.22800561480626,
+        "vt_linear": -0.2464206743027621,
+        "vt_saturation": 0.030895129932608196,
+        "positive_vt": false
+      },
+      {
+        "device": "top1",
+        "score": 19.81069451470483,
+        "vt_linear": -0.11869283798283392,
+        "vt_saturation": -0.0128542804313716,
+        "positive_vt": false
       }
     ]
   },
   {
     "W": 10,
     "L": 10,
-    "chosen_device": "top2",
-    "chosen_score": 18.199726686599625,
+    "chosen_device": "bot2",
+    "chosen_score": 16.08611835751718,
+    "chosen_vt_linear": 2.3793719680736034,
+    "chosen_vt_saturation": 2.3782475703690102,
+    "positive_vt_available": true,
+    "chosen_is_positive_vt": true,
     "candidates": [
       {
-        "device": "top2",
-        "score": 18.199726686599625
+        "device": "bot2",
+        "score": 16.08611835751718,
+        "vt_linear": 2.3793719680736034,
+        "vt_saturation": 2.3782475703690102,
+        "positive_vt": true
       },
       {
         "device": "bot1",
-        "score": 18.055792443206812
+        "score": 18.055792443206812,
+        "vt_linear": 0.37583850632568605,
+        "vt_saturation": 0.5471493686682486,
+        "positive_vt": true
       },
       {
         "device": "top1",
-        "score": 18.026342717038002
+        "score": 18.026342717038002,
+        "vt_linear": 0.03030688691125219,
+        "vt_saturation": 0.21738280677975483,
+        "positive_vt": true
       },
       {
-        "device": "bot2",
-        "score": 16.08611835751718
+        "device": "top2",
+        "score": 18.199726686599625,
+        "vt_linear": -0.12054883565715091,
+        "vt_saturation": 0.11335679602385923,
+        "positive_vt": false
       }
     ]
   },
   {
     "W": 20,
     "L": 5,
-    "chosen_device": "bot1",
-    "chosen_score": 20.795265916368333,
+    "chosen_device": "bot2",
+    "chosen_score": 18.313991803077965,
+    "chosen_vt_linear": 1.628316958439712,
+    "chosen_vt_saturation": 1.8915111496625854,
+    "positive_vt_available": true,
+    "chosen_is_positive_vt": true,
     "candidates": [
       {
+        "device": "bot2",
+        "score": 18.313991803077965,
+        "vt_linear": 1.628316958439712,
+        "vt_saturation": 1.8915111496625854,
+        "positive_vt": true
+      },
+      {
         "device": "bot1",
-        "score": 20.795265916368333
+        "score": 20.795265916368333,
+        "vt_linear": -0.13695004591661347,
+        "vt_saturation": -0.03438399377685458,
+        "positive_vt": false
       },
       {
         "device": "top1",
-        "score": 19.52195796972524
-      },
-      {
-        "device": "bot2",
-        "score": 18.313991803077965
+        "score": 19.52195796972524,
+        "vt_linear": -0.04588059996295483,
+        "vt_saturation": 0.034511998942131104,
+        "positive_vt": false
       }
     ]
   },
   {
     "W": 20,
     "L": 10,
-    "chosen_device": "top1",
-    "chosen_score": 19.563071706826292,
+    "chosen_device": "bot2",
+    "chosen_score": 17.964620904645283,
+    "chosen_vt_linear": 1.1249820333724276,
+    "chosen_vt_saturation": 1.4112037940890552,
+    "positive_vt_available": true,
+    "chosen_is_positive_vt": true,
     "candidates": [
       {
-        "device": "top1",
-        "score": 19.563071706826292
-      },
-      {
         "device": "bot2",
-        "score": 17.964620904645283
+        "score": 17.964620904645283,
+        "vt_linear": 1.1249820333724276,
+        "vt_saturation": 1.4112037940890552,
+        "positive_vt": true
       },
       {
         "device": "bot1",
-        "score": 17.86688598503913
+        "score": 17.86688598503913,
+        "vt_linear": 0.027822946168372237,
+        "vt_saturation": 0.27301189679429116,
+        "positive_vt": true
+      },
+      {
+        "device": "top1",
+        "score": 19.563071706826292,
+        "vt_linear": -0.12970773589726736,
+        "vt_saturation": 0.02585401656714233,
+        "positive_vt": false
       }
     ]
   },
   {
     "W": 20,
     "L": 15,
-    "chosen_device": "bot1",
-    "chosen_score": 18.488908995145497,
+    "chosen_device": "bot2",
+    "chosen_score": 18.085388002186143,
+    "chosen_vt_linear": 0.7934315205103287,
+    "chosen_vt_saturation": 0.9472858814174299,
+    "positive_vt_available": true,
+    "chosen_is_positive_vt": true,
     "candidates": [
       {
-        "device": "bot1",
-        "score": 18.488908995145497
+        "device": "bot2",
+        "score": 18.085388002186143,
+        "vt_linear": 0.7934315205103287,
+        "vt_saturation": 0.9472858814174299,
+        "positive_vt": true
       },
       {
-        "device": "bot2",
-        "score": 18.085388002186143
+        "device": "bot1",
+        "score": 18.488908995145497,
+        "vt_linear": 0.04392959568896759,
+        "vt_saturation": 0.26618129264294016,
+        "positive_vt": true
       }
     ]
   },
   {
     "W": 20,
     "L": 20,
-    "chosen_device": "bot1",
-    "chosen_score": 18.31906902857222,
+    "chosen_device": "bot2",
+    "chosen_score": 17.907882278303326,
+    "chosen_vt_linear": 0.4575589324665473,
+    "chosen_vt_saturation": 0.6444756790230822,
+    "positive_vt_available": true,
+    "chosen_is_positive_vt": true,
     "candidates": [
       {
-        "device": "bot1",
-        "score": 18.31906902857222
+        "device": "bot2",
+        "score": 17.907882278303326,
+        "vt_linear": 0.4575589324665473,
+        "vt_saturation": 0.6444756790230822,
+        "positive_vt": true
       },
       {
-        "device": "bot2",
-        "score": 17.907882278303326
+        "device": "bot1",
+        "score": 18.31906902857222,
+        "vt_linear": 0.053299299400398195,
+        "vt_saturation": 0.26960077928225956,
+        "positive_vt": true
       },
       {
         "device": "top2",
-        "score": 17.632400136101378
+        "score": 17.632400136101378,
+        "vt_linear": -0.00149399234927583,
+        "vt_saturation": 0.1529340457808543,
+        "positive_vt": false
       }
     ]
   },
   {
     "W": 40,
     "L": 5,
-    "chosen_device": "top1",
-    "chosen_score": 21.356806112446787,
+    "chosen_device": "bot2",
+    "chosen_score": 19.785927403174114,
+    "chosen_vt_linear": 0.552376511731791,
+    "chosen_vt_saturation": 1.067124539022333,
+    "positive_vt_available": true,
+    "chosen_is_positive_vt": true,
     "candidates": [
       {
+        "device": "bot2",
+        "score": 19.785927403174114,
+        "vt_linear": 0.552376511731791,
+        "vt_saturation": 1.067124539022333,
+        "positive_vt": true
+      },
+      {
         "device": "top1",
-        "score": 21.356806112446787
+        "score": 21.356806112446787,
+        "vt_linear": -0.13039291665792277,
+        "vt_saturation": -0.054033532184617,
+        "positive_vt": false
       },
       {
         "device": "bot1",
-        "score": 21.2024388568434
-      },
-      {
-        "device": "bot2",
-        "score": 19.785927403174114
+        "score": 21.2024388568434,
+        "vt_linear": -0.2840915051769432,
+        "vt_saturation": -0.12489462925707974,
+        "positive_vt": false
       }
     ]
   },
   {
     "W": 40,
     "L": 10,
-    "chosen_device": "bot1",
-    "chosen_score": 20.034210080307496,
+    "chosen_device": "bot2",
+    "chosen_score": 19.90421863790084,
+    "chosen_vt_linear": 0.19149695763110614,
+    "chosen_vt_saturation": 0.44333489827983746,
+    "positive_vt_available": true,
+    "chosen_is_positive_vt": true,
     "candidates": [
       {
+        "device": "bot2",
+        "score": 19.90421863790084,
+        "vt_linear": 0.19149695763110614,
+        "vt_saturation": 0.44333489827983746,
+        "positive_vt": true
+      },
+      {
         "device": "bot1",
-        "score": 20.034210080307496
+        "score": 20.034210080307496,
+        "vt_linear": 0.08373285222322283,
+        "vt_saturation": 0.3617292717192397,
+        "positive_vt": true
       },
       {
         "device": "top1",
-        "score": 20.02177684507723
-      },
-      {
-        "device": "bot2",
-        "score": 19.90421863790084
+        "score": 20.02177684507723,
+        "vt_linear": -0.18541048777371352,
+        "vt_saturation": -0.05823639331632813,
+        "positive_vt": false
       }
     ]
   },
   {
     "W": 40,
     "L": 15,
-    "chosen_device": "bot1",
-    "chosen_score": 19.942606396763168,
+    "chosen_device": "bot2",
+    "chosen_score": 19.914193800035513,
+    "chosen_vt_linear": 0.38946022334889224,
+    "chosen_vt_saturation": 0.8316532724332801,
+    "positive_vt_available": true,
+    "chosen_is_positive_vt": true,
     "candidates": [
       {
-        "device": "bot1",
-        "score": 19.942606396763168
+        "device": "bot2",
+        "score": 19.914193800035513,
+        "vt_linear": 0.38946022334889224,
+        "vt_saturation": 0.8316532724332801,
+        "positive_vt": true
       },
       {
-        "device": "bot2",
-        "score": 19.914193800035513
+        "device": "bot1",
+        "score": 19.942606396763168,
+        "vt_linear": -0.02889484438498756,
+        "vt_saturation": 0.19185316935726995,
+        "positive_vt": false
       }
     ]
   },
   {
     "W": 40,
     "L": 20,
-    "chosen_device": "bot1",
-    "chosen_score": 18.810728474037433,
+    "chosen_device": "bot2",
+    "chosen_score": 16.557310716879044,
+    "chosen_vt_linear": 1.9437044889144264,
+    "chosen_vt_saturation": 1.939329928946814,
+    "positive_vt_available": true,
+    "chosen_is_positive_vt": true,
     "candidates": [
       {
-        "device": "bot1",
-        "score": 18.810728474037433
+        "device": "bot2",
+        "score": 16.557310716879044,
+        "vt_linear": 1.9437044889144264,
+        "vt_saturation": 1.939329928946814,
+        "positive_vt": true
       },
       {
-        "device": "bot2",
-        "score": 16.557310716879044
+        "device": "bot1",
+        "score": 18.810728474037433,
+        "vt_linear": -0.0009347961860425164,
+        "vt_saturation": 0.23705999705482017,
+        "positive_vt": false
       }
     ]
   },
   {
     "W": 80,
     "L": 5,
-    "chosen_device": "bot1",
-    "chosen_score": 21.676924019667425,
+    "chosen_device": "bot2",
+    "chosen_score": 20.900530352542614,
+    "chosen_vt_linear": 0.4818853254878394,
+    "chosen_vt_saturation": 0.8967687130188458,
+    "positive_vt_available": true,
+    "chosen_is_positive_vt": true,
     "candidates": [
       {
-        "device": "bot1",
-        "score": 21.676924019667425
+        "device": "bot2",
+        "score": 20.900530352542614,
+        "vt_linear": 0.4818853254878394,
+        "vt_saturation": 0.8967687130188458,
+        "positive_vt": true
       },
       {
-        "device": "bot2",
-        "score": 20.900530352542614
+        "device": "bot1",
+        "score": 21.676924019667425,
+        "vt_linear": -0.3375220759028439,
+        "vt_saturation": -0.21386672790118427,
+        "positive_vt": false
       }
     ]
   },
   {
     "W": 80,
     "L": 10,
-    "chosen_device": "top2",
-    "chosen_score": 20.906188336703416,
+    "chosen_device": "bot2",
+    "chosen_score": 20.31459464014155,
+    "chosen_vt_linear": 0.5155660997116942,
+    "chosen_vt_saturation": 0.8818608723019999,
+    "positive_vt_available": true,
+    "chosen_is_positive_vt": true,
     "candidates": [
       {
+        "device": "bot2",
+        "score": 20.31459464014155,
+        "vt_linear": 0.5155660997116942,
+        "vt_saturation": 0.8818608723019999,
+        "positive_vt": true
+      },
+      {
         "device": "top2",
-        "score": 20.906188336703416
+        "score": 20.906188336703416,
+        "vt_linear": -0.12264192723850886,
+        "vt_saturation": -0.059576820615913746,
+        "positive_vt": false
       },
       {
         "device": "bot1",
-        "score": 20.660475809067623
-      },
-      {
-        "device": "bot2",
-        "score": 20.31459464014155
+        "score": 20.660475809067623,
+        "vt_linear": -0.20761920456000665,
+        "vt_saturation": -0.04132487722068948,
+        "positive_vt": false
       },
       {
         "device": "top1",
-        "score": 20.249887792349007
+        "score": 20.249887792349007,
+        "vt_linear": -0.154120394232667,
+        "vt_saturation": -0.08799046085102723,
+        "positive_vt": false
       }
     ]
   },
@@ -272,50 +447,83 @@
     "L": 15,
     "chosen_device": "bot2",
     "chosen_score": 20.570927298240626,
+    "chosen_vt_linear": 0.17515621037857299,
+    "chosen_vt_saturation": 0.5837599810786179,
+    "positive_vt_available": true,
+    "chosen_is_positive_vt": true,
     "candidates": [
       {
         "device": "bot2",
-        "score": 20.570927298240626
+        "score": 20.570927298240626,
+        "vt_linear": 0.17515621037857299,
+        "vt_saturation": 0.5837599810786179,
+        "positive_vt": true
       },
       {
         "device": "bot1",
-        "score": 20.561612849804607
+        "score": 20.561612849804607,
+        "vt_linear": -0.1418109341748934,
+        "vt_saturation": 0.04207080549490017,
+        "positive_vt": false
       }
     ]
   },
   {
     "W": 80,
     "L": 20,
-    "chosen_device": "bot1",
-    "chosen_score": 20.034052716456994,
+    "chosen_device": "bot2",
+    "chosen_score": 19.51119158575453,
+    "chosen_vt_linear": 0.12200815039013305,
+    "chosen_vt_saturation": 0.3712244646590236,
+    "positive_vt_available": true,
+    "chosen_is_positive_vt": true,
     "candidates": [
       {
-        "device": "bot1",
-        "score": 20.034052716456994
+        "device": "bot2",
+        "score": 19.51119158575453,
+        "vt_linear": 0.12200815039013305,
+        "vt_saturation": 0.3712244646590236,
+        "positive_vt": true
       },
       {
-        "device": "bot2",
-        "score": 19.51119158575453
+        "device": "bot1",
+        "score": 20.034052716456994,
+        "vt_linear": -0.10369468524816672,
+        "vt_saturation": 0.08479298565952814,
+        "positive_vt": false
       }
     ]
   },
   {
     "W": 160,
     "L": 5,
-    "chosen_device": "bot1",
-    "chosen_score": 24.712853375711816,
+    "chosen_device": "bot2",
+    "chosen_score": 21.95728354755558,
+    "chosen_vt_linear": 0.2284374729847758,
+    "chosen_vt_saturation": 0.5860107889548255,
+    "positive_vt_available": true,
+    "chosen_is_positive_vt": true,
     "candidates": [
       {
+        "device": "bot2",
+        "score": 21.95728354755558,
+        "vt_linear": 0.2284374729847758,
+        "vt_saturation": 0.5860107889548255,
+        "positive_vt": true
+      },
+      {
         "device": "bot1",
-        "score": 24.712853375711816
+        "score": 24.712853375711816,
+        "vt_linear": -0.36564596426290547,
+        "vt_saturation": -0.21983639105162983,
+        "positive_vt": false
       },
       {
         "device": "top1",
-        "score": 22.697825593843106
-      },
-      {
-        "device": "bot2",
-        "score": 21.95728354755558
+        "score": 22.697825593843106,
+        "vt_linear": -0.4589501036862888,
+        "vt_saturation": -0.37649257549163884,
+        "positive_vt": false
       }
     ]
   },
@@ -324,14 +532,24 @@
     "L": 10,
     "chosen_device": "bot2",
     "chosen_score": 21.996389389447632,
+    "chosen_vt_linear": 0.49126967662100546,
+    "chosen_vt_saturation": 0.8840731177410261,
+    "positive_vt_available": true,
+    "chosen_is_positive_vt": true,
     "candidates": [
       {
         "device": "bot2",
-        "score": 21.996389389447632
+        "score": 21.996389389447632,
+        "vt_linear": 0.49126967662100546,
+        "vt_saturation": 0.8840731177410261,
+        "positive_vt": true
       },
       {
         "device": "bot1",
-        "score": 21.75303851059685
+        "score": 21.75303851059685,
+        "vt_linear": -0.1660577569345374,
+        "vt_saturation": 0.010876267892401432,
+        "positive_vt": false
       }
     ]
   },
@@ -340,22 +558,38 @@
     "L": 15,
     "chosen_device": "bot2",
     "chosen_score": 21.998909735399,
+    "chosen_vt_linear": -0.11667188124147632,
+    "chosen_vt_saturation": 0.08666180942564179,
+    "positive_vt_available": false,
+    "chosen_is_positive_vt": false,
     "candidates": [
       {
         "device": "bot2",
-        "score": 21.998909735399
+        "score": 21.998909735399,
+        "vt_linear": -0.11667188124147632,
+        "vt_saturation": 0.08666180942564179,
+        "positive_vt": false
       },
       {
         "device": "top1",
-        "score": 21.444841690696897
+        "score": 21.444841690696897,
+        "vt_linear": -0.17918466659412324,
+        "vt_saturation": -0.10412213491031748,
+        "positive_vt": false
       },
       {
         "device": "bot1",
-        "score": 21.179995908267042
+        "score": 21.179995908267042,
+        "vt_linear": -0.10086799813460579,
+        "vt_saturation": 0.09466065824491302,
+        "positive_vt": false
       },
       {
         "device": "top2",
-        "score": 13.106395039373565
+        "score": 13.106395039373565,
+        "vt_linear": -0.04413642922978155,
+        "vt_saturation": 0.05554857131704392,
+        "positive_vt": false
       }
     ]
   },
@@ -364,14 +598,24 @@
     "L": 20,
     "chosen_device": "bot2",
     "chosen_score": 21.643178892789926,
+    "chosen_vt_linear": 0.11701632449702651,
+    "chosen_vt_saturation": 0.3559117115283195,
+    "positive_vt_available": true,
+    "chosen_is_positive_vt": true,
     "candidates": [
       {
         "device": "bot2",
-        "score": 21.643178892789926
+        "score": 21.643178892789926,
+        "vt_linear": 0.11701632449702651,
+        "vt_saturation": 0.3559117115283195,
+        "positive_vt": true
       },
       {
         "device": "bot1",
-        "score": 16.649263985403287
+        "score": 16.649263985403287,
+        "vt_linear": 0.023031700620038738,
+        "vt_saturation": 0.14807890604349078,
+        "positive_vt": true
       }
     ]
   }
