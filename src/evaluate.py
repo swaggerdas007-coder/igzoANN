@@ -18,7 +18,7 @@ from src.dataset import FEATURE_BOUNDS, load_and_split
 from src.model import TFTNet
 
 OUT_DIR = os.path.join(os.path.dirname(__file__), "..", "outputs")
-DATA_PATH = os.path.join(os.path.dirname(__file__), "..", "data_cleaned", "merged_ann_dataset.csv")
+DATA_PATH = os.path.join(os.path.dirname(__file__), "..", "data_cleaned_2", "merged_ann_dataset.csv")
 PLOT_DIR = os.path.join(OUT_DIR, "plots")
 
 BG = "#f7f7f5"

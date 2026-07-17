@@ -2,26 +2,26 @@
   "n_hidden": 22,
   "hidden_activation": "tanh",
   "output_activation": "linear",
-  "train_rows": 27509,
-  "val_rows": 5896,
-  "test_rows": 5963,
+  "train_rows": 9340,
+  "val_rows": 2003,
+  "test_rows": 2014,
   "target_standardization": {
-    "y_mean_log10_absID": -8.52703857421875,
-    "y_std_log10_absID": 3.059162139892578
+    "y_mean_log10_absID": -8.94205379486084,
+    "y_std_log10_absID": 3.0613157749176025
   },
-  "test_rmse_log10ID": 0.9332000613212585,
-  "test_mae_log10ID": 0.5798740386962891,
-  "test_r2_log10ID": 0.9076390266418457,
-  "test_r2_ceiling_from_measurement_noise": 0.9239918638099736,
+  "test_rmse_log10ID": 0.7844051122665405,
+  "test_mae_log10ID": 0.5445830225944519,
+  "test_r2_log10ID": 0.9347920417785645,
+  "test_r2_ceiling_from_measurement_noise": 0.9997514774380175,
   "note": "r2_ceiling is the max R^2 any (VG,VD,W,L)-only model could reach, given that repeated noise realizations of the same operating point differ by up to several decades in this dataset.",
   "test_MARE_percent_by_current_band": {
     "1e-09_to_1e-06_A": {
-      "MARE_percent": 2045.0790933034207,
-      "n_rows": 1007
+      "MARE_percent": 158.78496932046687,
+      "n_rows": 278
     },
     "1e-06_to_1e-03_A": {
-      "MARE_percent": 59.75120318485065,
-      "n_rows": 2045
+      "MARE_percent": 80.69255938325958,
+      "n_rows": 607
     }
   }
 }

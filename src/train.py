@@ -17,7 +17,7 @@ from src.model import TFTNet
 
 SEED = 42
 N_HIDDEN = 22
-DATA_PATH = os.path.join(os.path.dirname(__file__), "..", "data_cleaned", "merged_ann_dataset.csv")
+DATA_PATH = os.path.join(os.path.dirname(__file__), "..", "data_cleaned_2", "merged_ann_dataset.csv")
 OUT_DIR = os.path.join(os.path.dirname(__file__), "..", "outputs")
 
 torch.manual_seed(SEED)
