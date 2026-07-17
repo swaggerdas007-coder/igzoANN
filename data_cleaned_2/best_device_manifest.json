@@ -1,0 +1,378 @@
+[
+  {
+    "W": 5,
+    "L": 5,
+    "chosen_device": "top2",
+    "chosen_score": 18.125755673681994,
+    "candidates": [
+      {
+        "device": "top2",
+        "score": 18.125755673681994
+      },
+      {
+        "device": "top1rep",
+        "score": 17.794392970047433
+      },
+      {
+        "device": "top1",
+        "score": 17.30535197312626
+      },
+      {
+        "device": "bot1",
+        "score": 17.220874228115665
+      },
+      {
+        "device": "bot1rep",
+        "score": 15.864567463838995
+      },
+      {
+        "device": "top2rep",
+        "score": 14.821622511476177
+      }
+    ]
+  },
+  {
+    "W": 10,
+    "L": 5,
+    "chosen_device": "top2",
+    "chosen_score": 20.22800561480626,
+    "candidates": [
+      {
+        "device": "top2",
+        "score": 20.22800561480626
+      },
+      {
+        "device": "top1",
+        "score": 19.81069451470483
+      },
+      {
+        "device": "bot1",
+        "score": 18.3160391829215
+      },
+      {
+        "device": "bot2",
+        "score": 14.614156053424297
+      }
+    ]
+  },
+  {
+    "W": 10,
+    "L": 10,
+    "chosen_device": "top2",
+    "chosen_score": 18.199726686599625,
+    "candidates": [
+      {
+        "device": "top2",
+        "score": 18.199726686599625
+      },
+      {
+        "device": "bot1",
+        "score": 18.055792443206812
+      },
+      {
+        "device": "top1",
+        "score": 18.026342717038002
+      },
+      {
+        "device": "bot2",
+        "score": 16.08611835751718
+      }
+    ]
+  },
+  {
+    "W": 20,
+    "L": 5,
+    "chosen_device": "bot1",
+    "chosen_score": 20.795265916368333,
+    "candidates": [
+      {
+        "device": "bot1",
+        "score": 20.795265916368333
+      },
+      {
+        "device": "top1",
+        "score": 19.52195796972524
+      },
+      {
+        "device": "bot2",
+        "score": 18.313991803077965
+      }
+    ]
+  },
+  {
+    "W": 20,
+    "L": 10,
+    "chosen_device": "top1",
+    "chosen_score": 19.563071706826292,
+    "candidates": [
+      {
+        "device": "top1",
+        "score": 19.563071706826292
+      },
+      {
+        "device": "bot2",
+        "score": 17.964620904645283
+      },
+      {
+        "device": "bot1",
+        "score": 17.86688598503913
+      }
+    ]
+  },
+  {
+    "W": 20,
+    "L": 15,
+    "chosen_device": "bot1",
+    "chosen_score": 18.488908995145497,
+    "candidates": [
+      {
+        "device": "bot1",
+        "score": 18.488908995145497
+      },
+      {
+        "device": "bot2",
+        "score": 18.085388002186143
+      }
+    ]
+  },
+  {
+    "W": 20,
+    "L": 20,
+    "chosen_device": "bot1",
+    "chosen_score": 18.31906902857222,
+    "candidates": [
+      {
+        "device": "bot1",
+        "score": 18.31906902857222
+      },
+      {
+        "device": "bot2",
+        "score": 17.907882278303326
+      },
+      {
+        "device": "top2",
+        "score": 17.632400136101378
+      }
+    ]
+  },
+  {
+    "W": 40,
+    "L": 5,
+    "chosen_device": "top1",
+    "chosen_score": 21.356806112446787,
+    "candidates": [
+      {
+        "device": "top1",
+        "score": 21.356806112446787
+      },
+      {
+        "device": "bot1",
+        "score": 21.2024388568434
+      },
+      {
+        "device": "bot2",
+        "score": 19.785927403174114
+      }
+    ]
+  },
+  {
+    "W": 40,
+    "L": 10,
+    "chosen_device": "bot1",
+    "chosen_score": 20.034210080307496,
+    "candidates": [
+      {
+        "device": "bot1",
+        "score": 20.034210080307496
+      },
+      {
+        "device": "top1",
+        "score": 20.02177684507723
+      },
+      {
+        "device": "bot2",
+        "score": 19.90421863790084
+      }
+    ]
+  },
+  {
+    "W": 40,
+    "L": 15,
+    "chosen_device": "bot1",
+    "chosen_score": 19.942606396763168,
+    "candidates": [
+      {
+        "device": "bot1",
+        "score": 19.942606396763168
+      },
+      {
+        "device": "bot2",
+        "score": 19.914193800035513
+      }
+    ]
+  },
+  {
+    "W": 40,
+    "L": 20,
+    "chosen_device": "bot1",
+    "chosen_score": 18.810728474037433,
+    "candidates": [
+      {
+        "device": "bot1",
+        "score": 18.810728474037433
+      },
+      {
+        "device": "bot2",
+        "score": 16.557310716879044
+      }
+    ]
+  },
+  {
+    "W": 80,
+    "L": 5,
+    "chosen_device": "bot1",
+    "chosen_score": 21.676924019667425,
+    "candidates": [
+      {
+        "device": "bot1",
+        "score": 21.676924019667425
+      },
+      {
+        "device": "bot2",
+        "score": 20.900530352542614
+      }
+    ]
+  },
+  {
+    "W": 80,
+    "L": 10,
+    "chosen_device": "top2",
+    "chosen_score": 20.906188336703416,
+    "candidates": [
+      {
+        "device": "top2",
+        "score": 20.906188336703416
+      },
+      {
+        "device": "bot1",
+        "score": 20.660475809067623
+      },
+      {
+        "device": "bot2",
+        "score": 20.31459464014155
+      },
+      {
+        "device": "top1",
+        "score": 20.249887792349007
+      }
+    ]
+  },
+  {
+    "W": 80,
+    "L": 15,
+    "chosen_device": "bot2",
+    "chosen_score": 20.570927298240626,
+    "candidates": [
+      {
+        "device": "bot2",
+        "score": 20.570927298240626
+      },
+      {
+        "device": "bot1",
+        "score": 20.561612849804607
+      }
+    ]
+  },
+  {
+    "W": 80,
+    "L": 20,
+    "chosen_device": "bot1",
+    "chosen_score": 20.034052716456994,
+    "candidates": [
+      {
+        "device": "bot1",
+        "score": 20.034052716456994
+      },
+      {
+        "device": "bot2",
+        "score": 19.51119158575453
+      }
+    ]
+  },
+  {
+    "W": 160,
+    "L": 5,
+    "chosen_device": "bot1",
+    "chosen_score": 24.712853375711816,
+    "candidates": [
+      {
+        "device": "bot1",
+        "score": 24.712853375711816
+      },
+      {
+        "device": "top1",
+        "score": 22.697825593843106
+      },
+      {
+        "device": "bot2",
+        "score": 21.95728354755558
+      }
+    ]
+  },
+  {
+    "W": 160,
+    "L": 10,
+    "chosen_device": "bot2",
+    "chosen_score": 21.996389389447632,
+    "candidates": [
+      {
+        "device": "bot2",
+        "score": 21.996389389447632
+      },
+      {
+        "device": "bot1",
+        "score": 21.75303851059685
+      }
+    ]
+  },
+  {
+    "W": 160,
+    "L": 15,
+    "chosen_device": "bot2",
+    "chosen_score": 21.998909735399,
+    "candidates": [
+      {
+        "device": "bot2",
+        "score": 21.998909735399
+      },
+      {
+        "device": "top1",
+        "score": 21.444841690696897
+      },
+      {
+        "device": "bot1",
+        "score": 21.179995908267042
+      },
+      {
+        "device": "top2",
+        "score": 13.106395039373565
+      }
+    ]
+  },
+  {
+    "W": 160,
+    "L": 20,
+    "chosen_device": "bot2",
+    "chosen_score": 21.643178892789926,
+    "candidates": [
+      {
+        "device": "bot2",
+        "score": 21.643178892789926
+      },
+      {
+        "device": "bot1",
+        "score": 16.649263985403287
+      }
+    ]
+  }
+]
