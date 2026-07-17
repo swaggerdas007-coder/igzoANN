@@ -110,10 +110,28 @@ def main():
     ss_tot = np.sum((log_id_true - log_id_true.mean()) ** 2)
     r2_log = float(1 - ss_res / ss_tot)
 
-    # MARE (Eq. 7 in the paper) restricted to appreciable currents (>=1 nA),
-    # since relative error is undefined/dominated by noise near the leakage floor.
-    mask = np.abs(test.id_raw) >= 1e-9
-    mare = float(np.mean(np.abs(np.abs(test.id_raw[mask]) - id_pred[mask]) / np.abs(test.id_raw[mask])) * 100)
+    # Noise ceiling: the dataset repeats many (VG,VD,W,L) operating points with
+    # different noise realizations of ID (median ~5 repeats/point, up to 24).
+    # No function of (VG,VD,W,L) can do better than predicting each point's true
+    # conditional mean, so SS_within (residual around the group mean) is the best
+    # any model could achieve -- this bounds the achievable R^2 on this data.
+    group_mean = test.df.groupby(["VG", "VD", "W", "L"])["log_ID"].transform("mean").to_numpy()
+    ss_within = np.sum((log_id_true - group_mean) ** 2)
+    r2_ceiling = float(1 - ss_within / ss_tot)
+
+    # MARE (Eq. 7 in the paper) stratified by current magnitude. Sub-uA currents
+    # sit inside the dataset's noise floor (see r2_ceiling above), so a plain
+    # overall MARE is dominated by relative error on near-zero noisy currents;
+    # report it per decade band instead, matching where the paper evaluates
+    # accuracy (on-state currents, uA-mA range).
+    bins = [1e-9, 1e-6, 1e-3, 1e0]
+    mare_by_band = {}
+    for lo, hi in zip(bins[:-1], bins[1:]):
+        mask = (np.abs(test.id_raw) >= lo) & (np.abs(test.id_raw) < hi)
+        if mask.sum() == 0:
+            continue
+        mare = float(np.mean(np.abs(np.abs(test.id_raw[mask]) - id_pred[mask]) / np.abs(test.id_raw[mask])) * 100)
+        mare_by_band[f"{lo:.0e}_to_{hi:.0e}_A"] = {"MARE_percent": mare, "n_rows": int(mask.sum())}
 
     metrics = {
         "n_hidden": N_HIDDEN,
@@ -126,8 +144,11 @@ def main():
         "test_rmse_log10ID": rmse_log,
         "test_mae_log10ID": mae_log,
         "test_r2_log10ID": r2_log,
-        "test_MARE_percent_on_currents_ge_1nA": mare,
-        "test_rows_used_for_MARE": int(mask.sum()),
+        "test_r2_ceiling_from_measurement_noise": r2_ceiling,
+        "note": "r2_ceiling is the max R^2 any (VG,VD,W,L)-only model could reach, "
+                "given that repeated noise realizations of the same operating point "
+                "differ by up to several decades in this dataset.",
+        "test_MARE_percent_by_current_band": mare_by_band,
     }
     print(json.dumps(metrics, indent=2))
 
