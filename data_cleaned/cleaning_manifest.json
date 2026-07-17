@@ -15,23 +15,38 @@
       "bot2rep"
     ],
     "dropped_reasons": {
-      "bot2": [
-        "low_on_off_ratio(9.2e-01)",
-        "flat_curve(net_rise=-0.15dec)",
-        "non_monotonic_on_curves(frac_decr=0.42)",
-        "sign_flips_on_curves(0.47)",
-        "bad_vg_ordering(on/off=1.0e+00)",
-        "low_on_off_ratio(1.0e+00)"
-      ],
-      "bot2rep": [
-        "low_on_off_ratio(1.0e+00)",
-        "flat_curve(net_rise=-0.05dec)",
-        "bad_vg_ordering(on/off=1.2e+00)",
-        "low_on_off_ratio(1.2e+00)"
-      ]
-    },
-    "n_linear_rows": 1212,
-    "n_output_rows": 3366
+      "bot2": {
+        "linear": [
+          "low_on_off_ratio(1.3e+00)",
+          "flat_curve(net_rise=0.02dec)"
+        ],
+        "saturation": [
+          "low_on_off_ratio(1.3e+00)",
+          "flat_curve(net_rise=0.08dec)"
+        ],
+        "output": [
+          "non_monotonic_on_curves(frac_decr=0.42)",
+          "sign_flips_on_curves(0.47)",
+          "bad_vg_ordering(on/off=1.0e+00)",
+          "low_on_off_ratio(1.0e+00)"
+        ]
+      },
+      "bot2rep": {
+        "linear": [
+          "low_on_off_ratio(1.0e+00)",
+          "non_monotonic(frac_decr=0.51)",
+          "flat_curve(net_rise=-0.08dec)"
+        ],
+        "saturation": [
+          "low_on_off_ratio(1.1e+00)",
+          "flat_curve(net_rise=0.06dec)"
+        ],
+        "output": [
+          "bad_vg_ordering(on/off=1.2e+00)",
+          "low_on_off_ratio(1.2e+00)"
+        ]
+      }
+    }
   },
   {
     "W": 10,
@@ -43,9 +58,7 @@
       "top2"
     ],
     "dropped_devices": [],
-    "dropped_reasons": {},
-    "n_linear_rows": 808,
-    "n_output_rows": 2244
+    "dropped_reasons": {}
   },
   {
     "W": 10,
@@ -57,9 +70,7 @@
       "top2"
     ],
     "dropped_devices": [],
-    "dropped_reasons": {},
-    "n_linear_rows": 808,
-    "n_output_rows": 2244
+    "dropped_reasons": {}
   },
   {
     "W": 20,
@@ -73,15 +84,21 @@
       "top2"
     ],
     "dropped_reasons": {
-      "top2": [
-        "low_on_off_ratio(1.4e+00)",
-        "flat_curve(net_rise=0.16dec)",
-        "bad_vg_ordering(on/off=9.6e-01)",
-        "low_on_off_ratio(9.6e-01)"
-      ]
-    },
-    "n_linear_rows": 606,
-    "n_output_rows": 1683
+      "top2": {
+        "linear": [
+          "low_on_off_ratio(1.6e+00)",
+          "flat_curve(net_rise=0.31dec)"
+        ],
+        "saturation": [
+          "low_on_off_ratio(9.9e-01)",
+          "flat_curve(net_rise=-0.00dec)"
+        ],
+        "output": [
+          "bad_vg_ordering(on/off=9.6e-01)",
+          "low_on_off_ratio(9.6e-01)"
+        ]
+      }
+    }
   },
   {
     "W": 20,
@@ -95,15 +112,21 @@
       "top2"
     ],
     "dropped_reasons": {
-      "top2": [
-        "low_on_off_ratio(7.8e-01)",
-        "flat_curve(net_rise=-0.11dec)",
-        "bad_vg_ordering(on/off=6.5e-01)",
-        "low_on_off_ratio(6.5e-01)"
-      ]
-    },
-    "n_linear_rows": 606,
-    "n_output_rows": 1683
+      "top2": {
+        "linear": [
+          "low_on_off_ratio(7.7e-01)",
+          "flat_curve(net_rise=-0.12dec)"
+        ],
+        "saturation": [
+          "low_on_off_ratio(9.9e-01)",
+          "flat_curve(net_rise=-0.00dec)"
+        ],
+        "output": [
+          "bad_vg_ordering(on/off=6.5e-01)",
+          "low_on_off_ratio(6.5e-01)"
+        ]
+      }
+    }
   },
   {
     "W": 20,
@@ -117,21 +140,35 @@
       "top2"
     ],
     "dropped_reasons": {
-      "top1": [
-        "low_on_off_ratio(1.0e+00)",
-        "flat_curve(net_rise=-0.00dec)",
-        "bad_vg_ordering(on/off=1.0e+00)",
-        "low_on_off_ratio(1.0e+00)"
-      ],
-      "top2": [
-        "low_on_off_ratio(1.0e+00)",
-        "flat_curve(net_rise=-0.00dec)",
-        "bad_vg_ordering(on/off=1.0e+00)",
-        "low_on_off_ratio(1.0e+00)"
-      ]
-    },
-    "n_linear_rows": 404,
-    "n_output_rows": 1122
+      "top1": {
+        "linear": [
+          "low_on_off_ratio(1.0e+00)",
+          "flat_curve(net_rise=-0.00dec)"
+        ],
+        "saturation": [
+          "low_on_off_ratio(1.0e+00)",
+          "flat_curve(net_rise=-0.00dec)"
+        ],
+        "output": [
+          "bad_vg_ordering(on/off=1.0e+00)",
+          "low_on_off_ratio(1.0e+00)"
+        ]
+      },
+      "top2": {
+        "linear": [
+          "low_on_off_ratio(1.0e+00)",
+          "flat_curve(net_rise=-0.00dec)"
+        ],
+        "saturation": [
+          "low_on_off_ratio(1.0e+00)",
+          "flat_curve(net_rise=-0.00dec)"
+        ],
+        "output": [
+          "bad_vg_ordering(on/off=1.0e+00)",
+          "low_on_off_ratio(1.0e+00)"
+        ]
+      }
+    }
   },
   {
     "W": 20,
@@ -145,15 +182,21 @@
       "top1"
     ],
     "dropped_reasons": {
-      "top1": [
-        "low_on_off_ratio(1.0e+00)",
-        "flat_curve(net_rise=-0.00dec)",
-        "bad_vg_ordering(on/off=1.0e+00)",
-        "low_on_off_ratio(1.0e+00)"
-      ]
-    },
-    "n_linear_rows": 606,
-    "n_output_rows": 1683
+      "top1": {
+        "linear": [
+          "low_on_off_ratio(1.0e+00)",
+          "flat_curve(net_rise=-0.00dec)"
+        ],
+        "saturation": [
+          "low_on_off_ratio(1.0e+00)",
+          "flat_curve(net_rise=-0.00dec)"
+        ],
+        "output": [
+          "bad_vg_ordering(on/off=1.0e+00)",
+          "low_on_off_ratio(1.0e+00)"
+        ]
+      }
+    }
   },
   {
     "W": 40,
@@ -167,15 +210,21 @@
       "top2"
     ],
     "dropped_reasons": {
-      "top2": [
-        "low_on_off_ratio(1.0e+00)",
-        "flat_curve(net_rise=-0.00dec)",
-        "bad_vg_ordering(on/off=1.0e+00)",
-        "low_on_off_ratio(1.0e+00)"
-      ]
-    },
-    "n_linear_rows": 606,
-    "n_output_rows": 1683
+      "top2": {
+        "linear": [
+          "low_on_off_ratio(1.0e+00)",
+          "flat_curve(net_rise=-0.00dec)"
+        ],
+        "saturation": [
+          "low_on_off_ratio(1.0e+00)",
+          "flat_curve(net_rise=-0.00dec)"
+        ],
+        "output": [
+          "bad_vg_ordering(on/off=1.0e+00)",
+          "low_on_off_ratio(1.0e+00)"
+        ]
+      }
+    }
   },
   {
     "W": 40,
@@ -189,15 +238,21 @@
       "top2"
     ],
     "dropped_reasons": {
-      "top2": [
-        "low_on_off_ratio(2.3e-01)",
-        "flat_curve(net_rise=-0.64dec)",
-        "bad_vg_ordering(on/off=7.3e-01)",
-        "low_on_off_ratio(7.3e-01)"
-      ]
-    },
-    "n_linear_rows": 606,
-    "n_output_rows": 1683
+      "top2": {
+        "linear": [
+          "low_on_off_ratio(2.4e-01)",
+          "flat_curve(net_rise=-0.63dec)"
+        ],
+        "saturation": [
+          "low_on_off_ratio(9.6e-01)",
+          "flat_curve(net_rise=-0.02dec)"
+        ],
+        "output": [
+          "bad_vg_ordering(on/off=7.3e-01)",
+          "low_on_off_ratio(7.3e-01)"
+        ]
+      }
+    }
   },
   {
     "W": 40,
@@ -211,21 +266,35 @@
       "top2"
     ],
     "dropped_reasons": {
-      "top1": [
-        "low_on_off_ratio(9.7e-01)",
-        "flat_curve(net_rise=-0.01dec)",
-        "bad_vg_ordering(on/off=1.0e+00)",
-        "low_on_off_ratio(1.0e+00)"
-      ],
-      "top2": [
-        "low_on_off_ratio(4.8e-01)",
-        "flat_curve(net_rise=-0.31dec)",
-        "bad_vg_ordering(on/off=8.2e-01)",
-        "low_on_off_ratio(8.2e-01)"
-      ]
-    },
-    "n_linear_rows": 404,
-    "n_output_rows": 1122
+      "top1": {
+        "linear": [
+          "low_on_off_ratio(9.7e-01)",
+          "flat_curve(net_rise=-0.01dec)"
+        ],
+        "saturation": [
+          "low_on_off_ratio(1.0e+00)",
+          "flat_curve(net_rise=0.00dec)"
+        ],
+        "output": [
+          "bad_vg_ordering(on/off=1.0e+00)",
+          "low_on_off_ratio(1.0e+00)"
+        ]
+      },
+      "top2": {
+        "linear": [
+          "low_on_off_ratio(4.9e-01)",
+          "flat_curve(net_rise=-0.31dec)"
+        ],
+        "saturation": [
+          "low_on_off_ratio(9.8e-01)",
+          "flat_curve(net_rise=-0.02dec)"
+        ],
+        "output": [
+          "bad_vg_ordering(on/off=8.2e-01)",
+          "low_on_off_ratio(8.2e-01)"
+        ]
+      }
+    }
   },
   {
     "W": 40,
@@ -239,19 +308,31 @@
       "top2"
     ],
     "dropped_reasons": {
-      "top1": [
-        "low_on_off_ratio(9.8e-01)",
-        "flat_curve(net_rise=-0.01dec)",
-        "bad_vg_ordering(on/off=1.1e+00)",
-        "low_on_off_ratio(1.1e+00)"
-      ],
-      "top2": [
-        "bad_vg_ordering(on/off=9.3e-01)",
-        "low_on_off_ratio(9.3e-01)"
-      ]
-    },
-    "n_linear_rows": 404,
-    "n_output_rows": 1122
+      "top1": {
+        "linear": [
+          "low_on_off_ratio(9.8e-01)",
+          "flat_curve(net_rise=-0.01dec)"
+        ],
+        "saturation": [
+          "low_on_off_ratio(1.0e+00)",
+          "flat_curve(net_rise=0.02dec)"
+        ],
+        "output": [
+          "bad_vg_ordering(on/off=1.1e+00)",
+          "low_on_off_ratio(1.1e+00)"
+        ]
+      },
+      "top2": {
+        "saturation": [
+          "low_on_off_ratio(1.0e+00)",
+          "flat_curve(net_rise=-0.01dec)"
+        ],
+        "output": [
+          "bad_vg_ordering(on/off=9.3e-01)",
+          "low_on_off_ratio(9.3e-01)"
+        ]
+      }
+    }
   },
   {
     "W": 80,
@@ -265,21 +346,35 @@
       "top2"
     ],
     "dropped_reasons": {
-      "top1": [
-        "low_on_off_ratio(5.7e+00)",
-        "flat_curve(net_rise=0.97dec)",
-        "bad_vg_ordering(on/off=1.4e+00)",
-        "low_on_off_ratio(1.4e+00)"
-      ],
-      "top2": [
-        "low_on_off_ratio(9.9e-01)",
-        "flat_curve(net_rise=-0.00dec)",
-        "bad_vg_ordering(on/off=1.0e+00)",
-        "low_on_off_ratio(1.0e+00)"
-      ]
-    },
-    "n_linear_rows": 404,
-    "n_output_rows": 1122
+      "top1": {
+        "linear": [
+          "low_on_off_ratio(3.6e+00)",
+          "flat_curve(net_rise=0.61dec)"
+        ],
+        "saturation": [
+          "low_on_off_ratio(1.2e+00)",
+          "flat_curve(net_rise=0.10dec)"
+        ],
+        "output": [
+          "bad_vg_ordering(on/off=1.4e+00)",
+          "low_on_off_ratio(1.4e+00)"
+        ]
+      },
+      "top2": {
+        "linear": [
+          "low_on_off_ratio(9.9e-01)",
+          "flat_curve(net_rise=-0.00dec)"
+        ],
+        "saturation": [
+          "low_on_off_ratio(1.0e+00)",
+          "flat_curve(net_rise=0.00dec)"
+        ],
+        "output": [
+          "bad_vg_ordering(on/off=1.0e+00)",
+          "low_on_off_ratio(1.0e+00)"
+        ]
+      }
+    }
   },
   {
     "W": 80,
@@ -291,9 +386,7 @@
       "top2"
     ],
     "dropped_devices": [],
-    "dropped_reasons": {},
-    "n_linear_rows": 808,
-    "n_output_rows": 2244
+    "dropped_reasons": {}
   },
   {
     "W": 80,
@@ -307,21 +400,35 @@
       "top2"
     ],
     "dropped_reasons": {
-      "top1": [
-        "low_on_off_ratio(1.0e+00)",
-        "flat_curve(net_rise=-0.00dec)",
-        "bad_vg_ordering(on/off=1.0e+00)",
-        "low_on_off_ratio(1.0e+00)"
-      ],
-      "top2": [
-        "low_on_off_ratio(8.8e-01)",
-        "flat_curve(net_rise=-0.05dec)",
-        "bad_vg_ordering(on/off=8.7e-01)",
-        "low_on_off_ratio(8.7e-01)"
-      ]
-    },
-    "n_linear_rows": 404,
-    "n_output_rows": 1122
+      "top1": {
+        "linear": [
+          "low_on_off_ratio(1.0e+00)",
+          "flat_curve(net_rise=-0.00dec)"
+        ],
+        "saturation": [
+          "low_on_off_ratio(1.0e+00)",
+          "flat_curve(net_rise=-0.00dec)"
+        ],
+        "output": [
+          "bad_vg_ordering(on/off=1.0e+00)",
+          "low_on_off_ratio(1.0e+00)"
+        ]
+      },
+      "top2": {
+        "linear": [
+          "low_on_off_ratio(8.9e-01)",
+          "flat_curve(net_rise=-0.05dec)"
+        ],
+        "saturation": [
+          "low_on_off_ratio(8.6e-01)",
+          "flat_curve(net_rise=-0.07dec)"
+        ],
+        "output": [
+          "bad_vg_ordering(on/off=8.7e-01)",
+          "low_on_off_ratio(8.7e-01)"
+        ]
+      }
+    }
   },
   {
     "W": 80,
@@ -335,21 +442,35 @@
       "top2"
     ],
     "dropped_reasons": {
-      "top1": [
-        "low_on_off_ratio(1.0e+00)",
-        "flat_curve(net_rise=-0.00dec)",
-        "bad_vg_ordering(on/off=1.0e+00)",
-        "low_on_off_ratio(1.0e+00)"
-      ],
-      "top2": [
-        "low_on_off_ratio(9.9e-01)",
-        "flat_curve(net_rise=-0.01dec)",
-        "bad_vg_ordering(on/off=1.1e+00)",
-        "low_on_off_ratio(1.1e+00)"
-      ]
-    },
-    "n_linear_rows": 404,
-    "n_output_rows": 1122
+      "top1": {
+        "linear": [
+          "low_on_off_ratio(1.0e+00)",
+          "flat_curve(net_rise=-0.00dec)"
+        ],
+        "saturation": [
+          "low_on_off_ratio(1.0e+00)",
+          "flat_curve(net_rise=-0.00dec)"
+        ],
+        "output": [
+          "bad_vg_ordering(on/off=1.0e+00)",
+          "low_on_off_ratio(1.0e+00)"
+        ]
+      },
+      "top2": {
+        "linear": [
+          "low_on_off_ratio(9.9e-01)",
+          "flat_curve(net_rise=-0.01dec)"
+        ],
+        "saturation": [
+          "low_on_off_ratio(1.0e+00)",
+          "flat_curve(net_rise=0.03dec)"
+        ],
+        "output": [
+          "bad_vg_ordering(on/off=1.1e+00)",
+          "low_on_off_ratio(1.1e+00)"
+        ]
+      }
+    }
   },
   {
     "W": 160,
@@ -363,15 +484,21 @@
       "top2"
     ],
     "dropped_reasons": {
-      "top2": [
-        "low_on_off_ratio(9.7e-01)",
-        "flat_curve(net_rise=-0.01dec)",
-        "bad_vg_ordering(on/off=1.0e+00)",
-        "low_on_off_ratio(1.0e+00)"
-      ]
-    },
-    "n_linear_rows": 606,
-    "n_output_rows": 1683
+      "top2": {
+        "linear": [
+          "low_on_off_ratio(9.7e-01)",
+          "flat_curve(net_rise=-0.01dec)"
+        ],
+        "saturation": [
+          "low_on_off_ratio(1.0e+00)",
+          "flat_curve(net_rise=0.00dec)"
+        ],
+        "output": [
+          "bad_vg_ordering(on/off=1.0e+00)",
+          "low_on_off_ratio(1.0e+00)"
+        ]
+      }
+    }
   },
   {
     "W": 160,
@@ -385,21 +512,35 @@
       "top2"
     ],
     "dropped_reasons": {
-      "top1": [
-        "low_on_off_ratio(1.1e+00)",
-        "flat_curve(net_rise=0.04dec)",
-        "bad_vg_ordering(on/off=1.0e+00)",
-        "low_on_off_ratio(1.0e+00)"
-      ],
-      "top2": [
-        "low_on_off_ratio(9.9e-01)",
-        "flat_curve(net_rise=-0.00dec)",
-        "bad_vg_ordering(on/off=1.0e+00)",
-        "low_on_off_ratio(1.0e+00)"
-      ]
-    },
-    "n_linear_rows": 404,
-    "n_output_rows": 1122
+      "top1": {
+        "linear": [
+          "low_on_off_ratio(1.1e+00)",
+          "flat_curve(net_rise=0.04dec)"
+        ],
+        "saturation": [
+          "low_on_off_ratio(1.0e+00)",
+          "flat_curve(net_rise=0.01dec)"
+        ],
+        "output": [
+          "bad_vg_ordering(on/off=1.0e+00)",
+          "low_on_off_ratio(1.0e+00)"
+        ]
+      },
+      "top2": {
+        "linear": [
+          "low_on_off_ratio(9.9e-01)",
+          "flat_curve(net_rise=-0.00dec)"
+        ],
+        "saturation": [
+          "low_on_off_ratio(1.0e+00)",
+          "flat_curve(net_rise=-0.00dec)"
+        ],
+        "output": [
+          "bad_vg_ordering(on/off=1.0e+00)",
+          "low_on_off_ratio(1.0e+00)"
+        ]
+      }
+    }
   },
   {
     "W": 160,
@@ -411,39 +552,48 @@
       "top2"
     ],
     "dropped_devices": [],
-    "dropped_reasons": {},
-    "n_linear_rows": 808,
-    "n_output_rows": 2244
+    "dropped_reasons": {}
   },
   {
     "W": 160,
     "L": 20,
     "kept_devices": [
+      "bot1",
       "bot2"
     ],
     "dropped_devices": [
-      "bot1",
       "top1",
       "top2"
     ],
     "dropped_reasons": {
-      "bot1": [
-        "unstable_off_state(median=8.0e-09,std=2.36dec)"
-      ],
-      "top1": [
-        "low_on_off_ratio(1.0e+00)",
-        "flat_curve(net_rise=-0.00dec)",
-        "bad_vg_ordering(on/off=7.3e-03)",
-        "low_on_off_ratio(7.3e-03)"
-      ],
-      "top2": [
-        "low_on_off_ratio(1.2e-01)",
-        "flat_curve(net_rise=-0.91dec)",
-        "bad_vg_ordering(on/off=9.5e-01)",
-        "low_on_off_ratio(9.5e-01)"
-      ]
-    },
-    "n_linear_rows": 202,
-    "n_output_rows": 561
+      "top1": {
+        "linear": [
+          "low_on_off_ratio(9.9e-01)",
+          "flat_curve(net_rise=-0.00dec)"
+        ],
+        "saturation": [
+          "low_on_off_ratio(1.0e+00)",
+          "flat_curve(net_rise=-0.00dec)"
+        ],
+        "output": [
+          "bad_vg_ordering(on/off=7.3e-03)",
+          "low_on_off_ratio(7.3e-03)"
+        ]
+      },
+      "top2": {
+        "linear": [
+          "low_on_off_ratio(1.3e-01)",
+          "flat_curve(net_rise=-0.87dec)"
+        ],
+        "saturation": [
+          "low_on_off_ratio(9.8e-01)",
+          "flat_curve(net_rise=-0.01dec)"
+        ],
+        "output": [
+          "bad_vg_ordering(on/off=9.5e-01)",
+          "low_on_off_ratio(9.5e-01)"
+        ]
+      }
+    }
   }
 ]

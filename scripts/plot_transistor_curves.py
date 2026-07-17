@@ -1,11 +1,14 @@
 """Diagnostic and verification plots for scripts/clean_transistor_curves.py.
 
-Produces two before/after overview grids (one figure per stage, all 19 W,L
-geometries as small multiples):
-  - overview_id_vg_raw.png / overview_id_vd_raw.png: every raw device
-    replicate, flagged ones dashed and labelled [BAD].
-  - cleaned_id_vg.png / cleaned_id_vd.png: only the retained data that ships
-    in data_cleaned/.
+Produces, for each of linear (Id-Vg @ VD=0.1V), saturation (Id-Vg @ VD=5V),
+and output (Id-Vd family) sweeps, a before/after pair of overview grids (all
+19 W,L geometries as small multiples):
+  - overview_id_vg_linear_raw.png / overview_id_vg_saturation_raw.png /
+    overview_id_vd_raw.png: every raw device replicate (VG sweeps already
+    trimmed to the forward -2..5V leg), flagged ones dashed and labeled
+    [BAD].
+  - cleaned_id_vg_linear.png / cleaned_id_vg_saturation.png /
+    cleaned_id_vd.png: only the retained data that ships in data_cleaned/.
 
 Run after scripts/clean_transistor_curves.py: python scripts/plot_transistor_curves.py
 """
@@ -13,6 +16,7 @@ import glob
 import json
 import os
 import re
+import sys
 
 import numpy as np
 import pandas as pd
@@ -21,11 +25,14 @@ matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 
 REPO_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+sys.path.insert(0, os.path.join(REPO_ROOT, "scripts"))
+from clean_transistor_curves import load_kind  # noqa: E402
+
 CLEAN_DIR = os.path.join(REPO_ROOT, "data_cleaned")
 PLOT_DIR = os.path.join(CLEAN_DIR, "plots")
 os.makedirs(PLOT_DIR, exist_ok=True)
 
-# Fixed categorical color assignment (never cycled) shared by both stages.
+# Fixed categorical color assignment (never cycled) shared by every panel.
 DEVICE_COLORS = {
     "top1": "#4C72B0", "top1rep": "#8CA9D6",
     "top2": "#DD8452", "top2rep": "#F0B285",
@@ -45,18 +52,17 @@ def grid_axes(n):
     return fig, axes
 
 
-def plot_raw_overview(results):
+def plot_raw_transfer_overview(results, kind, vd_label, out_name):
     combos = sorted({(v["W"], v["L"]) for v in results.values()})
-
     fig, axes = grid_axes(len(combos))
     for ax, (W, L) in zip(axes, combos):
         for dev in DEVICE_ORDER:
             key = f"W{W}_L{L}_{dev}"
-            if key not in results or "linear_path" not in results[key]:
+            if key not in results or f"{kind}_path" not in results[key]:
                 continue
             r = results[key]
-            df = pd.read_csv(r["linear_path"]).sort_values("VG")
-            ok = r["linear_ok"]
+            df = load_kind(r[f"{kind}_path"], kind).sort_values("VG")
+            ok = r[f"{kind}_ok"]
             ax.plot(df["VG"], df["ID"].abs(), "-" if ok else "--", color=DEVICE_COLORS[dev],
                     lw=1.2, label=f"{dev}{'' if ok else ' [BAD]'}", alpha=0.9)
         ax.set_yscale("log")
@@ -65,11 +71,15 @@ def plot_raw_overview(results):
         ax.set_ylabel("|ID| (A)", fontsize=8)
         ax.legend(fontsize=6, loc="lower right")
         ax.tick_params(labelsize=7)
-    fig.suptitle("RAW Id-Vg transfer curves (VD=0.1V) — dashed/[BAD] = flagged & dropped", fontsize=14)
+    fig.suptitle(f"RAW Id-Vg {kind} curves ({vd_label}, VG trimmed to forward -2..5V) "
+                 "— dashed/[BAD] = flagged & dropped", fontsize=14)
     fig.tight_layout(rect=[0, 0, 1, 0.97])
-    fig.savefig(os.path.join(PLOT_DIR, "overview_id_vg_raw.png"), dpi=110)
+    fig.savefig(os.path.join(PLOT_DIR, out_name), dpi=110)
     plt.close(fig)
 
+
+def plot_raw_output_overview(results):
+    combos = sorted({(v["W"], v["L"]) for v in results.values()})
     fig, axes = grid_axes(len(combos))
     for ax, (W, L) in zip(axes, combos):
         for dev in DEVICE_ORDER:
@@ -94,31 +104,38 @@ def plot_raw_overview(results):
     plt.close(fig)
 
 
-def plot_cleaned_overview():
-    combos = sorted({
+def _clean_combos():
+    return sorted({
         tuple(map(int, re.match(r"W(\d+)_L(\d+)_linear_clean\.csv", os.path.basename(f)).groups()))
         for f in glob.glob(os.path.join(CLEAN_DIR, "W*_linear_clean.csv"))
     })
 
+
+def plot_cleaned_transfer(kind, vd_label, out_name):
+    combos = _clean_combos()
     fig, axes = grid_axes(len(combos))
     for ax, (W, L) in zip(axes, combos):
-        df = pd.read_csv(os.path.join(CLEAN_DIR, f"W{W}_L{L}_linear_clean.csv"))
+        df = pd.read_csv(os.path.join(CLEAN_DIR, f"W{W}_L{L}_{kind}_clean.csv"))
         for dev, sub in df.groupby("device"):
             sub = sub.sort_values("VG")
             ax.plot(sub["VG"], sub["ID"].abs(), color=DEVICE_COLORS.get(dev, "gray"), lw=1.3, label=dev)
         ax.set_yscale("log")
-        ax.set_ylim(1e-13, 1e-3)
+        ax.set_ylim(1e-13, 1e-2)
         ax.set_title(f"W={W} L={L}", fontsize=10)
         ax.set_xlabel("VG (V)", fontsize=8)
         ax.set_ylabel("|ID| (A)", fontsize=8)
         ax.legend(fontsize=6, loc="lower right")
         ax.tick_params(labelsize=7)
         ax.grid(alpha=0.2)
-    fig.suptitle("CLEANED Id-Vg transfer curves (VD=0.1V) — retained device replicates only", fontsize=14)
+    fig.suptitle(f"CLEANED Id-Vg {kind} curves ({vd_label}, VG in [-2,5], forward leg only) "
+                 "— retained device replicates only", fontsize=14)
     fig.tight_layout(rect=[0, 0, 1, 0.97])
-    fig.savefig(os.path.join(PLOT_DIR, "cleaned_id_vg.png"), dpi=110)
+    fig.savefig(os.path.join(PLOT_DIR, out_name), dpi=110)
     plt.close(fig)
 
+
+def plot_cleaned_output():
+    combos = _clean_combos()
     fig, axes = grid_axes(len(combos))
     cmap = plt.get_cmap("viridis")
     for ax, (W, L) in zip(axes, combos):
@@ -144,8 +161,12 @@ def plot_cleaned_overview():
 
 def main():
     results = json.load(open(os.path.join(CLEAN_DIR, "qc_results.json")))
-    plot_raw_overview(results)
-    plot_cleaned_overview()
+    plot_raw_transfer_overview(results, "linear", "VD=0.1V", "overview_id_vg_linear_raw.png")
+    plot_raw_transfer_overview(results, "saturation", "VD=5V", "overview_id_vg_saturation_raw.png")
+    plot_raw_output_overview(results)
+    plot_cleaned_transfer("linear", "VD=0.1V", "cleaned_id_vg_linear.png")
+    plot_cleaned_transfer("saturation", "VD=5V", "cleaned_id_vg_saturation.png")
+    plot_cleaned_output()
     print(f"saved plots to {PLOT_DIR}")
 
 
