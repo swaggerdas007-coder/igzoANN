@@ -1,0 +1,2147 @@
+{
+  "W5_L5_bot1": {
+    "W": 5,
+    "L": 5,
+    "device": "bot1",
+    "linear_ok": true,
+    "linear_reasons": [],
+    "linear_metrics": {
+      "on_off_ratio": 60095.93931280678,
+      "frac_decreasing": 0.10052910052910052,
+      "net_rise_decades": 5.07966302172694,
+      "frac_negative_on": 0.0,
+      "off_median": 3.5856e-12,
+      "off_log_std": 0.27137206469664593
+    },
+    "linear_path": "/home/user/igzoANN/data/tft linear [s5tft5-5bot1(1) ; 6_5_2026 1_58_19 pm].csv_s5_W5_L5_bot_1.csv",
+    "output_ok": true,
+    "output_reasons": [],
+    "output_metrics": {
+      "frac_decr_mean": 0.0,
+      "neg_frac_mean": 0.0,
+      "ordering_ok": true,
+      "on_off_ratio": 2943113.4564643805
+    },
+    "output_path": "/home/user/igzoANN/data/tft output [s5tft5-5bot1(1) ; 6_5_2026 1_59_40 pm].csv_s5_W5_L5_bot_1.csv"
+  },
+  "W5_L5_bot1rep": {
+    "W": 5,
+    "L": 5,
+    "device": "bot1rep",
+    "linear_ok": true,
+    "linear_reasons": [],
+    "linear_metrics": {
+      "on_off_ratio": 33453.95532737305,
+      "frac_decreasing": 0.164021164021164,
+      "net_rise_decades": 4.862691990510754,
+      "frac_negative_on": 0.0,
+      "off_median": 3.3890999999999998e-12,
+      "off_log_std": 0.41960648431348224
+    },
+    "linear_path": "/home/user/igzoANN/data/tft linear [s5tft5-5bot1rep(2) ; 6_5_2026 2_02_03 pm].csv_s5_W5_L5_bot_1.csv",
+    "output_ok": true,
+    "output_reasons": [],
+    "output_metrics": {
+      "frac_decr_mean": 0.0,
+      "neg_frac_mean": 0.0,
+      "ordering_ok": true,
+      "on_off_ratio": 579396.1841595245
+    },
+    "output_path": "/home/user/igzoANN/data/tft output [s5tft5-5bot1rep(2) ; 6_5_2026 2_03_34 pm].csv_s5_W5_L5_bot_1.csv"
+  },
+  "W5_L5_bot2": {
+    "W": 5,
+    "L": 5,
+    "device": "bot2",
+    "linear_ok": false,
+    "linear_reasons": [
+      "low_on_off_ratio(9.2e-01)",
+      "flat_curve(net_rise=-0.15dec)"
+    ],
+    "linear_metrics": {
+      "on_off_ratio": 0.9153482475370435,
+      "frac_decreasing": 0.21693121693121692,
+      "net_rise_decades": -0.1514963642710292,
+      "frac_negative_on": 0.0,
+      "off_median": 3.7861e-12,
+      "off_log_std": 0.20276410840217804
+    },
+    "linear_path": "/home/user/igzoANN/data/tft linear [s5tft5-5bot2(1) ; 6_5_2026 3_31_49 pm].csv_s5_W5_L5_bot_2.csv",
+    "output_ok": false,
+    "output_reasons": [
+      "non_monotonic_on_curves(frac_decr=0.42)",
+      "sign_flips_on_curves(0.47)",
+      "bad_vg_ordering(on/off=1.0e+00)",
+      "low_on_off_ratio(1.0e+00)"
+    ],
+    "output_metrics": {
+      "frac_decr_mean": 0.42000000000000004,
+      "neg_frac_mean": 0.47058823529411764,
+      "ordering_ok": false,
+      "on_off_ratio": 1.0419082890697333
+    },
+    "output_path": "/home/user/igzoANN/data/tft output [s5tft5-5bot2(1) ; 6_5_2026 3_33_48 pm].csv_s5_W5_L5_bot_2.csv"
+  },
+  "W5_L5_bot2rep": {
+    "W": 5,
+    "L": 5,
+    "device": "bot2rep",
+    "linear_ok": false,
+    "linear_reasons": [
+      "low_on_off_ratio(1.0e+00)",
+      "flat_curve(net_rise=-0.05dec)"
+    ],
+    "linear_metrics": {
+      "on_off_ratio": 0.996755654430849,
+      "frac_decreasing": 0.2857142857142857,
+      "net_rise_decades": -0.05409857656082018,
+      "frac_negative_on": 0.0,
+      "off_median": 3.2364000000000002e-12,
+      "off_log_std": 0.23502290807198367
+    },
+    "linear_path": "/home/user/igzoANN/data/tft linear [s5tft5-5bot2rep(2) ; 6_5_2026 3_35_42 pm].csv_s5_W5_L5_bot_2.csv",
+    "output_ok": false,
+    "output_reasons": [
+      "bad_vg_ordering(on/off=1.2e+00)",
+      "low_on_off_ratio(1.2e+00)"
+    ],
+    "output_metrics": {
+      "frac_decr_mean": 0.1,
+      "neg_frac_mean": 0.00980392156862745,
+      "ordering_ok": false,
+      "on_off_ratio": 1.1578424030620735
+    },
+    "output_path": "/home/user/igzoANN/data/tft output [s5tft5-5bot2rep(2) ; 6_5_2026 3_37_42 pm].csv_s5_W5_L5_bot_2.csv"
+  },
+  "W5_L5_top1": {
+    "W": 5,
+    "L": 5,
+    "device": "top1",
+    "linear_ok": true,
+    "linear_reasons": [],
+    "linear_metrics": {
+      "on_off_ratio": 52810.024485092894,
+      "frac_decreasing": 0.10582010582010581,
+      "net_rise_decades": 4.960103131542359,
+      "frac_negative_on": 0.0,
+      "off_median": 3.4715e-12,
+      "off_log_std": 0.29606795023621885
+    },
+    "linear_path": "/home/user/igzoANN/data/tft linear [s5tft5-5top1(1) ; 6_5_2026 9_54_02 am].csv_s5_W5_L5_top_1.csv",
+    "output_ok": true,
+    "output_reasons": [],
+    "output_metrics": {
+      "frac_decr_mean": 0.0,
+      "neg_frac_mean": 0.0,
+      "ordering_ok": true,
+      "on_off_ratio": 2718442.0213881317
+    },
+    "output_path": "/home/user/igzoANN/data/tft output [s5tft5-5top1(1) ; 6_5_2026 9_55_05 am].csv_s5_W5_L5_top_1.csv"
+  },
+  "W5_L5_top1rep": {
+    "W": 5,
+    "L": 5,
+    "device": "top1rep",
+    "linear_ok": true,
+    "linear_reasons": [],
+    "linear_metrics": {
+      "on_off_ratio": 41038.924670960514,
+      "frac_decreasing": 0.07407407407407407,
+      "net_rise_decades": 4.788015377604772,
+      "frac_negative_on": 0.0,
+      "off_median": 3.571e-12,
+      "off_log_std": 0.4745877705209626
+    },
+    "linear_path": "/home/user/igzoANN/data/tft linear [s5tft5-5top1rep(2) ; 6_5_2026 9_57_52 am].csv_s5_W5_L5_top_1.csv",
+    "output_ok": true,
+    "output_reasons": [],
+    "output_metrics": {
+      "frac_decr_mean": 0.0,
+      "neg_frac_mean": 0.0,
+      "ordering_ok": true,
+      "on_off_ratio": 7734270.622961007
+    },
+    "output_path": "/home/user/igzoANN/data/tft output [s5tft5-5top1rep(2) ; 6_5_2026 9_58_55 am].csv_s5_W5_L5_top_1.csv"
+  },
+  "W5_L5_top2": {
+    "W": 5,
+    "L": 5,
+    "device": "top2",
+    "linear_ok": true,
+    "linear_reasons": [],
+    "linear_metrics": {
+      "on_off_ratio": 124188.74620312173,
+      "frac_decreasing": 0.0582010582010582,
+      "net_rise_decades": 5.299147792208894,
+      "frac_negative_on": 0.0,
+      "off_median": 3.3251e-12,
+      "off_log_std": 0.2531223800892172
+    },
+    "linear_path": "/home/user/igzoANN/data/tft linear [s5tft5-5top2(1) ; 6_5_2026 11_06_56 am].csv_s5_W5_L5_top_2.csv",
+    "output_ok": true,
+    "output_reasons": [],
+    "output_metrics": {
+      "frac_decr_mean": 0.0,
+      "neg_frac_mean": 0.0,
+      "ordering_ok": true,
+      "on_off_ratio": 4171649.4534033947
+    },
+    "output_path": "/home/user/igzoANN/data/tft output [s5tft5-5top2(1) ; 6_5_2026 11_07_59 am].csv_s5_W5_L5_top_2.csv"
+  },
+  "W5_L5_top2rep": {
+    "W": 5,
+    "L": 5,
+    "device": "top2rep",
+    "linear_ok": true,
+    "linear_reasons": [],
+    "linear_metrics": {
+      "on_off_ratio": 1907.274074074074,
+      "frac_decreasing": 0.13227513227513227,
+      "net_rise_decades": 3.366324047142923,
+      "frac_negative_on": 0.0,
+      "off_median": 3.375e-12,
+      "off_log_std": 0.2499526945581214
+    },
+    "linear_path": "/home/user/igzoANN/data/tft linear [s5tft5-5top2rep(2) ; 6_5_2026 11_11_13 am].csv_s5_W5_L5_top_2.csv",
+    "output_ok": true,
+    "output_reasons": [],
+    "output_metrics": {
+      "frac_decr_mean": 0.03,
+      "neg_frac_mean": 0.0,
+      "ordering_ok": true,
+      "on_off_ratio": 755969.9335067939
+    },
+    "output_path": "/home/user/igzoANN/data/tft output [s5tft5-5top2rep(2) ; 6_5_2026 11_12_18 am].csv_s5_W5_L5_top_2.csv"
+  },
+  "W10_L5_bot1": {
+    "W": 10,
+    "L": 5,
+    "device": "bot1",
+    "linear_ok": true,
+    "linear_reasons": [],
+    "linear_metrics": {
+      "on_off_ratio": 188831.71817292215,
+      "frac_decreasing": 0.12169312169312169,
+      "net_rise_decades": 5.455917281818344,
+      "frac_negative_on": 0.0,
+      "off_median": 3.1679e-12,
+      "off_log_std": 0.21328019712501012
+    },
+    "linear_path": "/home/user/igzoANN/data/tft linear [s5tft10-5bot1(1) ; 6_5_2026 2_23_56 pm].csv_s5_W10_L5_bot_1.csv",
+    "output_ok": true,
+    "output_reasons": [],
+    "output_metrics": {
+      "frac_decr_mean": 0.0,
+      "neg_frac_mean": 0.0,
+      "ordering_ok": true,
+      "on_off_ratio": 3747972.113824703
+    },
+    "output_path": "/home/user/igzoANN/data/tft output [s5tft10-5bot1(1) ; 6_5_2026 2_25_09 pm].csv_s5_W10_L5_bot_1.csv"
+  },
+  "W10_L5_bot2": {
+    "W": 10,
+    "L": 5,
+    "device": "bot2",
+    "linear_ok": true,
+    "linear_reasons": [],
+    "linear_metrics": {
+      "on_off_ratio": 9134.09683966367,
+      "frac_decreasing": 0.23809523809523808,
+      "net_rise_decades": 4.6297581871852405,
+      "frac_negative_on": 0.0,
+      "off_median": 3.4490000000000003e-12,
+      "off_log_std": 0.24497174804025776
+    },
+    "linear_path": "/home/user/igzoANN/data/tft linear [s5tft10-5bot2(1) ; 6_5_2026 3_42_13 pm].csv_s5_W10_L5_bot_2.csv",
+    "output_ok": true,
+    "output_reasons": [],
+    "output_metrics": {
+      "frac_decr_mean": 0.0,
+      "neg_frac_mean": 0.0,
+      "ordering_ok": true,
+      "on_off_ratio": 445575.02896871377
+    },
+    "output_path": "/home/user/igzoANN/data/tft output [s5tft10-5bot2(1) ; 6_5_2026 3_43_53 pm].csv_s5_W10_L5_bot_2.csv"
+  },
+  "W10_L5_top1": {
+    "W": 10,
+    "L": 5,
+    "device": "top1",
+    "linear_ok": true,
+    "linear_reasons": [],
+    "linear_metrics": {
+      "on_off_ratio": 237257.19424460432,
+      "frac_decreasing": 0.1111111111111111,
+      "net_rise_decades": 5.638883525250251,
+      "frac_negative_on": 0.0,
+      "off_median": 3.336e-12,
+      "off_log_std": 0.3243399463390734
+    },
+    "linear_path": "/home/user/igzoANN/data/tft linear [s5tft10-5top1(1) ; 6_5_2026 10_02_14 am].csv_s5_W10_L5_top_1.csv",
+    "output_ok": true,
+    "output_reasons": [],
+    "output_metrics": {
+      "frac_decr_mean": 0.0,
+      "neg_frac_mean": 0.0,
+      "ordering_ok": true,
+      "on_off_ratio": 52365196.07843138
+    },
+    "output_path": "/home/user/igzoANN/data/tft output [s5tft10-5top1(1) ; 6_5_2026 10_03_17 am].csv_s5_W10_L5_top_1.csv"
+  },
+  "W10_L5_top2": {
+    "W": 10,
+    "L": 5,
+    "device": "top2",
+    "linear_ok": true,
+    "linear_reasons": [],
+    "linear_metrics": {
+      "on_off_ratio": 227249.9933491181,
+      "frac_decreasing": 0.0582010582010582,
+      "net_rise_decades": 5.571520367991559,
+      "frac_negative_on": 0.0,
+      "off_median": 3.7589e-12,
+      "off_log_std": 0.1966806666091259
+    },
+    "linear_path": "/home/user/igzoANN/data/tft linear [s5tft10-5top2(1) ; 6_5_2026 11_16_03 am].csv_s5_W10_L5_top_2.csv",
+    "output_ok": true,
+    "output_reasons": [],
+    "output_metrics": {
+      "frac_decr_mean": 0.0,
+      "neg_frac_mean": 0.0,
+      "ordering_ok": true,
+      "on_off_ratio": 115406471.98105761
+    },
+    "output_path": "/home/user/igzoANN/data/tft output [s5tft10-5top2(1) ; 6_5_2026 11_17_06 am].csv_s5_W10_L5_top_2.csv"
+  },
+  "W10_L10_bot1": {
+    "W": 10,
+    "L": 10,
+    "device": "bot1",
+    "linear_ok": true,
+    "linear_reasons": [],
+    "linear_metrics": {
+      "on_off_ratio": 124628.38726650883,
+      "frac_decreasing": 0.12169312169312169,
+      "net_rise_decades": 5.318638202021105,
+      "frac_negative_on": 0.0,
+      "off_median": 3.0407999999999997e-12,
+      "off_log_std": 0.23428152866748955
+    },
+    "linear_path": "/home/user/igzoANN/data/tft linear [s5tft10-10bot1(1) ; 6_5_2026 2_41_46 pm].csv_s5_W10_L10_bot_1.csv",
+    "output_ok": true,
+    "output_reasons": [],
+    "output_metrics": {
+      "frac_decr_mean": 0.0,
+      "neg_frac_mean": 0.0,
+      "ordering_ok": true,
+      "on_off_ratio": 5016713.091922007
+    },
+    "output_path": "/home/user/igzoANN/data/tft output [s5tft10-10bot1(1) ; 6_5_2026 2_42_58 pm].csv_s5_W10_L10_bot_1.csv"
+  },
+  "W10_L10_bot2": {
+    "W": 10,
+    "L": 10,
+    "device": "bot2",
+    "linear_ok": true,
+    "linear_reasons": [],
+    "linear_metrics": {
+      "on_off_ratio": 8457.162962528588,
+      "frac_decreasing": 0.08465608465608465,
+      "net_rise_decades": 4.26348599447966,
+      "frac_negative_on": 0.0,
+      "off_median": 3.4106e-12,
+      "off_log_std": 0.23026433870342722
+    },
+    "linear_path": "/home/user/igzoANN/data/tft linear [s5tft10-10bot2(1) ; 6_5_2026 4_01_55 pm].csv_s5_W10_L10_bot_2.csv",
+    "output_ok": true,
+    "output_reasons": [],
+    "output_metrics": {
+      "frac_decr_mean": 0.0,
+      "neg_frac_mean": 0.0,
+      "ordering_ok": true,
+      "on_off_ratio": 1101050.696086157
+    },
+    "output_path": "/home/user/igzoANN/data/tft output [s5tft10-10bot2(1) ; 6_5_2026 4_03_18 pm].csv_s5_W10_L10_bot_2.csv"
+  },
+  "W10_L10_top1": {
+    "W": 10,
+    "L": 10,
+    "device": "top1",
+    "linear_ok": true,
+    "linear_reasons": [],
+    "linear_metrics": {
+      "on_off_ratio": 112832.3184316055,
+      "frac_decreasing": 0.1164021164021164,
+      "net_rise_decades": 5.2571171433442805,
+      "frac_negative_on": 0.0,
+      "off_median": 3.3665000000000002e-12,
+      "off_log_std": 0.20121652027522388
+    },
+    "linear_path": "/home/user/igzoANN/data/tft linear [s5tft10-10top1(1) ; 6_5_2026 10_31_34 am].csv_s5_W10_L10_top_1.csv",
+    "output_ok": true,
+    "output_reasons": [],
+    "output_metrics": {
+      "frac_decr_mean": 0.0,
+      "neg_frac_mean": 0.0,
+      "ordering_ok": true,
+      "on_off_ratio": 3824146.9816272967
+    },
+    "output_path": "/home/user/igzoANN/data/tft output [s5tft10-10top1(1) ; 6_5_2026 10_32_37 am].csv_s5_W10_L10_top_1.csv"
+  },
+  "W10_L10_top2": {
+    "W": 10,
+    "L": 10,
+    "device": "top2",
+    "linear_ok": true,
+    "linear_reasons": [],
+    "linear_metrics": {
+      "on_off_ratio": 114872.83655183927,
+      "frac_decreasing": 0.06878306878306878,
+      "net_rise_decades": 5.217394459799372,
+      "frac_negative_on": 0.0,
+      "off_median": 3.5938e-12,
+      "off_log_std": 0.22467271818899212
+    },
+    "linear_path": "/home/user/igzoANN/data/tft linear [s5tft10-10top2(1) ; 6_5_2026 11_44_39 am].csv_s5_W10_L10_top_2.csv",
+    "output_ok": true,
+    "output_reasons": [],
+    "output_metrics": {
+      "frac_decr_mean": 0.0,
+      "neg_frac_mean": 0.0,
+      "ordering_ok": true,
+      "on_off_ratio": 2538229.8877547025
+    },
+    "output_path": "/home/user/igzoANN/data/tft output [s5tft10-10top2(1) ; 6_5_2026 11_45_42 am].csv_s5_W10_L10_top_2.csv"
+  },
+  "W20_L5_bot1": {
+    "W": 20,
+    "L": 5,
+    "device": "bot1",
+    "linear_ok": true,
+    "linear_reasons": [],
+    "linear_metrics": {
+      "on_off_ratio": 452177.88210745965,
+      "frac_decreasing": 0.1164021164021164,
+      "net_rise_decades": 5.8183285052990925,
+      "frac_negative_on": 0.0,
+      "off_median": 3.834e-12,
+      "off_log_std": 0.21116608880496954
+    },
+    "linear_path": "/home/user/igzoANN/data/tft linear [s5tft20-5bot1(1) ; 6_5_2026 2_27_31 pm].csv_s5_W20_L5_bot_1.csv",
+    "output_ok": true,
+    "output_reasons": [],
+    "output_metrics": {
+      "frac_decr_mean": 0.0,
+      "neg_frac_mean": 0.0,
+      "ordering_ok": true,
+      "on_off_ratio": 75056451.61290324
+    },
+    "output_path": "/home/user/igzoANN/data/tft output [s5tft20-5bot1(1) ; 6_5_2026 2_28_34 pm].csv_s5_W20_L5_bot_1.csv"
+  },
+  "W20_L5_bot2": {
+    "W": 20,
+    "L": 5,
+    "device": "bot2",
+    "linear_ok": true,
+    "linear_reasons": [],
+    "linear_metrics": {
+      "on_off_ratio": 224333.2618879941,
+      "frac_decreasing": 0.14285714285714285,
+      "net_rise_decades": 5.6985723545491425,
+      "frac_negative_on": 0.0,
+      "off_median": 3.2659e-12,
+      "off_log_std": 0.2943651921785102
+    },
+    "linear_path": "/home/user/igzoANN/data/tft linear [s5tft20-5bot2(1) ; 6_5_2026 3_46_34 pm].csv_s5_W20_L5_bot_2.csv",
+    "output_ok": true,
+    "output_reasons": [],
+    "output_metrics": {
+      "frac_decr_mean": 0.0,
+      "neg_frac_mean": 0.0,
+      "ordering_ok": true,
+      "on_off_ratio": 4165883.4586466174
+    },
+    "output_path": "/home/user/igzoANN/data/tft output [s5tft20-5bot2(1) ; 6_5_2026 3_47_55 pm].csv_s5_W20_L5_bot_2.csv"
+  },
+  "W20_L5_top1": {
+    "W": 20,
+    "L": 5,
+    "device": "top1",
+    "linear_ok": true,
+    "linear_reasons": [],
+    "linear_metrics": {
+      "on_off_ratio": 419527.4956116371,
+      "frac_decreasing": 0.08994708994708994,
+      "net_rise_decades": 5.800867361994979,
+      "frac_negative_on": 0.0,
+      "off_median": 3.4751e-12,
+      "off_log_std": 0.29923286181018394
+    },
+    "linear_path": "/home/user/igzoANN/data/tft linear [s5tft20-5top1(2) ; 6_5_2026 10_06_26 am].csv_s5_W20_L5_top_1_run2.csv",
+    "output_ok": true,
+    "output_reasons": [],
+    "output_metrics": {
+      "frac_decr_mean": 0.0,
+      "neg_frac_mean": 0.0,
+      "ordering_ok": true,
+      "on_off_ratio": 10852227.572343508
+    },
+    "output_path": "/home/user/igzoANN/data/tft output [s5tft20-5top1(2) ; 6_5_2026 10_07_28 am].csv_s5_W20_L5_top_1_run2.csv"
+  },
+  "W20_L5_top2": {
+    "W": 20,
+    "L": 5,
+    "device": "top2",
+    "linear_ok": false,
+    "linear_reasons": [
+      "low_on_off_ratio(1.4e+00)",
+      "flat_curve(net_rise=0.16dec)"
+    ],
+    "linear_metrics": {
+      "on_off_ratio": 1.4055058639827558,
+      "frac_decreasing": 0.037037037037037035,
+      "net_rise_decades": 0.1609907744206751,
+      "frac_negative_on": 0.0,
+      "off_median": 2.94595e-09,
+      "off_log_std": 0.15055765109275165
+    },
+    "linear_path": "/home/user/igzoANN/data/tft linear [s5tft20-5top2(1) ; 6_5_2026 11_18_51 am].csv_s5_W20_L5_top_2.csv",
+    "output_ok": false,
+    "output_reasons": [
+      "bad_vg_ordering(on/off=9.6e-01)",
+      "low_on_off_ratio(9.6e-01)"
+    ],
+    "output_metrics": {
+      "frac_decr_mean": 0.0,
+      "neg_frac_mean": 0.0,
+      "ordering_ok": false,
+      "on_off_ratio": 0.9637807265608005
+    },
+    "output_path": "/home/user/igzoANN/data/tft output [s5tft20-5top2(1) ; 6_5_2026 11_19_05 am].csv_s5_W20_L5_top_2.csv"
+  },
+  "W20_L10_bot1": {
+    "W": 20,
+    "L": 10,
+    "device": "bot1",
+    "linear_ok": true,
+    "linear_reasons": [],
+    "linear_metrics": {
+      "on_off_ratio": 64434.737253879255,
+      "frac_decreasing": 0.1164021164021164,
+      "net_rise_decades": 4.8910770585434715,
+      "frac_negative_on": 0.0,
+      "off_median": 3.0676e-12,
+      "off_log_std": 0.19690189223631382
+    },
+    "linear_path": "/home/user/igzoANN/data/tft linear [s5tft20-10bot1(1) ; 6_5_2026 2_45_18 pm].csv_s5_W20_L10_bot_1.csv",
+    "output_ok": true,
+    "output_reasons": [],
+    "output_metrics": {
+      "frac_decr_mean": 0.0,
+      "neg_frac_mean": 0.0,
+      "ordering_ok": true,
+      "on_off_ratio": 3847984.196821406
+    },
+    "output_path": "/home/user/igzoANN/data/tft output [s5tft20-10bot1(1) ; 6_5_2026 2_46_22 pm].csv_s5_W20_L10_bot_1.csv"
+  },
+  "W20_L10_bot2": {
+    "W": 20,
+    "L": 10,
+    "device": "bot2",
+    "linear_ok": true,
+    "linear_reasons": [],
+    "linear_metrics": {
+      "on_off_ratio": 128788.33660673816,
+      "frac_decreasing": 0.18518518518518517,
+      "net_rise_decades": 5.3375179997133895,
+      "frac_negative_on": 0.0,
+      "off_median": 3.9714e-12,
+      "off_log_std": 0.17725645089649697
+    },
+    "linear_path": "/home/user/igzoANN/data/tft linear [s5tft20-10bot2(1) ; 6_5_2026 4_06_08 pm].csv_s5_W20_L10_bot_2.csv",
+    "output_ok": true,
+    "output_reasons": [],
+    "output_metrics": {
+      "frac_decr_mean": 0.0,
+      "neg_frac_mean": 0.0,
+      "ordering_ok": true,
+      "on_off_ratio": 2685075.385397256
+    },
+    "output_path": "/home/user/igzoANN/data/tft output [s5tft20-10bot2(1) ; 6_5_2026 4_07_29 pm].csv_s5_W20_L10_bot_2.csv"
+  },
+  "W20_L10_top1": {
+    "W": 20,
+    "L": 10,
+    "device": "top1",
+    "linear_ok": true,
+    "linear_reasons": [],
+    "linear_metrics": {
+      "on_off_ratio": 242069.79691508762,
+      "frac_decreasing": 0.08994708994708994,
+      "net_rise_decades": 5.5889044127305665,
+      "frac_negative_on": 0.0,
+      "off_median": 3.2351000000000002e-12,
+      "off_log_std": 0.2342910409435213
+    },
+    "linear_path": "/home/user/igzoANN/data/tft linear [s5tft20-10top1(1) ; 6_5_2026 10_35_51 am].csv_s5_W20_L10_top_1.csv",
+    "output_ok": true,
+    "output_reasons": [],
+    "output_metrics": {
+      "frac_decr_mean": 0.0,
+      "neg_frac_mean": 0.0,
+      "ordering_ok": true,
+      "on_off_ratio": 22369825.20699172
+    },
+    "output_path": "/home/user/igzoANN/data/tft output [s5tft20-10top1(1) ; 6_5_2026 10_36_54 am].csv_s5_W20_L10_top_1.csv"
+  },
+  "W20_L10_top2": {
+    "W": 20,
+    "L": 10,
+    "device": "top2",
+    "linear_ok": false,
+    "linear_reasons": [
+      "low_on_off_ratio(7.8e-01)",
+      "flat_curve(net_rise=-0.11dec)"
+    ],
+    "linear_metrics": {
+      "on_off_ratio": 0.7795140457049949,
+      "frac_decreasing": 0.0,
+      "net_rise_decades": -0.10993994549245656,
+      "frac_negative_on": 0.0,
+      "off_median": 1.1071000000000002e-06,
+      "off_log_std": 0.005751665173286475
+    },
+    "linear_path": "/home/user/igzoANN/data/tft linear [s5tft20-10top2(1) ; 6_5_2026 11_47_21 am].csv_s5_W20_L10_top_2.csv",
+    "output_ok": false,
+    "output_reasons": [
+      "bad_vg_ordering(on/off=6.5e-01)",
+      "low_on_off_ratio(6.5e-01)"
+    ],
+    "output_metrics": {
+      "frac_decr_mean": 0.02,
+      "neg_frac_mean": 0.0,
+      "ordering_ok": false,
+      "on_off_ratio": 0.6522197669746886
+    },
+    "output_path": "/home/user/igzoANN/data/tft output [s5tft20-10top2(1) ; 6_5_2026 11_47_35 am].csv_s5_W20_L10_top_2.csv"
+  },
+  "W20_L15_bot1": {
+    "W": 20,
+    "L": 15,
+    "device": "bot1",
+    "linear_ok": true,
+    "linear_reasons": [],
+    "linear_metrics": {
+      "on_off_ratio": 158208.91293877666,
+      "frac_decreasing": 0.13227513227513227,
+      "net_rise_decades": 5.432100194270294,
+      "frac_negative_on": 0.0,
+      "off_median": 3.5297e-12,
+      "off_log_std": 0.2379229639361412
+    },
+    "linear_path": "/home/user/igzoANN/data/tft linear [s5tft20-15bot1(1) ; 6_5_2026 2_59_43 pm].csv_s5_W20_L15_bot_1.csv",
+    "output_ok": true,
+    "output_reasons": [],
+    "output_metrics": {
+      "frac_decr_mean": 0.0,
+      "neg_frac_mean": 0.0,
+      "ordering_ok": true,
+      "on_off_ratio": 4309623.430962343
+    },
+    "output_path": "/home/user/igzoANN/data/tft output [s5tft20-15bot1(1) ; 6_5_2026 3_00_47 pm].csv_s5_W20_L15_bot_1.csv"
+  },
+  "W20_L15_bot2": {
+    "W": 20,
+    "L": 15,
+    "device": "bot2",
+    "linear_ok": true,
+    "linear_reasons": [],
+    "linear_metrics": {
+      "on_off_ratio": 128551.81155593111,
+      "frac_decreasing": 0.09523809523809523,
+      "net_rise_decades": 5.310794473649456,
+      "frac_negative_on": 0.0,
+      "off_median": 3.7868e-12,
+      "off_log_std": 0.21439464255363122
+    },
+    "linear_path": "/home/user/igzoANN/data/tft linear [s5tft20-15bot2(1) ; 6_5_2026 4_21_04 pm].csv_s5_W20_L15_bot_2.csv",
+    "output_ok": true,
+    "output_reasons": [],
+    "output_metrics": {
+      "frac_decr_mean": 0.0,
+      "neg_frac_mean": 0.0,
+      "ordering_ok": true,
+      "on_off_ratio": 3085382.2512485594
+    },
+    "output_path": "/home/user/igzoANN/data/tft output [s5tft20-15bot2(1) ; 6_5_2026 4_22_15 pm].csv_s5_W20_L15_bot_2.csv"
+  },
+  "W20_L15_top1": {
+    "W": 20,
+    "L": 15,
+    "device": "top1",
+    "linear_ok": false,
+    "linear_reasons": [
+      "low_on_off_ratio(1.0e+00)",
+      "flat_curve(net_rise=-0.00dec)"
+    ],
+    "linear_metrics": {
+      "on_off_ratio": 0.9993202718912436,
+      "frac_decreasing": 0.0,
+      "net_rise_decades": -0.0002218172658041695,
+      "frac_negative_on": 0.0,
+      "off_median": 1.0004e-06,
+      "off_log_std": 5.808209340324543e-05
+    },
+    "linear_path": "/home/user/igzoANN/data/tft linear [s5tft20-15top1(2) ; 6_5_2026 10_50_39 am].csv_s5_W20_L15_top_1_run2.csv",
+    "output_ok": false,
+    "output_reasons": [
+      "bad_vg_ordering(on/off=1.0e+00)",
+      "low_on_off_ratio(1.0e+00)"
+    ],
+    "output_metrics": {
+      "frac_decr_mean": 0.0,
+      "neg_frac_mean": 0.0,
+      "ordering_ok": false,
+      "on_off_ratio": 0.9953376660073467
+    },
+    "output_path": "/home/user/igzoANN/data/tft output [s5tft20-15top1(2) ; 6_5_2026 10_50_55 am].csv_s5_W20_L15_top_1_run2.csv"
+  },
+  "W20_L15_top2": {
+    "W": 20,
+    "L": 15,
+    "device": "top2",
+    "linear_ok": false,
+    "linear_reasons": [
+      "low_on_off_ratio(1.0e+00)",
+      "flat_curve(net_rise=-0.00dec)"
+    ],
+    "linear_metrics": {
+      "on_off_ratio": 0.9994101297714503,
+      "frac_decreasing": 0.010582010582010581,
+      "net_rise_decades": -0.00016705692676488582,
+      "frac_negative_on": 0.0,
+      "off_median": 1.00022e-06,
+      "off_log_std": 7.73204847326228e-05
+    },
+    "linear_path": "/home/user/igzoANN/data/tft linear [s5tft20-15top2(1) ; 6_5_2026 11_57_02 am].csv_s5_W20_L15_top_2.csv",
+    "output_ok": false,
+    "output_reasons": [
+      "bad_vg_ordering(on/off=1.0e+00)",
+      "low_on_off_ratio(1.0e+00)"
+    ],
+    "output_metrics": {
+      "frac_decr_mean": 0.0,
+      "neg_frac_mean": 0.0,
+      "ordering_ok": false,
+      "on_off_ratio": 0.9973197534173144
+    },
+    "output_path": "/home/user/igzoANN/data/tft output [s5tft20-15top2(1) ; 6_5_2026 11_57_18 am].csv_s5_W20_L15_top_2.csv"
+  },
+  "W20_L20_bot1": {
+    "W": 20,
+    "L": 20,
+    "device": "bot1",
+    "linear_ok": true,
+    "linear_reasons": [],
+    "linear_metrics": {
+      "on_off_ratio": 121361.13643716362,
+      "frac_decreasing": 0.13227513227513227,
+      "net_rise_decades": 5.250613525007048,
+      "frac_negative_on": 0.0,
+      "off_median": 3.4001e-12,
+      "off_log_std": 0.20476539740469923
+    },
+    "linear_path": "/home/user/igzoANN/data/tft linear [s5tft20-20bot1(1) ; 6_5_2026 3_14_42 pm].csv_s5_W20_L20_bot_1.csv",
+    "output_ok": true,
+    "output_reasons": [],
+    "output_metrics": {
+      "frac_decr_mean": 0.0,
+      "neg_frac_mean": 0.0,
+      "ordering_ok": true,
+      "on_off_ratio": 8989259.967632778
+    },
+    "output_path": "/home/user/igzoANN/data/tft output [s5tft20-20bot1(1) ; 6_5_2026 3_15_45 pm].csv_s5_W20_L20_bot_1.csv"
+  },
+  "W20_L20_bot2": {
+    "W": 20,
+    "L": 20,
+    "device": "bot2",
+    "linear_ok": true,
+    "linear_reasons": [],
+    "linear_metrics": {
+      "on_off_ratio": 109499.28095175842,
+      "frac_decreasing": 0.047619047619047616,
+      "net_rise_decades": 5.214817541399749,
+      "frac_negative_on": 0.0,
+      "off_median": 3.824499999999999e-12,
+      "off_log_std": 0.1983263139709093
+    },
+    "linear_path": "/home/user/igzoANN/data/tft linear [s5tft20-20bot2(1) ; 6_5_2026 4_35_30 pm].csv_s5_W20_L20_bot_2.csv",
+    "output_ok": true,
+    "output_reasons": [],
+    "output_metrics": {
+      "frac_decr_mean": 0.0,
+      "neg_frac_mean": 0.0,
+      "ordering_ok": true,
+      "on_off_ratio": 3094280.9669293026
+    },
+    "output_path": "/home/user/igzoANN/data/tft output [s5tft20-20bot2(1) ; 6_5_2026 4_36_42 pm].csv_s5_W20_L20_bot_2.csv"
+  },
+  "W20_L20_top1": {
+    "W": 20,
+    "L": 20,
+    "device": "top1",
+    "linear_ok": false,
+    "linear_reasons": [
+      "low_on_off_ratio(1.0e+00)",
+      "flat_curve(net_rise=-0.00dec)"
+    ],
+    "linear_metrics": {
+      "on_off_ratio": 0.9998100303951368,
+      "frac_decreasing": 0.0,
+      "net_rise_decades": -6.480628507965491e-05,
+      "frac_negative_on": 0.0,
+      "off_median": 1.00016e-06,
+      "off_log_std": 2.8336562715352485e-05
+    },
+    "linear_path": "/home/user/igzoANN/data/tft linear [s5tft20-20top1(2) ; 6_5_2026 10_59_56 am].csv_s5_W20_L20_top_1_run2.csv",
+    "output_ok": false,
+    "output_reasons": [
+      "bad_vg_ordering(on/off=1.0e+00)",
+      "low_on_off_ratio(1.0e+00)"
+    ],
+    "output_metrics": {
+      "frac_decr_mean": 0.0,
+      "neg_frac_mean": 0.0,
+      "ordering_ok": false,
+      "on_off_ratio": 0.9969637164111128
+    },
+    "output_path": "/home/user/igzoANN/data/tft output [s5tft20-20top1(2) ; 6_5_2026 11_00_12 am].csv_s5_W20_L20_top_1_run2.csv"
+  },
+  "W20_L20_top2": {
+    "W": 20,
+    "L": 20,
+    "device": "top2",
+    "linear_ok": true,
+    "linear_reasons": [],
+    "linear_metrics": {
+      "on_off_ratio": 107716.0041073786,
+      "frac_decreasing": 0.08994708994708994,
+      "net_rise_decades": 5.305720404522867,
+      "frac_negative_on": 0.0,
+      "off_median": 3.4085000000000003e-12,
+      "off_log_std": 0.29158176937965996
+    },
+    "linear_path": "/home/user/igzoANN/data/tft linear [s5tft20-20top2(1) ; 6_5_2026 12_06_28 pm].csv_s5_W20_L20_top_2.csv",
+    "output_ok": true,
+    "output_reasons": [],
+    "output_metrics": {
+      "frac_decr_mean": 0.0,
+      "neg_frac_mean": 0.0,
+      "ordering_ok": true,
+      "on_off_ratio": 2180062.104286809
+    },
+    "output_path": "/home/user/igzoANN/data/tft output [s5tft20-20top2(1) ; 6_5_2026 12_07_32 pm].csv_s5_W20_L20_top_2.csv"
+  },
+  "W40_L5_bot1": {
+    "W": 40,
+    "L": 5,
+    "device": "bot1",
+    "linear_ok": true,
+    "linear_reasons": [],
+    "linear_metrics": {
+      "on_off_ratio": 1170423.5090751946,
+      "frac_decreasing": 0.1164021164021164,
+      "net_rise_decades": 6.182346915607214,
+      "frac_negative_on": 0.0,
+      "off_median": 2.8925e-12,
+      "off_log_std": 0.18673118931359095
+    },
+    "linear_path": "/home/user/igzoANN/data/tft linear [s5tft40-5bot1(1) ; 6_5_2026 2_30_53 pm].csv_s5_W40_L5_bot_1.csv",
+    "output_ok": true,
+    "output_reasons": [],
+    "output_metrics": {
+      "frac_decr_mean": 0.0,
+      "neg_frac_mean": 0.0,
+      "ordering_ok": true,
+      "on_off_ratio": 45344827.5862069
+    },
+    "output_path": "/home/user/igzoANN/data/tft output [s5tft40-5bot1(1) ; 6_5_2026 2_31_56 pm].csv_s5_W40_L5_bot_1.csv"
+  },
+  "W40_L5_bot2": {
+    "W": 40,
+    "L": 5,
+    "device": "bot2",
+    "linear_ok": true,
+    "linear_reasons": [],
+    "linear_metrics": {
+      "on_off_ratio": 378344.3774600169,
+      "frac_decreasing": 0.164021164021164,
+      "net_rise_decades": 5.7421704133929286,
+      "frac_negative_on": 0.0,
+      "off_median": 4.0142000000000004e-12,
+      "off_log_std": 0.19413059943013813
+    },
+    "linear_path": "/home/user/igzoANN/data/tft linear [s5tft40-5bot2(1) ; 6_5_2026 3_50_23 pm].csv_s5_W40_L5_bot_2.csv",
+    "output_ok": true,
+    "output_reasons": [],
+    "output_metrics": {
+      "frac_decr_mean": 0.0,
+      "neg_frac_mean": 0.0,
+      "ordering_ok": true,
+      "on_off_ratio": 11965128.950236104
+    },
+    "output_path": "/home/user/igzoANN/data/tft output [s5tft40-5bot2(1) ; 6_5_2026 3_51_35 pm].csv_s5_W40_L5_bot_2.csv"
+  },
+  "W40_L5_top1": {
+    "W": 40,
+    "L": 5,
+    "device": "top1",
+    "linear_ok": true,
+    "linear_reasons": [],
+    "linear_metrics": {
+      "on_off_ratio": 878382.6260894415,
+      "frac_decreasing": 0.1164021164021164,
+      "net_rise_decades": 6.070461850779523,
+      "frac_negative_on": 0.0,
+      "off_median": 3.4994999999999998e-12,
+      "off_log_std": 0.2727524973602207
+    },
+    "linear_path": "/home/user/igzoANN/data/tft linear [s5tft40-5top1(1) ; 6_5_2026 10_21_00 am].csv_s5_W40_L5_top_1.csv",
+    "output_ok": true,
+    "output_reasons": [],
+    "output_metrics": {
+      "frac_decr_mean": 0.0,
+      "neg_frac_mean": 0.0,
+      "ordering_ok": true,
+      "on_off_ratio": 105475150.75899355
+    },
+    "output_path": "/home/user/igzoANN/data/tft output [s5tft40-5top1(1) ; 6_5_2026 10_22_02 am].csv_s5_W40_L5_top_1.csv"
+  },
+  "W40_L5_top2": {
+    "W": 40,
+    "L": 5,
+    "device": "top2",
+    "linear_ok": false,
+    "linear_reasons": [
+      "low_on_off_ratio(1.0e+00)",
+      "flat_curve(net_rise=-0.00dec)"
+    ],
+    "linear_metrics": {
+      "on_off_ratio": 0.9966159221362616,
+      "frac_decreasing": 0.0,
+      "net_rise_decades": -0.0013910823300351538,
+      "frac_negative_on": 0.0,
+      "off_median": 1.00175e-06,
+      "off_log_std": 0.00012089388293955003
+    },
+    "linear_path": "/home/user/igzoANN/data/tft linear [s5tft40-5top2(1) ; 6_5_2026 11_20_40 am].csv_s5_W40_L5_top_2.csv",
+    "output_ok": false,
+    "output_reasons": [
+      "bad_vg_ordering(on/off=1.0e+00)",
+      "low_on_off_ratio(1.0e+00)"
+    ],
+    "output_metrics": {
+      "frac_decr_mean": 0.0,
+      "neg_frac_mean": 0.0,
+      "ordering_ok": false,
+      "on_off_ratio": 0.9971697344844437
+    },
+    "output_path": "/home/user/igzoANN/data/tft output [s5tft40-5top2(1) ; 6_5_2026 11_20_56 am].csv_s5_W40_L5_top_2.csv"
+  },
+  "W40_L10_bot1": {
+    "W": 40,
+    "L": 10,
+    "device": "bot1",
+    "linear_ok": true,
+    "linear_reasons": [],
+    "linear_metrics": {
+      "on_off_ratio": 571412.5602420892,
+      "frac_decreasing": 0.13756613756613756,
+      "net_rise_decades": 5.858052362148499,
+      "frac_negative_on": 0.0,
+      "off_median": 2.6767e-12,
+      "off_log_std": 0.18960978572297627
+    },
+    "linear_path": "/home/user/igzoANN/data/tft linear [s5tft40-10bot1(1) ; 6_5_2026 2_48_49 pm].csv_s5_W40_L10_bot_1.csv",
+    "output_ok": true,
+    "output_reasons": [],
+    "output_metrics": {
+      "frac_decr_mean": 0.0,
+      "neg_frac_mean": 0.0,
+      "ordering_ok": true,
+      "on_off_ratio": 12581992.661586225
+    },
+    "output_path": "/home/user/igzoANN/data/tft output [s5tft40-10bot1(1) ; 6_5_2026 2_50_01 pm].csv_s5_W40_L10_bot_1.csv"
+  },
+  "W40_L10_bot2": {
+    "W": 40,
+    "L": 10,
+    "device": "bot2",
+    "linear_ok": true,
+    "linear_reasons": [],
+    "linear_metrics": {
+      "on_off_ratio": 469204.25595684105,
+      "frac_decreasing": 0.07936507936507936,
+      "net_rise_decades": 5.926038426735136,
+      "frac_negative_on": 0.0,
+      "off_median": 3.3364999999999998e-12,
+      "off_log_std": 0.25594601269396117
+    },
+    "linear_path": "/home/user/igzoANN/data/tft linear [s5tft40-10bot2(1) ; 6_5_2026 4_09_54 pm].csv_s5_W40_L10_bot_2.csv",
+    "output_ok": true,
+    "output_reasons": [],
+    "output_metrics": {
+      "frac_decr_mean": 0.0,
+      "neg_frac_mean": 0.0,
+      "ordering_ok": true,
+      "on_off_ratio": 24169278.9968652
+    },
+    "output_path": "/home/user/igzoANN/data/tft output [s5tft40-10bot2(1) ; 6_5_2026 4_11_05 pm].csv_s5_W40_L10_bot_2.csv"
+  },
+  "W40_L10_top1": {
+    "W": 40,
+    "L": 10,
+    "device": "top1",
+    "linear_ok": true,
+    "linear_reasons": [],
+    "linear_metrics": {
+      "on_off_ratio": 433521.06134061026,
+      "frac_decreasing": 0.1111111111111111,
+      "net_rise_decades": 5.909292205093073,
+      "frac_negative_on": 0.0,
+      "off_median": 3.4447e-12,
+      "off_log_std": 0.3440953360543669
+    },
+    "linear_path": "/home/user/igzoANN/data/tft linear [s5tft40-10top1(2) ; 6_5_2026 10_40_42 am].csv_s5_W40_L10_top_1_run2.csv",
+    "output_ok": true,
+    "output_reasons": [],
+    "output_metrics": {
+      "frac_decr_mean": 0.0,
+      "neg_frac_mean": 0.0,
+      "ordering_ok": true,
+      "on_off_ratio": 30763447.828904733
+    },
+    "output_path": "/home/user/igzoANN/data/tft output [s5tft40-10top1(2) ; 6_5_2026 10_41_44 am].csv_s5_W40_L10_top_1_run2.csv"
+  },
+  "W40_L10_top2": {
+    "W": 40,
+    "L": 10,
+    "device": "top2",
+    "linear_ok": false,
+    "linear_reasons": [
+      "low_on_off_ratio(2.3e-01)",
+      "flat_curve(net_rise=-0.64dec)"
+    ],
+    "linear_metrics": {
+      "on_off_ratio": 0.23037911435887823,
+      "frac_decreasing": 0.06878306878306878,
+      "net_rise_decades": -0.6422059469717594,
+      "frac_negative_on": 0.0,
+      "off_median": 1.6011000000000002e-06,
+      "off_log_std": 0.012435134567430358
+    },
+    "linear_path": "/home/user/igzoANN/data/tft linear [s5tft40-10top2(1) ; 6_5_2026 11_48_37 am].csv_s5_W40_L10_top_2.csv",
+    "output_ok": false,
+    "output_reasons": [
+      "bad_vg_ordering(on/off=7.3e-01)",
+      "low_on_off_ratio(7.3e-01)"
+    ],
+    "output_metrics": {
+      "frac_decr_mean": 0.0,
+      "neg_frac_mean": 0.0,
+      "ordering_ok": false,
+      "on_off_ratio": 0.7345825044357224
+    },
+    "output_path": "/home/user/igzoANN/data/tft output [s5tft40-10top2(1) ; 6_5_2026 11_48_51 am].csv_s5_W40_L10_top_2.csv"
+  },
+  "W40_L15_bot1": {
+    "W": 40,
+    "L": 15,
+    "device": "bot1",
+    "linear_ok": true,
+    "linear_reasons": [],
+    "linear_metrics": {
+      "on_off_ratio": 322495.285071812,
+      "frac_decreasing": 0.08994708994708994,
+      "net_rise_decades": 5.882475973796314,
+      "frac_negative_on": 0.0,
+      "off_median": 3.4465e-12,
+      "off_log_std": 0.39074530286816694
+    },
+    "linear_path": "/home/user/igzoANN/data/tft linear [s5tft40-15bot1(1) ; 6_5_2026 3_03_08 pm].csv_s5_W40_L15_bot_1.csv",
+    "output_ok": true,
+    "output_reasons": [],
+    "output_metrics": {
+      "frac_decr_mean": 0.0,
+      "neg_frac_mean": 0.0,
+      "ordering_ok": true,
+      "on_off_ratio": 31668246.44549763
+    },
+    "output_path": "/home/user/igzoANN/data/tft output [s5tft40-15bot1(1) ; 6_5_2026 3_04_11 pm].csv_s5_W40_L15_bot_1.csv"
+  },
+  "W40_L15_bot2": {
+    "W": 40,
+    "L": 15,
+    "device": "bot2",
+    "linear_ok": true,
+    "linear_reasons": [],
+    "linear_metrics": {
+      "on_off_ratio": 246722.46750061316,
+      "frac_decreasing": 0.12169312169312169,
+      "net_rise_decades": 5.568921949706336,
+      "frac_negative_on": 0.0,
+      "off_median": 3.2616e-12,
+      "off_log_std": 0.25328907324268823
+    },
+    "linear_path": "/home/user/igzoANN/data/tft linear [s5tft40-15bot2(1) ; 6_5_2026 4_24_39 pm].csv_s5_W40_L15_bot_2.csv",
+    "output_ok": true,
+    "output_reasons": [],
+    "output_metrics": {
+      "frac_decr_mean": 0.0,
+      "neg_frac_mean": 0.0,
+      "ordering_ok": true,
+      "on_off_ratio": 128591916.55801825
+    },
+    "output_path": "/home/user/igzoANN/data/tft output [s5tft40-15bot2(1) ; 6_5_2026 4_25_51 pm].csv_s5_W40_L15_bot_2.csv"
+  },
+  "W40_L15_top1": {
+    "W": 40,
+    "L": 15,
+    "device": "top1",
+    "linear_ok": false,
+    "linear_reasons": [
+      "low_on_off_ratio(9.7e-01)",
+      "flat_curve(net_rise=-0.01dec)"
+    ],
+    "linear_metrics": {
+      "on_off_ratio": 0.9731716097034179,
+      "frac_decreasing": 0.06878306878306878,
+      "net_rise_decades": -0.011793310548970481,
+      "frac_negative_on": 0.0,
+      "off_median": 1.00006e-06,
+      "off_log_std": 0.00010560176941700841
+    },
+    "linear_path": "/home/user/igzoANN/data/tft linear [s5tft40-15top1(1) ; 6_5_2026 10_52_05 am].csv_s5_W40_L15_top_1.csv",
+    "output_ok": false,
+    "output_reasons": [
+      "bad_vg_ordering(on/off=1.0e+00)",
+      "low_on_off_ratio(1.0e+00)"
+    ],
+    "output_metrics": {
+      "frac_decr_mean": 0.0,
+      "neg_frac_mean": 0.0,
+      "ordering_ok": false,
+      "on_off_ratio": 1.0134976119609607
+    },
+    "output_path": "/home/user/igzoANN/data/tft output [s5tft40-15top1(1) ; 6_5_2026 10_52_22 am].csv_s5_W40_L15_top_1.csv"
+  },
+  "W40_L15_top2": {
+    "W": 40,
+    "L": 15,
+    "device": "top2",
+    "linear_ok": false,
+    "linear_reasons": [
+      "low_on_off_ratio(4.8e-01)",
+      "flat_curve(net_rise=-0.31dec)"
+    ],
+    "linear_metrics": {
+      "on_off_ratio": 0.4778950526373206,
+      "frac_decreasing": 0.06878306878306878,
+      "net_rise_decades": -0.31441203562880826,
+      "frac_negative_on": 0.0,
+      "off_median": 3.6666000000000006e-06,
+      "off_log_std": 0.01990991066907615
+    },
+    "linear_path": "/home/user/igzoANN/data/tft linear [s5tft40-15top2(1) ; 6_5_2026 11_58_14 am].csv_s5_W40_L15_top_2.csv",
+    "output_ok": false,
+    "output_reasons": [
+      "bad_vg_ordering(on/off=8.2e-01)",
+      "low_on_off_ratio(8.2e-01)"
+    ],
+    "output_metrics": {
+      "frac_decr_mean": 0.0,
+      "neg_frac_mean": 0.0,
+      "ordering_ok": false,
+      "on_off_ratio": 0.8201587849499481
+    },
+    "output_path": "/home/user/igzoANN/data/tft output [s5tft40-15top2(1) ; 6_5_2026 11_58_29 am].csv_s5_W40_L15_top_2.csv"
+  },
+  "W40_L20_bot1": {
+    "W": 40,
+    "L": 20,
+    "device": "bot1",
+    "linear_ok": true,
+    "linear_reasons": [],
+    "linear_metrics": {
+      "on_off_ratio": 221254.56922543293,
+      "frac_decreasing": 0.10582010582010581,
+      "net_rise_decades": 5.528895413287046,
+      "frac_negative_on": 0.0,
+      "off_median": 3.7479e-12,
+      "off_log_std": 0.4675032062078996
+    },
+    "linear_path": "/home/user/igzoANN/data/tft linear [s5tft40-20bot1(1) ; 6_5_2026 3_18_15 pm].csv_s5_W40_L20_bot_1.csv",
+    "output_ok": true,
+    "output_reasons": [],
+    "output_metrics": {
+      "frac_decr_mean": 0.0,
+      "neg_frac_mean": 0.0,
+      "ordering_ok": true,
+      "on_off_ratio": 6581196.581196581
+    },
+    "output_path": "/home/user/igzoANN/data/tft output [s5tft40-20bot1(1) ; 6_5_2026 3_19_17 pm].csv_s5_W40_L20_bot_1.csv"
+  },
+  "W40_L20_bot2": {
+    "W": 40,
+    "L": 20,
+    "device": "bot2",
+    "linear_ok": true,
+    "linear_reasons": [],
+    "linear_metrics": {
+      "on_off_ratio": 8588.485497104908,
+      "frac_decreasing": 0.2275132275132275,
+      "net_rise_decades": 4.360788337483372,
+      "frac_negative_on": 0.0,
+      "off_median": 3.6441e-12,
+      "off_log_std": 0.3442798252855046
+    },
+    "linear_path": "/home/user/igzoANN/data/tft linear [s5tft40-20bot2(1) ; 6_5_2026 4_39_19 pm].csv_s5_W40_L20_bot_2.csv",
+    "output_ok": true,
+    "output_reasons": [],
+    "output_metrics": {
+      "frac_decr_mean": 0.0,
+      "neg_frac_mean": 0.0,
+      "ordering_ok": true,
+      "on_off_ratio": 2151830.3280469263
+    },
+    "output_path": "/home/user/igzoANN/data/tft output [s5tft40-20bot2(1) ; 6_5_2026 4_40_40 pm].csv_s5_W40_L20_bot_2.csv"
+  },
+  "W40_L20_top1": {
+    "W": 40,
+    "L": 20,
+    "device": "top1",
+    "linear_ok": false,
+    "linear_reasons": [
+      "low_on_off_ratio(9.8e-01)",
+      "flat_curve(net_rise=-0.01dec)"
+    ],
+    "linear_metrics": {
+      "on_off_ratio": 0.9755409783608655,
+      "frac_decreasing": 0.07936507936507936,
+      "net_rise_decades": -0.010664403321499094,
+      "frac_negative_on": 0.0,
+      "off_median": 1.00004e-06,
+      "off_log_std": 7.974530746736026e-05
+    },
+    "linear_path": "/home/user/igzoANN/data/tft linear [s5tft40-20top1(1) ; 6_5_2026 11_01_15 am].csv_s5_W40_L20_top_1.csv",
+    "output_ok": false,
+    "output_reasons": [
+      "bad_vg_ordering(on/off=1.1e+00)",
+      "low_on_off_ratio(1.1e+00)"
+    ],
+    "output_metrics": {
+      "frac_decr_mean": 0.0,
+      "neg_frac_mean": 0.0,
+      "ordering_ok": false,
+      "on_off_ratio": 1.0556047633106977
+    },
+    "output_path": "/home/user/igzoANN/data/tft output [s5tft40-20top1(1) ; 6_5_2026 11_01_32 am].csv_s5_W40_L20_top_1.csv"
+  },
+  "W40_L20_top2": {
+    "W": 40,
+    "L": 20,
+    "device": "top2",
+    "linear_ok": true,
+    "linear_reasons": [],
+    "linear_metrics": {
+      "on_off_ratio": 25754.451685739212,
+      "frac_decreasing": 0.1111111111111111,
+      "net_rise_decades": 4.514941462159116,
+      "frac_negative_on": 0.0,
+      "off_median": 3.8974e-12,
+      "off_log_std": 0.33532895734644724
+    },
+    "linear_path": "/home/user/igzoANN/data/tft linear [s5tft40-20top2(2) ; 6_5_2026 12_10_18 pm].csv_s5_W40_L20_top_2_run2.csv",
+    "output_ok": false,
+    "output_reasons": [
+      "bad_vg_ordering(on/off=9.3e-01)",
+      "low_on_off_ratio(9.3e-01)"
+    ],
+    "output_metrics": {
+      "frac_decr_mean": 0.25,
+      "neg_frac_mean": 0.0,
+      "ordering_ok": false,
+      "on_off_ratio": 0.9340324875111655
+    },
+    "output_path": "/home/user/igzoANN/data/tft output [s5tft40-20top2(2) ; 6_5_2026 12_10_45 pm].csv_s5_W40_L20_top_2_run2.csv"
+  },
+  "W80_L5_bot1": {
+    "W": 80,
+    "L": 5,
+    "device": "bot1",
+    "linear_ok": true,
+    "linear_reasons": [],
+    "linear_metrics": {
+      "on_off_ratio": 1827559.6300503006,
+      "frac_decreasing": 0.12169312169312169,
+      "net_rise_decades": 6.488691349024175,
+      "frac_negative_on": 0.0,
+      "off_median": 3.6978e-12,
+      "off_log_std": 0.2462178966146225
+    },
+    "linear_path": "/home/user/igzoANN/data/tft linear [s5tft80-5bot1(1) ; 6_5_2026 2_34_31 pm].csv_s5_W80_L5_bot_1.csv",
+    "output_ok": true,
+    "output_reasons": [],
+    "output_metrics": {
+      "frac_decr_mean": 0.0,
+      "neg_frac_mean": 0.0,
+      "ordering_ok": true,
+      "on_off_ratio": 40100829.74477471
+    },
+    "output_path": "/home/user/igzoANN/data/tft output [s5tft80-5bot1(1) ; 6_5_2026 2_35_33 pm].csv_s5_W80_L5_bot_1.csv"
+  },
+  "W80_L5_bot2": {
+    "W": 80,
+    "L": 5,
+    "device": "bot2",
+    "linear_ok": true,
+    "linear_reasons": [],
+    "linear_metrics": {
+      "on_off_ratio": 789590.7359595083,
+      "frac_decreasing": 0.1164021164021164,
+      "net_rise_decades": 6.0330686105550715,
+      "frac_negative_on": 0.0,
+      "off_median": 3.9119e-12,
+      "off_log_std": 0.19696037151251458
+    },
+    "linear_path": "/home/user/igzoANN/data/tft linear [s5tft80-5bot2(1) ; 6_5_2026 3_54_11 pm].csv_s5_W80_L5_bot_2.csv",
+    "output_ok": true,
+    "output_reasons": [],
+    "output_metrics": {
+      "frac_decr_mean": 0.0,
+      "neg_frac_mean": 0.0,
+      "ordering_ok": true,
+      "on_off_ratio": 39910044.97751125
+    },
+    "output_path": "/home/user/igzoANN/data/tft output [s5tft80-5bot2(1) ; 6_5_2026 3_55_22 pm].csv_s5_W80_L5_bot_2.csv"
+  },
+  "W80_L5_top1": {
+    "W": 80,
+    "L": 5,
+    "device": "top1",
+    "linear_ok": false,
+    "linear_reasons": [
+      "low_on_off_ratio(5.7e+00)",
+      "flat_curve(net_rise=0.97dec)"
+    ],
+    "linear_metrics": {
+      "on_off_ratio": 5.72540931428717,
+      "frac_decreasing": 0.0,
+      "net_rise_decades": 0.9745598167129419,
+      "frac_negative_on": 0.0,
+      "off_median": 9.81825e-09,
+      "off_log_std": 0.11638188591659612
+    },
+    "linear_path": "/home/user/igzoANN/data/tft linear [s5tft80-5top1(1) ; 6_5_2026 10_24_53 am].csv_s5_W80_L5_top_1.csv",
+    "output_ok": false,
+    "output_reasons": [
+      "bad_vg_ordering(on/off=1.4e+00)",
+      "low_on_off_ratio(1.4e+00)"
+    ],
+    "output_metrics": {
+      "frac_decr_mean": 0.0,
+      "neg_frac_mean": 0.0,
+      "ordering_ok": false,
+      "on_off_ratio": 1.4144473455178415
+    },
+    "output_path": "/home/user/igzoANN/data/tft output [s5tft80-5top1(1) ; 6_5_2026 10_25_10 am].csv_s5_W80_L5_top_1.csv"
+  },
+  "W80_L5_top2": {
+    "W": 80,
+    "L": 5,
+    "device": "top2",
+    "linear_ok": false,
+    "linear_reasons": [
+      "low_on_off_ratio(9.9e-01)",
+      "flat_curve(net_rise=-0.00dec)"
+    ],
+    "linear_metrics": {
+      "on_off_ratio": 0.9942864550095722,
+      "frac_decreasing": 0.0,
+      "net_rise_decades": -0.002448839585088791,
+      "frac_negative_on": 0.0,
+      "off_median": 1.00288e-06,
+      "off_log_std": 8.010766934828848e-05
+    },
+    "linear_path": "/home/user/igzoANN/data/tft linear [s5tft80-5top2(1) ; 6_5_2026 11_22_29 am].csv_s5_W80_L5_top_2.csv",
+    "output_ok": false,
+    "output_reasons": [
+      "bad_vg_ordering(on/off=1.0e+00)",
+      "low_on_off_ratio(1.0e+00)"
+    ],
+    "output_metrics": {
+      "frac_decr_mean": 0.0,
+      "neg_frac_mean": 0.0,
+      "ordering_ok": false,
+      "on_off_ratio": 0.9981209240632253
+    },
+    "output_path": "/home/user/igzoANN/data/tft output [s5tft80-5top2(1) ; 6_5_2026 11_22_45 am].csv_s5_W80_L5_top_2.csv"
+  },
+  "W80_L10_bot1": {
+    "W": 80,
+    "L": 10,
+    "device": "bot1",
+    "linear_ok": true,
+    "linear_reasons": [],
+    "linear_metrics": {
+      "on_off_ratio": 617698.2723438989,
+      "frac_decreasing": 0.08465608465608465,
+      "net_rise_decades": 5.933785707931726,
+      "frac_negative_on": 0.0,
+      "off_median": 3.6755e-12,
+      "off_log_std": 0.24127639808171222
+    },
+    "linear_path": "/home/user/igzoANN/data/tft linear [s5tft80-10bot1(2) ; 6_5_2026 2_52_38 pm].csv_s5_W80_L10_bot_1_run2.csv",
+    "output_ok": true,
+    "output_reasons": [],
+    "output_metrics": {
+      "frac_decr_mean": 0.0,
+      "neg_frac_mean": 0.0,
+      "ordering_ok": true,
+      "on_off_ratio": 41077935.62886267
+    },
+    "output_path": "/home/user/igzoANN/data/tft output [s5tft80-10bot1(2) ; 6_5_2026 2_53_40 pm].csv_s5_W80_L10_bot_1_run2.csv"
+  },
+  "W80_L10_bot2": {
+    "W": 80,
+    "L": 10,
+    "device": "bot2",
+    "linear_ok": true,
+    "linear_reasons": [],
+    "linear_metrics": {
+      "on_off_ratio": 678739.6181179896,
+      "frac_decreasing": 0.10052910052910052,
+      "net_rise_decades": 6.014745310162997,
+      "frac_negative_on": 0.0,
+      "off_median": 3.5037e-12,
+      "off_log_std": 0.3504832274831445
+    },
+    "linear_path": "/home/user/igzoANN/data/tft linear [s5tft80-10bot2(1) ; 6_5_2026 4_13_36 pm].csv_s5_W80_L10_bot_2.csv",
+    "output_ok": true,
+    "output_reasons": [],
+    "output_metrics": {
+      "frac_decr_mean": 0.0,
+      "neg_frac_mean": 0.0,
+      "ordering_ok": true,
+      "on_off_ratio": 25390725.083269283
+    },
+    "output_path": "/home/user/igzoANN/data/tft output [s5tft80-10bot2(1) ; 6_5_2026 4_14_48 pm].csv_s5_W80_L10_bot_2.csv"
+  },
+  "W80_L10_top1": {
+    "W": 80,
+    "L": 10,
+    "device": "top1",
+    "linear_ok": true,
+    "linear_reasons": [],
+    "linear_metrics": {
+      "on_off_ratio": 808742.7025487685,
+      "frac_decreasing": 0.08994708994708994,
+      "net_rise_decades": 6.0372652997255045,
+      "frac_negative_on": 0.0,
+      "off_median": 3.5115e-12,
+      "off_log_std": 0.2773559709581776
+    },
+    "linear_path": "/home/user/igzoANN/data/tft linear [s5tft80-10top1(1) ; 6_5_2026 10_44_23 am].csv_s5_W80_L10_top_1.csv",
+    "output_ok": true,
+    "output_reasons": [],
+    "output_metrics": {
+      "frac_decr_mean": 0.0,
+      "neg_frac_mean": 0.0,
+      "ordering_ok": true,
+      "on_off_ratio": 17674060.97420322
+    },
+    "output_path": "/home/user/igzoANN/data/tft output [s5tft80-10top1(1) ; 6_5_2026 10_45_25 am].csv_s5_W80_L10_top_1.csv"
+  },
+  "W80_L10_top2": {
+    "W": 80,
+    "L": 10,
+    "device": "top2",
+    "linear_ok": true,
+    "linear_reasons": [],
+    "linear_metrics": {
+      "on_off_ratio": 905518.0342003162,
+      "frac_decreasing": 0.12169312169312169,
+      "net_rise_decades": 6.1764790418087205,
+      "frac_negative_on": 0.0,
+      "off_median": 3.4795000000000003e-12,
+      "off_log_std": 0.38206189020360265
+    },
+    "linear_path": "/home/user/igzoANN/data/tft linear [s5tft80-10top2(1) ; 6_5_2026 11_51_16 am].csv_s5_W80_L10_top_2.csv",
+    "output_ok": true,
+    "output_reasons": [],
+    "output_metrics": {
+      "frac_decr_mean": 0.0,
+      "neg_frac_mean": 0.0,
+      "ordering_ok": true,
+      "on_off_ratio": 53226052.80384028
+    },
+    "output_path": "/home/user/igzoANN/data/tft output [s5tft80-10top2(1) ; 6_5_2026 11_52_19 am].csv_s5_W80_L10_top_2.csv"
+  },
+  "W80_L15_bot1": {
+    "W": 80,
+    "L": 15,
+    "device": "bot1",
+    "linear_ok": true,
+    "linear_reasons": [],
+    "linear_metrics": {
+      "on_off_ratio": 649773.261672825,
+      "frac_decreasing": 0.05291005291005291,
+      "net_rise_decades": 5.999608662160167,
+      "frac_negative_on": 0.0,
+      "off_median": 3.5724e-12,
+      "off_log_std": 0.2880797871911466
+    },
+    "linear_path": "/home/user/igzoANN/data/tft linear [s5tft80-15bot1(2) ; 6_5_2026 3_07_39 pm].csv_s5_W80_L15_bot_1_run2.csv",
+    "output_ok": true,
+    "output_reasons": [],
+    "output_metrics": {
+      "frac_decr_mean": 0.0,
+      "neg_frac_mean": 0.0,
+      "ordering_ok": true,
+      "on_off_ratio": 27432038.08938719
+    },
+    "output_path": "/home/user/igzoANN/data/tft output [s5tft80-15bot1(2) ; 6_5_2026 3_08_41 pm].csv_s5_W80_L15_bot_1_run2.csv"
+  },
+  "W80_L15_bot2": {
+    "W": 80,
+    "L": 15,
+    "device": "bot2",
+    "linear_ok": true,
+    "linear_reasons": [],
+    "linear_metrics": {
+      "on_off_ratio": 595275.9482171247,
+      "frac_decreasing": 0.08465608465608465,
+      "net_rise_decades": 5.981515537701613,
+      "frac_negative_on": 0.0,
+      "off_median": 3.5224e-12,
+      "off_log_std": 0.247280452484785
+    },
+    "linear_path": "/home/user/igzoANN/data/tft linear [s5tft80-15bot2(1) ; 6_5_2026 4_28_23 pm].csv_s5_W80_L15_bot_2.csv",
+    "output_ok": true,
+    "output_reasons": [],
+    "output_metrics": {
+      "frac_decr_mean": 0.0,
+      "neg_frac_mean": 0.0,
+      "ordering_ok": true,
+      "on_off_ratio": 69505127.06197059
+    },
+    "output_path": "/home/user/igzoANN/data/tft output [s5tft80-15bot2(1) ; 6_5_2026 4_29_35 pm].csv_s5_W80_L15_bot_2.csv"
+  },
+  "W80_L15_top1": {
+    "W": 80,
+    "L": 15,
+    "device": "top1",
+    "linear_ok": false,
+    "linear_reasons": [
+      "low_on_off_ratio(1.0e+00)",
+      "flat_curve(net_rise=-0.00dec)"
+    ],
+    "linear_metrics": {
+      "on_off_ratio": 0.9986210204448708,
+      "frac_decreasing": 0.0,
+      "net_rise_decades": -0.0005785922038876734,
+      "frac_negative_on": 0.0,
+      "off_median": 1.00074e-06,
+      "off_log_std": 4.005718333103176e-05
+    },
+    "linear_path": "/home/user/igzoANN/data/tft linear [s5tft80-15top1(1) ; 6_5_2026 10_53_26 am].csv_s5_W80_L15_top_1.csv",
+    "output_ok": false,
+    "output_reasons": [
+      "bad_vg_ordering(on/off=1.0e+00)",
+      "low_on_off_ratio(1.0e+00)"
+    ],
+    "output_metrics": {
+      "frac_decr_mean": 0.0,
+      "neg_frac_mean": 0.0,
+      "ordering_ok": false,
+      "on_off_ratio": 0.9975502704909667
+    },
+    "output_path": "/home/user/igzoANN/data/tft output [s5tft80-15top1(1) ; 6_5_2026 10_53_42 am].csv_s5_W80_L15_top_1.csv"
+  },
+  "W80_L15_top2": {
+    "W": 80,
+    "L": 15,
+    "device": "top2",
+    "linear_ok": false,
+    "linear_reasons": [
+      "low_on_off_ratio(8.8e-01)",
+      "flat_curve(net_rise=-0.05dec)"
+    ],
+    "linear_metrics": {
+      "on_off_ratio": 0.8841358407384445,
+      "frac_decreasing": 0.0,
+      "net_rise_decades": -0.046294337930982365,
+      "frac_negative_on": 0.0,
+      "off_median": 1.4517e-05,
+      "off_log_std": 0.009656871731762991
+    },
+    "linear_path": "/home/user/igzoANN/data/tft linear [s5tft80-15top2(1) ; 6_5_2026 11_59_28 am].csv_s5_W80_L15_top_2.csv",
+    "output_ok": false,
+    "output_reasons": [
+      "bad_vg_ordering(on/off=8.7e-01)",
+      "low_on_off_ratio(8.7e-01)"
+    ],
+    "output_metrics": {
+      "frac_decr_mean": 0.0,
+      "neg_frac_mean": 0.0,
+      "ordering_ok": false,
+      "on_off_ratio": 0.8664904163912757
+    },
+    "output_path": "/home/user/igzoANN/data/tft output [s5tft80-15top2(1) ; 6_5_2026 11_59_44 am].csv_s5_W80_L15_top_2.csv"
+  },
+  "W80_L20_bot1": {
+    "W": 80,
+    "L": 20,
+    "device": "bot1",
+    "linear_ok": true,
+    "linear_reasons": [],
+    "linear_metrics": {
+      "on_off_ratio": 436955.84977590025,
+      "frac_decreasing": 0.1164021164021164,
+      "net_rise_decades": 5.908273211648131,
+      "frac_negative_on": 0.0,
+      "off_median": 3.8822000000000006e-12,
+      "off_log_std": 0.2816020710694088
+    },
+    "linear_path": "/home/user/igzoANN/data/tft linear [s5tft80-20bot1(1) ; 6_5_2026 3_22_03 pm].csv_s5_W80_L20_bot_1.csv",
+    "output_ok": true,
+    "output_reasons": [],
+    "output_metrics": {
+      "frac_decr_mean": 0.0,
+      "neg_frac_mean": 0.0,
+      "ordering_ok": true,
+      "on_off_ratio": 20241343.95457055
+    },
+    "output_path": "/home/user/igzoANN/data/tft output [s5tft80-20bot1(1) ; 6_5_2026 3_23_06 pm].csv_s5_W80_L20_bot_1.csv"
+  },
+  "W80_L20_bot2": {
+    "W": 80,
+    "L": 20,
+    "device": "bot2",
+    "linear_ok": true,
+    "linear_reasons": [],
+    "linear_metrics": {
+      "on_off_ratio": 528800.8772495646,
+      "frac_decreasing": 0.13756613756613756,
+      "net_rise_decades": 5.948533360950348,
+      "frac_negative_on": 0.0,
+      "off_median": 3.1006e-12,
+      "off_log_std": 0.25616783373945134
+    },
+    "linear_path": "/home/user/igzoANN/data/tft linear [s5tft80-20bot2(1) ; 6_5_2026 4_43_08 pm].csv_s5_W80_L20_bot_2.csv",
+    "output_ok": true,
+    "output_reasons": [],
+    "output_metrics": {
+      "frac_decr_mean": 0.0,
+      "neg_frac_mean": 0.0,
+      "ordering_ok": true,
+      "on_off_ratio": 10321820.73786998
+    },
+    "output_path": "/home/user/igzoANN/data/tft output [s5tft80-20bot2(1) ; 6_5_2026 4_44_19 pm].csv_s5_W80_L20_bot_2.csv"
+  },
+  "W80_L20_top1": {
+    "W": 80,
+    "L": 20,
+    "device": "top1",
+    "linear_ok": false,
+    "linear_reasons": [
+      "low_on_off_ratio(1.0e+00)",
+      "flat_curve(net_rise=-0.00dec)"
+    ],
+    "linear_metrics": {
+      "on_off_ratio": 0.9991004138096478,
+      "frac_decreasing": 0.010582010582010581,
+      "net_rise_decades": -0.00033675300579094625,
+      "frac_negative_on": 0.0,
+      "off_median": 1.00046e-06,
+      "off_log_std": 4.609539227371207e-05
+    },
+    "linear_path": "/home/user/igzoANN/data/tft linear [s5tft80-20top1(1) ; 6_5_2026 11_02_44 am].csv_s5_W80_L20_top_1.csv",
+    "output_ok": false,
+    "output_reasons": [
+      "bad_vg_ordering(on/off=1.0e+00)",
+      "low_on_off_ratio(1.0e+00)"
+    ],
+    "output_metrics": {
+      "frac_decr_mean": 0.0,
+      "neg_frac_mean": 0.0,
+      "ordering_ok": false,
+      "on_off_ratio": 0.9966973342769521
+    },
+    "output_path": "/home/user/igzoANN/data/tft output [s5tft80-20top1(1) ; 6_5_2026 11_03_01 am].csv_s5_W80_L20_top_1.csv"
+  },
+  "W80_L20_top2": {
+    "W": 80,
+    "L": 20,
+    "device": "top2",
+    "linear_ok": false,
+    "linear_reasons": [
+      "low_on_off_ratio(9.9e-01)",
+      "flat_curve(net_rise=-0.01dec)"
+    ],
+    "linear_metrics": {
+      "on_off_ratio": 0.9872615262321144,
+      "frac_decreasing": 0.0,
+      "net_rise_decades": -0.005517992006975447,
+      "frac_negative_on": 0.0,
+      "off_median": 1.0064e-06,
+      "off_log_std": 0.00020690428274179327
+    },
+    "linear_path": "/home/user/igzoANN/data/tft linear [s5tft80-20top2(1) ; 6_5_2026 12_12_05 pm].csv_s5_W80_L20_top_2.csv",
+    "output_ok": false,
+    "output_reasons": [
+      "bad_vg_ordering(on/off=1.1e+00)",
+      "low_on_off_ratio(1.1e+00)"
+    ],
+    "output_metrics": {
+      "frac_decr_mean": 0.01,
+      "neg_frac_mean": 0.0,
+      "ordering_ok": false,
+      "on_off_ratio": 1.1335098798125893
+    },
+    "output_path": "/home/user/igzoANN/data/tft output [s5tft80-20top2(1) ; 6_5_2026 12_12_19 pm].csv_s5_W80_L20_top_2.csv"
+  },
+  "W160_L5_bot1": {
+    "W": 160,
+    "L": 5,
+    "device": "bot1",
+    "linear_ok": true,
+    "linear_reasons": [],
+    "linear_metrics": {
+      "on_off_ratio": 3878556.956666364,
+      "frac_decreasing": 0.06878306878306878,
+      "net_rise_decades": 6.767921472936474,
+      "frac_negative_on": 0.0,
+      "off_median": 3.3069e-12,
+      "off_log_std": 0.22223805515154588
+    },
+    "linear_path": "/home/user/igzoANN/data/tft linear [s5tft160-5bot1(1) ; 6_5_2026 2_37_59 pm].csv_s5_W160_L5_bot_1.csv",
+    "output_ok": true,
+    "output_reasons": [],
+    "output_metrics": {
+      "frac_decr_mean": 0.0,
+      "neg_frac_mean": 0.0,
+      "ordering_ok": true,
+      "on_off_ratio": 16991406250.0
+    },
+    "output_path": "/home/user/igzoANN/data/tft output [s5tft160-5bot1(1) ; 6_5_2026 2_39_01 pm].csv_s5_W160_L5_bot_1.csv"
+  },
+  "W160_L5_bot2": {
+    "W": 160,
+    "L": 5,
+    "device": "bot2",
+    "linear_ok": true,
+    "linear_reasons": [],
+    "linear_metrics": {
+      "on_off_ratio": 2952633.4341861764,
+      "frac_decreasing": 0.08994708994708994,
+      "net_rise_decades": 6.660327868073381,
+      "frac_negative_on": 0.0,
+      "off_median": 3.4043e-12,
+      "off_log_std": 0.37654260157200714
+    },
+    "linear_path": "/home/user/igzoANN/data/tft linear [s5tft160-5bot2(2) ; 6_5_2026 3_58_04 pm].csv_s5_W160_L5_bot_2_run2.csv",
+    "output_ok": true,
+    "output_reasons": [],
+    "output_metrics": {
+      "frac_decr_mean": 0.0,
+      "neg_frac_mean": 0.0,
+      "ordering_ok": true,
+      "on_off_ratio": 61681372.76637254
+    },
+    "output_path": "/home/user/igzoANN/data/tft output [s5tft160-5bot2(2) ; 6_5_2026 3_59_15 pm].csv_s5_W160_L5_bot_2_run2.csv"
+  },
+  "W160_L5_top1": {
+    "W": 160,
+    "L": 5,
+    "device": "top1",
+    "linear_ok": true,
+    "linear_reasons": [],
+    "linear_metrics": {
+      "on_off_ratio": 3113175.96322987,
+      "frac_decreasing": 0.06878306878306878,
+      "net_rise_decades": 6.901912876464465,
+      "frac_negative_on": 0.0,
+      "off_median": 3.5246e-12,
+      "off_log_std": 0.4676323411769979
+    },
+    "linear_path": "/home/user/igzoANN/data/tft linear [s5tft160-5top1(1) ; 6_5_2026 10_27_53 am].csv_s5_W160_L5_top_1.csv",
+    "output_ok": true,
+    "output_reasons": [],
+    "output_metrics": {
+      "frac_decr_mean": 0.0,
+      "neg_frac_mean": 0.0,
+      "ordering_ok": true,
+      "on_off_ratio": 222183376.5647908
+    },
+    "output_path": "/home/user/igzoANN/data/tft output [s5tft160-5top1(1) ; 6_5_2026 10_28_55 am].csv_s5_W160_L5_top_1.csv"
+  },
+  "W160_L5_top2": {
+    "W": 160,
+    "L": 5,
+    "device": "top2",
+    "linear_ok": false,
+    "linear_reasons": [
+      "low_on_off_ratio(9.7e-01)",
+      "flat_curve(net_rise=-0.01dec)"
+    ],
+    "linear_metrics": {
+      "on_off_ratio": 0.9676748487726841,
+      "frac_decreasing": 0.031746031746031744,
+      "net_rise_decades": -0.014277474021872294,
+      "frac_negative_on": 0.0,
+      "off_median": 1.00015e-06,
+      "off_log_std": 2.387894045842938e-05
+    },
+    "linear_path": "/home/user/igzoANN/data/tft linear [s5tft160-5top2(1) ; 6_5_2026 11_42_00 am].csv_s5_W160_L5_top_2.csv",
+    "output_ok": false,
+    "output_reasons": [
+      "bad_vg_ordering(on/off=1.0e+00)",
+      "low_on_off_ratio(1.0e+00)"
+    ],
+    "output_metrics": {
+      "frac_decr_mean": 0.0,
+      "neg_frac_mean": 0.0,
+      "ordering_ok": false,
+      "on_off_ratio": 1.0014085270057966
+    },
+    "output_path": "/home/user/igzoANN/data/tft output [s5tft160-5top2(1) ; 6_5_2026 11_42_16 am].csv_s5_W160_L5_top_2.csv"
+  },
+  "W160_L10_bot1": {
+    "W": 160,
+    "L": 10,
+    "device": "bot1",
+    "linear_ok": true,
+    "linear_reasons": [],
+    "linear_metrics": {
+      "on_off_ratio": 1660124.5941451313,
+      "frac_decreasing": 0.08994708994708994,
+      "net_rise_decades": 6.460769742947995,
+      "frac_negative_on": 0.0,
+      "off_median": 3.7883e-12,
+      "off_log_std": 0.30483876985139285
+    },
+    "linear_path": "/home/user/igzoANN/data/tft linear [s5tft160-10bot1(1) ; 6_5_2026 2_56_11 pm].csv_s5_W160_L10_bot_1.csv",
+    "output_ok": true,
+    "output_reasons": [],
+    "output_metrics": {
+      "frac_decr_mean": 0.0,
+      "neg_frac_mean": 0.0,
+      "ordering_ok": true,
+      "on_off_ratio": 66728560.62169039
+    },
+    "output_path": "/home/user/igzoANN/data/tft output [s5tft160-10bot1(1) ; 6_5_2026 2_57_13 pm].csv_s5_W160_L10_bot_1.csv"
+  },
+  "W160_L10_bot2": {
+    "W": 160,
+    "L": 10,
+    "device": "bot2",
+    "linear_ok": true,
+    "linear_reasons": [],
+    "linear_metrics": {
+      "on_off_ratio": 1238867.3697305552,
+      "frac_decreasing": 0.07936507936507936,
+      "net_rise_decades": 6.249807415376782,
+      "frac_negative_on": 0.0,
+      "off_median": 3.5369e-12,
+      "off_log_std": 0.25866154431060406
+    },
+    "linear_path": "/home/user/igzoANN/data/tft linear [s5tft160-10bot2(1) ; 6_5_2026 4_17_19 pm].csv_s5_W160_L10_bot_2.csv",
+    "output_ok": true,
+    "output_reasons": [],
+    "output_metrics": {
+      "frac_decr_mean": 0.0,
+      "neg_frac_mean": 0.0,
+      "ordering_ok": true,
+      "on_off_ratio": 294762604.0137054
+    },
+    "output_path": "/home/user/igzoANN/data/tft output [s5tft160-10bot2(1) ; 6_5_2026 4_18_31 pm].csv_s5_W160_L10_bot_2.csv"
+  },
+  "W160_L10_top1": {
+    "W": 160,
+    "L": 10,
+    "device": "top1",
+    "linear_ok": false,
+    "linear_reasons": [
+      "low_on_off_ratio(1.1e+00)",
+      "flat_curve(net_rise=0.04dec)"
+    ],
+    "linear_metrics": {
+      "on_off_ratio": 1.092018204765365,
+      "frac_decreasing": 0.0,
+      "net_rise_decades": 0.038022607806921016,
+      "frac_negative_on": 0.0,
+      "off_median": 1.30735e-09,
+      "off_log_std": 0.0070278949922416385
+    },
+    "linear_path": "/home/user/igzoANN/data/tft linear [s5tft160-10top1(3) ; 6_5_2026 10_48_28 am].csv_s5_W160_L10_top_1_run3.csv",
+    "output_ok": false,
+    "output_reasons": [
+      "bad_vg_ordering(on/off=1.0e+00)",
+      "low_on_off_ratio(1.0e+00)"
+    ],
+    "output_metrics": {
+      "frac_decr_mean": 0.0,
+      "neg_frac_mean": 0.0,
+      "ordering_ok": false,
+      "on_off_ratio": 1.0270395652462059
+    },
+    "output_path": "/home/user/igzoANN/data/tft output [s5tft160-10top1(3) ; 6_5_2026 10_48_55 am].csv_s5_W160_L10_top_1_run3.csv"
+  },
+  "W160_L10_top2": {
+    "W": 160,
+    "L": 10,
+    "device": "top2",
+    "linear_ok": false,
+    "linear_reasons": [
+      "low_on_off_ratio(9.9e-01)",
+      "flat_curve(net_rise=-0.00dec)"
+    ],
+    "linear_metrics": {
+      "on_off_ratio": 0.9924580560315627,
+      "frac_decreasing": 0.0,
+      "net_rise_decades": -0.003226397491403077,
+      "frac_negative_on": 0.0,
+      "off_median": 1.00372e-06,
+      "off_log_std": 0.0002263830037796506
+    },
+    "linear_path": "/home/user/igzoANN/data/tft linear [s5tft160-10top2(2) ; 6_5_2026 11_55_26 am].csv_s5_W160_L10_top_2_run2.csv",
+    "output_ok": false,
+    "output_reasons": [
+      "bad_vg_ordering(on/off=1.0e+00)",
+      "low_on_off_ratio(1.0e+00)"
+    ],
+    "output_metrics": {
+      "frac_decr_mean": 0.0,
+      "neg_frac_mean": 0.0,
+      "ordering_ok": false,
+      "on_off_ratio": 0.9971349862258954
+    },
+    "output_path": "/home/user/igzoANN/data/tft output [s5tft160-10top2(2) ; 6_5_2026 11_55_42 am].csv_s5_W160_L10_top_2_run2.csv"
+  },
+  "W160_L15_bot1": {
+    "W": 160,
+    "L": 15,
+    "device": "bot1",
+    "linear_ok": true,
+    "linear_reasons": [],
+    "linear_metrics": {
+      "on_off_ratio": 1031175.5361397936,
+      "frac_decreasing": 0.09523809523809523,
+      "net_rise_decades": 6.210410898037684,
+      "frac_negative_on": 0.0,
+      "off_median": 3.5252e-12,
+      "off_log_std": 0.3153955583812389
+    },
+    "linear_path": "/home/user/igzoANN/data/tft linear [s5tft160-15bot1(1) ; 6_5_2026 3_11_13 pm].csv_s5_W160_L15_bot_1.csv",
+    "output_ok": true,
+    "output_reasons": [],
+    "output_metrics": {
+      "frac_decr_mean": 0.0,
+      "neg_frac_mean": 0.0,
+      "ordering_ok": true,
+      "on_off_ratio": 61539970.57381069
+    },
+    "output_path": "/home/user/igzoANN/data/tft output [s5tft160-15bot1(1) ; 6_5_2026 3_12_17 pm].csv_s5_W160_L15_bot_1.csv"
+  },
+  "W160_L15_bot2": {
+    "W": 160,
+    "L": 15,
+    "device": "bot2",
+    "linear_ok": true,
+    "linear_reasons": [],
+    "linear_metrics": {
+      "on_off_ratio": 1262482.0680149645,
+      "frac_decreasing": 0.12169312169312169,
+      "net_rise_decades": 6.272210385632821,
+      "frac_negative_on": 0.0,
+      "off_median": 3.5551e-12,
+      "off_log_std": 0.23076442993477222
+    },
+    "linear_path": "/home/user/igzoANN/data/tft linear [s5tft160-15bot2(1) ; 6_5_2026 4_32_01 pm].csv_s5_W160_L15_bot_2.csv",
+    "output_ok": true,
+    "output_reasons": [],
+    "output_metrics": {
+      "frac_decr_mean": 0.0,
+      "neg_frac_mean": 0.0,
+      "ordering_ok": true,
+      "on_off_ratio": 194953051.64319247
+    },
+    "output_path": "/home/user/igzoANN/data/tft output [s5tft160-15bot2(1) ; 6_5_2026 4_33_04 pm].csv_s5_W160_L15_bot_2.csv"
+  },
+  "W160_L15_top1": {
+    "W": 160,
+    "L": 15,
+    "device": "top1",
+    "linear_ok": true,
+    "linear_reasons": [],
+    "linear_metrics": {
+      "on_off_ratio": 1100053.6264914868,
+      "frac_decreasing": 0.09523809523809523,
+      "net_rise_decades": 6.245003233460907,
+      "frac_negative_on": 0.0,
+      "off_median": 3.7295e-12,
+      "off_log_std": 0.3546273524461501
+    },
+    "linear_path": "/home/user/igzoANN/data/tft linear [s5tft160-15top1(1) ; 6_5_2026 10_56_14 am].csv_s5_W160_L15_top_1.csv",
+    "output_ok": true,
+    "output_reasons": [],
+    "output_metrics": {
+      "frac_decr_mean": 0.0,
+      "neg_frac_mean": 0.0,
+      "ordering_ok": true,
+      "on_off_ratio": 126450304.25963488
+    },
+    "output_path": "/home/user/igzoANN/data/tft output [s5tft160-15top1(1) ; 6_5_2026 10_57_17 am].csv_s5_W160_L15_top_1.csv"
+  },
+  "W160_L15_top2": {
+    "W": 160,
+    "L": 15,
+    "device": "top2",
+    "linear_ok": true,
+    "linear_reasons": [],
+    "linear_metrics": {
+      "on_off_ratio": 90427.61434755038,
+      "frac_decreasing": 0.1164021164021164,
+      "net_rise_decades": 5.111968448705068,
+      "frac_negative_on": 0.0,
+      "off_median": 3.6271e-12,
+      "off_log_std": 0.2864667548359094
+    },
+    "linear_path": "/home/user/igzoANN/data/tft linear [s5tft160-15top2(2) ; 6_5_2026 12_01_51 pm].csv_s5_W160_L15_top_2_run2.csv",
+    "output_ok": true,
+    "output_reasons": [],
+    "output_metrics": {
+      "frac_decr_mean": 0.0,
+      "neg_frac_mean": 0.0,
+      "ordering_ok": true,
+      "on_off_ratio": 5031.517882578406
+    },
+    "output_path": "/home/user/igzoANN/data/tft output [s5tft160-15top2(2) ; 6_5_2026 12_02_58 pm].csv_s5_W160_L15_top_2_run2.csv"
+  },
+  "W160_L20_bot1": {
+    "W": 160,
+    "L": 20,
+    "device": "bot1",
+    "linear_ok": false,
+    "linear_reasons": [
+      "unstable_off_state(median=8.0e-09,std=2.36dec)"
+    ],
+    "linear_metrics": {
+      "on_off_ratio": 402.24604689348604,
+      "frac_decreasing": 0.25396825396825395,
+      "net_rise_decades": 3.402355371828312,
+      "frac_negative_on": 0.0,
+      "off_median": 7.9804389e-09,
+      "off_log_std": 2.3619218621489617
+    },
+    "linear_path": "/home/user/igzoANN/data/tft linear [s5tft160-20bot1(2) ; 6_5_2026 3_27_39 pm].csv_s5_W160_L20_bot_1_run2.csv",
+    "output_ok": true,
+    "output_reasons": [],
+    "output_metrics": {
+      "frac_decr_mean": 0.0,
+      "neg_frac_mean": 0.0,
+      "ordering_ok": true,
+      "on_off_ratio": 11058786.769629067
+    },
+    "output_path": "/home/user/igzoANN/data/tft output [s5tft160-20bot1(2) ; 6_5_2026 3_28_42 pm].csv_s5_W160_L20_bot_1_run2.csv"
+  },
+  "W160_L20_bot2": {
+    "W": 160,
+    "L": 20,
+    "device": "bot2",
+    "linear_ok": true,
+    "linear_reasons": [],
+    "linear_metrics": {
+      "on_off_ratio": 552573.1362926,
+      "frac_decreasing": 0.08994708994708994,
+      "net_rise_decades": 5.910086177701537,
+      "frac_negative_on": 0.0,
+      "off_median": 3.6473000000000004e-12,
+      "off_log_std": 0.27678226603374634
+    },
+    "linear_path": "/home/user/igzoANN/data/tft linear [s5tft160-20bot2(1) ; 6_5_2026 4_47_05 pm].csv_s5_W160_L20_bot_2.csv",
+    "output_ok": true,
+    "output_reasons": [],
+    "output_metrics": {
+      "frac_decr_mean": 0.0,
+      "neg_frac_mean": 0.0,
+      "ordering_ok": true,
+      "on_off_ratio": 800714285.7142859
+    },
+    "output_path": "/home/user/igzoANN/data/tft output [s5tft160-20bot2(1) ; 6_5_2026 4_48_17 pm].csv_s5_W160_L20_bot_2.csv"
+  },
+  "W160_L20_top1": {
+    "W": 160,
+    "L": 20,
+    "device": "top1",
+    "linear_ok": false,
+    "linear_reasons": [
+      "low_on_off_ratio(1.0e+00)",
+      "flat_curve(net_rise=-0.00dec)"
+    ],
+    "linear_metrics": {
+      "on_off_ratio": 0.9950583119193517,
+      "frac_decreasing": 0.0,
+      "net_rise_decades": -0.002095232843488226,
+      "frac_negative_on": 0.0,
+      "off_median": 0.00020236,
+      "off_log_std": 9.515175425619762e-05
+    },
+    "linear_path": "/home/user/igzoANN/data/tft linear [s5tft160-20top1(1) ; 6_5_2026 11_04_13 am].csv_s5_W160_L20_top_1.csv",
+    "output_ok": false,
+    "output_reasons": [
+      "bad_vg_ordering(on/off=7.3e-03)",
+      "low_on_off_ratio(7.3e-03)"
+    ],
+    "output_metrics": {
+      "frac_decr_mean": 0.0,
+      "neg_frac_mean": 0.0,
+      "ordering_ok": false,
+      "on_off_ratio": 0.0072846
+    },
+    "output_path": "/home/user/igzoANN/data/tft output [s5tft160-20top1(1) ; 6_5_2026 11_04_27 am].csv_s5_W160_L20_top_1.csv"
+  },
+  "W160_L20_top2": {
+    "W": 160,
+    "L": 20,
+    "device": "top2",
+    "linear_ok": false,
+    "linear_reasons": [
+      "low_on_off_ratio(1.2e-01)",
+      "flat_curve(net_rise=-0.91dec)"
+    ],
+    "linear_metrics": {
+      "on_off_ratio": 0.11726254760416072,
+      "frac_decreasing": 0.07936507936507936,
+      "net_rise_decades": -0.9060329115265704,
+      "frac_negative_on": 0.0,
+      "off_median": 1.7593000000000002e-06,
+      "off_log_std": 0.025402955831048468
+    },
+    "linear_path": "/home/user/igzoANN/data/tft linear [s5tft160-20top2(1) ; 6_5_2026 12_13_26 pm].csv_s5_W160_L20_top_2.csv",
+    "output_ok": false,
+    "output_reasons": [
+      "bad_vg_ordering(on/off=9.5e-01)",
+      "low_on_off_ratio(9.5e-01)"
+    ],
+    "output_metrics": {
+      "frac_decr_mean": 0.0,
+      "neg_frac_mean": 0.0,
+      "ordering_ok": false,
+      "on_off_ratio": 0.9480758807588076
+    },
+    "output_path": "/home/user/igzoANN/data/tft output [s5tft160-20top2(1) ; 6_5_2026 12_13_40 pm].csv_s5_W160_L20_top_2.csv"
+  }
+}
