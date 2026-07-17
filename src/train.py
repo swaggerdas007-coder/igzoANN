@@ -17,7 +17,7 @@ from src.model import TFTNet
 
 SEED = 42
 N_HIDDEN = 22
-DATA_PATH = os.path.join(os.path.dirname(__file__), "..", "data", "final_ann_dataset.csv")
+DATA_PATH = os.path.join(os.path.dirname(__file__), "..", "data_cleaned", "merged_ann_dataset.csv")
 OUT_DIR = os.path.join(os.path.dirname(__file__), "..", "outputs")
 
 torch.manual_seed(SEED)
@@ -47,14 +47,14 @@ def main():
     Xte, yte = to_tensor(test.X), to_tensor(target(test))
 
     model = TFTNet(n_inputs=4, n_hidden=N_HIDDEN, n_outputs=1)
-    optimizer = torch.optim.Adam(model.parameters(), lr=1e-3)
-    scheduler = torch.optim.lr_scheduler.ReduceLROnPlateau(optimizer, factor=0.5, patience=30)
+    optimizer = torch.optim.Adam(model.parameters(), lr=2e-3)
+    scheduler = torch.optim.lr_scheduler.ReduceLROnPlateau(optimizer, factor=0.5, patience=25)
     loss_fn = nn.MSELoss()
 
     batch_size = 256
     n_train = Xtr.shape[0]
-    max_epochs = 2000
-    patience = 80
+    max_epochs = 600
+    patience = 50
     best_val = float("inf")
     best_state = None
     epochs_no_improve = 0
