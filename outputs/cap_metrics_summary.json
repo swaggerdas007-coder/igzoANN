@@ -1,0 +1,80 @@
+{
+  "cgd": {
+    "cap_type": "cgd",
+    "n_hidden": 32,
+    "hidden_activation": "tanh",
+    "output_activation": "linear",
+    "target": "capacitance_pF",
+    "train_rows": 115,
+    "val_rows": 25,
+    "test_rows": 24,
+    "geometries": [
+      [
+        20,
+        20
+      ],
+      [
+        40,
+        20
+      ],
+      [
+        160,
+        15
+      ],
+      [
+        160,
+        20
+      ]
+    ],
+    "target_standardization": {
+      "y_mean_pF": 2.1253154277801514,
+      "y_std_pF": 2.153496026992798
+    },
+    "final_val_mse_standardized": 0.14632301032543182,
+    "test_rmse_pF": 0.9730265140533447,
+    "test_mae_pF": 0.5719016194343567,
+    "test_r2": 0.7293929191834271,
+    "test_MARE_percent_full": 76.97612762451172,
+    "test_MARE_percent_onstate_C_ge_0p5pF": 57.243263244628906,
+    "note": "Baseline: all C measurements are at VD=0V, so the model learns C(VG,W,L) only and does not yet capture C-VDS dependence. Only 4 geometries measured; random point split reports interpolation accuracy within measured geometries."
+  },
+  "cgs": {
+    "cap_type": "cgs",
+    "n_hidden": 32,
+    "hidden_activation": "tanh",
+    "output_activation": "linear",
+    "target": "capacitance_pF",
+    "train_rows": 115,
+    "val_rows": 25,
+    "test_rows": 24,
+    "geometries": [
+      [
+        20,
+        20
+      ],
+      [
+        40,
+        20
+      ],
+      [
+        160,
+        15
+      ],
+      [
+        160,
+        20
+      ]
+    ],
+    "target_standardization": {
+      "y_mean_pF": 2.0748252868652344,
+      "y_std_pF": 2.177222967147827
+    },
+    "final_val_mse_standardized": 0.1559813916683197,
+    "test_rmse_pF": 1.0786155462265015,
+    "test_mae_pF": 0.6492043137550354,
+    "test_r2": 0.6628177941019169,
+    "test_MARE_percent_full": 96.86495971679688,
+    "test_MARE_percent_onstate_C_ge_0p5pF": 75.20960998535156,
+    "note": "Baseline: all C measurements are at VD=0V, so the model learns C(VG,W,L) only and does not yet capture C-VDS dependence. Only 4 geometries measured; random point split reports interpolation accuracy within measured geometries."
+  }
+}
