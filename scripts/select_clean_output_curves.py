@@ -8,6 +8,11 @@ A "proper, uniform" output family:
     VG member, not just the top one
   - orders correctly everywhere: at any fixed VD, a higher VG member should
     sit at or above a lower VG member's curve (no crossings)
+  - is smooth: a proper curve's second-difference curvature is small and
+    steadily signed (rises, bends over, flattens); a noisy/stepped/kinked
+    one has larger, sign-flipping curvature even when it happens to stay
+    technically monotonic and correctly ordered -- monotonicity and
+    ordering alone miss this, so it's scored separately
   - has a healthy on/off separation between the top and bottom VG members
   - "bot" devices are preferred over "top" ones when scores are close --
     the wafer's "top" die position is disproportionately dead/marginal
@@ -38,7 +43,26 @@ from clean_transistor_curves import inventory  # noqa: E402
 
 OUT_DIR = os.path.join(REPO_ROOT, "cleaned_output_meas")
 
-BOT_BONUS = 1.5  # soft tie-breaker in favor of "bot" wafer-position devices
+BOT_BONUS = 0.5  # soft tie-breaker in favor of "bot" wafer-position devices
+
+
+def curve_roughness(id_arr, min_signal=1e-9):
+    """Discrete-curvature roughness of one Id-Vd trace, normalized by its own
+    span. A clean saturating curve (rise then flatten) has small, steadily
+    signed second differences; a noisy/stepped one has large, sign-flipping
+    ones. Curves with no real "on" signal (near the off-state numerical
+    floor) are skipped: normalizing a near-zero span by itself blows the
+    ratio up to a huge, meaningless value even for pure noise, which would
+    swamp the genuinely informative roughness of the on-state members.
+    """
+    id_arr = np.asarray(id_arr, dtype=float)
+    if np.abs(id_arr).max() < min_signal:
+        return None
+    rng = id_arr.max() - id_arr.min()
+    if rng <= 0:
+        return None
+    d2 = np.diff(id_arr, n=2)
+    return float(np.sum(np.abs(d2)) / rng)
 
 
 def score_output(df):
@@ -48,6 +72,7 @@ def score_output(df):
 
     frac_decr_all = []
     neg_frac_all = []
+    roughness_all = []
     for vgv in vg_levels:
         sub = df[df["VG"] == vgv].sort_values("VD")
         id_ = sub["ID"].to_numpy()
@@ -57,8 +82,12 @@ def score_output(df):
         span = max(np.abs(id_).max(), 1e-16)
         frac_decr_all.append(np.mean(diffs < -0.05 * span))
         neg_frac_all.append(np.mean(id_ < -0.05 * span))
+        r = curve_roughness(id_)
+        if r is not None:
+            roughness_all.append(r)
     frac_decr_mean = float(np.mean(frac_decr_all)) if frac_decr_all else 1.0
     neg_frac_mean = float(np.mean(neg_frac_all)) if neg_frac_all else 1.0
+    roughness_mean = float(np.mean(roughness_all)) if roughness_all else 1.0
 
     # Full pairwise VG ordering check (not just top-vs-bottom): at several VD
     # checkpoints, a higher VG member's |ID| should be >= a lower VG
@@ -84,15 +113,22 @@ def score_output(df):
     hi_id = near_vdmax[near_vdmax["VG"] == vg_levels[-1]]["ID"].abs().median()
     on_off_ratio = (hi_id / max(lo_id, 1e-16)) if pd.notna(lo_id) and pd.notna(hi_id) else 0.0
 
+    # Cap the on/off-ratio reward at 1e6: beyond that the family is already
+    # unambiguously "on" vs "off", and further decades of separation say
+    # nothing about how clean/uniform the curve shapes actually are. Without
+    # the cap, a device with an enormous but noisier on/off ratio can
+    # outscore a visibly smoother one purely on decades it didn't need.
+    log_on_off = min(math.log10(max(on_off_ratio, 1e-6)), 6.0)
     score = (
-        math.log10(max(on_off_ratio, 1e-6))
+        log_on_off
         - 8.0 * frac_decr_mean
         - 8.0 * neg_frac_mean
         - 10.0 * crossing_frac
+        - 4.0 * roughness_mean
     )
     metrics = dict(on_off_ratio=on_off_ratio, frac_decr_mean=frac_decr_mean,
                     neg_frac_mean=neg_frac_mean, crossing_frac=crossing_frac,
-                    n_vg_levels=len(vg_levels))
+                    roughness_mean=roughness_mean, n_vg_levels=len(vg_levels))
     return score, metrics
 
 
