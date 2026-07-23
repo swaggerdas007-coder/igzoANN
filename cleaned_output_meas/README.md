@@ -20,14 +20,14 @@ python scripts/plot_output_selection.py
   column.
 - `output_selection_manifest.json` — the winner and every candidate's score
   per geometry (full detail: on/off ratio, monotonicity, VG-ordering
-  violations).
+  violations, curve roughness).
 - `merged_output_dataset.csv` — all 19 chosen files concatenated into one
   long-format table (`VG,VD,W,L,ID,abs_ID,log_ID,device`), ready to train
   the ANN on.
 - `plots/all_output_families_raw.png` — every raw device's full VG family
-  for every geometry, one color per device, chosen device drawn bold/opaque
-  and the rest faint. This is the "plot everything and see what's going
-  on" view.
+  for every geometry, log-scale, one color per device, chosen device drawn
+  bold/opaque and the rest faint. This is the "plot everything and see
+  what's going on" view.
 - `plots/cleaned_output_meas.png` — just the 19 chosen families.
 
 ## What "proper and uniform" means here
@@ -35,23 +35,41 @@ python scripts/plot_output_selection.py
 A device's output curve is scored on:
 
 - **on/off ratio**: |ID| of the top VG member vs. the bottom VG member,
-  near VD_max
+  near VD_max — capped at 1e6 in the score. Beyond that the family is
+  already unambiguously on vs. off; rewarding extra decades past that point
+  let one device's huge-but-noisy separation outscore a visibly smoother
+  one that didn't need as much (this showed up concretely in `W160_L20`,
+  see below).
 - **monotonicity**: every VG member's Id-Vd trace should rise then
   saturate, not crash downward — checked across *all* VG members, not just
-  the top one
+  the top one.
 - **no crossings**: at several VD checkpoints (1V, 2V, 3V, 4V, VD_max),
   every pairwise combination of VG members must be correctly ordered
-  (higher VG ⇒ higher |ID|) — this is the "uniform family" check; a messy
-  or partially-dead device shows crossings here even if its single top
-  curve looks fine in isolation
+  (higher VG ⇒ higher |ID|) — the "uniform family" check; a messy or
+  partially-dead device shows crossings here even if its single top curve
+  looks fine in isolation.
+- **smoothness**: discrete-curvature roughness (normalized sum of |second
+  differences|) of each "on" VG member (off-floor members are excluded —
+  their tiny signal makes the ratio meaningless). A proper saturating
+  curve has small, steadily-signed curvature; a noisy/stepped/kinked one
+  has larger, sign-flipping curvature *even while staying technically
+  monotonic and correctly ordered* — monotonicity and crossing checks
+  alone miss this, which is why an earlier version of this pass picked a
+  visibly wavy curve for `W5_L5` and a kinked one for `W160_L20` before
+  this metric was added.
 - a small tie-breaking bonus toward "bot" wafer-position devices, since
   they're empirically more often good (see `data_cleaned/README.md`) — but
-  it's soft: a clearly better `top` device still wins over a worse `bot`
-  one (e.g. `W10_L5`, `W20_L10`, `W40_L5`, `W20_L5` here all picked a `top`
-  device because it was genuinely the cleanest, not `bot`)
+  it's soft (worth less than a typical quality gap): 6 of 19 geometries
+  here picked a `top` device because it was genuinely the cleanest, not
+  `bot`.
 
-16 of 19 geometries landed on a `bot1`/`bot2` device, matching the general
-"top wafer position skews non-functional" pattern from `data_cleaned/`,
-but this pass is per-device evidence, not a hardcoded rule — every pick is
-justified by its own output-curve metrics in the manifest and visible in
-`plots/all_output_families_raw.png`.
+## Two picks worth calling out
+
+- **`W5_L5`**: originally picked `top1rep` on raw monotonicity/ordering
+  metrics, but its VG=5 curve was visibly wavy on inspection (steppy,
+  never quite settles). `top2`'s VG=5 curve is a textbook smooth
+  saturation curve — the roughness metric now correctly prefers it.
+- **`W160_L20`**: originally picked `bot2` mainly on its very high on/off
+  ratio (8e8 vs `bot1`'s 1.1e7), but `bot1`'s curve is visibly the smoother
+  one. Capping the on/off-ratio reward removed that false signal, and
+  `bot1` now wins.
