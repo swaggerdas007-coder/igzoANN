@@ -24,11 +24,17 @@ Usage:
 """
 import json
 import os
+import sys
 
 OUT_DIR = os.path.join(os.path.dirname(__file__), "..", "outputs")
 VA_DIR = os.path.join(os.path.dirname(__file__), "..", "verilogA")
 WEIGHTS_PATH = os.path.join(OUT_DIR, "weights.json")
 VA_PATH = os.path.join(VA_DIR, "tft_ann_static.va")
+
+if len(sys.argv) > 1:
+    WEIGHTS_PATH = sys.argv[1]
+if len(sys.argv) > 2:
+    VA_PATH = sys.argv[2]
 
 
 def fmt(x):

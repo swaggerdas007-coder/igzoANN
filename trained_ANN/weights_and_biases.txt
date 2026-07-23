@@ -1,0 +1,108 @@
+a-GIZO TFT ANN model -- trained weights and biases
+=======================================================
+
+Architecture: 4 inputs -> 22 hidden neurons (tanh) -> 1 output (linear)
+Input order: VG, VD, W, L
+
+Trained on: cleaned_output_meas/merged_output_dataset.csv (one cleanest device per geometry, output/Id-Vd sweeps only)
+  train rows = 7461, val rows = 1599, test rows = 1599
+Training: Adam lr=0.002, batch=256, monotonicity lambda=100.0, best epoch 1945
+Test RMSE (log10|ID|) = 0.520809 decades
+Test MAE  (log10|ID|) = 0.341789 decades
+Test R^2  (log10|ID|) = 0.973167
+gds audit: negative on 0.9% of on-region grid, worst -2.60e-06 S
+
+Input scaling (min-max to [0,1]): x_scaled = (x - lo) / (hi - lo)
+  VG: lo=-5.0, hi=5.0
+  VD: lo=0.0, hi=5.0
+  W: lo=5.0, hi=160.0
+  L: lo=5.0, hi=20.0
+
+Output transform: network_output = (log10(|ID|) - y_mean) / y_std
+  y_mean = -8.54493618
+  y_std  = 3.18371797
+  recover ID: ID = 10 ** (network_output * y_std + y_mean)
+
+-------------------------------------------------------
+Hidden layer weights wh[neuron][input]  (input order: VG, VD, W, L)
+-------------------------------------------------------
+neuron  0:   0.314600  -0.367811  -0.308714   0.148317
+neuron  1:  -3.343529  -0.073042  -0.640568   0.036496
+neuron  2:   2.742998  -3.826674   0.016480  -0.054112
+neuron  3:   1.918805   0.052556  -0.046116  -0.209549
+neuron  4:   0.961023  -0.180596  -0.689954  -0.218497
+neuron  5:  -1.541590   0.258533  -0.199925   0.735881
+neuron  6:  -3.148825   0.027408   0.796532  -1.107531
+neuron  7:   1.267411  -42.720978   0.093078  -0.081047
+neuron  8:  -0.414596  -1.412558   0.055923  -0.068850
+neuron  9:   0.056128   0.920070   0.142132  -0.074478
+neuron 10:   0.589348   0.019772  -0.007413   0.989826
+neuron 11:  -1.132000  -0.022167   5.093528   1.035993
+neuron 12:   0.947825  -0.089913  -3.501978   0.474121
+neuron 13:  -3.045506   3.064510  -0.027500   0.043454
+neuron 14:   3.789937  -0.050024  -0.322348  -1.605639
+neuron 15:   0.365186  -0.351539   0.013346  -0.522301
+neuron 16:   1.250830   0.808765   0.211392   0.222611
+neuron 17:  -0.618605  -0.308122   0.887271  -0.051427
+neuron 18:   8.193012  -0.032112   0.145088  -0.397050
+neuron 19:  -2.785993   1.102142   0.009944   0.233863
+neuron 20:  -0.246279   0.008444   2.729550  -2.074723
+neuron 21:   2.000005   0.505464   0.335484   0.039267
+
+-------------------------------------------------------
+Hidden layer biases bh[neuron]
+-------------------------------------------------------
+neuron  0:  -1.532517
+neuron  1:   1.524773
+neuron  2:  -0.771915
+neuron  3:  -0.430365
+neuron  4:   0.047805
+neuron  5:   0.727238
+neuron  6:   1.216132
+neuron  7:  -1.209672
+neuron  8:   0.827866
+neuron  9:  -0.504971
+neuron 10:  -0.983842
+neuron 11:  -0.686122
+neuron 12:  -0.690551
+neuron 13:   1.578379
+neuron 14:  -0.499313
+neuron 15:  -0.688657
+neuron 16:  -0.236704
+neuron 17:  -0.380128
+neuron 18:  -4.011422
+neuron 19:   1.107278
+neuron 20:  -1.099685
+neuron 21:  -1.294157
+
+-------------------------------------------------------
+Output layer weights wo[neuron]
+-------------------------------------------------------
+neuron  0:   0.998564
+neuron  1:   1.212664
+neuron  2:   0.340667
+neuron  3:   0.872206
+neuron  4:   0.170605
+neuron  5:  -0.723535
+neuron  6:   0.565487
+neuron  7:  -1.037629
+neuron  8:   0.402779
+neuron  9:  -0.293039
+neuron 10:   0.877388
+neuron 11:  -0.253931
+neuron 12:  -0.554767
+neuron 13:   0.645616
+neuron 14:  -0.633514
+neuron 15:   0.288958
+neuron 16:   0.732504
+neuron 17:  -0.756704
+neuron 18:   1.500616
+neuron 19:   0.343660
+neuron 20:   0.368164
+neuron 21:   0.819103
+
+-------------------------------------------------------
+Output layer bias bo
+-------------------------------------------------------
+bo:  -0.481531
+

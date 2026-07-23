@@ -1,0 +1,29 @@
+{
+  "n_hidden": 22,
+  "mono_lambda": 100.0,
+  "seed": 42,
+  "best_epoch": 1945,
+  "train_seconds": 156.40437030792236,
+  "train_rows": 7461,
+  "val_rows": 1599,
+  "test_rows": 1599,
+  "test_rmse_log10ID": 0.520808756351471,
+  "test_mae_log10ID": 0.34178900718688965,
+  "test_r2_log10ID": 0.9731674790382385,
+  "gds_negative_fraction_on_region": 0.009062499739229679,
+  "worst_gds_S": -2.6018699372798437e-06,
+  "test_MARE_percent_by_current_band": {
+    "1e-09_to_1e-06_A": {
+      "MARE_percent": 90.64204993794405,
+      "n_rows": 184
+    },
+    "1e-06_to_1e-03_A": {
+      "MARE_percent": 37.88911453741785,
+      "n_rows": 619
+    }
+  },
+  "target_standardization": {
+    "y_mean_log10_absID": -8.544936180114746,
+    "y_std_log10_absID": 3.183717966079712
+  }
+}
