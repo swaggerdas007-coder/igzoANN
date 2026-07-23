@@ -80,6 +80,18 @@ def scale_features(df):
     return np.stack(cols, axis=1)
 
 
+def l_balance_weights(df):
+    """Per-row weight so each distinct L value contributes equal total loss
+    mass, regardless of how many W geometries were measured at that L (this
+    dataset has 6 widths at L=5 but only 4 at L=15/20, so plain-averaged MSE
+    implicitly overweights L=5 by ~1.5x and the model systematically
+    overshoots current at larger L as a result -- see dc_sweep_analysis.py)."""
+    counts = df["L"].map(df["L"].value_counts())
+    n_l = df["L"].nunique()
+    w = (len(df) / n_l) / counts
+    return w.to_numpy(dtype=np.float32)
+
+
 def load_and_split(csv_path, seed=SEED, train_frac=0.7, val_frac=0.15):
     df = pd.read_csv(csv_path).drop_duplicates().reset_index(drop=True)
     rng = np.random.default_rng(seed)
@@ -95,6 +107,7 @@ def load_and_split(csv_path, seed=SEED, train_frac=0.7, val_frac=0.15):
             "X": scale_features(sub),
             "log_id": sub["log_ID"].to_numpy(dtype=np.float32),
             "id_raw": sub["ID"].to_numpy(dtype=np.float64),
+            "l_weight": l_balance_weights(sub),
         }
     return splits["train"], splits["val"], splits["test"]
 
@@ -135,15 +148,17 @@ def gds_audit(model, y_mean, y_std):
     return float(neg.float().mean()), float(gds.min())
 
 
-def train(n_hidden=N_HIDDEN, lam=MONO_LAMBDA, seed=SEED, verbose=True):
+def train(n_hidden=N_HIDDEN, lam=MONO_LAMBDA, seed=SEED, verbose=True, balance_l=True):
     train_s, val_s, test_s = load_and_split(DATA_PATH, seed=seed)
     y_mean = float(train_s["log_id"].mean())
     y_std = float(train_s["log_id"].std())
 
     Xtr = to_tensor(train_s["X"])
     ytr = to_tensor((train_s["log_id"] - y_mean) / y_std)
+    Wtr = to_tensor(train_s["l_weight"]) if balance_l else torch.ones(len(train_s["df"]))
     Xva = to_tensor(val_s["X"])
     yva = to_tensor((val_s["log_id"] - y_mean) / y_std)
+    Wva = to_tensor(val_s["l_weight"]) if balance_l else torch.ones(len(val_s["df"]))
     Xte = to_tensor(test_s["X"])
     log_id_test = test_s["log_id"]
 
@@ -153,7 +168,9 @@ def train(n_hidden=N_HIDDEN, lam=MONO_LAMBDA, seed=SEED, verbose=True):
     model = TFTNet(4, n_hidden, 1)
     optimizer = torch.optim.Adam(model.parameters(), lr=LR)
     scheduler = torch.optim.lr_scheduler.ReduceLROnPlateau(optimizer, factor=0.5, patience=60)
-    loss_fn = nn.MSELoss()
+
+    def weighted_mse(pred, target, weight):
+        return (weight.unsqueeze(1) * (pred - target) ** 2).mean()
 
     n_train = Xtr.shape[0]
     best_score = float("inf")
@@ -168,7 +185,7 @@ def train(n_hidden=N_HIDDEN, lam=MONO_LAMBDA, seed=SEED, verbose=True):
         for i in range(0, n_train, BATCH_SIZE):
             idx = perm[i:i + BATCH_SIZE]
             optimizer.zero_grad()
-            loss = loss_fn(model(Xtr[idx]), ytr[idx].unsqueeze(1))
+            loss = weighted_mse(model(Xtr[idx]), ytr[idx].unsqueeze(1), Wtr[idx])
             if lam > 0:
                 loss = loss + lam * monotonicity_penalty(model, N_COLLOC, gen)
             loss.backward()
@@ -176,7 +193,7 @@ def train(n_hidden=N_HIDDEN, lam=MONO_LAMBDA, seed=SEED, verbose=True):
 
         model.eval()
         with torch.no_grad():
-            val_mse = loss_fn(model(Xva), yva.unsqueeze(1)).item()
+            val_mse = weighted_mse(model(Xva), yva.unsqueeze(1), Wva).item()
         val_pen = monotonicity_penalty(model, 4096, torch.Generator().manual_seed(7)).item() if lam > 0 else 0.0
         score = val_mse + lam * val_pen
         scheduler.step(score)
@@ -215,13 +232,19 @@ def train(n_hidden=N_HIDDEN, lam=MONO_LAMBDA, seed=SEED, verbose=True):
         mare = float(np.mean(np.abs(np.abs(test_s["id_raw"][mask]) - id_pred[mask]) / np.abs(test_s["id_raw"][mask])) * 100)
         mare_by_band[f"{lo:.0e}_to_{hi:.0e}_A"] = {"MARE_percent": mare, "n_rows": int(mask.sum())}
 
+    rmse_by_l = {}
+    for l_val in sorted(test_s["df"]["L"].unique()):
+        mask = (test_s["df"]["L"] == l_val).to_numpy()
+        rmse_by_l[int(l_val)] = float(np.sqrt(np.mean((log_id_pred[mask] - log_id_test[mask]) ** 2)))
+
     result = {
-        "n_hidden": n_hidden, "mono_lambda": lam, "seed": seed,
+        "n_hidden": n_hidden, "mono_lambda": lam, "seed": seed, "balance_l": balance_l,
         "best_epoch": best_epoch, "train_seconds": time.time() - t0,
         "train_rows": len(train_s["df"]), "val_rows": len(val_s["df"]), "test_rows": len(test_s["df"]),
         "test_rmse_log10ID": rmse, "test_mae_log10ID": mae, "test_r2_log10ID": r2,
         "gds_negative_fraction_on_region": frac_neg, "worst_gds_S": worst_gds,
         "test_MARE_percent_by_current_band": mare_by_band,
+        "test_rmse_log10ID_by_L": rmse_by_l,
         "target_standardization": {"y_mean_log10_absID": y_mean, "y_std_log10_absID": y_std},
     }
     return model, result, (Xte, test_s)
