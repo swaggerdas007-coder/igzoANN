@@ -164,6 +164,56 @@ def plot_by_L(id_model, out_dir, id_tag=""):
     return all_rows
 
 
+def plot_all_19_grid(id_model, out_dir, id_tag=""):
+    """Single figure, all 19 (W, L) combinations the device set actually
+    covers, laid out L-by-row / W-by-column: raw measured data (dots) and
+    the simulated Verilog-A/ANN model (lines) overlaid on each panel."""
+    geoms_by_l = {l: sorted({w for w in ALL_W if load_measured(w, l) is not None}) for l in ALL_L}
+    n_cols = max(len(ws) for ws in geoms_by_l.values())
+    n_rows = len(ALL_L)
+
+    fig, axes = plt.subplots(n_rows, n_cols, figsize=(4.3 * n_cols, 3.8 * n_rows), dpi=130)
+    fig.patch.set_facecolor(BG)
+    cmap = plt.cm.viridis(np.linspace(0.1, 0.9, len(VG_SWEEP)))
+
+    for r, l in enumerate(ALL_L):
+        ws = geoms_by_l[l]
+        for c in range(n_cols):
+            ax = axes[r, c]
+            if c >= len(ws):
+                ax.axis("off")
+                continue
+            w = ws[c]
+            row, id_grid = analyze_geometry(id_model, w, l)
+            for i, vg in enumerate(VG_SWEEP):
+                ax.plot(VD_SWEEP, id_grid[i] * 1e6, color=cmap[i], lw=1.8, zorder=3)
+            meas = load_measured(w, l)
+            for i, vg in enumerate(VG_SWEEP):
+                s = meas[meas.VG == int(vg)].sort_values("VD")
+                if len(s):
+                    ax.scatter(s.VD, s.ID * 1e6, s=8, color=cmap[i], alpha=0.5,
+                               edgecolors="none", zorder=2)
+            ax.set_title(f"W={w}, L={l}  rmse={row['rmse_log10ID']:.2f}dec", fontsize=9)
+            if r == n_rows - 1:
+                ax.set_xlabel("VD (V)", fontsize=8)
+            if c == 0:
+                ax.set_ylabel(r"$I_D$ ($\mu$A)", fontsize=8)
+            ax.tick_params(labelsize=7)
+            style_axes(ax)
+
+    handles = [plt.Line2D([0], [0], color=cmap[i], lw=2, label=f"VG={vg:g}V")
+               for i, vg in enumerate(VG_SWEEP)]
+    fig.legend(handles=handles, loc="upper center", ncol=len(VG_SWEEP), frameon=False,
+               bbox_to_anchor=(0.5, 1.0), fontsize=10)
+    fig.suptitle(f"All 19 measured (W, L) geometries -- DC sweep (VG 0-5V/1V, VD 0-5V/0.2V, VS=0)\n"
+                 f"lines=model{id_tag}, dots=measured", fontsize=13, y=1.03)
+    fig.tight_layout(rect=[0, 0, 1, 0.95])
+    path = os.path.join(out_dir, "dc_sweep_all19.png")
+    fig.savefig(path, bbox_inches="tight")
+    plt.close(fig)
+    print(f"Saved dc_sweep_all19.png ({n_rows}x{n_cols} grid, 19 panels)")
+
+
 def summarize(rows, out_dir):
     df = pd.DataFrame(rows)
     df.to_csv(os.path.join(out_dir, "dc_sweep_summary.csv"), index=False)
@@ -193,6 +243,7 @@ def main():
 
     id_model, w = load_model(args.weights)
     rows = plot_by_L(id_model, args.out_dir, id_tag=args.tag)
+    plot_all_19_grid(id_model, args.out_dir, id_tag=args.tag)
     df, by_l = summarize(rows, args.out_dir)
 
 
