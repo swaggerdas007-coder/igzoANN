@@ -1,0 +1,189 @@
+// VerilogA for a-GIZO TFT ANN static model (MLP: 4 inputs -> 22 tanh
+// hidden neurons -> linear output), trained on ID = f(VG, VD, W, L).
+//
+// Architecture follows Eq. (1)-(2) of Bahubalindruni et al., "a-GIZO TFT
+// neural modeling, circuit simulation and validation", Solid-State
+// Electronics 105 (2015) 30-36:
+//     yh = tanh(x . wh + bh)      hidden layer
+//     y  = yh . wo + bo           output layer (LINEAR, no activation)
+
+`include "constants.h"
+`include "disciplines.h"
+
+module tft_ann_static(D, G, S);
+inout G, D, S;
+electrical D, G, S;
+
+parameter integer NI = 4;      // no. of inputs: VG, VD, W, L
+parameter integer NNHL = 22;    // no. of neurons in hidden layer
+parameter integer NO = 1;       // no. of outputs (ID)
+
+// device geometry (SI units, matching Spectre convention)
+parameter real w = 80e-6 from [5e-6:160e-6];  // channel width, training range [5,160] um
+parameter real l = 10e-6 from [5e-6:20e-6];  // channel length, training range [5,20] um
+
+// hidden layer
+real hlayer_w[0:(NI*NNHL)-1];
+real hlayer_b[0:NNHL-1];
+real hlayer_y[0:NNHL-1];
+real hlayer_v[0:NNHL-1];
+
+// output layer (linear)
+real olayer_w[0:(NO*NNHL)-1];
+real olayer_b[0:NO-1];
+real olayer_v[0:NO-1];
+
+real vg_s, vd_s, width_s, length_s;   // inputs scaled to [0,1]
+real log_id, id;
+real gm, gds, temp, temp1;
+integer i, ii, jj;
+
+// input scaling (min-max, [0,1]) -- must match src/dataset.py exactly
+real vg_lo, vg_hi, vd_lo, vd_hi, w_lo, w_hi, l_lo, l_hi;
+
+// output de-standardization: log10(|ID|) = raw_output*y_std + y_mean
+real y_mean, y_std;
+
+analog begin
+	@(initial_step or initial_step("static")) begin
+
+	vg_lo = -5.000000; vg_hi = 5.000000;
+	vd_lo = 0.000000; vd_hi = 5.000000;
+	w_lo  = 5.0e-6; w_hi  = 160.0e-6;
+	l_lo  = 5.0e-6; l_hi  = 20.0e-6;
+
+	y_mean = -8.520563;
+	y_std  = 3.184171;
+
+	// hidden layer weights: hlayer_w[NI*i + k], k in {0:VG, 1:VD, 2:W, 3:L}
+	hlayer_w[0] = 0.378288; 	 hlayer_w[1] = 0.097434; 	 hlayer_w[2] = 0.518045; 	 hlayer_w[3] = 0.722480;
+	hlayer_w[4] = -3.867698; 	 hlayer_w[5] = -0.098541; 	 hlayer_w[6] = -0.899835; 	 hlayer_w[7] = 0.182046;
+	hlayer_w[8] = 6.067001; 	 hlayer_w[9] = 0.012617; 	 hlayer_w[10] = 0.256749; 	 hlayer_w[11] = -0.438785;
+	hlayer_w[12] = 1.665560; 	 hlayer_w[13] = 0.386537; 	 hlayer_w[14] = -0.022903; 	 hlayer_w[15] = 0.109844;
+	hlayer_w[16] = 0.196336; 	 hlayer_w[17] = -0.197748; 	 hlayer_w[18] = -0.949394; 	 hlayer_w[19] = -0.208377;
+	hlayer_w[20] = -1.563745; 	 hlayer_w[21] = 0.148083; 	 hlayer_w[22] = -1.011754; 	 hlayer_w[23] = 0.302043;
+	hlayer_w[24] = -3.194904; 	 hlayer_w[25] = -0.031354; 	 hlayer_w[26] = 0.960937; 	 hlayer_w[27] = -0.605595;
+	hlayer_w[28] = 0.860155; 	 hlayer_w[29] = -2.638278; 	 hlayer_w[30] = -0.696726; 	 hlayer_w[31] = -0.557718;
+	hlayer_w[32] = -0.913834; 	 hlayer_w[33] = -1.221143; 	 hlayer_w[34] = 0.251096; 	 hlayer_w[35] = 0.221057;
+	hlayer_w[36] = 0.598293; 	 hlayer_w[37] = 0.295009; 	 hlayer_w[38] = -0.553210; 	 hlayer_w[39] = -0.615116;
+	hlayer_w[40] = -0.028240; 	 hlayer_w[41] = 0.337343; 	 hlayer_w[42] = 0.128734; 	 hlayer_w[43] = 0.103668;
+	hlayer_w[44] = -1.308681; 	 hlayer_w[45] = -0.011329; 	 hlayer_w[46] = 4.759324; 	 hlayer_w[47] = 3.244973;
+	hlayer_w[48] = 1.441573; 	 hlayer_w[49] = -52.665749; 	 hlayer_w[50] = 0.143375; 	 hlayer_w[51] = -0.073919;
+	hlayer_w[52] = -0.006548; 	 hlayer_w[53] = 0.003596; 	 hlayer_w[54] = -0.003028; 	 hlayer_w[55] = -0.000940;
+	hlayer_w[56] = 3.155881; 	 hlayer_w[57] = -0.111561; 	 hlayer_w[58] = -0.301282; 	 hlayer_w[59] = -1.320329;
+	hlayer_w[60] = 0.001263; 	 hlayer_w[61] = 0.001011; 	 hlayer_w[62] = -0.000155; 	 hlayer_w[63] = 0.000520;
+	hlayer_w[64] = 0.179874; 	 hlayer_w[65] = 0.064697; 	 hlayer_w[66] = 0.528498; 	 hlayer_w[67] = 0.268799;
+	hlayer_w[68] = -1.465240; 	 hlayer_w[69] = -0.042323; 	 hlayer_w[70] = 1.416305; 	 hlayer_w[71] = 0.201544;
+	hlayer_w[72] = 8.270482; 	 hlayer_w[73] = -0.152517; 	 hlayer_w[74] = 0.070519; 	 hlayer_w[75] = -0.439094;
+	hlayer_w[76] = -3.769072; 	 hlayer_w[77] = -0.265066; 	 hlayer_w[78] = 0.660401; 	 hlayer_w[79] = 0.381488;
+	hlayer_w[80] = 0.764071; 	 hlayer_w[81] = 0.040574; 	 hlayer_w[82] = 1.660713; 	 hlayer_w[83] = -2.008648;
+	hlayer_w[84] = 2.798027; 	 hlayer_w[85] = 0.737051; 	 hlayer_w[86] = -0.029196; 	 hlayer_w[87] = -0.186746;
+
+	// hidden layer bias
+	hlayer_b[0] = -0.994877;
+	hlayer_b[1] = 1.617441;
+	hlayer_b[2] = -1.152513;
+	hlayer_b[3] = -0.202277;
+	hlayer_b[4] = 0.327412;
+	hlayer_b[5] = 0.967218;
+	hlayer_b[6] = 0.967203;
+	hlayer_b[7] = -0.618771;
+	hlayer_b[8] = 0.979868;
+	hlayer_b[9] = -0.108550;
+	hlayer_b[10] = -1.198566;
+	hlayer_b[11] = -1.710547;
+	hlayer_b[12] = -1.070260;
+	hlayer_b[13] = 0.000148;
+	hlayer_b[14] = -0.226441;
+	hlayer_b[15] = -0.000367;
+	hlayer_b[16] = -0.473082;
+	hlayer_b[17] = -0.364912;
+	hlayer_b[18] = -3.813405;
+	hlayer_b[19] = 0.865732;
+	hlayer_b[20] = -1.127845;
+	hlayer_b[21] = -1.638949;
+
+	// output layer weights
+	olayer_w[0] = 0.386537;
+	olayer_w[1] = 1.982804;
+	olayer_w[2] = 1.417815;
+	olayer_w[3] = 0.205619;
+	olayer_w[4] = -0.136520;
+	olayer_w[5] = -0.501018;
+	olayer_w[6] = 0.698773;
+	olayer_w[7] = -0.156605;
+	olayer_w[8] = 0.247799;
+	olayer_w[9] = -0.148582;
+	olayer_w[10] = 0.537047;
+	olayer_w[11] = -0.155819;
+	olayer_w[12] = -0.828527;
+	olayer_w[13] = 0.000974;
+	olayer_w[14] = -0.606890;
+	olayer_w[15] = -0.000125;
+	olayer_w[16] = 0.037714;
+	olayer_w[17] = -0.756278;
+	olayer_w[18] = 1.989055;
+	olayer_w[19] = 1.025583;
+	olayer_w[20] = 0.264397;
+	olayer_w[21] = 1.043038;
+
+	// output layer bias
+	olayer_b[0] = -0.237042;
+
+	end // end of initialization
+
+	// preprocessing: scale inputs to [0,1] using training bounds, clamped
+	// to the training range to avoid extrapolation blow-up outside it
+	vg_s = (V(G,S) - vg_lo) / (vg_hi - vg_lo);
+	if (vg_s < 0) vg_s = 0;
+	if (vg_s > 1) vg_s = 1;
+
+	vd_s = (V(D,S) - vd_lo) / (vd_hi - vd_lo);
+	if (vd_s < 0) vd_s = 0;
+	if (vd_s > 1) vd_s = 1;
+
+	width_s = (w - w_lo) / (w_hi - w_lo);
+	if (width_s < 0) width_s = 0;
+	if (width_s > 1) width_s = 1;
+
+	length_s = (l - l_lo) / (l_hi - l_lo);
+	if (length_s < 0) length_s = 0;
+	if (length_s > 1) length_s = 1;
+
+	temp  = 0;   // accumulates d(raw_output)/d(vg_s) for gm
+	temp1 = 0;   // accumulates d(raw_output)/d(vd_s) for gds
+
+	for (i = 0; i < NNHL; i = i + 1) begin
+		hlayer_v[i] = vg_s*hlayer_w[NI*i]   + vd_s*hlayer_w[NI*i+1]
+		            + width_s*hlayer_w[NI*i+2] + length_s*hlayer_w[NI*i+3]
+		            + hlayer_b[i];
+		hlayer_y[i] = tanh(hlayer_v[i]);
+		temp  = temp  + olayer_w[i]*hlayer_w[NI*i]   * (1 - hlayer_y[i]*hlayer_y[i]);
+		temp1 = temp1 + olayer_w[i]*hlayer_w[NI*i+1] * (1 - hlayer_y[i]*hlayer_y[i]);
+	end
+
+	for (ii = 0; ii < NO; ii = ii + 1) begin
+		olayer_v[ii] = 0;
+		for (jj = 0; jj < NNHL; jj = jj + 1) begin
+			olayer_v[ii] = olayer_v[ii] + hlayer_y[jj]*olayer_w[jj];
+		end
+		olayer_v[ii] = olayer_v[ii] + olayer_b[ii];   // linear output, no tanh
+	end
+
+	// post-processing: undo target standardization and the log10 transform
+	log_id = olayer_v[0]*y_std + y_mean;
+	id = pow(10.0, log_id);
+
+	// small-signal parameters (chain rule through tanh hidden layer, the
+	// linear output layer, the log10 back-transform, and the [0,1] input
+	// scaling -- d(vg_s)/d(VG) = 1/(vg_hi-vg_lo), same for vd_s)
+	gm  = id * `M_LN10 * y_std * temp  / (vg_hi - vg_lo);
+	gds = id * `M_LN10 * y_std * temp1 / (vd_hi - vd_lo);
+
+	I(D,S) <+ id;
+	I(G,S) <+ 0;
+	I(G,D) <+ 0;
+
+	end
+
+endmodule
