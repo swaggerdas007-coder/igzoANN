@@ -27,7 +27,7 @@ parameter integer NNHL = 22;    // no. of neurons in hidden layer
 parameter integer NO = 1;       // no. of outputs (ID)
 
 // device geometry (SI units, matching Spectre convention)
-parameter real w = 40e-6 from [5e-6:160e-6];  // channel width, training range [5,160] um
+parameter real w = 5e-6 from [5e-6:160e-6];  // channel width, training range [5,160] um
 parameter real l = 10e-6 from [5e-6:20e-6];  // channel length, training range [5,20] um
 
 // hidden layer
@@ -60,83 +60,83 @@ analog begin
 	w_lo  = 5.0e-6; w_hi  = 160.0e-6;
 	l_lo  = 5.0e-6; l_hi  = 20.0e-6;
 
-	y_mean = -8.520563;
-	y_std  = 3.184171;
+	y_mean = -8.942054;
+	y_std  = 3.061316;
 
 	// hidden layer weights: hlayer_w[NI*i + k], k in {0:VG, 1:VD, 2:W, 3:L}
-	hlayer_w[0] = 0.378288; 	 hlayer_w[1] = 0.097434; 	 hlayer_w[2] = 0.518045; 	 hlayer_w[3] = 0.722480;
-	hlayer_w[4] = -3.867698; 	 hlayer_w[5] = -0.098541; 	 hlayer_w[6] = -0.899835; 	 hlayer_w[7] = 0.182046;
-	hlayer_w[8] = 6.067001; 	 hlayer_w[9] = 0.012617; 	 hlayer_w[10] = 0.256749; 	 hlayer_w[11] = -0.438785;
-	hlayer_w[12] = 1.665560; 	 hlayer_w[13] = 0.386537; 	 hlayer_w[14] = -0.022903; 	 hlayer_w[15] = 0.109844;
-	hlayer_w[16] = 0.196336; 	 hlayer_w[17] = -0.197748; 	 hlayer_w[18] = -0.949394; 	 hlayer_w[19] = -0.208377;
-	hlayer_w[20] = -1.563745; 	 hlayer_w[21] = 0.148083; 	 hlayer_w[22] = -1.011754; 	 hlayer_w[23] = 0.302043;
-	hlayer_w[24] = -3.194904; 	 hlayer_w[25] = -0.031354; 	 hlayer_w[26] = 0.960937; 	 hlayer_w[27] = -0.605595;
-	hlayer_w[28] = 0.860155; 	 hlayer_w[29] = -2.638278; 	 hlayer_w[30] = -0.696726; 	 hlayer_w[31] = -0.557718;
-	hlayer_w[32] = -0.913834; 	 hlayer_w[33] = -1.221143; 	 hlayer_w[34] = 0.251096; 	 hlayer_w[35] = 0.221057;
-	hlayer_w[36] = 0.598293; 	 hlayer_w[37] = 0.295009; 	 hlayer_w[38] = -0.553210; 	 hlayer_w[39] = -0.615116;
-	hlayer_w[40] = -0.028240; 	 hlayer_w[41] = 0.337343; 	 hlayer_w[42] = 0.128734; 	 hlayer_w[43] = 0.103668;
-	hlayer_w[44] = -1.308681; 	 hlayer_w[45] = -0.011329; 	 hlayer_w[46] = 4.759324; 	 hlayer_w[47] = 3.244973;
-	hlayer_w[48] = 1.441573; 	 hlayer_w[49] = -52.665749; 	 hlayer_w[50] = 0.143375; 	 hlayer_w[51] = -0.073919;
-	hlayer_w[52] = -0.006548; 	 hlayer_w[53] = 0.003596; 	 hlayer_w[54] = -0.003028; 	 hlayer_w[55] = -0.000940;
-	hlayer_w[56] = 3.155881; 	 hlayer_w[57] = -0.111561; 	 hlayer_w[58] = -0.301282; 	 hlayer_w[59] = -1.320329;
-	hlayer_w[60] = 0.001263; 	 hlayer_w[61] = 0.001011; 	 hlayer_w[62] = -0.000155; 	 hlayer_w[63] = 0.000520;
-	hlayer_w[64] = 0.179874; 	 hlayer_w[65] = 0.064697; 	 hlayer_w[66] = 0.528498; 	 hlayer_w[67] = 0.268799;
-	hlayer_w[68] = -1.465240; 	 hlayer_w[69] = -0.042323; 	 hlayer_w[70] = 1.416305; 	 hlayer_w[71] = 0.201544;
-	hlayer_w[72] = 8.270482; 	 hlayer_w[73] = -0.152517; 	 hlayer_w[74] = 0.070519; 	 hlayer_w[75] = -0.439094;
-	hlayer_w[76] = -3.769072; 	 hlayer_w[77] = -0.265066; 	 hlayer_w[78] = 0.660401; 	 hlayer_w[79] = 0.381488;
-	hlayer_w[80] = 0.764071; 	 hlayer_w[81] = 0.040574; 	 hlayer_w[82] = 1.660713; 	 hlayer_w[83] = -2.008648;
-	hlayer_w[84] = 2.798027; 	 hlayer_w[85] = 0.737051; 	 hlayer_w[86] = -0.029196; 	 hlayer_w[87] = -0.186746;
+	hlayer_w[0] = 1.087603; 	 hlayer_w[1] = 0.485320; 	 hlayer_w[2] = 0.542599; 	 hlayer_w[3] = -0.558151;
+	hlayer_w[4] = -5.634872; 	 hlayer_w[5] = 0.083915; 	 hlayer_w[6] = -0.695717; 	 hlayer_w[7] = -0.304182;
+	hlayer_w[8] = 1.950613; 	 hlayer_w[9] = -0.282272; 	 hlayer_w[10] = 3.423896; 	 hlayer_w[11] = 1.437736;
+	hlayer_w[12] = 0.599593; 	 hlayer_w[13] = 0.089242; 	 hlayer_w[14] = 0.290542; 	 hlayer_w[15] = 0.044267;
+	hlayer_w[16] = -0.265327; 	 hlayer_w[17] = -0.031608; 	 hlayer_w[18] = -0.023840; 	 hlayer_w[19] = -0.012791;
+	hlayer_w[20] = -1.800479; 	 hlayer_w[21] = -0.262223; 	 hlayer_w[22] = -0.375453; 	 hlayer_w[23] = -0.595060;
+	hlayer_w[24] = -1.046164; 	 hlayer_w[25] = 0.078062; 	 hlayer_w[26] = 0.878737; 	 hlayer_w[27] = 0.358572;
+	hlayer_w[28] = 1.674524; 	 hlayer_w[29] = -15.095959; 	 hlayer_w[30] = 0.091879; 	 hlayer_w[31] = 0.136181;
+	hlayer_w[32] = -0.391039; 	 hlayer_w[33] = -0.382834; 	 hlayer_w[34] = -1.131018; 	 hlayer_w[35] = 2.611127;
+	hlayer_w[36] = 0.384266; 	 hlayer_w[37] = 0.645976; 	 hlayer_w[38] = 0.358756; 	 hlayer_w[39] = 0.044972;
+	hlayer_w[40] = 1.138111; 	 hlayer_w[41] = -0.041626; 	 hlayer_w[42] = 1.242720; 	 hlayer_w[43] = 0.566567;
+	hlayer_w[44] = 2.165808; 	 hlayer_w[45] = -0.124144; 	 hlayer_w[46] = -0.673345; 	 hlayer_w[47] = 0.318615;
+	hlayer_w[48] = 2.646404; 	 hlayer_w[49] = -0.085566; 	 hlayer_w[50] = -9.825466; 	 hlayer_w[51] = -1.624665;
+	hlayer_w[52] = -0.821381; 	 hlayer_w[53] = 0.393251; 	 hlayer_w[54] = 0.884190; 	 hlayer_w[55] = 0.825663;
+	hlayer_w[56] = 0.612389; 	 hlayer_w[57] = 0.013136; 	 hlayer_w[58] = 0.533258; 	 hlayer_w[59] = 0.059543;
+	hlayer_w[60] = 1.375923; 	 hlayer_w[61] = -0.110368; 	 hlayer_w[62] = 0.069137; 	 hlayer_w[63] = 0.317789;
+	hlayer_w[64] = -0.163392; 	 hlayer_w[65] = -0.091740; 	 hlayer_w[66] = 0.266189; 	 hlayer_w[67] = -0.399694;
+	hlayer_w[68] = 0.016254; 	 hlayer_w[69] = -0.301590; 	 hlayer_w[70] = 1.769091; 	 hlayer_w[71] = 0.919852;
+	hlayer_w[72] = 4.391376; 	 hlayer_w[73] = -0.154154; 	 hlayer_w[74] = -0.757057; 	 hlayer_w[75] = 0.020854;
+	hlayer_w[76] = -0.768370; 	 hlayer_w[77] = 0.199353; 	 hlayer_w[78] = 0.553877; 	 hlayer_w[79] = 0.381874;
+	hlayer_w[80] = 0.163309; 	 hlayer_w[81] = -0.121389; 	 hlayer_w[82] = 0.145424; 	 hlayer_w[83] = -0.305959;
+	hlayer_w[84] = 3.886497; 	 hlayer_w[85] = -0.129885; 	 hlayer_w[86] = 1.140383; 	 hlayer_w[87] = 0.328899;
 
 	// hidden layer bias
-	hlayer_b[0] = -0.994877;
-	hlayer_b[1] = 1.617441;
-	hlayer_b[2] = -1.152513;
-	hlayer_b[3] = -0.202277;
-	hlayer_b[4] = 0.327412;
-	hlayer_b[5] = 0.967218;
-	hlayer_b[6] = 0.967203;
-	hlayer_b[7] = -0.618771;
-	hlayer_b[8] = 0.979868;
-	hlayer_b[9] = -0.108550;
-	hlayer_b[10] = -1.198566;
-	hlayer_b[11] = -1.710547;
-	hlayer_b[12] = -1.070260;
-	hlayer_b[13] = 0.000148;
-	hlayer_b[14] = -0.226441;
-	hlayer_b[15] = -0.000367;
-	hlayer_b[16] = -0.473082;
-	hlayer_b[17] = -0.364912;
-	hlayer_b[18] = -3.813405;
-	hlayer_b[19] = 0.865732;
-	hlayer_b[20] = -1.127845;
-	hlayer_b[21] = -1.638949;
+	hlayer_b[0] = -0.827128;
+	hlayer_b[1] = 2.512172;
+	hlayer_b[2] = -1.553330;
+	hlayer_b[3] = -0.057394;
+	hlayer_b[4] = 0.184974;
+	hlayer_b[5] = 1.308486;
+	hlayer_b[6] = 0.185430;
+	hlayer_b[7] = -1.931664;
+	hlayer_b[8] = 0.230511;
+	hlayer_b[9] = 0.103925;
+	hlayer_b[10] = -1.234337;
+	hlayer_b[11] = -1.113191;
+	hlayer_b[12] = -1.106362;
+	hlayer_b[13] = 0.814851;
+	hlayer_b[14] = -0.127234;
+	hlayer_b[15] = -0.848772;
+	hlayer_b[16] = -0.093406;
+	hlayer_b[17] = 0.012006;
+	hlayer_b[18] = -1.610530;
+	hlayer_b[19] = -0.004267;
+	hlayer_b[20] = -0.529349;
+	hlayer_b[21] = -2.498317;
 
 	// output layer weights
-	olayer_w[0] = 0.386537;
-	olayer_w[1] = 1.982804;
-	olayer_w[2] = 1.417815;
-	olayer_w[3] = 0.205619;
-	olayer_w[4] = -0.136520;
-	olayer_w[5] = -0.501018;
-	olayer_w[6] = 0.698773;
-	olayer_w[7] = -0.156605;
-	olayer_w[8] = 0.247799;
-	olayer_w[9] = -0.148582;
-	olayer_w[10] = 0.537047;
-	olayer_w[11] = -0.155819;
-	olayer_w[12] = -0.828527;
-	olayer_w[13] = 0.000974;
-	olayer_w[14] = -0.606890;
-	olayer_w[15] = -0.000125;
-	olayer_w[16] = 0.037714;
-	olayer_w[17] = -0.756278;
-	olayer_w[18] = 1.989055;
-	olayer_w[19] = 1.025583;
-	olayer_w[20] = 0.264397;
-	olayer_w[21] = 1.043038;
+	olayer_w[0] = 0.327424;
+	olayer_w[1] = 2.308875;
+	olayer_w[2] = 0.564746;
+	olayer_w[3] = -0.414803;
+	olayer_w[4] = 0.000294;
+	olayer_w[5] = -0.745721;
+	olayer_w[6] = 0.716887;
+	olayer_w[7] = -1.011188;
+	olayer_w[8] = 0.175519;
+	olayer_w[9] = -0.517817;
+	olayer_w[10] = -0.877510;
+	olayer_w[11] = -0.780262;
+	olayer_w[12] = -0.479224;
+	olayer_w[13] = -0.298617;
+	olayer_w[14] = -0.293794;
+	olayer_w[15] = -0.471816;
+	olayer_w[16] = 0.204817;
+	olayer_w[17] = -0.764230;
+	olayer_w[18] = 1.917066;
+	olayer_w[19] = 0.023377;
+	olayer_w[20] = 0.123937;
+	olayer_w[21] = 2.668941;
 
 	// output layer bias
-	olayer_b[0] = -0.237042;
+	olayer_b[0] = -0.268452;
 
 	end // end of initialization
 
