@@ -47,22 +47,38 @@ MEAS_COLOR = "#4c72b0"
 def load_model(weights_path):
     with open(weights_path) as f:
         w = json.load(f)
-    wh = np.array(w["wh"]); bh = np.array(w["bh"])
-    wo = np.array(w["wo"][0]); bo = w["bo"][0]
     bounds = w["input_scaling_minmax"]
     y_mean = w["target_transform"]["y_mean_log10_absID"]
     y_std = w["target_transform"]["y_std_log10_absID"]
 
-    def id_model(vg, vd, wid, l):
+    def scale(vg, vd, wid, l):
         vg_s = np.clip((vg - bounds["VG"][0]) / (bounds["VG"][1] - bounds["VG"][0]), 0, 1)
         vd_s = np.clip((vd - bounds["VD"][0]) / (bounds["VD"][1] - bounds["VD"][0]), 0, 1)
         w_s = np.clip((wid - bounds["W"][0]) / (bounds["W"][1] - bounds["W"][0]), 0, 1)
         l_s = np.clip((l - bounds["L"][0]) / (bounds["L"][1] - bounds["L"][0]), 0, 1)
-        x = np.stack(np.broadcast_arrays(vg_s, vd_s, w_s, l_s), axis=-1)
-        hv = x @ wh.T + bh
-        hy = np.tanh(hv)
-        ov = hy @ wo + bo
-        return 10.0 ** (ov * y_std + y_mean)
+        return np.stack(np.broadcast_arrays(vg_s, vd_s, w_s, l_s), axis=-1)
+
+    if "layers" in w:
+        # multi-hidden-layer format (see ann_train_deep.py)
+        layers = [(np.array(l["w"]), np.array(l["b"])) for l in w["layers"]]
+        wo = np.array(w["output"]["w"][0]); bo = w["output"]["b"][0]
+
+        def id_model(vg, vd, wid, l):
+            x = scale(vg, vd, wid, l)
+            for lw, lb in layers:
+                x = np.tanh(x @ lw.T + lb)
+            ov = x @ wo + bo
+            return 10.0 ** (ov * y_std + y_mean)
+    else:
+        # single-hidden-layer format (see ann_train.py)
+        wh = np.array(w["wh"]); bh = np.array(w["bh"])
+        wo = np.array(w["wo"][0]); bo = w["bo"][0]
+
+        def id_model(vg, vd, wid, l):
+            x = scale(vg, vd, wid, l)
+            hy = np.tanh(x @ wh.T + bh)
+            ov = hy @ wo + bo
+            return 10.0 ** (ov * y_std + y_mean)
 
     return id_model, w
 
