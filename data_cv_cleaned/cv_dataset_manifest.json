@@ -1,0 +1,31 @@
+{
+  "n_devices": 4,
+  "devices_W_L": [
+    [
+      20,
+      20
+    ],
+    [
+      40,
+      20
+    ],
+    [
+      160,
+      15
+    ],
+    [
+      160,
+      20
+    ]
+  ],
+  "vg_range": [
+    -3.0,
+    5.0
+  ],
+  "vg_step": 0.2,
+  "vds_fixed_at": 0.0,
+  "frequency_hz": 10000.0,
+  "ac_level_v": 0.05,
+  "rows_total": 164,
+  "note": "CGD/CGS measured at a single fixed VDS=0 bias per the raw 'C-V [W-L cgd/cgs]' files (paper Fig. 3b/c setup); the combined 'C-V Vd=*' family sweeps VDS but only for the *total* Cg, not the individual CGD/CGS split, so it is not usable for a VDS-resolved CGD/CGS model and is excluded here."
+}
