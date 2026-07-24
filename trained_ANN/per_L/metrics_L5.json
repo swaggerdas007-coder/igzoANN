@@ -1,0 +1,20 @@
+{
+  "L": 5,
+  "n_hidden": 22,
+  "mono_lambda": 100.0,
+  "seed": 42,
+  "best_epoch": 2496,
+  "train_seconds": 89.51004910469055,
+  "train_rows": 2356,
+  "val_rows": 505,
+  "test_rows": 505,
+  "test_rmse_log10ID": 0.408027708530426,
+  "test_mae_log10ID": 0.2405751645565033,
+  "test_r2_log10ID": 0.9841393828392029,
+  "gds_negative_fraction_on_region": 0.0011111111380159855,
+  "worst_gds_S": -6.350772991936537e-07,
+  "target_standardization": {
+    "y_mean_log10_absID": -8.30492115020752,
+    "y_std_log10_absID": 3.2661075592041016
+  }
+}

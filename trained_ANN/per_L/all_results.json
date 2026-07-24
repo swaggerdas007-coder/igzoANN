@@ -1,0 +1,82 @@
+[
+  {
+    "L": 5,
+    "n_hidden": 22,
+    "mono_lambda": 100.0,
+    "seed": 42,
+    "best_epoch": 2496,
+    "train_seconds": 89.51004910469055,
+    "train_rows": 2356,
+    "val_rows": 505,
+    "test_rows": 505,
+    "test_rmse_log10ID": 0.408027708530426,
+    "test_mae_log10ID": 0.2405751645565033,
+    "test_r2_log10ID": 0.9841393828392029,
+    "gds_negative_fraction_on_region": 0.0011111111380159855,
+    "worst_gds_S": -6.350772991936537e-07,
+    "target_standardization": {
+      "y_mean_log10_absID": -8.30492115020752,
+      "y_std_log10_absID": 3.2661075592041016
+    }
+  },
+  {
+    "L": 10,
+    "n_hidden": 22,
+    "mono_lambda": 100.0,
+    "seed": 42,
+    "best_epoch": 2301,
+    "train_seconds": 76.0822606086731,
+    "train_rows": 1963,
+    "val_rows": 421,
+    "test_rows": 421,
+    "test_rmse_log10ID": 0.5023466944694519,
+    "test_mae_log10ID": 0.3217184245586395,
+    "test_r2_log10ID": 0.9740571975708008,
+    "gds_negative_fraction_on_region": 0.0,
+    "worst_gds_S": 3.707836121469299e-12,
+    "target_standardization": {
+      "y_mean_log10_absID": -8.59621810913086,
+      "y_std_log10_absID": 3.1562259197235107
+    }
+  },
+  {
+    "L": 15,
+    "n_hidden": 22,
+    "mono_lambda": 100.0,
+    "seed": 42,
+    "best_epoch": 2499,
+    "train_seconds": 58.971193075180054,
+    "train_rows": 1571,
+    "val_rows": 337,
+    "test_rows": 336,
+    "test_rmse_log10ID": 0.5860459804534912,
+    "test_mae_log10ID": 0.3774150311946869,
+    "test_r2_log10ID": 0.9656615853309631,
+    "gds_negative_fraction_on_region": 0.013888888992369175,
+    "worst_gds_S": -5.321677463143715e-07,
+    "target_standardization": {
+      "y_mean_log10_absID": -8.67382526397705,
+      "y_std_log10_absID": 3.15231990814209
+    }
+  },
+  {
+    "L": 20,
+    "n_hidden": 22,
+    "mono_lambda": 100.0,
+    "seed": 42,
+    "best_epoch": 2473,
+    "train_seconds": 60.69973850250244,
+    "train_rows": 1571,
+    "val_rows": 337,
+    "test_rows": 336,
+    "test_rmse_log10ID": 0.49113181233406067,
+    "test_mae_log10ID": 0.2928915023803711,
+    "test_r2_log10ID": 0.974936842918396,
+    "gds_negative_fraction_on_region": 0.004305555485188961,
+    "worst_gds_S": -1.5894052296516747e-07,
+    "target_standardization": {
+      "y_mean_log10_absID": -8.637271881103516,
+      "y_std_log10_absID": 3.115042209625244
+    }
+  }
+]
