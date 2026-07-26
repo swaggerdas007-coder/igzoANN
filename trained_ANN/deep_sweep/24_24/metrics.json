@@ -1,0 +1,30 @@
+{
+  "hidden_sizes": [
+    24,
+    24
+  ],
+  "mono_lambda": 100.0,
+  "seed": 42,
+  "balance_l": true,
+  "n_params": 745,
+  "best_epoch": 1668,
+  "train_seconds": 105.82458138465881,
+  "train_rows": 7461,
+  "val_rows": 1599,
+  "test_rows": 1599,
+  "test_rmse_log10ID": 0.2858065664768219,
+  "test_mae_log10ID": 0.17578640580177307,
+  "test_r2_log10ID": 0.9919384121894836,
+  "gds_negative_fraction_on_region": 0.005833333358168602,
+  "worst_gds_S": -5.533894409381901e-08,
+  "test_rmse_log10ID_by_L": {
+    "5": 0.26042377948760986,
+    "10": 0.29251641035079956,
+    "15": 0.2954593300819397,
+    "20": 0.3011099100112915
+  },
+  "target_standardization": {
+    "y_mean_log10_absID": -8.520563125610352,
+    "y_std_log10_absID": 3.184171199798584
+  }
+}

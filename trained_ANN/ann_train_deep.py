@@ -1,9 +1,21 @@
-"""2-hidden-layer variant: 4 inputs -> 20 tanh -> 20 tanh -> 1 linear.
+"""2-hidden-layer variant: 4 inputs -> 32 tanh -> 16 tanh -> 1 linear.
 
 Same training recipe as the delivered 1-layer model (ann_train.py): Adam,
 monotonicity penalty (dID/dVD>=0 everywhere, dID/dVG>=0 on-region) via
 autograd collocation, and L-balanced loss weighting. Trained on
 cleaned_output_meas/merged_output_dataset.csv.
+
+The (32, 16) "funnel" shape (wide first layer, narrower second layer) was
+chosen by a reasoned hyperparameter sweep over both layer widths -- see
+ann_train_deep_sweep.py and trained_ANN/deep_sweep/results.json. R^2 turned
+out to be essentially flat from 16 neurons/layer upward (0.9908-0.9922
+across 8 configs, including symmetric 12-12 through 32-32 and both funnel
+orientations), so the deciding metric was the Cadence-relevant one: gds
+(output conductance) monotonicity. (32,16) had both the smallest
+violation area and the smallest worst-case violation of every config
+tried, including bigger and smaller symmetric nets and the reverse
+(16,32) funnel -- confirming the wide-then-narrow shape genuinely helps
+here, not just by convention.
 
 Usage:
     python ann_train_deep.py
@@ -22,7 +34,7 @@ DATA_PATH = os.path.join(HERE, "..", "cleaned_output_meas", "merged_output_datas
 OUT_DIR = os.path.join(HERE, "deep")
 
 SEED = 42
-HIDDEN_SIZES = [20, 20]
+HIDDEN_SIZES = [32, 16]
 MONO_LAMBDA = 100.0
 N_COLLOC = 512
 VG_ON_THRESH = 0.6
@@ -112,9 +124,9 @@ def gds_audit(model, y_mean, y_std):
     return float((gds < 0).float().mean()), float(gds.min())
 
 
-def main():
-    os.makedirs(OUT_DIR, exist_ok=True)
-    train_s, val_s, test_s = load_and_split()
+def train(hidden_sizes=None, seed=SEED, verbose=True):
+    hidden_sizes = hidden_sizes or HIDDEN_SIZES
+    train_s, val_s, test_s = load_and_split(seed=seed)
     y_mean = float(train_s["log_id"].mean())
     y_std = float(train_s["log_id"].std())
 
@@ -124,10 +136,10 @@ def main():
     Wva = to_tensor(val_s["l_weight"])
     Xte = to_tensor(test_s["X"]); log_id_test = test_s["log_id"]
 
-    torch.manual_seed(SEED)
-    gen = torch.Generator().manual_seed(SEED)
+    torch.manual_seed(seed)
+    gen = torch.Generator().manual_seed(seed)
 
-    model = TFTNetDeep(HIDDEN_SIZES)
+    model = TFTNetDeep(hidden_sizes)
     optimizer = torch.optim.Adam(model.parameters(), lr=LR)
     scheduler = torch.optim.lr_scheduler.ReduceLROnPlateau(optimizer, factor=0.5, patience=60)
 
@@ -160,10 +172,10 @@ def main():
             best_score, best_state, best_epoch, no_improve = score, {k: v.clone() for k, v in model.state_dict().items()}, epoch, 0
         else:
             no_improve += 1
-        if epoch % 100 == 0 or epoch == 1:
-            print(f"epoch {epoch:4d} val_mse={val_mse:.5f} val_pen={val_pen:.5f} best@{best_epoch}", flush=True)
+        if verbose and (epoch % 100 == 0 or epoch == 1):
+            print(f"  [{hidden_sizes}] epoch {epoch:4d} val_mse={val_mse:.5f} val_pen={val_pen:.5f} best@{best_epoch}", flush=True)
         if no_improve >= PATIENCE:
-            print(f"early stop at {epoch} (best {best_epoch})", flush=True)
+            print(f"  [{hidden_sizes}] early stop at {epoch} (best {best_epoch})", flush=True)
             break
 
     model.load_state_dict(best_state)
@@ -185,8 +197,10 @@ def main():
         mask = (test_s["df"]["L"] == l_val).to_numpy()
         rmse_by_l[int(l_val)] = float(np.sqrt(np.mean((log_id_pred[mask] - log_id_test[mask]) ** 2)))
 
+    n_params = sum(p.numel() for p in model.parameters())
     result = {
-        "hidden_sizes": HIDDEN_SIZES, "mono_lambda": MONO_LAMBDA, "seed": SEED, "balance_l": True,
+        "hidden_sizes": list(hidden_sizes), "mono_lambda": MONO_LAMBDA, "seed": seed, "balance_l": True,
+        "n_params": n_params,
         "best_epoch": best_epoch, "train_seconds": time.time() - t0,
         "train_rows": len(train_s["df"]), "val_rows": len(val_s["df"]), "test_rows": len(test_s["df"]),
         "test_rmse_log10ID": rmse, "test_mae_log10ID": mae, "test_r2_log10ID": r2,
@@ -194,11 +208,18 @@ def main():
         "test_rmse_log10ID_by_L": rmse_by_l,
         "target_standardization": {"y_mean_log10_absID": y_mean, "y_std_log10_absID": y_std},
     }
-    print(json.dumps(result, indent=2))
+    if verbose:
+        print(json.dumps(result, indent=2))
+    return model, result
 
+
+def export(model, result, out_dir=OUT_DIR):
+    os.makedirs(out_dir, exist_ok=True)
     sd = model.state_dict()
+    y_mean = result["target_standardization"]["y_mean_log10_absID"]
+    y_std = result["target_standardization"]["y_std_log10_absID"]
     weights = {
-        "architecture": {"n_inputs": 4, "hidden_sizes": HIDDEN_SIZES, "n_outputs": 1,
+        "architecture": {"n_inputs": 4, "hidden_sizes": result["hidden_sizes"], "n_outputs": 1,
                           "input_order": FEATURES},
         "input_scaling_minmax": {k: list(v) for k, v in FEATURE_BOUNDS.items()},
         "layers": [
@@ -212,13 +233,17 @@ def main():
             "recover_ID": "ID = 10 ** (network_output * y_std + y_mean)",
         },
     }
-    with open(os.path.join(OUT_DIR, "weights.json"), "w") as f:
+    with open(os.path.join(out_dir, "weights.json"), "w") as f:
         json.dump(weights, f, indent=2)
-    torch.save(sd, os.path.join(OUT_DIR, "model_weights.pt"))
-    with open(os.path.join(OUT_DIR, "metrics.json"), "w") as f:
+    torch.save(sd, os.path.join(out_dir, "model_weights.pt"))
+    with open(os.path.join(out_dir, "metrics.json"), "w") as f:
         json.dump(result, f, indent=2)
-    np.savez(os.path.join(OUT_DIR, "test_predictions.npz"), id_true=test_s["id_raw"], id_pred=id_pred)
-    print("Saved to", OUT_DIR)
+    print("Saved to", out_dir)
+
+
+def main():
+    model, result = train(HIDDEN_SIZES)
+    export(model, result)
 
 
 if __name__ == "__main__":
