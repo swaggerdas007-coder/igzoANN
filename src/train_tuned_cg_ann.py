@@ -30,11 +30,10 @@ FG = "#1f1f1f"
 MEASURED = "#4c72b0"
 MODEL = "#c44e52"
 
-# Best hyperparameters from tuning sweep
+# Best hyperparameters from tuning sweep (432 configs tested)
 TUNED_CONFIGS = {
     "cgd": {"n_h1": 18, "n_h2": 9, "loss": "huber", "lr": 5e-3, "bs": 32},
-    # Cgs will use best available if complete, otherwise use placeholder
-    "cgs": {"n_h1": 18, "n_h2": 9, "loss": "huber", "lr": 5e-3, "bs": 32},
+    "cgs": {"n_h1": 20, "n_h2": 10, "loss": "mse", "lr": 5e-3, "bs": 16},
 }
 
 
