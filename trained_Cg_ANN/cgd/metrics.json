@@ -1,10 +1,18 @@
 {
   "cap_type": "cgd",
+  "tuned": true,
+  "hyperparameters": {
+    "n_h1": 18,
+    "n_h2": 9,
+    "loss": "huber",
+    "lr": 0.005,
+    "batch_size": 32
+  },
   "architecture": {
-    "layers": "4 -> 10 (tanh) -> 10 (tanh) -> 1 (linear)",
+    "layers": "4 -> 18 (tanh) -> 9 (tanh) -> 1 (linear)",
     "n_inputs": 4,
-    "n_hidden1": 10,
-    "n_hidden2": 10,
+    "n_hidden1": 18,
+    "n_hidden2": 9,
     "n_outputs": 1,
     "input_order": [
       "VG",
@@ -41,27 +49,23 @@
     "y_mean_pF": 2.1253154277801514,
     "y_std_pF": 2.153496026992798
   },
-  "final_val_mse_standardized": 0.03910786285996437,
+  "final_val_mse_standardized": 0.001651460537686944,
   "train": {
-    "rmse_pF": 0.24646933376789093,
-    "mae_pF": 0.1798720359802246,
-    "r2": 0.9869010173293791,
-    "MARE_percent_full": 30.592405319213867,
-    "MARE_percent_onstate_C_ge_0p5pF": 15.921589851379395
+    "rmse_pF": 0.05744251608848572,
+    "mae_pF": 0.033866576850414276,
+    "r2": 0.999288493707994,
+    "MARE_percent_onstate_C_ge_0p5pF": 2.470813035964966
   },
   "val": {
-    "rmse_pF": 0.42586907744407654,
-    "mae_pF": 0.28483039140701294,
-    "r2": 0.9479128440547891,
-    "MARE_percent_full": 55.68718719482422,
-    "MARE_percent_onstate_C_ge_0p5pF": 27.650192260742188
+    "rmse_pF": 0.138214573264122,
+    "mae_pF": 0.07949341088533401,
+    "r2": 0.9945136167305484,
+    "MARE_percent_onstate_C_ge_0p5pF": 5.268733024597168
   },
   "test": {
-    "rmse_pF": 0.7127742171287537,
-    "mae_pF": 0.43909892439842224,
-    "r2": 0.85479092766004,
-    "MARE_percent_full": 53.16265106201172,
-    "MARE_percent_onstate_C_ge_0p5pF": 45.91007995605469
-  },
-  "note": "Baseline: all C measurements are at VD=0V, so the model learns C(VG,W,L) only and does not capture C-VDS dependence. Only 4 geometries; random point split reports interpolation accuracy."
+    "rmse_pF": 0.34438079595565796,
+    "mae_pF": 0.15480239689350128,
+    "r2": 0.9661025008570289,
+    "MARE_percent_onstate_C_ge_0p5pF": 14.705328941345215
+  }
 }

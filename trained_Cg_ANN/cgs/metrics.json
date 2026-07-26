@@ -1,10 +1,18 @@
 {
   "cap_type": "cgs",
+  "tuned": true,
+  "hyperparameters": {
+    "n_h1": 18,
+    "n_h2": 9,
+    "loss": "huber",
+    "lr": 0.005,
+    "batch_size": 32
+  },
   "architecture": {
-    "layers": "4 -> 10 (tanh) -> 10 (tanh) -> 1 (linear)",
+    "layers": "4 -> 18 (tanh) -> 9 (tanh) -> 1 (linear)",
     "n_inputs": 4,
-    "n_hidden1": 10,
-    "n_hidden2": 10,
+    "n_hidden1": 18,
+    "n_hidden2": 9,
     "n_outputs": 1,
     "input_order": [
       "VG",
@@ -41,27 +49,23 @@
     "y_mean_pF": 2.0748252868652344,
     "y_std_pF": 2.177222967147827
   },
-  "final_val_mse_standardized": 0.027416201308369637,
+  "final_val_mse_standardized": 0.000981182442046702,
   "train": {
-    "rmse_pF": 0.21918633580207825,
-    "mae_pF": 0.1599181741476059,
-    "r2": 0.9898650617229455,
-    "MARE_percent_full": 35.43527603149414,
-    "MARE_percent_onstate_C_ge_0p5pF": 13.682092666625977
+    "rmse_pF": 0.08073107898235321,
+    "mae_pF": 0.037022922188043594,
+    "r2": 0.9986250856643056,
+    "MARE_percent_onstate_C_ge_0p5pF": 2.6248507499694824
   },
   "val": {
-    "rmse_pF": 0.36050108075141907,
-    "mae_pF": 0.23301854729652405,
-    "r2": 0.9641282958037254,
-    "MARE_percent_full": 57.50815963745117,
-    "MARE_percent_onstate_C_ge_0p5pF": 25.845748901367188
+    "rmse_pF": 0.09696853905916214,
+    "mae_pF": 0.06430863589048386,
+    "r2": 0.9974046218879323,
+    "MARE_percent_onstate_C_ge_0p5pF": 3.5348973274230957
   },
   "test": {
-    "rmse_pF": 0.79127436876297,
-    "mae_pF": 0.43635353446006775,
-    "r2": 0.8185380672067378,
-    "MARE_percent_full": 58.787391662597656,
-    "MARE_percent_onstate_C_ge_0p5pF": 48.44062805175781
-  },
-  "note": "Baseline: all C measurements are at VD=0V, so the model learns C(VG,W,L) only and does not capture C-VDS dependence. Only 4 geometries; random point split reports interpolation accuracy."
+    "rmse_pF": 0.49169307947158813,
+    "mae_pF": 0.19603745639324188,
+    "r2": 0.9299320361219794,
+    "MARE_percent_onstate_C_ge_0p5pF": 20.69812774658203
+  }
 }
