@@ -88,6 +88,23 @@ dominated by the steep-transition points where a small VG offset is a large
 capacitance error). The full-range MARE is higher still only because of the
 ~0.1 pF sub-threshold points and is not a meaningful accuracy figure here.
 
+## Deeper variant: two-layer 10+10 ANNs (`trained_Cg_ANN/`)
+
+`src/train_cg_ann.py` trains a deeper `4 → 10 → 10 → 1` MLP
+(`src/model.py::TFTNet2`) per component, saved under `trained_Cg_ANN/`. The
+extra hidden layer lets the network bend into the sharp threshold step, lifting
+the test metrics over the single-layer baseline:
+
+| Component | R² (2-layer) | R² (1-layer 32) |
+|-----------|--------------|------------------|
+| Cgd       | 0.855        | 0.73             |
+| Cgs       | 0.819        | 0.66             |
+
+Per-geometry, the 2-layer fit is excellent on the two W=160 devices
+(R² ≈ 0.94–0.99) but only fair on W=20–40, because the unweighted pF-scale MSE
+is dominated by the ~8× larger W=160 curves. See `trained_Cg_ANN/README.md` for
+the full breakdown and the per-curve plots.
+
 ## Next steps to move past the baseline
 
 1. **Measure VD dependence** of C_GD/C_GS (component sweeps at several VDS), so

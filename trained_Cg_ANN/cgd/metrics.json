@@ -1,0 +1,67 @@
+{
+  "cap_type": "cgd",
+  "architecture": {
+    "layers": "4 -> 10 (tanh) -> 10 (tanh) -> 1 (linear)",
+    "n_inputs": 4,
+    "n_hidden1": 10,
+    "n_hidden2": 10,
+    "n_outputs": 1,
+    "input_order": [
+      "VG",
+      "VD",
+      "W",
+      "L"
+    ]
+  },
+  "target": "capacitance_pF",
+  "rows": {
+    "train": 115,
+    "val": 25,
+    "test": 24
+  },
+  "geometries": [
+    [
+      20,
+      20
+    ],
+    [
+      40,
+      20
+    ],
+    [
+      160,
+      15
+    ],
+    [
+      160,
+      20
+    ]
+  ],
+  "target_standardization": {
+    "y_mean_pF": 2.1253154277801514,
+    "y_std_pF": 2.153496026992798
+  },
+  "final_val_mse_standardized": 0.03910786285996437,
+  "train": {
+    "rmse_pF": 0.24646933376789093,
+    "mae_pF": 0.1798720359802246,
+    "r2": 0.9869010173293791,
+    "MARE_percent_full": 30.592405319213867,
+    "MARE_percent_onstate_C_ge_0p5pF": 15.921589851379395
+  },
+  "val": {
+    "rmse_pF": 0.42586907744407654,
+    "mae_pF": 0.28483039140701294,
+    "r2": 0.9479128440547891,
+    "MARE_percent_full": 55.68718719482422,
+    "MARE_percent_onstate_C_ge_0p5pF": 27.650192260742188
+  },
+  "test": {
+    "rmse_pF": 0.7127742171287537,
+    "mae_pF": 0.43909892439842224,
+    "r2": 0.85479092766004,
+    "MARE_percent_full": 53.16265106201172,
+    "MARE_percent_onstate_C_ge_0p5pF": 45.91007995605469
+  },
+  "note": "Baseline: all C measurements are at VD=0V, so the model learns C(VG,W,L) only and does not capture C-VDS dependence. Only 4 geometries; random point split reports interpolation accuracy."
+}
