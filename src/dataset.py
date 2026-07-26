@@ -47,6 +47,8 @@ def scale_features(df: pd.DataFrame) -> np.ndarray:
     return np.stack(cols, axis=1)
 
 
+
+
 def load_and_split(csv_path: str, seed: int = 42, train_frac=0.7, val_frac=0.15):
     df = pd.read_csv(csv_path)
     df = df.drop_duplicates().reset_index(drop=True)
