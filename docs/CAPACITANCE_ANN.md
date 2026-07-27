@@ -88,33 +88,72 @@ dominated by the steep-transition points where a small VG offset is a large
 capacitance error). The full-range MARE is higher still only because of the
 ~0.1 pF sub-threshold points and is not a meaningful accuracy figure here.
 
-## Deeper variant: two-layer 10+10 ANNs (`trained_Cg_ANN/`)
+## Deeper variant: two-layer ANNs (`trained_Cg_ANN/`)
 
 `src/train_cg_ann.py` trains a deeper `4 → 10 → 10 → 1` MLP
-(`src/model.py::TFTNet2`) per component, saved under `trained_Cg_ANN/`. The
-extra hidden layer lets the network bend into the sharp threshold step, lifting
-the test metrics over the single-layer baseline:
+(`src/model.py::TFTNet2`) per component. The extra hidden layer lets the
+network bend into the sharp threshold step, lifting the test metrics over the
+single-layer baseline:
 
 | Component | R² (2-layer) | R² (1-layer 32) |
 |-----------|--------------|------------------|
 | Cgd       | 0.855        | 0.73             |
 | Cgs       | 0.819        | 0.66             |
 
-Per-geometry, the 2-layer fit is excellent on the two W=160 devices
-(R² ≈ 0.94–0.99) but only fair on W=20–40, because the unweighted pF-scale MSE
-is dominated by the ~8× larger W=160 curves. See `trained_Cg_ANN/README.md` for
-the full breakdown and the per-curve plots.
+Per-geometry, that fit is excellent on the two W=160 devices (R² ≈ 0.94–0.99)
+but only fair on W=20–40.
 
-## Next steps to move past the baseline
+## What did and did not fix the small-device fit
+
+Four things were tried against the W=20/W=40 overshoot, in order:
+
+| Attempt | Result |
+|---------|--------|
+| Third hidden layer (10→5→5), `src/train_cg_ann_3layer.py` | **Worse** — Cgd R² 0.855 → 0.839, Cgs 0.819 → 0.810 |
+| Log-scaled W and L inputs | **Worse** — Cgd 0.855 → 0.822, Cgs 0.819 → 0.760 |
+| Hyperparameter sweep, 432 configs (8 architectures ≤ 20/10 neurons × {MSE, MAE, Huber} × 3 LRs × 3 batch sizes), `src/tune_cg_ann.py` | **Better** — Cgd 0.966 (18→9, Huber, lr 5e-3, bs 32), Cgs 0.946 (20→10, MSE, lr 5e-3, bs 16); small-device overshoot reduced but not removed |
+| **Area-normalised target C/(W·L)**, `src/cg_loss_experiments.py` | **Fixes it** — Cgd 0.9946, Cgs 0.9905; see below |
+
+Depth and input scaling could not help because the problem was never the model
+or the input geometry — it was the loss. An unweighted loss on absolute pF is
+dominated by the W=160 curves, which are ~8× larger in magnitude, so the fit is
+spent on them.
+
+The measured capacitance is very nearly proportional to gate area
+(C/(W·L) ≈ 2.0e-3 pF/µm² for all four devices), so regressing C/(W·L) puts
+every curve on the same scale and removes the imbalance at the source. It also
+eliminates the negative-capacitance dip at very negative VG, so no softplus
+output head is needed. Per-curve loss weighting on the un-normalised target was
+also tried and merely trades the imbalance rather than removing it.
+
+`src/cg_loss_experiments.py` compares all four options over 3 seeds; results in
+`cg_experiments/variant_summary.json` and `trained_Cg_ANN/README.md`.
+
+Final models (`src/train_cg_final.py`):
+
+| Component | Architecture | Loss | R²     | RMSE (pF) | MARE on-state |
+|-----------|--------------|------|--------|-----------|----------------|
+| Cgd       | 4→18→9→1     | Huber| 0.9946 | 0.138     | 4.9 %          |
+| Cgs       | 4→20→10→1    | MSE  | 0.9905 | 0.181     | 5.2 %          |
+
+## Verilog-A equivalent circuit
+
+All three ANNs are merged into `verilogA/tft_ann_full_model.va` by
+`scripts/export_verilog_a_full.py`, following Fig. 1(b) of the paper — ID as a
+current source across D–S, CGD and CGS as bias-dependent capacitors across G–D
+and G–S, each driven by its own network. The ID block is the two-hidden-layer
+`4 → 32 → 16 → 1` model from `trained_ANN/deep/`. All three networks share the
+same 4-input interface and min-max scaling, so the merge needs no adapters.
+`scripts/verify_verilog_a_full.py` checks the generated file numerically
+against the PyTorch models. See `verilogA/README.md`.
+
+## Next steps
 
 1. **Measure VD dependence** of C_GD/C_GS (component sweeps at several VDS), so
-   the ANN can reproduce Fig. 6 — the single biggest gap.
-2. **More geometries / replicates** to support W/L generalisation.
-3. **Enforce positivity and sharper transitions** — e.g. a softplus output head
-   or a physically-informed parametrisation (area-scaled shape function
-   `C ≈ Cox·W·(L or Lov)·s(VG−VT)`), which should lift the near-threshold fit
-   well above this baseline.
-4. Optionally regress the **intrinsic** C_GDi/C_GSi (measured minus overlap) if
+   the ANN can reproduce Fig. 6 — the single biggest remaining gap. Until then
+   VD is an input in name only.
+2. **More geometries / replicates** to support W/L generalisation. Area
+   normalisation gives a physically sensible extrapolation law, but any (W,L)
+   outside the 4 measured points is unvalidated.
+3. Optionally regress the **intrinsic** C_GDi/C_GSi (measured minus overlap) if
    the EC needs the intrinsic components separately.
-5. Export the cap ANNs to Verilog-A (extend `scripts/export_verilog_a.py`,
-   which already consumes `weights.json`) and wire all three ANNs into the EC.

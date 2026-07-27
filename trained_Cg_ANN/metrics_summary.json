@@ -1,11 +1,20 @@
 {
   "cgd": {
     "cap_type": "cgd",
+    "variant": "areanorm",
+    "hyperparameters": {
+      "n_h1": 18,
+      "n_h2": 9,
+      "loss": "huber",
+      "lr": 0.005,
+      "batch_size": 32,
+      "epochs": 2500
+    },
     "architecture": {
-      "layers": "4 -> 10 (tanh) -> 10 (tanh) -> 1 (linear)",
+      "layers": "4 -> 18 (tanh) -> 9 (tanh) -> 1 (linear)",
       "n_inputs": 4,
-      "n_hidden1": 10,
-      "n_hidden2": 10,
+      "n_hidden1": 18,
+      "n_hidden2": 9,
       "n_outputs": 1,
       "input_order": [
         "VG",
@@ -14,7 +23,8 @@
         "L"
       ]
     },
-    "target": "capacitance_pF",
+    "target": "C_pF / (W_um * L_um) * 1e3",
+    "area_normalised": true,
     "rows": {
       "train": 115,
       "val": 25,
@@ -39,39 +49,65 @@
       ]
     ],
     "target_standardization": {
-      "y_mean_pF": 2.1253154277801514,
-      "y_std_pF": 2.153496026992798
+      "y_mean": 1.2281092405319214,
+      "y_std": 0.80768221616745
     },
-    "final_val_mse_standardized": 0.03910786285996437,
     "train": {
-      "rmse_pF": 0.24646933376789093,
-      "mae_pF": 0.1798720359802246,
-      "r2": 0.9869010173293791,
-      "MARE_percent_full": 30.592405319213867,
-      "MARE_percent_onstate_C_ge_0p5pF": 15.921589851379395
+      "rmse_pF": 0.018452459946274757,
+      "mae_pF": 0.00978503841906786,
+      "r2": 0.9999265789975316,
+      "MARE_percent_onstate": 0.8321922421455383
     },
     "val": {
-      "rmse_pF": 0.42586907744407654,
-      "mae_pF": 0.28483039140701294,
-      "r2": 0.9479128440547891,
-      "MARE_percent_full": 55.68718719482422,
-      "MARE_percent_onstate_C_ge_0p5pF": 27.650192260742188
+      "rmse_pF": 0.12410592287778854,
+      "mae_pF": 0.04287642613053322,
+      "r2": 0.9955765265105245,
+      "MARE_percent_onstate": 3.7233307361602783
     },
     "test": {
-      "rmse_pF": 0.7127742171287537,
-      "mae_pF": 0.43909892439842224,
-      "r2": 0.85479092766004,
-      "MARE_percent_full": 53.16265106201172,
-      "MARE_percent_onstate_C_ge_0p5pF": 45.91007995605469
+      "rmse_pF": 0.13774773478507996,
+      "mae_pF": 0.05361177399754524,
+      "r2": 0.9945767618416949,
+      "MARE_percent_onstate": 4.917260646820068
     },
-    "note": "Baseline: all C measurements are at VD=0V, so the model learns C(VG,W,L) only and does not capture C-VDS dependence. Only 4 geometries; random point split reports interpolation accuracy."
+    "per_geometry_all_points": {
+      "W20_L20": {
+        "rmse_pF": 0.025299422442913055,
+        "nrmse_percent": 3.597346903542742,
+        "n": 41
+      },
+      "W40_L20": {
+        "rmse_pF": 0.10309353470802307,
+        "nrmse_percent": 7.437706790801135,
+        "n": 41
+      },
+      "W160_L15": {
+        "rmse_pF": 0.028977902606129646,
+        "nrmse_percent": 0.7042133911787494,
+        "n": 41
+      },
+      "W160_L20": {
+        "rmse_pF": 0.0966726765036583,
+        "nrmse_percent": 1.7880797930883454,
+        "n": 41
+      }
+    }
   },
   "cgs": {
     "cap_type": "cgs",
+    "variant": "areanorm",
+    "hyperparameters": {
+      "n_h1": 20,
+      "n_h2": 10,
+      "loss": "mse",
+      "lr": 0.005,
+      "batch_size": 16,
+      "epochs": 2500
+    },
     "architecture": {
-      "layers": "4 -> 10 (tanh) -> 10 (tanh) -> 1 (linear)",
+      "layers": "4 -> 20 (tanh) -> 10 (tanh) -> 1 (linear)",
       "n_inputs": 4,
-      "n_hidden1": 10,
+      "n_hidden1": 20,
       "n_hidden2": 10,
       "n_outputs": 1,
       "input_order": [
@@ -81,7 +117,8 @@
         "L"
       ]
     },
-    "target": "capacitance_pF",
+    "target": "C_pF / (W_um * L_um) * 1e3",
+    "area_normalised": true,
     "rows": {
       "train": 115,
       "val": 25,
@@ -106,31 +143,48 @@
       ]
     ],
     "target_standardization": {
-      "y_mean_pF": 2.0748252868652344,
-      "y_std_pF": 2.177222967147827
+      "y_mean": 1.2038735151290894,
+      "y_std": 0.8370981812477112
     },
-    "final_val_mse_standardized": 0.027416201308369637,
     "train": {
-      "rmse_pF": 0.21918633580207825,
-      "mae_pF": 0.1599181741476059,
-      "r2": 0.9898650617229455,
-      "MARE_percent_full": 35.43527603149414,
-      "MARE_percent_onstate_C_ge_0p5pF": 13.682092666625977
+      "rmse_pF": 0.02840881049633026,
+      "mae_pF": 0.011513124220073223,
+      "r2": 0.9998297448549965,
+      "MARE_percent_onstate": 0.8202774524688721
     },
     "val": {
-      "rmse_pF": 0.36050108075141907,
-      "mae_pF": 0.23301854729652405,
-      "r2": 0.9641282958037254,
-      "MARE_percent_full": 57.50815963745117,
-      "MARE_percent_onstate_C_ge_0p5pF": 25.845748901367188
+      "rmse_pF": 0.01809314824640751,
+      "mae_pF": 0.010001079179346561,
+      "r2": 0.9999096418847035,
+      "MARE_percent_onstate": 0.5891123414039612
     },
     "test": {
-      "rmse_pF": 0.79127436876297,
-      "mae_pF": 0.43635353446006775,
-      "r2": 0.8185380672067378,
-      "MARE_percent_full": 58.787391662597656,
-      "MARE_percent_onstate_C_ge_0p5pF": 48.44062805175781
+      "rmse_pF": 0.18133321404457092,
+      "mae_pF": 0.06397442519664764,
+      "r2": 0.9904701501317348,
+      "MARE_percent_onstate": 5.230936527252197
     },
-    "note": "Baseline: all C measurements are at VD=0V, so the model learns C(VG,W,L) only and does not capture C-VDS dependence. Only 4 geometries; random point split reports interpolation accuracy."
+    "per_geometry_all_points": {
+      "W20_L20": {
+        "rmse_pF": 0.011419761925935745,
+        "nrmse_percent": 1.569907781183851,
+        "n": 41
+      },
+      "W40_L20": {
+        "rmse_pF": 0.03880630433559418,
+        "nrmse_percent": 2.7155846679033986,
+        "n": 41
+      },
+      "W160_L15": {
+        "rmse_pF": 0.047157756984233856,
+        "nrmse_percent": 1.1076870942230284,
+        "n": 41
+      },
+      "W160_L20": {
+        "rmse_pF": 0.13360752165317535,
+        "nrmse_percent": 2.3980887650987137,
+        "n": 41
+      }
+    }
   }
 }

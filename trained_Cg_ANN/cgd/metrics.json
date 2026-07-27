@@ -1,12 +1,13 @@
 {
   "cap_type": "cgd",
-  "tuned": true,
+  "variant": "areanorm",
   "hyperparameters": {
     "n_h1": 18,
     "n_h2": 9,
     "loss": "huber",
     "lr": 0.005,
-    "batch_size": 32
+    "batch_size": 32,
+    "epochs": 2500
   },
   "architecture": {
     "layers": "4 -> 18 (tanh) -> 9 (tanh) -> 1 (linear)",
@@ -21,7 +22,8 @@
       "L"
     ]
   },
-  "target": "capacitance_pF",
+  "target": "C_pF / (W_um * L_um) * 1e3",
+  "area_normalised": true,
   "rows": {
     "train": 115,
     "val": 25,
@@ -46,26 +48,47 @@
     ]
   ],
   "target_standardization": {
-    "y_mean_pF": 2.1253154277801514,
-    "y_std_pF": 2.153496026992798
+    "y_mean": 1.2281092405319214,
+    "y_std": 0.80768221616745
   },
-  "final_val_mse_standardized": 0.001651460537686944,
   "train": {
-    "rmse_pF": 0.05744251608848572,
-    "mae_pF": 0.033866576850414276,
-    "r2": 0.999288493707994,
-    "MARE_percent_onstate_C_ge_0p5pF": 2.470813035964966
+    "rmse_pF": 0.018452459946274757,
+    "mae_pF": 0.00978503841906786,
+    "r2": 0.9999265789975316,
+    "MARE_percent_onstate": 0.8321922421455383
   },
   "val": {
-    "rmse_pF": 0.138214573264122,
-    "mae_pF": 0.07949341088533401,
-    "r2": 0.9945136167305484,
-    "MARE_percent_onstate_C_ge_0p5pF": 5.268733024597168
+    "rmse_pF": 0.12410592287778854,
+    "mae_pF": 0.04287642613053322,
+    "r2": 0.9955765265105245,
+    "MARE_percent_onstate": 3.7233307361602783
   },
   "test": {
-    "rmse_pF": 0.34438079595565796,
-    "mae_pF": 0.15480239689350128,
-    "r2": 0.9661025008570289,
-    "MARE_percent_onstate_C_ge_0p5pF": 14.705328941345215
+    "rmse_pF": 0.13774773478507996,
+    "mae_pF": 0.05361177399754524,
+    "r2": 0.9945767618416949,
+    "MARE_percent_onstate": 4.917260646820068
+  },
+  "per_geometry_all_points": {
+    "W20_L20": {
+      "rmse_pF": 0.025299422442913055,
+      "nrmse_percent": 3.597346903542742,
+      "n": 41
+    },
+    "W40_L20": {
+      "rmse_pF": 0.10309353470802307,
+      "nrmse_percent": 7.437706790801135,
+      "n": 41
+    },
+    "W160_L15": {
+      "rmse_pF": 0.028977902606129646,
+      "nrmse_percent": 0.7042133911787494,
+      "n": 41
+    },
+    "W160_L20": {
+      "rmse_pF": 0.0966726765036583,
+      "nrmse_percent": 1.7880797930883454,
+      "n": 41
+    }
   }
 }
