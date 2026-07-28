@@ -1,0 +1,94 @@
+{
+  "cap_type": "cgd",
+  "variant": "areanorm",
+  "hyperparameters": {
+    "n_h1": 18,
+    "n_h2": 9,
+    "loss": "huber",
+    "lr": 0.005,
+    "batch_size": 32,
+    "epochs": 2500
+  },
+  "architecture": {
+    "layers": "4 -> 18 (tanh) -> 9 (tanh) -> 1 (linear)",
+    "n_inputs": 4,
+    "n_hidden1": 18,
+    "n_hidden2": 9,
+    "n_outputs": 1,
+    "input_order": [
+      "VG",
+      "VD",
+      "W",
+      "L"
+    ]
+  },
+  "target": "C_pF / (W_um * L_um) * 1e3",
+  "area_normalised": true,
+  "rows": {
+    "train": 115,
+    "val": 25,
+    "test": 24
+  },
+  "geometries": [
+    [
+      20,
+      20
+    ],
+    [
+      40,
+      20
+    ],
+    [
+      160,
+      15
+    ],
+    [
+      160,
+      20
+    ]
+  ],
+  "target_standardization": {
+    "y_mean": 1.2281092405319214,
+    "y_std": 0.80768221616745
+  },
+  "train": {
+    "rmse_pF": 0.018452459946274757,
+    "mae_pF": 0.00978503841906786,
+    "r2": 0.9999265789975316,
+    "MARE_percent_onstate": 0.8321922421455383
+  },
+  "val": {
+    "rmse_pF": 0.12410592287778854,
+    "mae_pF": 0.04287642613053322,
+    "r2": 0.9955765265105245,
+    "MARE_percent_onstate": 3.7233307361602783
+  },
+  "test": {
+    "rmse_pF": 0.13774773478507996,
+    "mae_pF": 0.05361177399754524,
+    "r2": 0.9945767618416949,
+    "MARE_percent_onstate": 4.917260646820068
+  },
+  "per_geometry_all_points": {
+    "W20_L20": {
+      "rmse_pF": 0.025299422442913055,
+      "nrmse_percent": 3.597346903542742,
+      "n": 41
+    },
+    "W40_L20": {
+      "rmse_pF": 0.10309353470802307,
+      "nrmse_percent": 7.437706790801135,
+      "n": 41
+    },
+    "W160_L15": {
+      "rmse_pF": 0.028977902606129646,
+      "nrmse_percent": 0.7042133911787494,
+      "n": 41
+    },
+    "W160_L20": {
+      "rmse_pF": 0.0966726765036583,
+      "nrmse_percent": 1.7880797930883454,
+      "n": 41
+    }
+  }
+}

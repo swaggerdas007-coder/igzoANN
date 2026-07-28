@@ -1,0 +1,190 @@
+{
+  "cgd": {
+    "cap_type": "cgd",
+    "variant": "areanorm",
+    "hyperparameters": {
+      "n_h1": 18,
+      "n_h2": 9,
+      "loss": "huber",
+      "lr": 0.005,
+      "batch_size": 32,
+      "epochs": 2500
+    },
+    "architecture": {
+      "layers": "4 -> 18 (tanh) -> 9 (tanh) -> 1 (linear)",
+      "n_inputs": 4,
+      "n_hidden1": 18,
+      "n_hidden2": 9,
+      "n_outputs": 1,
+      "input_order": [
+        "VG",
+        "VD",
+        "W",
+        "L"
+      ]
+    },
+    "target": "C_pF / (W_um * L_um) * 1e3",
+    "area_normalised": true,
+    "rows": {
+      "train": 115,
+      "val": 25,
+      "test": 24
+    },
+    "geometries": [
+      [
+        20,
+        20
+      ],
+      [
+        40,
+        20
+      ],
+      [
+        160,
+        15
+      ],
+      [
+        160,
+        20
+      ]
+    ],
+    "target_standardization": {
+      "y_mean": 1.2281092405319214,
+      "y_std": 0.80768221616745
+    },
+    "train": {
+      "rmse_pF": 0.018452459946274757,
+      "mae_pF": 0.00978503841906786,
+      "r2": 0.9999265789975316,
+      "MARE_percent_onstate": 0.8321922421455383
+    },
+    "val": {
+      "rmse_pF": 0.12410592287778854,
+      "mae_pF": 0.04287642613053322,
+      "r2": 0.9955765265105245,
+      "MARE_percent_onstate": 3.7233307361602783
+    },
+    "test": {
+      "rmse_pF": 0.13774773478507996,
+      "mae_pF": 0.05361177399754524,
+      "r2": 0.9945767618416949,
+      "MARE_percent_onstate": 4.917260646820068
+    },
+    "per_geometry_all_points": {
+      "W20_L20": {
+        "rmse_pF": 0.025299422442913055,
+        "nrmse_percent": 3.597346903542742,
+        "n": 41
+      },
+      "W40_L20": {
+        "rmse_pF": 0.10309353470802307,
+        "nrmse_percent": 7.437706790801135,
+        "n": 41
+      },
+      "W160_L15": {
+        "rmse_pF": 0.028977902606129646,
+        "nrmse_percent": 0.7042133911787494,
+        "n": 41
+      },
+      "W160_L20": {
+        "rmse_pF": 0.0966726765036583,
+        "nrmse_percent": 1.7880797930883454,
+        "n": 41
+      }
+    }
+  },
+  "cgs": {
+    "cap_type": "cgs",
+    "variant": "areanorm",
+    "hyperparameters": {
+      "n_h1": 20,
+      "n_h2": 10,
+      "loss": "mse",
+      "lr": 0.005,
+      "batch_size": 16,
+      "epochs": 2500
+    },
+    "architecture": {
+      "layers": "4 -> 20 (tanh) -> 10 (tanh) -> 1 (linear)",
+      "n_inputs": 4,
+      "n_hidden1": 20,
+      "n_hidden2": 10,
+      "n_outputs": 1,
+      "input_order": [
+        "VG",
+        "VD",
+        "W",
+        "L"
+      ]
+    },
+    "target": "C_pF / (W_um * L_um) * 1e3",
+    "area_normalised": true,
+    "rows": {
+      "train": 115,
+      "val": 25,
+      "test": 24
+    },
+    "geometries": [
+      [
+        20,
+        20
+      ],
+      [
+        40,
+        20
+      ],
+      [
+        160,
+        15
+      ],
+      [
+        160,
+        20
+      ]
+    ],
+    "target_standardization": {
+      "y_mean": 1.2038735151290894,
+      "y_std": 0.8370981812477112
+    },
+    "train": {
+      "rmse_pF": 0.02840881049633026,
+      "mae_pF": 0.011513124220073223,
+      "r2": 0.9998297448549965,
+      "MARE_percent_onstate": 0.8202774524688721
+    },
+    "val": {
+      "rmse_pF": 0.01809314824640751,
+      "mae_pF": 0.010001079179346561,
+      "r2": 0.9999096418847035,
+      "MARE_percent_onstate": 0.5891123414039612
+    },
+    "test": {
+      "rmse_pF": 0.18133321404457092,
+      "mae_pF": 0.06397442519664764,
+      "r2": 0.9904701501317348,
+      "MARE_percent_onstate": 5.230936527252197
+    },
+    "per_geometry_all_points": {
+      "W20_L20": {
+        "rmse_pF": 0.011419761925935745,
+        "nrmse_percent": 1.569907781183851,
+        "n": 41
+      },
+      "W40_L20": {
+        "rmse_pF": 0.03880630433559418,
+        "nrmse_percent": 2.7155846679033986,
+        "n": 41
+      },
+      "W160_L15": {
+        "rmse_pF": 0.047157756984233856,
+        "nrmse_percent": 1.1076870942230284,
+        "n": 41
+      },
+      "W160_L20": {
+        "rmse_pF": 0.13360752165317535,
+        "nrmse_percent": 2.3980887650987137,
+        "n": 41
+      }
+    }
+  }
+}

@@ -1,0 +1,130 @@
+[
+  {
+    "W": 20,
+    "L": 20,
+    "cap_type": "cgd",
+    "file": "C-V [20-20 cgd(2) ; 6_11_2026 3_41_10 PM].csv",
+    "n_points": 41,
+    "kept": true,
+    "reasons": [],
+    "metrics": {
+      "off_pF": 0.109544,
+      "on_pF": 0.8097660000000002,
+      "on_off_ratio": 7.392152924852116,
+      "c_min_pF": 0.10905100000000001,
+      "c_max_pF": 0.8123310000000002
+    }
+  },
+  {
+    "W": 20,
+    "L": 20,
+    "cap_type": "cgs",
+    "file": "C-V [20-20 cgs(3) ; 6_11_2026 3_43_25 PM].csv",
+    "n_points": 41,
+    "kept": true,
+    "reasons": [],
+    "metrics": {
+      "off_pF": 0.0935093,
+      "on_pF": 0.818466,
+      "on_off_ratio": 8.752776461806473,
+      "c_min_pF": 0.0922919,
+      "c_max_pF": 0.8197080000000002
+    }
+  },
+  {
+    "W": 40,
+    "L": 20,
+    "cap_type": "cgd",
+    "file": "C-V [40-20 cgd(2) ; 6_11_2026 3_00_10 PM].csv",
+    "n_points": 41,
+    "kept": true,
+    "reasons": [],
+    "metrics": {
+      "off_pF": 0.23037800000000008,
+      "on_pF": 1.6128200000000001,
+      "on_off_ratio": 7.0007552804521245,
+      "c_min_pF": 0.229467,
+      "c_max_pF": 1.61556
+    }
+  },
+  {
+    "W": 40,
+    "L": 20,
+    "cap_type": "cgs",
+    "file": "C-V [40-20 cgs(3) ; 6_11_2026 3_02_43 PM].csv",
+    "n_points": 41,
+    "kept": true,
+    "reasons": [],
+    "metrics": {
+      "off_pF": 0.19494800000000004,
+      "on_pF": 1.6207200000000002,
+      "on_off_ratio": 8.31360157580483,
+      "c_min_pF": 0.19431800000000002,
+      "c_max_pF": 1.62334
+    }
+  },
+  {
+    "W": 160,
+    "L": 15,
+    "cap_type": "cgd",
+    "file": "C-V [160-15 cgd(2) ; 6_11_2026 4_26_40 PM].csv",
+    "n_points": 41,
+    "kept": true,
+    "reasons": [],
+    "metrics": {
+      "off_pF": 0.6565850000000002,
+      "on_pF": 4.7574700000000005,
+      "on_off_ratio": 7.245779297425313,
+      "c_min_pF": 0.6559880000000001,
+      "c_max_pF": 4.77092
+    }
+  },
+  {
+    "W": 160,
+    "L": 15,
+    "cap_type": "cgs",
+    "file": "C-V [160-15 cgs(3) ; 6_11_2026 4_30_05 PM].csv",
+    "n_points": 41,
+    "kept": true,
+    "reasons": [],
+    "metrics": {
+      "off_pF": 0.521304,
+      "on_pF": 4.76418,
+      "on_off_ratio": 9.13896689839326,
+      "c_min_pF": 0.520972,
+      "c_max_pF": 4.77829
+    }
+  },
+  {
+    "W": 160,
+    "L": 20,
+    "cap_type": "cgd",
+    "file": "C-V [160-20 cgd(5) ; 6_11_2026 2_37_02 PM].csv",
+    "n_points": 41,
+    "kept": true,
+    "reasons": [],
+    "metrics": {
+      "off_pF": 0.84589,
+      "on_pF": 6.235660000000001,
+      "on_off_ratio": 7.371714998404049,
+      "c_min_pF": 0.8448720000000001,
+      "c_max_pF": 6.25138
+    }
+  },
+  {
+    "W": 160,
+    "L": 20,
+    "cap_type": "cgs",
+    "file": "C-V [160-20 cgs(6) ; 6_11_2026 2_40_33 PM].csv",
+    "n_points": 41,
+    "kept": true,
+    "reasons": [],
+    "metrics": {
+      "off_pF": 0.687193,
+      "on_pF": 6.2420100000000005,
+      "on_off_ratio": 9.083343398433918,
+      "c_min_pF": 0.6863230000000001,
+      "c_max_pF": 6.25774
+    }
+  }
+]
