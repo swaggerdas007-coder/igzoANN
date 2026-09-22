@@ -107,7 +107,7 @@ def main():
     STAGE_A = [((160e-6, 15e-6), 0.8, 1.2, 2.5),    # out CM 2.5 V, 22.8 dB
                ((160e-6, 15e-6), 0.8, 1.2, 3.0),    # out CM 2.0 V, more room for B
                ((160e-6, 20e-6), 0.8, 1.2, 2.8)]
-    best = None
+    best, rows = None, []
     for (w1, l1), vcm, vba, da in STAGE_A:
         for (w2, l2), vbb, db in itertools.product(
                 [(160e-6, 15e-6), (160e-6, 20e-6), (80e-6, 20e-6)],
@@ -117,13 +117,29 @@ def main():
                 r = solve(w1, l1, w2, l2, vcm, vba, vbb, da, db)
             except Exception:
                 continue
-            if r and (best is None or r["av_db"] > best["av_db"]):
-                r.update(vcm=vcm, vba=vba, vbb=vbb, da=da, db=db,
-                         W=w1 * 1e6, L=l1 * 1e6, W2=w2 * 1e6, L2=l2 * 1e6)
+            if not r:
+                continue
+            r.update(vcm=vcm, vba=vba, vbb=vbb, da=da, db=db,
+                     W=w1 * 1e6, L=l1 * 1e6, W2=w2 * 1e6, L2=l2 * 1e6)
+            rows.append({k: v for k, v in r.items()
+                         if k not in ("c", "v", "f", "resp")})
+            if best is None or r["av_db"] > best["av_db"]:
                 best = r
-                print(f"  best so far {r['av_db']:5.1f} dB  "
-                      f"(A {r['av1_db']:.1f} + B {r['av2_db']:.1f})  "
-                      f"B={r['W2']:.0f}/{r['L2']:.0f} vbb={vbb} drop={db}", flush=True)
+                print(f"  best gain so far {r['av_db']:5.1f} dB "
+                      f"(A {r['av1_db']:.1f} + B {r['av2_db']:.1f}), "
+                      f"f3dB {r['f3db']/1e3:.1f} kHz", flush=True)
+
+    import pandas as pd
+    df = pd.DataFrame(rows).sort_values("av_db", ascending=False)
+    df.to_csv(os.path.join(OUT, "twostage_sweep.csv"), index=False)
+    cols = ["W", "L", "W2", "L2", "vcm", "vba", "vbb", "da", "db", "ra", "rb",
+            "av_db", "av1_db", "av2_db", "f3db", "power"]
+    print(f"\n{len(df)} valid two-stage points\n")
+    print("=== highest gain ===")
+    print(df.head(5)[cols].to_string(index=False, float_format=lambda x: f"{x:.3g}"))
+    at40 = df[df.av_db >= 40].sort_values("f3db", ascending=False)
+    print(f"\n=== >= 40 dB, fastest first ({len(at40)} points) ===")
+    print(at40.head(8)[cols].to_string(index=False, float_format=lambda x: f"{x:.3g}"))
 
     b = best
     print(f"===== two-stage: pair A {b['W']:.0f}/{b['L']:.0f} um, "
