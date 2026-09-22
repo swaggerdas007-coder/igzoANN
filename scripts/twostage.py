@@ -47,7 +47,7 @@ def build(w1, l1, ra, w2, l2, rb, vcm, vba, vbb, cload=CLOAD):
 def solve(w1, l1, w2, l2, vcm, vba, vbb, drop_a, drop_b):
     """Fixed-point on both load resistors to hit the two target output swings."""
     ra, rb = 1e6, 1e6
-    for _ in range(25):
+    for _ in range(12):
         c = build(w1, l1, ra, w2, l2, rb, vcm, vba, vbb)
         v, ok = c.solve_dc(guess={O1A: VDD - drop_a, O2A: VDD - drop_a, TA: 0.5,
                                   O1B: VDD - drop_b, O2B: VDD - drop_b, TB: 1.5})
@@ -100,24 +100,30 @@ def main():
     matplotlib.use("Agg")
     import matplotlib.pyplot as plt
 
+    # Brute-forcing both stages is wasteful: stage A's optimum is already
+    # known from the single-stage sweep, and it is stage B -- whose input
+    # common mode is pinned at stage A's output -- that limits the total.
+    # So fix a few stage-A settings and search stage B properly.
+    STAGE_A = [((160e-6, 15e-6), 0.8, 1.2, 2.5),    # out CM 2.5 V, 22.8 dB
+               ((160e-6, 15e-6), 0.8, 1.2, 3.0),    # out CM 2.0 V, more room for B
+               ((160e-6, 20e-6), 0.8, 1.2, 2.8)]
     best = None
-    grid = itertools.product(
-        [(160e-6, 15e-6), (160e-6, 20e-6)],            # stage A pair
-        [(160e-6, 15e-6), (160e-6, 20e-6), (80e-6, 20e-6)],   # stage B pair
-        [0.8, 1.0, 1.2],                                # input CM
-        [1.0, 1.2, 1.5],                                # tail A gate
-        [1.5, 1.8, 2.0, 2.2, 2.5, 2.8, 3.0],            # tail B gate
-        [2.5, 2.8, 3.0, 3.2],                           # stage A drop
-        [2.0, 2.5, 2.8, 3.0, 3.2])                      # stage B drop
-    for (w1, l1), (w2, l2), vcm, vba, vbb, da, db in grid:
-        try:
-            r = solve(w1, l1, w2, l2, vcm, vba, vbb, da, db)
-        except Exception:
-            continue
-        if r and (best is None or r["av_db"] > best["av_db"]):
-            r.update(vcm=vcm, vba=vba, vbb=vbb, da=da, db=db, W=w1 * 1e6, L=l1 * 1e6,
-                     W2=w2 * 1e6, L2=l2 * 1e6)
-            best = r
+    for (w1, l1), vcm, vba, da in STAGE_A:
+        for (w2, l2), vbb, db in itertools.product(
+                [(160e-6, 15e-6), (160e-6, 20e-6), (80e-6, 20e-6)],
+                [1.2, 1.5, 1.8, 2.0, 2.2, 2.4, 2.6, 2.8, 3.0],
+                [2.0, 2.5, 2.8, 3.0, 3.2]):
+            try:
+                r = solve(w1, l1, w2, l2, vcm, vba, vbb, da, db)
+            except Exception:
+                continue
+            if r and (best is None or r["av_db"] > best["av_db"]):
+                r.update(vcm=vcm, vba=vba, vbb=vbb, da=da, db=db,
+                         W=w1 * 1e6, L=l1 * 1e6, W2=w2 * 1e6, L2=l2 * 1e6)
+                best = r
+                print(f"  best so far {r['av_db']:5.1f} dB  "
+                      f"(A {r['av1_db']:.1f} + B {r['av2_db']:.1f})  "
+                      f"B={r['W2']:.0f}/{r['L2']:.0f} vbb={vbb} drop={db}", flush=True)
 
     b = best
     print(f"===== two-stage: pair A {b['W']:.0f}/{b['L']:.0f} um, "
