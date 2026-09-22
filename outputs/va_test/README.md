@@ -134,6 +134,54 @@ The 16 dB CMRR on design A is a model artifact of that same defect: CMRR ~
 2 gm1 ro_tail, and ro_tail is understated ~16x, so expect ~20 dB better in
 silicon. Longer tail L or a cascoded tail is still the right fix.
 
+## Getting to 40 dB
+
+Aspect ratio is **not** the gain knob. For a resistor-loaded stage
+
+    Av = gm * R_L = (gm/ID) * V_drop
+
+so W/L cancels: gain is set by where you bias on the gm/ID curve and by how
+many volts you drop across the load. Across all 903 resistor-load points the
+correlation between Av and (gm/ID)*V_drop is 0.96, and at V_drop = 2.5 V every
+geometry lands between 20.7 and 25.0 dB, ranked exactly by gm/ID. W/L is a
+bandwidth and current knob.
+
+The ceiling is the load resistor you can build:
+
+| R_L limit | best Av | f-3dB |
+|---|---|---|
+| 1 MOhm | 13.2 dB | 141 kHz |
+| 3 MOhm | 20.8 dB | 45 kHz |
+| 10 MOhm | 25.0 dB | 20 kHz |
+
+Higher gm/ID means lower current means a bigger resistor for the same drop, so
+**one stage cannot reach 40 dB** -- that would need gm/ID ~ 33 /V (a MOSFET
+number; a-IGZO tops out near 8) or a 100 MOhm load. Two stages can
+(`scripts/twostage.py`, results in `twostage_sweep.csv` and `twostage_L5.csv`).
+
+Gain trades against bandwidth roughly one for one, because each stage needs a
+multi-MOhm load to make its gain and each MOhm works against ~1 pF of gate
+overlap capacitance:
+
+| pairs | total gain | f-3dB | power |
+|---|---|---|---|
+| 160/15 + 80/20 | 46.8 dB | 0.43 kHz | 7.6 uW |
+| 160/15 + 160/15 | 40.0 dB | 2.8 kHz | 7.9 uW |
+| **160/5 + 160/5** | **40.2 dB** | **17.9 kHz** | **18.5 uW** |
+
+Long-channel pairs cannot do 40 dB and 10 kHz at once -- GBW is stuck at
+0.1-0.3 MHz. Short channel is the only lever: L = 5 um has ~10x the f_T, and
+the 160/5 + 160/5 design (V_CM,in = 0.8 V, both tail gates 2.0 V, R_A = 4.28
+MOhm, R_B = 1.74 MOhm, 3.0 V and 2.0 V drops) clears it with margin.
+**Its bandwidth leans on extrapolated capacitance** -- the gain is safe (that
+comes from gm) but L = 5 um C-V was never measured. That measurement is the
+thing to go get.
+
+Verified in transient (`scripts/twostage_transient.py`): 10 mVpp at 10 kHz in
+-> 0.876 Vpp out, 38.9 dB (86% of the DC gain, as the 17.9 kHz corner
+predicts), THD 0.39%. 40 dB is 100x, so the input has to stay near 10 mVpp --
+the output swing is all that is left.
+
 ## Bottom line
 
 The model is **usable for gm-driven design** (biasing, gm/ID, bandwidth,

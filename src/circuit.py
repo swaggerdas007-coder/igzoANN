@@ -189,3 +189,62 @@ class Circuit:
                 vv[k] = x[pos[k]]
             out[fi] = vv
         return out
+
+
+def transient(c, v0, t, drive_fn, tol=1e-13, maxit=60):
+    """Backward Euler + Newton. `drive_fn(time)` sets c.fixed for that step.
+
+    Charges are Q = C(V)*V, matching the .va's `ddt(C*V)` form (which is not
+    charge conserving -- see outputs/va_test/README.md).
+    """
+    idx = c._unknowns()
+    pos = {k: i for i, k in enumerate(idx)}
+
+    def charges(v):
+        q = np.zeros(c.n + 1)
+        for t_ in c.tfts:
+            o = t_.op(v)
+            for (a, b, cap) in ((t_.g, t_.d, o["cgd"]), (t_.g, t_.s, o["cgs"])):
+                qq = cap * (v[a] - v[b])
+                q[a] += qq
+                q[b] -= qq
+        for a, b, cap in c.caps:
+            qq = cap * (v[a] - v[b])
+            q[a] += qq
+            q[b] -= qq
+        return q
+
+    def cap_jac(v):
+        J = np.zeros((len(idx), len(idx)))
+
+        def stamp(node, wrt, val):
+            if node in pos and wrt in pos:
+                J[pos[node], pos[wrt]] += val
+
+        branches = [(t_.g, t_.d, t_.op(v)["cgd"]) for t_ in c.tfts]
+        branches += [(t_.g, t_.s, t_.op(v)["cgs"]) for t_ in c.tfts]
+        branches += list(c.caps)
+        for a, b, cap in branches:
+            for node, sgn in ((a, +1), (b, -1)):
+                stamp(node, a, sgn * cap)
+                stamp(node, b, -sgn * cap)
+        return J
+
+    x = np.array([v0[k] for k in idx])
+    q_prev = charges(v0)[idx]
+    out = np.zeros((len(t), c.n + 1))
+    out[0] = v0
+    for n in range(1, len(t)):
+        dt = t[n] - t[n - 1]
+        drive_fn(t[n])
+        for _ in range(maxit):
+            vv = c._full(x)
+            f = c.residual(vv)[idx] + (charges(vv)[idx] - q_prev) / dt
+            if np.max(np.abs(f)) < tol:
+                break
+            J = c.jacobian(vv) + cap_jac(vv) / dt
+            x = x + np.clip(np.linalg.solve(J, -f), -0.2, 0.2)
+        vv = c._full(x)
+        q_prev = charges(vv)[idx]
+        out[n] = vv
+    return out
