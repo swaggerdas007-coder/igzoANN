@@ -1,0 +1,13 @@
+check,pass,detail
+"ID monotonic in VG over the on-region (W160/L20, VD=5)",True,"0 non-monotonic steps in the on-region; 70 overall, all at ID ~ 2.5e-12 A -- i.e. in the pA leakage floor where the measurement is noise anyway"
+ID monotonic in VD (VG=3),True,0 non-monotonic steps of 200
+ID(VDS=0) == 0,False,"ID(VG=3,VD=0) = 0.001 uA -- a log10 output cannot reach zero"
+intrinsic gain gm/gds > 10 somewhere in VG=2..4 @VD=4,True,"gm/gds = 30.4, 11.2, 6.6"
+gds nonzero above VD=5V (extrapolation),False,"gds(VD=5)=0.000 uS, gds(VD=6)=0.000 uS -- VD is clamped at 5 V, so the model is flat (ro = inf) above it"
+"ID scales ~linearly with W (L=20um, VG=3, VD=4)",True,"ID/(W-normalised) = 1.00, 0.75, 0.95, 0.86"
+ID decreases with L (W=160um),True,"ID[L=5,10,15,20um] = 163.9uA, 67.6uA, 43.8uA, 33.1uA"
+ddt(C*V) formulation: dQ/dV == C,False,max |dQ/dV - C|/C = 303% (peaks at the turn-on knee)
+CGD/CGS free of spurious VDS dependence,False,CGD(VD=0)=0.87pF vs CGD(VD=5)=0.68pF = 22% swing conjured from VDS-free training data
+gds >= 0 over the on-region (W160/L20),True,0.2% of on-region points have gds<0 (min -0.00 uS)
+gm >= 0 over the on-region (W160/L20),True,0.0% of on-region points have gm<0
+analytic gm/gds match finite difference,True,"max rel. error gm 9.31e-09, gds 1.53e-09"
