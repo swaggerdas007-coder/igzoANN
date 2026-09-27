@@ -87,43 +87,52 @@ just below the measured VG range. It is a curve-shape parameter there, not
 a physical turn-on voltage; the device's real turn-on is set by where the
 steep alpha = -3.1 exponential lifts off, at ~0 V.
 
-### Accuracy vs. this repo's ANN
+### Accuracy vs. the deep ANN (`verilogA/ntft_full.va`)
 
-Same data points, same metrics (`scripts/evaluate_camcas_unified.py` ->
-`unified_vs_ann_summary.csv`, `unified_vs_ann_per_geometry.csv`). The ANN is
-`outputs/model_weights.pt`, trained on all 19 devices.
+The comparison ANN is the ID network in `verilogA/ntft_full.va`
+(4 -> 32 -> 16 -> 1, trained by `trained_ANN/ann_train_deep.py`, reported
+test MAE 0.168 decades). It is evaluated straight from the .va weights by
+`scripts/evaluate_camcas_unified.py`, which reproduces 0.172 decades over the
+ANN's whole training set. Outputs: `unified_vs_ann_summary.csv`,
+`unified_vs_ann_per_geometry.csv`, `plots/unified_*.png`.
 
-| log10\|ID\| MAE (decades) / R^2 | golden 13 devices | atypical 6 devices | all 19 | ANN's own test split |
-|---|---|---|---|---|
-| **CAMCAS unified** | **0.277 / 0.975** | 1.084 / 0.538 | 0.532 / 0.864 | 0.539 / 0.865 |
-| ANN | 0.404 / 0.966 | **0.614 / 0.898** | **0.470 / 0.949** | **0.466 / 0.951** |
-| CAMCAS, thesis-style (L,W) surface | 2.040 / 0.144 | 1.482 / 0.238 | 1.864 / 0.188 | 1.812 / 0.230 |
+**The two models were fit to different physical devices at 14 of 19
+geometries.** CAMCAS was fit to `data_cleaned_2`, one device per geometry
+picked on its transfer curves. The ANN was trained on
+`cleaned_output_meas`, one device per geometry picked on its output curves,
+with output sweeps only. So both are scored on both datasets:
 
-On-state median relative error on the golden devices: CAMCAS unified 24%,
-ANN 49%.
+| log10\|ID\| MAE (decades) | CAMCAS unified | ANN |
+|---|---|---|
+| **Same device, both fit to it**: output curves at W/L = 40/15, 80/10, 80/15, 80/20 | 0.273 | **0.178** |
+| ANN's devices (`cleaned_output_meas`), all 19 | 0.554 | **0.172** |
+| CAMCAS's devices (`data_cleaned_2`), 13 golden | **0.277** | 0.498 |
+| CAMCAS's devices (`data_cleaned_2`), all 19 | **0.532** | 0.801 |
 
-- **On typical devices the unified CAMCAS model beats the ANN**: lower
-  error on 11 of 13 golden devices, a tie on W80/L20, and the ANN ahead only
-  on W20/L10 (`plots/unified_vs_ann_per_geometry.png`).
-- **It generalizes to unseen geometries.** Leave-one-device-out CV (refit
-  without device k, predict device k) gives a mean held-out error of 0.290
-  decades vs 0.277 in-sample (`unified_loo_cv.csv`). That is still better
-  than the ANN's 0.404 on the same devices, and the ANN had seen them in
-  training. This is the "one formula for any (L, W)" property the
-  thesis-style surface couldn't deliver on this data.
-- **Output curves are physically well behaved**: smooth knee, flat
-  saturation, correct VG ordering (`plots/unified_output_curves.png`). The
-  ANN's output curves show a non-physical kink near VD ~ 0.2 V and can
-  cross each other.
-- **The ANN wins overall only because of the 6 atypical devices.** It was
-  trained on them and partly memorizes each one. The unified model
-  deliberately doesn't chase them: one parameter set can't reproduce a
-  device that turns on 2 V late without breaking every typical device.
-  If your circuits need those specific devices, use the ANN. If they need a
-  typical transistor of arbitrary (W, L), use this.
-- The remaining ~20-30% misses at VG = 5 V go in different directions on
-  different devices (W80/L5 under, W160/L20 over), which is ordinary
-  device-to-device scatter rather than a model-shape error.
+(The thesis-style (L, W) surface CAMCAS scores 1.9-2.3 decades on
+either dataset.)
+
+- **Head to head on the same measured device, the ANN is more accurate**
+  (0.178 vs 0.273 decades). It tracks the output curves' VG spacing and
+  gradual saturation better (`plots/unified_output_curves.png`).
+- Each model is best on the devices it was fit to, and the gap between
+  datasets is device-to-device variation, not modeling. For example, at
+  W160/L10 the ANN scores 0.15 decades on its own device and 0.73 on the
+  `data_cleaned_2` device. The ANN's devices (mostly top1/bot1 dies) turn
+  on around -0.5 V, while `data_cleaned_2`'s bot2 devices turn on around
+  +0.5 V (`plots/unified_transfer_linear.png`). That split is larger than
+  either model's error.
+- The ANN never saw transfer curves (1 V gate steps in the output-curve
+  data), so its subthreshold region can show small interpolation bumps
+  (e.g. W10/L10 near VG = 0). CAMCAS's subthreshold is smooth by
+  construction.
+- What the unified CAMCAS model offers instead of accuracy: 12 physically
+  interpretable parameters versus 705 weights; generalization verified by
+  leave-one-device-out CV (0.290 decades held out vs 0.277 in-sample);
+  guaranteed monotonic, smooth behaviour for simulator convergence; and
+  portability. `tft_camcas_unified.va` compiles under OpenVAF
+  (ngspice/Xyce), while `ntft_full.va` uses real-valued arrays and an
+  `initial_step` block, which OpenVAF rejects, so it is Spectre-only.
 
 ### Verilog-A
 
