@@ -1,0 +1,9 @@
+split,sweep,n,mae_dec,rmse_dec,bias_dec,med_rel,p90_rel
+holdout,all,1220,0.1474,0.2919,-0.1416,0.14,0.6097
+holdout,linear,160,0.1341,0.3211,-0.1296,0.09693,0.5286
+holdout,output,900,0.1499,0.2804,-0.1453,0.1377,0.8173
+holdout,saturation,160,0.1466,0.3229,-0.133,0.1663,0.3866
+train,all,6371,0.1472,0.2848,-0.09625,,
+train,linear,839,0.1081,0.2565,-0.05031,,
+train,output,4700,0.1545,0.2967,-0.1106,,
+train,saturation,832,0.1445,0.2395,-0.06092,,

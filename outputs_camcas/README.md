@@ -1,5 +1,13 @@
 # CAMCAS-style semi-empirical compact model
 
+> **Superseded Verilog-A.** `verilogA/tft_camcas_unified.va` and
+> `verilogA/tft_camcas_model.va` (and their exporters
+> `scripts/export_verilog_a_camcas*.py`) have been removed. The CAMCAS
+> Verilog-A model is now `verilogA/tft_camcas_thesis.va`, built with the
+> thesis's own extraction and W/L-scaling methodology -- see
+> `outputs_camcas_thesis/README.md`. The Python fits and results below are
+> kept for reference; references to the removed files are historical.
+
 An alternative to this repo's ANN-based models: the unified analytical
 drain-current expression from Carolina de Almeida's thesis "Development of
 IGZO thin-film transistors (TFTs) compact models" (NOVA FCT, 2025), Sec.

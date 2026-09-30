@@ -1,0 +1,11 @@
+variant,nan_points,fit16_mae_dec,fit15_typical_mae_dec,W160_L20_mae_dec,unseen3_mae_dec,fit16_linear,unseen3_linear,fit16_saturation,unseen3_saturation,fit16_output,unseen3_output,fit16_worst_geom_mae_dec,fit16_worst_geom,logo_cv_mae_dec,logo_cv_worst,note
+thesis,349,,0.1615,,0.2028,,0.1855,,0.1963,,0.2070,0.2981,NaN,,,
+thesis_x,349,,0.1686,,0.2075,,0.1807,,0.2122,,0.2114,0.4218,NaN,,,
+sequential,349,,0.1472,,0.1474,,0.1341,,0.1466,,0.1499,0.2876,NaN,,,
+sequential_x,1153,,,,0.1694,,0.1458,,0.1919,,0.1696,2.0341,NaN,,,
+sequential_k,-1,,,,,,,,,,,,,,,"not buildable: k_lin undefined for [[160, 20]]"
+sequential_k_x,-1,,,,,,,,,,,,,,,"not buildable: k_sat undefined for [[20, 15], [40, 15]]"
+thesis_g,0,0.0653,0.0671,0.0326,0.1106,0.0547,0.1029,0.0765,0.1113,0.0651,0.1119,0.1553,40/10,0.1765,0.3662,
+thesis_x_g,0,0.0727,0.0665,0.1812,0.1337,0.0771,0.1644,0.0862,0.1167,0.0696,0.1312,0.2224,160/20,0.2781,1.9150,
+sequential_g,0,0.0682,0.0700,0.0374,0.1170,0.0626,0.1134,0.0765,0.1110,0.0678,0.1187,0.1431,40/10,0.2758,1.6668,
+sequential_x_g,0,0.2058,0.1211,1.6668,0.2118,0.2627,0.2271,0.2091,0.2181,0.1950,0.2079,1.4868,160/20,0.4097,2.6068,
