@@ -1,0 +1,61 @@
+W,L,model,quantity,measured_pF,model_pF,ratio
+20,20,as coded (Listing F.1),Cg_off,0.19009,277.1,1457.7
+20,20,as coded (Listing F.1),Cg_on,0.80651,277.1,343.58
+20,20,as coded (Listing F.1),Cov_d,0.10985,138,1256.3
+20,20,as coded (Listing F.1),Cov_s,0.09322,138,1480.4
+20,20,as coded (Listing F.1),Cch,0.61642,1.104,1.791
+20,20,thesis intent (Table 4.1),Cg_off,0.19009,0.138,0.72597
+20,20,thesis intent (Table 4.1),Cg_on,0.80651,0.138,0.17111
+20,20,thesis intent (Table 4.1),Cov_d,0.10985,0.0138,0.12563
+20,20,thesis intent (Table 4.1),Cov_s,0.09322,0.0138,0.14804
+20,20,thesis intent (Table 4.1),Cch,0.61642,0.1104,0.1791
+20,20,proposed,Cg_off,0.19009,0.19112,1.0054
+20,20,proposed,Cg_on,0.80651,0.78213,0.96978
+20,20,proposed,Cov_d,0.10985,0.10572,0.96242
+20,20,proposed,Cov_s,0.09322,0.085407,0.91619
+20,20,proposed,Cch,0.61642,0.59101,0.95878
+40,20,as coded (Listing F.1),Cg_off,0.40802,554.21,1358.3
+40,20,as coded (Listing F.1),Cg_on,1.6128,554.21,343.64
+40,20,as coded (Listing F.1),Cov_d,0.23017,276,1199.1
+40,20,as coded (Listing F.1),Cov_s,0.19479,276,1416.9
+40,20,as coded (Listing F.1),Cch,1.2048,2.208,1.8327
+40,20,thesis intent (Table 4.1),Cg_off,0.40802,0.276,0.67644
+40,20,thesis intent (Table 4.1),Cg_on,1.6128,0.276,0.17113
+40,20,thesis intent (Table 4.1),Cov_d,0.23017,0.0276,0.11991
+40,20,thesis intent (Table 4.1),Cov_s,0.19479,0.0276,0.14169
+40,20,thesis intent (Table 4.1),Cch,1.2048,0.2208,0.18327
+40,20,proposed,Cg_off,0.40802,0.38225,0.93684
+40,20,proposed,Cg_on,1.6128,1.5643,0.96993
+40,20,proposed,Cov_d,0.23017,0.21143,0.91859
+40,20,proposed,Cov_s,0.19479,0.17081,0.87693
+40,20,proposed,Cch,1.2048,1.182,0.98114
+160,15,as coded (Listing F.1),Cg_off,1.1586,1662.6,1435
+160,15,as coded (Listing F.1),Cg_on,4.7672,1662.6,348.76
+160,15,as coded (Listing F.1),Cov_d,0.65678,828,1260.7
+160,15,as coded (Listing F.1),Cov_s,0.52166,828,1587.2
+160,15,as coded (Listing F.1),Cch,3.6086,6.624,1.8356
+160,15,thesis intent (Table 4.1),Cg_off,1.1586,0.828,0.71463
+160,15,thesis intent (Table 4.1),Cg_on,4.7672,0.828,0.17369
+160,15,thesis intent (Table 4.1),Cov_d,0.65678,0.0828,0.12607
+160,15,thesis intent (Table 4.1),Cov_s,0.52166,0.0828,0.15872
+160,15,thesis intent (Table 4.1),Cch,3.6086,0.6624,0.18356
+160,15,proposed,Cg_off,1.1586,1.1467,0.98973
+160,15,proposed,Cg_on,4.7672,4.6926,0.98435
+160,15,proposed,Cov_d,0.65678,0.6343,0.96578
+160,15,proposed,Cov_s,0.52166,0.51244,0.98234
+160,15,proposed,Cch,3.6086,3.5459,0.98262
+160,20,as coded (Listing F.1),Cg_off,1.5138,2216.8,1464.5
+160,20,as coded (Listing F.1),Cg_on,6.2496,2216.8,354.71
+160,20,as coded (Listing F.1),Cov_d,0.84573,1104,1305.4
+160,20,as coded (Listing F.1),Cov_s,0.68726,1104,1606.4
+160,20,as coded (Listing F.1),Cch,4.7359,8.832,1.8649
+160,20,thesis intent (Table 4.1),Cg_off,1.5138,1.104,0.72931
+160,20,thesis intent (Table 4.1),Cg_on,6.2496,1.104,0.17665
+160,20,thesis intent (Table 4.1),Cov_d,0.84573,0.1104,0.13054
+160,20,thesis intent (Table 4.1),Cov_s,0.68726,0.1104,0.16064
+160,20,thesis intent (Table 4.1),Cch,4.7359,0.8832,0.18649
+160,20,proposed,Cg_off,1.5138,1.529,1.0101
+160,20,proposed,Cg_on,6.2496,6.2568,1.0011
+160,20,proposed,Cov_d,0.84573,0.84574,1
+160,20,proposed,Cov_s,0.68726,0.68326,0.99418
+160,20,proposed,Cch,4.7359,4.7278,0.9983

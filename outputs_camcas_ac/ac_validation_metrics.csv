@@ -1,0 +1,31 @@
+W,L,mode,region,n,mean_abs_err_pct,max_abs_err_pct,bias_pct
+20,20,fitted V0,off,28,1.440,5.135,0.454
+20,20,fitted V0,on,51,1.950,6.671,-1.688
+20,20,fitted V0,transition (non-QS),3,22.250,48.789,10.277
+20,20,predictive V0,off,28,7.021,153.887,6.117
+20,20,predictive V0,on,51,3.850,63.282,-3.211
+20,20,predictive V0,transition (non-QS),3,43.448,58.938,-6.448
+40,20,fitted V0,off,30,5.224,7.822,-5.124
+40,20,fitted V0,on,48,1.813,4.331,-1.802
+40,20,fitted V0,transition (non-QS),4,44.838,115.609,19.219
+40,20,predictive V0,off,30,22.869,183.593,15.589
+40,20,predictive V0,on,48,3.642,58.065,-2.566
+40,20,predictive V0,transition (non-QS),4,56.862,146.096,27.572
+160,15,fitted V0,off,30,1.387,5.379,-0.070
+160,15,fitted V0,on,49,0.892,2.700,-0.776
+160,15,fitted V0,transition (non-QS),3,24.732,38.876,-24.732
+160,15,predictive V0,off,30,13.586,197.666,13.054
+160,15,predictive V0,on,49,2.195,23.487,1.181
+160,15,predictive V0,transition (non-QS),3,104.779,179.240,104.779
+160,20,fitted V0,off,35,1.612,3.284,1.489
+160,20,fitted V0,on,45,1.082,2.140,0.849
+160,20,fitted V0,transition (non-QS),2,22.964,39.484,-16.520
+160,20,predictive V0,off,35,30.576,209.259,30.576
+160,20,predictive V0,on,45,2.935,15.393,2.935
+160,20,predictive V0,transition (non-QS),2,62.986,73.551,62.986
+all,all,fitted V0,off,123,2.399,7.822,-0.740
+all,all,fitted V0,on,193,1.445,6.671,-0.893
+all,all,fitted V0,transition (non-QS),12,30.519,115.609,0.039
+all,all,predictive V0,off,123,19.190,209.259,17.079
+all,all,predictive V0,on,193,3.165,63.282,-0.503
+all,all,predictive V0,transition (non-QS),12,66.509,179.240,44.271

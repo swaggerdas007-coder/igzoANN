@@ -1,0 +1,5 @@
+check,worst_rel
+Qg+Qd+Qs = 0,2.92e-16
+sum_i C_ij = 0 (charge conservation),1.05e-11
+sum_j C_ij = 0 (only voltage differences matter),4.05e-09
+channel Cgs = channel Cgd at VDS = 0 (S/D symmetry),2.12e-12
