@@ -1,0 +1,16 @@
+{
+ "python_cpu_s": 1.6109936237335205,
+ "ngspice_cpu_s": 957.8838167190552,
+ "max_abs_diff_y_V": 0.016659343052870312,
+ "rms_diff_y_V": 0.0016746896526433769,
+ "max_abs_diff_x_V": 0.017352387512434397,
+ "rms_diff_x_V": 0.0017452956740081113,
+ "max_abs_diff_z_V": 0.011904686982642243,
+ "rms_diff_z_V": 0.0017110250056263814,
+ "y_fall_cross_python_us": 5.153258189119857,
+ "y_fall_cross_ngspice_us": 5.153251306334646,
+ "y_rise_cross_python_us": 16.338916504229942,
+ "y_rise_cross_ngspice_us": 16.340309226526163,
+ "qcv_ngspice": "transient aborted at t = 15.41 us of 30 us",
+ "qcv_python": "failed: timestep too small at t=1.54106e-05 s"
+}

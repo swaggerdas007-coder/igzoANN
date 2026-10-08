@@ -60,9 +60,13 @@ The gate node ends up with net **negative capacitance**, so the node equations h
 no solution through the turn-on knee. This is a property of the equations, not of
 the solver:
 
-* `src/tran.py` with the `.va`'s form cannot even find the t = 0 operating point of
-  a NAND2 ("DC settle failed"). Newton fails at every step size down to 4 fs.
-* ngspice, running the same form: see `ngspice_check.json` → `qcv_ngspice`.
+* `src/tran.py` with the `.va`'s form fails on the fan-out-3 NAND2 bench before
+  t = 0: it cannot find the operating point ("DC settle failed"), and Newton fails at
+  every step size down to 4 fs.
+* On the fan-out-1 NAND2 cross-check bench, both `src/tran.py` and ngspice-42 get
+  through the first edge. Both then abort at **t = 15.41 µs**, on the edge where X and
+  Y rise back through M4's threshold with its drain at VDD (`ngspice_check.json`). Two
+  independent solvers fail at the same instant.
 
 A compiled `.va` in Spectre would hit the same wall.
 
@@ -239,9 +243,13 @@ sampled bit is within 0.3/0.7 VDD.
 
 ## 5. Validation
 
-* **Independent solver.** ngspice-42 runs the same NAND2 bench with the transliterated
-  `ntft_full_cdv` model, using its own Gear integrator and LTE control. See
-  `ngspice_check.png` / `ngspice_check.json`.
+* **Independent solver.** ngspice-42 runs the same NAND2 + FO1 bench with the
+  transliterated `ntft_full_cdv` model, using its own Gear integrator and LTE control.
+  Its output Y and node X match `src/tran.py` to **17 mV max / 1.7 mV rms**, and the
+  50% crossings agree within 1.4 ns (`ngspice_check.png` / `ngspice_check.json`).
+  ngspice needed about 15 min for 30 µs of one gate; `src/tran.py` takes about 1 s.
+
+![ngspice check](ngspice_check.png)
 * **Jacobians.** Analytic derivatives (ID, both capacitor forms, symmetric option)
   agree with central finite differences to 1e-8 relative.
 * **Reverse conduction (`sensitivity_symmetric.json`).** The `.va` clamps VDS < 0, so a

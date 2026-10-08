@@ -68,7 +68,9 @@ def main():
                      nodeset={"y": VDD, "dut_x": VDD}, form="qcv")
     try:
         rq = run_ngspice(deck, cols, workdir=os.path.join("/tmp", "ngs_check_qcv"), timeout=3600)
-        res["qcv_ngspice"] = f"completed to t = {rq['time'][-1] * 1e6:.2f} us"
+        tend = rq["time"][-1]
+        res["qcv_ngspice"] = (f"completed to t = {tend * 1e6:.2f} us" if tend >= 0.999 * TSTOP else
+                              f"transient aborted at t = {tend * 1e6:.2f} us of {TSTOP * 1e6:g} us")
     except Exception as e:                       # noqa: BLE001
         msg = [l for l in str(e).splitlines() if "too small" in l or "abort" in l or "singular" in l]
         res["qcv_ngspice"] = "failed: " + " | ".join(dict.fromkeys(msg))[:300]
