@@ -65,10 +65,19 @@ class Sizing:
     w4: float = 160e-6     # output pull-down (gate on IN)  | pE/pD: the driver
     l: float = L_LOGIC
     cboot: float = 0.0     # F, OUT -> X bootstrap cap (pCb only)
+    # The stage-1 load M1 is the only device whose length is worth varying: it
+    # sets the static current, which is ~80% of this ring's power, and because
+    # only one width is ever used for it the unreliable W-scaling at L > 5 um
+    # (see the module docstring) never comes into play. None means "use l".
+    l1: float = None
+
+    def lload(self):
+        return self.l if self.l1 is None else self.l1
 
     def tag(self):
         return (f"w1{self.w1*1e6:g}_w2{self.w2*1e6:g}_w3{self.w3*1e6:g}"
-                f"_w4{self.w4*1e6:g}_L{self.l*1e6:g}_cb{self.cboot*1e12:g}p")
+                f"_w4{self.w4*1e6:g}_L{self.l*1e6:g}_L1{self.lload()*1e6:g}"
+                f"_cb{self.cboot*1e12:g}p")
 
 
 def add_inverter(net, pfx, s, vin, vout, vdd="vdd", vss="gnd", kind="pCb"):
@@ -84,7 +93,7 @@ def add_inverter(net, pfx, s, vin, vout, vdd="vdd", vss="gnd", kind="pCb"):
         return None
     x = f"{pfx}x"
     gate1 = x if kind in ("pCz", "pCzb") else vdd          # zero-VGS vs saturated load
-    net.tft(f"{pfx}M1", vdd, gate1, x, s.w1, L)            # load on X
+    net.tft(f"{pfx}M1", vdd, gate1, x, s.w1, s.lload())    # load on X
     net.tft(f"{pfx}M2", x, vin, vss, s.w2, L)              # driver of stage 1
     net.tft(f"{pfx}M3", vdd, x, vout, s.w3, L)             # output pull-up
     net.tft(f"{pfx}M4", vout, vin, vss, s.w4, L)           # output pull-down
@@ -112,14 +121,14 @@ def node_caps(s, kind, vdd):
     """Rough C at the X and OUT nodes, at mid-swing bias. For the delay proxy."""
     m = model()
 
-    def c(w, vg, vd):
-        o = m.op(np.array([vg]), np.array([vd]), w, s.l)
+    def c(w, vg, vd, ll=None):
+        o = m.op(np.array([vg]), np.array([vd]), w, ll or s.l)
         return float(o["cgd"][0]), float(o["cgs"][0])
 
     if kind in ("pE", "pD"):
         cx = 0.0
     else:
-        _, c1s = c(s.w1, vdd * 0.5, vdd * 0.5)      # M1 cgs sits on X
+        _, c1s = c(s.w1, vdd * 0.5, vdd * 0.5, s.lload())   # M1 cgs sits on X
         c2d, _ = c(s.w2, vdd * 0.5, vdd * 0.5)      # M2 cgd sits on X
         _, c3s = c(s.w3, vdd * 0.5, vdd * 0.5)      # M3 cgs: X <-> OUT (intrinsic boot)
         cx = c1s + c2d + c3s + s.cboot
@@ -135,16 +144,16 @@ def delay_proxy(s, kind, vdd):
     cx, cout = node_caps(s, kind, vdd)
     half = 0.5 * vdd
 
-    def i(w, vgs, vds):
+    def i(w, vgs, vds, ll=None):
         return max(float(np.ravel(eval_batch(np.array([vgs]), np.array([vds]),
-                                             w, s.l)["id"])[0]), 1e-15)
+                                             w, ll or s.l)["id"])[0]), 1e-15)
 
     i_pd = i(s.w4, vdd, half)                      # pull-down, gate at VDD
     if kind in ("pE", "pD"):
         i_pu = i(s.w1, 0.0 if kind == "pE" else half, half)
         return half * cout * (1.0 / i_pd + 1.0 / i_pu) / 2.0
     i_pu = i(s.w3, half, half)                     # source follower at mid-swing
-    i_x = i(s.w1, 0.0 if kind in ("pCz", "pCzb") else half, half)
+    i_x = i(s.w1, 0.0 if kind in ("pCz", "pCzb") else half, half, s.lload())
     return half * (cout * (1.0 / i_pd + 1.0 / i_pu) / 2.0 + cx / i_x)
 
 
@@ -365,14 +374,15 @@ def _i(vgs, vds, w, l):
     return d["id"], d["didvg"], d["didvd"]
 
 
-def screen_vtc(w1, w2, w3, w4, kind, vdd, vin, l=L_LOGIC):
+def screen_vtc(w1, w2, w3, w4, kind, vdd, vin, l=L_LOGIC, l1=None):
     """Exact DC VTC of a pC/pCz inverter, vectorised over the VIN sweep."""
     zero_load = kind in ("pCz", "pCzb")
     n = len(vin)
+    ll = l1 or l
 
     def fx(x):
         g1 = np.zeros(n) if zero_load else (vdd - x)
-        i1, dg1, dd1 = _i(g1, vdd - x, w1, l)
+        i1, dg1, dd1 = _i(g1, vdd - x, w1, ll)
         i2, _, dd2 = _i(vin, x, w2, l)
         f = i2 - i1
         df = dd2 + (dd1 if zero_load else dg1 + dd1)
@@ -387,13 +397,13 @@ def screen_vtc(w1, w2, w3, w4, kind, vdd, vin, l=L_LOGIC):
 
     o = _nr1d(fo, np.full(n, -1.0), np.full(n, 1.5 * vdd))
     g1 = np.zeros(n) if zero_load else (vdd - x)
-    i1 = _i(g1, vdd - x, w1, l)[0]
+    i1 = _i(g1, vdd - x, w1, ll)[0]
     i3 = _i(x - o, vdd - o, w3, l)[0]
     return x, o, i1 + i3
 
 
-def screen_metrics(w1, w2, w3, w4, kind, vdd, npts=401, l=L_LOGIC):
+def screen_metrics(w1, w2, w3, w4, kind, vdd, npts=401, l=L_LOGIC, l1=None):
     vin = np.linspace(0.0, vdd, npts)
-    vx, vo, ivdd = screen_vtc(w1, w2, w3, w4, kind, vdd, vin, l)
-    s = Sizing(w1=w1, w2=w2, w3=w3, w4=w4, l=l)
+    vx, vo, ivdd = screen_vtc(w1, w2, w3, w4, kind, vdd, vin, l, l1)
+    s = Sizing(w1=w1, w2=w2, w3=w3, w4=w4, l=l, l1=l1)
     return _vtc_metrics(vin, vo, vx, ivdd, np.zeros(npts, dtype=bool), vdd, 0.0, s, kind)

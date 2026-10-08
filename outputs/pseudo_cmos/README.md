@@ -33,7 +33,14 @@ python scripts/ring_osc_stages.py        # how far the ring goes, N = 2 .. 101
 over 1.5-4.75 V, >= 90% over **2.0-3.5 V**. Frequency is **linear in the
 supply**, f ~ VDD^1.00, from 66 kHz at 1 V to 307 kHz at 5 V.
 
-**How far it goes.** See sections 7-8.
+**How far it goes.** **101 stages** run with no degradation (9.74 kHz, 96.2%
+swing, delay per stage within 2.8% of its N = 7 value); even N always latches.
+The limit is at the *short* end: **N = 3 oscillates but never exceeds 59% swing
+at any supply** and needs the highest supply to start, so **N = 5 is the
+shortest usable digital ring**. Fastest measured: 598 kHz (N = 3, 4.5 V, 44%
+swing) or **226 kHz with >= 90% swing** (N = 5, 3.5 V). Lowest supply that
+starts: **0.719 V** for N >= 7, rising to 0.998 V at N = 3 -- a shorter ring
+needs a bigger supply, and |A| >= sec^2(pi/2N) predicts it to 19 mV.
 
 **What the numbers are worth.** The dominant uncertainty is not the design, the
 sizing or the integrator -- it is the capacitance model: +-2x on C moves the
@@ -193,10 +200,10 @@ pCb share a VTC exactly. It is chosen in section 5, on transient.
 ### The high-gain trap, and a metric that was wrong
 
 A 1296-point sizing screen of each 4T variant (`sizing_screen.csv`) finds pCz
-reaching **max |dVout/dVin| = 118 and a 1.16 V butterfly eye at 65 nW** -- 25x
-the gain of pC at 1/100 the power. It never oscillates, in a window 300x longer
-than it needs (`scripts/pczb_check.py`), and the reason is not only that a
-zero-VGS load drives node X at a fraction of a nA into ~3 pF:
+reaching **max |dVout/dVin| over 100 and a 1.1 V butterfly eye at tens of nW** --
+far above anything pC can do, at a fraction of the power. It never oscillates,
+in a window 300x longer than it needs (`scripts/pczb_check.py`), and the reason
+is not only that a zero-VGS load drives node X at a fraction of a nA into ~3 pF:
 
 ```
 pCz 5/10/160/40   VM = 0.2378 V   slope AT VM = -0.53   max |slope| = 220 at VIN = 0.0045 V
@@ -207,7 +214,9 @@ pCz's headline gain lives at VIN = 4.5 mV, nowhere near its own trip point,
 where the slope is **0.53**. Its symmetric ring point is therefore *stable* and
 the ring latches. **`max |dVout/dVin|` is the wrong number for a cascadable
 gate**; the slope at the trip point is the one that decides. `gain_vm` was added
-to `src/pseudo_cmos.py` and is what the sizing in section 4 ranks on.
+to `src/pseudo_cmos.py`, the screen's own "cascadable" test was changed to use
+it, and it is what the sizing in section 4 ranks on. The difference is not
+cosmetic -- it moves hundreds of sizings across the line in both directions:
 
 A second caveat: pCz's gain rests on the output conductance of a device at
 VGS ~ 0, the least trustworthy corner of this model (`outputs/va_test/README.md`
@@ -396,3 +405,236 @@ area-scaling extrapolation. The extrapolation is at least self-consistent --
 **every frequency here should be read as a factor-of-two band, not a number.**
 Measuring C-V on a short-channel device is the single highest-value experiment
 for this model.
+
+---
+
+## 7. How low the supply goes, and why it depends on the stage count
+
+`ring_startup_limit.csv`, `ring_startup_limit.png`.
+
+The floor in section 6 (0.8 V) is a 5-stage number. It is not a property of the
+gate -- it is a loop property, and it moves with N. Measured by bisecting the
+real transient: start every node at the ring's symmetric DC solution, nudge one
+by 1 mV, and ask whether the perturbation grows or decays.
+
+| N | measured V_min | loop gain there | sec(pi/N) | sec^2(pi/2N) |
+|---|---|---|---|---|
+| 3 | **0.998 V** | 1.406 | 2.000 | 1.333 |
+| 5 | 0.762 V | 1.088 | 1.236 | 1.106 |
+| 7 | 0.719 V | 1.013 | 1.110 | 1.052 |
+| 11 | 0.719 V | 1.013 | 1.042 | 1.021 |
+| 21 | 0.719 V | 1.013 | 1.011 | 1.006 |
+| 31 | 0.719 V | 1.013 | 1.005 | 1.003 |
+
+**A shorter ring needs a higher supply.** The 3-stage ring is both the fastest
+configuration and the first to die as VDD is lowered. Past N ~ 7 the required
+gain is essentially 1 and the floor saturates at 0.719 V, the supply where one
+stage reaches unity gain at its trip point.
+
+### The textbook criterion is wrong here by 0.9 V, and the reason is useful
+
+The standard Barkhausen condition for a ring of *single-pole* stages is
+|A| >= sec(pi/N): the loop needs 180 degrees, each stage's pole supplies only
+pi/N of it, and the rest costs gain. That predicts 1.824 V at N = 3 against a
+measured 0.998 V.
+
+A pseudo-CMOS stage is not single-pole. It has an internal node X as well as its
+output, so an N-stage ring is a **2N-pole loop** and the condition is
+|A| >= sec^m(pi/(N*m)) with m = 2:
+
+| criterion | predicted V_min for N = 3, 5, 7, 11, 21, 31 | error |
+|---|---|---|
+| sec(pi/N), 1 pole/stage | 1.905, 0.857, 0.775, 0.735, 0.717, 0.714 | max **907 mV**, mean 180 mV |
+| **sec^2(pi/2N), 2 poles/stage** | 0.933, 0.772, 0.740, 0.723, 0.714, 0.713 | max **65 mV**, mean **19 mV** |
+| measured | 0.998, 0.762, 0.719, 0.719, 0.719, 0.719 | |
+
+That is a real consequence of the topology: the extra pole at node X is the same
+node the bootstrap acts on, and it is the reason the first stage's sizing
+(W1, W2) matters as much as the output stage's.
+
+### A measurement artefact worth recording
+
+The first version of this measurement found a 0.9 V floor and a clean match to
+the *single-pole* criterion. Both were wrong, for the same reason: `dt_max` was
+tied to the simulation window rather than the oscillation period, leaving ~44
+time steps per period, and backward Euler's numerical damping then competes with
+the physical growth rate. Marginal oscillations were being damped into silence by
+the integrator, which looks exactly like a supply limit. With the step cap tied
+to the period the floor is 0.8 V at N = 5 and the two-pole criterion is the one
+that fits. Every result above 1 V is unchanged -- the dt refinement in
+`ring_osc5.py` bounds the residual at 0.13% -- but a marginal oscillation is a
+place where a loose step limit does not degrade the answer gracefully, it
+inverts it.
+
+---
+
+## 8. How far the ring goes: stage count
+
+`ring_stage_sweep.csv`, `ring_stage_sweep.png`, `ring_stage_vdd_sweep.csv`,
+`ring_stage_vdd_sweep.png`. Every odd N from 3 to 101 at VDD = 3 V, from both
+initial conditions, plus even N, plus a supply sweep at N = 3, 5, 11, 31.
+
+| N | f | f x N | swing | VOH | tpd/stage | total P | E/transition | mode |
+|---|---|---|---|---|---|---|---|---|
+| 3 | 397.1 kHz | 1191 kHz | **56.9%** | 1.901 V | 420 ns | 31.8 uW | 13.3 pJ | 1 |
+| 5 | 194.3 kHz | 971 kHz | 93.0% | 2.864 V | 515 ns | 49.1 uW | 25.3 pJ | 1 |
+| 7 | 136.7 kHz | 957 kHz | 96.7% | 2.968 V | 522 ns | 64.3 uW | 33.6 pJ | 1 |
+| 11 | 87.1 kHz | 958 kHz | **97.0%** | 2.977 V | 522 ns | 94.5 uW | 49.3 pJ | 1 |
+| 21 | 45.8 kHz | 963 kHz | 96.9% | 2.974 V | 519 ns | 170 uW | 88.4 pJ | 1 |
+| 51 | 19.1 kHz | 973 kHz | 96.2% | 2.955 V | 514 ns | 397 uW | 204 pJ | 1 |
+| 101 | 9.74 kHz | 984 kHz | 96.2% | 2.955 V | 508 ns | 778 uW | 395 pJ | 1 |
+| 2, 4, 6, 10 | — | — | latched | | | | | |
+
+### How many stages?
+
+**101 works, and nothing is degrading.** At N = 101 the swing is 96.2% of VDD,
+the delay per stage is within 2.8% of its N = 7 value, the jitter is 0.017 ns
+(17 ppm of the period) and the mode index is exactly 1. For N >= 7:
+
+* **f x N = 957 - 984 kHz, a 2.8% spread over a 14x range in N.** The ring is
+  behaving as 2N identical delays, which is the definition of the gate not
+  caring how long the ring is.
+* **tpd/stage = 508 - 522 ns**, same 2.8%.
+* **swing = 96.2 - 97.0%**, peaking at N = 11.
+
+There is no charge-retention limit to run into: this is static ratioed logic, so
+every node is driven at all times and a slower ring does not leak its state
+away. Within what can be simulated, **N is not the constraint** -- the real costs
+of a long ring are linear and boring: total power goes as N^0.925 (31.8 uW at
+N = 3 to 778 uW at N = 101) and energy per transition as N^0.917, the latter
+because static power dominates and a slower ring integrates it over a longer
+period. Per-stage power is nearly constant at 7.7 - 9.8 uW.
+
+**Even N never oscillates** (2, 4, 6, 10 all tested): an even ring is a latch,
+and it settles with all outputs at 2.861 V.
+
+**No multi-wave modes appeared.** A long ring can in principle sustain modes at
+k x the fundamental (k odd), and the "alternating rails" start is the highest
+spatial mode there is, so it was the likely way to excite one. All 12 odd-N runs
+from that start came up on mode index 1, matching the 1 mV-nudge start exactly.
+
+### How few stages?
+
+**N = 3 is the real limit, and it is not a good oscillator.** It is the fastest
+thing here -- 397 kHz at 3 V, 598 kHz at 4.5 V -- but:
+
+* it **never reaches 90% swing at any supply**, peaking at 59.3% at 2.5 V;
+* its bootstrap **never engages**: VX stays 0.39 - 1.39 V *below* VDD at every
+  supply, because at 420 ns/stage the half-period never gives M1 time to charge
+  X to the rail;
+* it needs the **highest supply to start**, 1.2 V against 0.8 V for N >= 5
+  (section 7).
+
+At N = 3 the ring is running faster than its own gate can switch, so it
+degenerates into a quasi-sinusoidal oscillator. **N = 5 is the shortest usable
+digital ring** (93.0% swing) and N = 7 the shortest one that is comfortable
+(96.7%).
+
+### Supply window vs stage count
+
+| N | oscillates | swing >= 90% of VDD | f over that window | peak swing |
+|---|---|---|---|---|
+| 3 | 1.2 - 4.5 V | **never** | — | 59.3% |
+| 5 | 0.8 - 4.5 V | 2.0 - 3.5 V | 123 - 226 kHz | 93.5% |
+| 11 | 0.8 - 4.5 V | **2.0 - 4.5 V** | 56 - 118 kHz | 97.8% |
+| 31 | 0.8 - 4.5 V | **2.0 - 4.5 V** | 20 - 42 kHz | 97.7% |
+
+**A longer ring has a wider supply window.** The ceiling in section 6 -- swing
+falling away above 3.5 V at N = 5 -- is a ring limit, not a gate limit, and it
+lifts entirely by N = 11: those rings hold >= 90% swing across the whole
+measurable supply range. The mechanism is the same one that kills N = 3: what
+matters is the half-period against the gate's rise time, and N sets the
+half-period. The low end does not move (0.8 V for every N >= 5), because that
+floor is set by gain, not by time.
+
+### The envelope
+
+| | |
+|---|---|
+| highest frequency measured | **597.7 kHz** at N = 3, VDD = 4.5 V — but 44% swing |
+| highest frequency with >= 90% swing | **226.0 kHz** at N = 5, VDD = 3.5 V |
+| lowest frequency measured | **10.7 kHz** at N = 31, VDD = 0.8 V |
+| longest ring | **101 stages**, 9.74 kHz, 96.2% swing, no degradation |
+| shortest usable ring | **5 stages** (3 oscillates but never exceeds 59% swing) |
+| lowest supply | **0.719 V** (N >= 7, startup threshold, section 7) |
+
+Startup is also fast, and does **not** get slower with ring length: a 1 mV nudge
+grows to 90% of full amplitude in **1.0 - 2.4 cycles** at every N from 5 to 31.
+At VDD = 3 V the loop gain is 2.05 per stage, so three decades of growth take
+about one trip around the ring however long the ring is. (An earlier reading of
+this said startup time scaled badly with N, because the perturbation start used
+to fail for N >= 71. That was the integrator, not the circuit -- see the note
+above. With the step cap fixed, N = 71 and N = 101 both start from a 1 mV nudge
+and agree with the full-rail start to five significant figures.)
+
+---
+
+## 9. The one restriction that costs something: the load's length
+
+Every device above is L = 5 um, for the reason in section 1 -- it is the only
+length at which the model's W scaling is monotonic. That argument is about
+*comparing widths at a given length*, and the stage-1 load M1 only ever uses one
+width, so its length can be varied without ever leaning on the suspect scaling.
+Worth checking, because M1 sets the static current and this ring is ~80%
+static power. (The NAND/DFF study on this branch independently chose a 5/20 um
+load for the same reason.) `load_length_check.csv`:
+
+| W1/L1 | Cboot | f | swing | ring P | DC P_static | loop gain | SNM | measured geometry |
+|---|---|---|---|---|---|---|---|---|
+| **5/5** (reference) | 1 pF | 194.3 kHz | 93.0% | 49.1 uW | 7.56 uW | 2.05 | 0.516 | yes |
+| 5/10 | 2 pF | 145.8 kHz | **94.1%** | **35.0 uW** | 5.01 uW | 2.75 | 0.430 | **no** |
+| 5/15 | 2 pF | 179.4 kHz | 93.4% | 46.9 uW | 6.96 uW | 2.32 | 0.314 | no |
+| 5/20 | 2 pF | 158.9 kHz | 93.2% | 40.4 uW | 5.76 uW | 2.79 | 0.332 | no |
+| **10/10** | 2 pF | 156.4 kHz | 92.0% | **40.6 uW** | 6.08 uW | 2.42 | 0.385 | **yes** |
+| 20/15 | 2 pF | 152.7 kHz | 77.8% | 43.6 uW | 6.87 uW | 2.05 | 0.298 | yes |
+
+**A longer load is a real 17-29% power saving for 20-25% of the frequency**, and
+it comes with *more* loop gain (the load's output conductance drops), at the cost
+of VOH (2.68 V against 2.90 V) and therefore of noise margin.
+
+* best overall: **W1/L1 = 5/10 um, Cboot = 2 pF** -- 35.0 uW, 94.1% swing,
+  145.8 kHz. But W = 5 um was measured only at L = 5 um, so this is an
+  extrapolated corner.
+* best on a **measured** geometry: **W1/L1 = 10/10 um, Cboot = 2 pF** -- 40.6 uW
+  (-17%), 92.0% swing, 156.4 kHz, loop gain 2.42.
+
+How much to trust the extrapolation is answered by the data itself: the
+L1 = 15 um row costs *more* power than both L1 = 10 um and L1 = 20 um. The
+model's L scaling at W = 5 um is not even correctly ordered, which is what an
+extrapolated corner looks like. **The recommendation stays at L1 = 5 um** --
+it is the only fully measured option and it has the best noise margin -- but if
+power matters more than speed, 10/10 um is the defensible alternative and
+5/10 um is the aggressive one.
+
+---
+
+## 10. What would change these numbers
+
+In rough order of how much they matter:
+
+1. **Measure C-V on a short-channel device.** CGD/CGS were trained at four
+   geometries, none below L = 15 um. Every frequency here rests on extrapolating
+   them to L = 5 um by area, and +-2x on C is -48% / +91% on f. Nothing else in
+   this study is within two orders of magnitude of that.
+2. **Give the `.va` a charge-based capacitor.** `ddt(C*V)` produces a negative
+   incremental capacitance across the turn-on knee and cannot complete a digital
+   transient at any supply, in this engine or in ngspice.
+   `verilogA/ntft_full_cdv.va` on this branch does the minimum fix
+   (`C*ddt(V)`); a true `Q = integral(C dV)` would also be charge conserving.
+3. **Make the `.va` D/S symmetric.** It cannot conduct in reverse, which is not
+   optional for a circuit whose whole point is driving a node above the supply.
+   `src/logic_sim.py` works around it; the model should not need the workaround.
+4. **Measure W5 at L > 5 um, and fix the W80/L10 outlier.** Those two gaps are
+   what forced every device here to L = 5 um, and section 9 is what it cost.
+5. **gds in subthreshold.** The pCz variant's spectacular DC numbers rest on the
+   output conductance of a device at VGS ~ 0, measured near the noise floor.
+   Nothing here depends on it, but a different topology might.
+
+### Things this study does not establish
+
+* No layout, no parasitics beyond the model's own CGD/CGS, no interconnect.
+* No process variation, no bias-stress drift -- a-IGZO's threshold moves under
+  DC stress, and a ring oscillator is a DC-stress experiment.
+* Temperature is wherever the measurements were taken.
+* `verilogA/pseudo_cmos_ring.scs` has not been executed. Its topology, sizing and
+  expected values are verified here; its Spectre syntax is not.

@@ -11,7 +11,7 @@ def intrinsic_cx(s, kind, vdd):
 
 
 def replace_cboot(s, c):
-    return Sizing(w1=s.w1, w2=s.w2, w3=s.w3, w4=s.w4, l=s.l, cboot=c)
+    return Sizing(w1=s.w1, w2=s.w2, w3=s.w3, w4=s.w4, l=s.l, l1=s.l1, cboot=c)
 
 
 def build_ring(s, kind, nstage, vdd, cload=0.0, init="alternating", cap_scale=1.0):

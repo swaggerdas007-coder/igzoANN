@@ -1,6 +1,7 @@
 """Startup of the ring: the minimum supply it needs, and how long it takes.
 
 Part 1 -- minimum supply voltage vs ring length, against the Barkhausen prediction.
+Part 2 -- how many cycles the oscillation needs to grow out of a 1 mV nudge.
 
 An N-stage ring of single-pole stages starts only if each stage's gain clears
 |A| >= sec(pi/N): the loop needs 180 degrees of phase, each stage contributes
@@ -205,14 +206,18 @@ def main():
               f"{r.t_start*1e6:8.1f} us   {r.cycles:6.1f}")
     d2 = st.dropna(subset=["cycles"])
     if len(d2) > 2:
-        p = np.polyfit(np.log(d2.nstage), np.log(d2.t_start), 1)
-        p2 = np.polyfit(np.log(d2.nstage), np.log(d2.cycles), 1)
-        print(f"\n  startup time ~ N^{p[0]:.2f}, i.e. N^{p2[0]:.2f} in *cycles* -- "
-              f"the period only grows as N,\n     so a long ring needs "
-              f"disproportionately many cycles to come up from noise. That is why "
-              f"the\n     perturbation start in ring_osc_stages.py fails for "
-              f"N >= 71 in a 9-period window\n     while the full-rail "
-              f"'alternating' start, which begins at amplitude, does not.")
+        print(f"\n  Startup takes {d2.cycles.min():.1f}-{d2.cycles.max():.1f} cycles "
+              f"at every N measured -- it does NOT grow with ring length. At "
+              f"VDD = 3 V\n     the loop gain is 2.05 per stage, so a 1 mV "
+              f"perturbation covers the ~3 decades to\n     full swing in about "
+              f"one trip around the ring, however long the ring is.")
+        print("\n  This corrects an earlier reading of the data. The perturbation "
+              "start used to\n     fail for N >= 71, which looked like slow "
+              "startup; it was the integrator. With\n     dt_max tied to the "
+              "window rather than the period, backward Euler damped the\n     "
+              "growing mode faster than it grew. With the step cap fixed, N = 71 "
+              "and N = 101\n     both start from a 1 mV nudge and agree with the "
+              "full-rail start to 5 significant\n     figures.")
 
     import matplotlib
     matplotlib.use("Agg")

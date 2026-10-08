@@ -29,9 +29,9 @@ OUT = os.path.join(REPO, "outputs", "pseudo_cmos")
 os.makedirs(OUT, exist_ok=True)
 VDD_REF = 3.0
 NPTS = 201
-COLS = ["kind", "w1", "w2", "w3", "w4", "gain", "voh", "vol", "swing", "vm",
-        "snm", "nmh", "nml", "p_static", "i_lo", "i_hi", "tpd_proxy",
-        "pdp_proxy", "valid"]
+COLS = ["kind", "w1", "w2", "w3", "w4", "gain", "gain_vm", "voh", "vol",
+        "swing", "vm", "snm", "nmh", "nml", "p_static", "i_lo", "i_hi",
+        "tpd_proxy", "pdp_proxy", "valid"]
 
 
 def verify():
@@ -129,7 +129,14 @@ def report(df):
         if not d.valid.any():
             continue
         v = d[d.valid]
-        print(f"  gain      {v.gain.min():.2f} .. {v.gain.max():.2f}")
+        print(f"  max |dVout/dVin|   {v.gain.min():.2f} .. {v.gain.max():.2f}")
+        print(f"  loop gain at VM    {v.gain_vm.min():.2f} .. {v.gain_vm.max():.2f}"
+              f"   <- the one that decides whether a cascade regenerates")
+        latch = d[(d.gain > 50) & (d.gain_vm < 1)]
+        if len(latch):
+            print(f"  {len(latch)} sizings reach |dVout/dVin| > 50 yet have loop gain "
+                  f"< 1 at their own trip point -- they latch, and ranking on "
+                  f"max slope would have picked them")
         print(f"  swing     {v.swing.min():.2f} .. {v.swing.max():.2f} V "
               f"({v.swing.max()/VDD_REF*100:.0f}% of VDD)")
         print(f"  SNM       {v.snm.min():.3f} .. {v.snm.max():.3f} V")
