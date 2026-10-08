@@ -2,11 +2,16 @@
 
 Part 1 -- minimum supply voltage vs ring length, against the Barkhausen prediction.
 
-An N-stage ring starts only if each stage's small-signal gain clears
-|A| >= sec(pi/N): the loop needs 180 degrees of phase, each stage can only
-contribute pi/N of it from its own pole, and the rest has to come from the
-inversion, which costs gain. So a *short* ring needs a *higher* supply -- N = 3
-needs |A| >= 2, N = 31 needs only 1.005.
+An N-stage ring of single-pole stages starts only if each stage's gain clears
+|A| >= sec(pi/N): the loop needs 180 degrees of phase, each stage contributes
+only pi/N of it from its own pole, and the rest comes from the inversion, which
+costs gain. So a *short* ring needs a *higher* supply.
+
+A pseudo-CMOS stage is not single-pole: it has two internal nodes, X and OUT, so
+an N-stage ring is a 2N-pole loop. For m poles per stage the condition becomes
+|A| >= sec^m(pi/(N*m)), and measurement says m = 2 is right -- it predicts the
+threshold supply to 19 mV on average against 180 mV for the single-pole form,
+and the single-pole form is wrong by 0.9 V at N = 3.
 
 This takes the measured DC gain-vs-VDD curve of the recommended gate, inverts
 sec(pi/N) through it to predict each ring's minimum supply, and checks the
@@ -30,7 +35,11 @@ from src.ring import run_ring                             # noqa: E402
 REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 OUT = os.path.join(REPO, "outputs", "pseudo_cmos")
 N_LIST = [3, 5, 7, 11, 21, 31]
-N_TIME = [5, 11, 21, 31, 51, 71]
+# Kept modest on purpose: the transient stores every node at every step, so
+# N = 71 over 120 periods at max_steps = 900000 is ~2 GB per worker and four
+# workers OOM. N = 31 over 60 periods is ~100 MB and shows the same scaling.
+N_TIME = [5, 11, 21, 31]
+N_TIME_PERIODS = 60
 VLO, VHI, NBISECT = 0.45, 3.2, 7
 
 
@@ -91,20 +100,25 @@ def _startup_time(a):
     T = 2.0 * n * tpd
     try:
         r, (t, V, net, outs, xs) = run_ring(
-            s, "pCb" if s.cboot > 0 else "pC", n, 3.0, 120.0 * T,
-            dvmax=0.02, dt_max=T / 120.0, init="perturb", max_steps=900000)
+            s, "pCb" if s.cboot > 0 else "pC", n, 3.0, N_TIME_PERIODS * T,
+            dvmax=0.03, dt_max=T / 100.0, init="perturb", max_steps=200000)
     except Exception as e:
         return dict(nstage=n, cycles=np.nan, reason=str(e))
     o = V[:, net._idx[outs[0]]]
     final = float(o[t >= t[-1] * 0.85].max() - o[t >= t[-1] * 0.85].min())
     if final < 0.3:
         return dict(nstage=n, cycles=np.nan, final_swing=final,
-                    reason="did not start within 120 periods")
-    # running peak-to-peak over a one-period window
-    env = np.array([np.ptp(o[(t >= tt - T) & (t <= tt)]) if tt > T else 0.0
-                    for tt in t])
-    k = np.argmax(env >= 0.9 * final)
-    return dict(nstage=n, cycles=float(t[k] / T), t_start=float(t[k]),
+                    reason=f"did not start within {N_TIME_PERIODS} periods")
+    # Running peak-to-peak over a one-period window, sampled on a coarse grid.
+    # Evaluating it at every time point is O(n^2) in the step count and was the
+    # slowest thing in this script by an order of magnitude; 600 probe points
+    # resolve the envelope far better than the answer needs.
+    probe = np.linspace(T, t[-1], 600)
+    lo = np.searchsorted(t, probe - T)
+    hi = np.searchsorted(t, probe)
+    env = np.array([np.ptp(o[a:b]) if b > a else 0.0 for a, b in zip(lo, hi)])
+    k = int(np.argmax(env >= 0.9 * final))
+    return dict(nstage=n, cycles=float(probe[k] / T), t_start=float(probe[k]),
                 final_swing=final, period=T, reason="")
 
 
@@ -120,38 +134,72 @@ def main():
     for v, g in zip(vg[::4], gains[::4]):
         print(f"  VDD = {v:.2f} V -> |A| = {g:.3f}")
 
-    with Pool(os.cpu_count()) as pool:
-        rows = pool.map(_job, [(s, n) for n in N_LIST], chunksize=1)
+    # The bisection is by far the most expensive thing here (9 transients per N,
+    # 40 periods each), and only vmin_sim comes out of it -- everything after is
+    # arithmetic on the gain curve. Cache it; --refresh re-measures.
+    cache = os.path.join(OUT, "ring_startup_limit.csv")
+    if os.path.exists(cache) and "--refresh" not in sys.argv:
+        old = pd.read_csv(cache)
+        if set(N_LIST) <= set(old.nstage) and old.vmin_sim.notna().all():
+            print(f"\n  reusing the bisected thresholds in {os.path.basename(cache)} "
+                  f"(pass --refresh to re-measure)")
+            rows = old[old.nstage.isin(N_LIST)][
+                [c for c in ("nstage", "vmin_sim", "vmin_lo", "vmin_hi")
+                 if c in old.columns]].to_dict("records")
+        else:
+            rows = None
+    else:
+        rows = None
+    if rows is None:
+        with Pool(os.cpu_count()) as pool:
+            rows = pool.map(_job, [(s, n) for n in N_LIST], chunksize=1)
     df = pd.DataFrame(rows)
-    df["a_req"] = 1.0 / np.cos(np.pi / df.nstage)
-    df["vmin_pred"] = [float(np.interp(a, gains, vg)) if a <= gains.max() else np.nan
-                       for a in df.a_req]
+
+    def req(n, m):
+        return (1.0 / np.cos(np.pi / (n * m))) ** m
+
+    for m in (1, 2):
+        df[f"a_req_m{m}"] = req(df.nstage, m)
+        df[f"vmin_pred_m{m}"] = [float(np.interp(a, gains, vg))
+                                 if a <= gains.max() else np.nan
+                                 for a in df[f"a_req_m{m}"]]
+    df["a_at_vmin"] = [float(np.interp(v, vg, gains)) for v in df.vmin_sim]
     df.to_csv(os.path.join(OUT, "ring_startup_limit.csv"), index=False)
 
-    print("\n  N   |A| needed = sec(pi/N)   VDD predicted   VDD measured (bisected)")
+    print("\n   N   measured VDD   |A| there   sec(pi/N)   sec^2(pi/2N)")
     for _, r in df.iterrows():
-        print(f" {int(r.nstage):3d}        {r.a_req:7.4f}            "
-              f"{r.vmin_pred:6.3f} V        {r.vmin_sim:6.3f} V"
+        print(f" {int(r.nstage):3d}     {r.vmin_sim:6.3f} V      {r.a_at_vmin:6.3f}"
+              f"      {r.a_req_m1:7.3f}       {r.a_req_m2:7.3f}"
               f"   (bracket {r.get('vmin_lo', np.nan):.3f}-{r.get('vmin_hi', np.nan):.3f})")
-    d = df.dropna(subset=["vmin_pred", "vmin_sim"])
-    if len(d):
-        err = np.abs(d.vmin_sim - d.vmin_pred)
-        print(f"\n  prediction error: max {err.max()*1e3:.0f} mV, "
-              f"mean {err.mean()*1e3:.0f} mV over N = {sorted(d.nstage.tolist())}")
+    for m in (1, 2):
+        d = df.dropna(subset=[f"vmin_pred_m{m}", "vmin_sim"])
+        err = np.abs(d.vmin_sim - d[f"vmin_pred_m{m}"])
+        lbl = "sec(pi/N), 1 pole/stage " if m == 1 else "sec^2(pi/2N), 2 poles/stage"
+        print(f"\n  {lbl}: predicted "
+              + " ".join(f"{p:.3f}" for p in d[f"vmin_pred_m{m}"])
+              + f"  ->  max err {err.max()*1e3:.0f} mV, mean {err.mean()*1e3:.0f} mV")
+    print("\n  Two poles per stage is the right count: the pseudo-CMOS gate has an\n"
+          "  internal node X as well as its output, so an N-stage ring is a 2N-pole\n"
+          "  loop. The single-pole form is wrong by 0.9 V at N = 3.")
     print("\n  -> a SHORTER ring needs a HIGHER supply. The 3-stage ring, the fastest "
           "one,\n     is also the one that dies first as VDD is lowered.")
 
     print("\n--- part 2: how long does a ring take to start from a 1 mV nudge? ---")
     tpd = 515e-9
-    with Pool(os.cpu_count()) as pool:
-        st = pd.DataFrame(pool.map(_startup_time, [(s, n, tpd) for n in N_TIME],
-                                   chunksize=1))
-    st.to_csv(os.path.join(OUT, "ring_startup_time.csv"), index=False)
+    tcache = os.path.join(OUT, "ring_startup_time.csv")
+    if os.path.exists(tcache) and "--refresh" not in sys.argv:
+        st = pd.read_csv(tcache)
+        print(f"  reusing {os.path.basename(tcache)} (pass --refresh to re-measure)")
+    else:
+        with Pool(os.cpu_count()) as pool:
+            st = pd.DataFrame(pool.map(_startup_time, [(s, n, tpd) for n in N_TIME],
+                                       chunksize=1))
+        st.to_csv(tcache, index=False)
     print("    N   period      startup       cycles to 90% amplitude")
     for _, r in st.iterrows():
         if not np.isfinite(r.get("cycles", np.nan)):
-            print(f"  {int(r.nstage):3d}   {'':8s}  {'':10s}   not started within "
-                  f"120 periods ({r.reason})")
+            print(f"  {int(r.nstage):3d}   {'':8s}  {'':10s}   "
+                  f"not started ({r.reason})")
             continue
         print(f"  {int(r.nstage):3d}   {r.period*1e6:7.2f} us  "
               f"{r.t_start*1e6:8.1f} us   {r.cycles:6.1f}")
@@ -170,15 +218,19 @@ def main():
     matplotlib.use("Agg")
     import matplotlib.pyplot as plt
     fig, ax = plt.subplots(1, 2, figsize=(11, 4.3))
-    ax[0].plot(vg, gains, "C0-", lw=2)
+    ax[0].plot(vg, gains, "C0-", lw=2, label="loop gain at the trip point")
     ax[0].axhline(1.0, color="k", ls=":", lw=.8, label="|A| = 1")
-    for _, r in df.iterrows():
-        ax[0].plot([r.vmin_pred], [r.a_req], "o", ms=6,
-                   label=f"N = {int(r.nstage)}: sec(pi/N) = {r.a_req:.3f}")
-    ax[0].set(xlabel="VDD [V]", ylabel="stage gain |A|",
-              title="one stage's DC gain sets the floor")
+    ax[0].plot(df.vmin_sim, df.a_at_vmin, "o", ms=7, c="C3",
+               label="measured startup threshold")
+    ax[0].plot(df.vmin_pred_m2, df.a_req_m2, "s", ms=5, c="C2",
+               label=r"$\sec^2(\pi/2N)$, 2 poles/stage")
+    ax[0].set(xlabel="VDD [V]", ylabel="stage gain |A|", xlim=(0.5, 2.2),
+              ylim=(0.8, 2.3), title="one stage's gain sets the floor")
     ax[0].legend(fontsize=7)
-    ax[1].plot(df.nstage, df.vmin_pred, "s--", c="C1", label="sec(pi/N) prediction")
+    ax[1].plot(df.nstage, df.vmin_pred_m1, "s--", c="C1",
+               label=r"$\sec(\pi/N)$  (1 pole/stage)")
+    ax[1].plot(df.nstage, df.vmin_pred_m2, "^--", c="C2",
+               label=r"$\sec^2(\pi/2N)$  (2 poles/stage)")
     ax[1].plot(df.nstage, df.vmin_sim, "o-", c="C0", label="bisected from transient")
     ax[1].set(xscale="log", xlabel="stages N", ylabel="minimum VDD [V]",
               title="minimum supply vs ring length")
