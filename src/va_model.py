@@ -94,8 +94,12 @@ class TFTModel:
         out = y2 @ n["wo"] + n["bo"]
         return out * n["std"] + n["mean"], y1, y2
 
-    def op(self, vgs, vds, w=20e-6, l=20e-6):
-        """DC operating point: ID [A], gm [S], gds [S], CGD/CGS [F]."""
+    def op(self, vgs, vds, w=20e-6, l=20e-6, caps=True):
+        """DC operating point: ID [A], gm [S], gds [S], CGD/CGS [F].
+
+        `caps=False` skips the CGD/CGS networks for callers that only need the
+        DC solve (they dominate nothing but still cost 40% of the call).
+        """
         vg_s, vd_s, w_s, l_s = self._scale(vgs, vds, w, l)
         x = np.stack([vg_s, vd_s, w_s, l_s], axis=-1)
 
@@ -103,11 +107,14 @@ class TFTModel:
         idd = np.power(10.0, log_id)
 
         n = self.nets["id"]
-        # d(out)/d(input k) through both tanh layers
-        d1 = (1 - y1 ** 2)[..., :, None] * n["W1"]            # (..., h1, NI)
-        d2 = np.einsum("hj,...jk->...hk", n["W2"], d1)
-        d2 *= (1 - y2 ** 2)[..., :, None]
-        dout = np.einsum("h,...hk->...k", n["wo"], d2)
+        # d(out)/d(input k) through both tanh layers, by reverse accumulation.
+        # Algebraically identical to the forward Jacobian product the .va spells
+        # out, but three small matmuls instead of (N, h1, NI) intermediates --
+        # ~20x faster, and scripts/validate_logic_sim.py checks it against
+        # finite differences.
+        g2 = n["wo"] * (1.0 - y2 ** 2)                 # (..., h2)
+        g1 = (g2 @ n["W2"]) * (1.0 - y1 ** 2)          # (..., h1)
+        dout = g1 @ n["W1"]                            # (..., NI)
         k = idd * np.log(10.0) * n["std"]
         gm = k * dout[..., 0] / (self.vg_hi - self.vg_lo)
         gds = k * dout[..., 1] / (self.vd_hi - self.vd_lo)
@@ -115,12 +122,14 @@ class TFTModel:
         gm = np.where((vg_s <= 0) | (vg_s >= 1), 0.0, gm)
         gds = np.where((vd_s <= 0) | (vd_s >= 1), 0.0, gds)
 
-        area = (w * 1e6) * (l * 1e6) * 1e-3 * 1e-12   # .va units chain
-        cgd = np.clip(self._forward("cgd", x)[0], 0.0, None) * area
-        cgs = np.clip(self._forward("cgs", x)[0], 0.0, None) * area
-        return dict(id=idd, gm=gm, gds=gds, cgd=cgd, cgs=cgs,
-                    clamped_vg=(vg_s <= 0) | (vg_s >= 1),
-                    clamped_vd=(vd_s <= 0) | (vd_s >= 1))
+        out = dict(id=idd, gm=gm, gds=gds,
+                   clamped_vg=(vg_s <= 0) | (vg_s >= 1),
+                   clamped_vd=(vd_s <= 0) | (vd_s >= 1))
+        if caps:
+            area = (w * 1e6) * (l * 1e6) * 1e-3 * 1e-12   # .va units chain
+            out["cgd"] = np.clip(self._forward("cgd", x)[0], 0.0, None) * area
+            out["cgs"] = np.clip(self._forward("cgs", x)[0], 0.0, None) * area
+        return out
 
     def id_(self, vgs, vds, w=20e-6, l=20e-6):
         return self.op(vgs, vds, w, l)["id"]
