@@ -218,7 +218,10 @@ def table(df):
         "P [uW]": n.power * 1e6,
         "P/stage [uW]": n.power * 1e6 / n.nstage,
         "E/transition [pJ]": n.e_per_transition * 1e12,
-        "jitter [ps]": n.jitter * 1e12,
+        # period-to-period spread of the *solver*, not physical jitter: there is
+        # no noise source anywhere in this simulation, so this is a convergence
+        # check (it should be ~0), never a phase-noise number.
+        "period spread [ps]": n.jitter * 1e12,
     })
     return t
 
