@@ -80,25 +80,37 @@ class Sizing:
                 f"_cb{self.cboot*1e12:g}p")
 
 
-def add_inverter(net, pfx, s, vin, vout, vdd="vdd", vss="gnd", kind="pCb"):
-    """Add one inverter. Returns the internal node name (or None for 2T styles)."""
+def add_inverter(net, pfx, s, vin, vout, vdd="vdd", vss="gnd", kind="pCb",
+                 mult=1):
+    """Add one inverter. Returns the internal node name (or None for 2T styles).
+
+    `mult` instantiates m parallel copies of every device (and scales Cboot), the
+    way a real layout fans up drive with fingers. The ANN is only ever evaluated
+    at a width inside its trained box, and the currents add -- which is what
+    parallel devices do -- so this stays inside the model rather than
+    extrapolating W past 160 um. Used to build the output buffer that a tapeout
+    needs between the ring and a bond pad (scripts/ring_pad_load.py).
+    """
     L = s.l
     if kind == "pE":
-        net.tft(f"{pfx}ML", vdd, vout, vout, s.w1, L)      # gate = source: VGS = 0
-        net.tft(f"{pfx}MD", vout, vin, vss, s.w4, L)
+        for k in range(mult):
+            net.tft(f"{pfx}ML{k}", vdd, vout, vout, s.w1, L)   # gate = source: VGS = 0
+            net.tft(f"{pfx}MD{k}", vout, vin, vss, s.w4, L)
         return None
     if kind == "pD":
-        net.tft(f"{pfx}ML", vdd, vdd, vout, s.w1, L)       # gate = drain = VDD
-        net.tft(f"{pfx}MD", vout, vin, vss, s.w4, L)
+        for k in range(mult):
+            net.tft(f"{pfx}ML{k}", vdd, vdd, vout, s.w1, L)    # gate = drain = VDD
+            net.tft(f"{pfx}MD{k}", vout, vin, vss, s.w4, L)
         return None
     x = f"{pfx}x"
     gate1 = x if kind in ("pCz", "pCzb") else vdd          # zero-VGS vs saturated load
-    net.tft(f"{pfx}M1", vdd, gate1, x, s.w1, s.lload())    # load on X
-    net.tft(f"{pfx}M2", x, vin, vss, s.w2, L)              # driver of stage 1
-    net.tft(f"{pfx}M3", vdd, x, vout, s.w3, L)             # output pull-up
-    net.tft(f"{pfx}M4", vout, vin, vss, s.w4, L)           # output pull-down
+    for k in range(mult):
+        net.tft(f"{pfx}M1_{k}", vdd, gate1, x, s.w1, s.lload())  # load on X
+        net.tft(f"{pfx}M2_{k}", x, vin, vss, s.w2, L)            # driver of stage 1
+        net.tft(f"{pfx}M3_{k}", vdd, x, vout, s.w3, L)           # output pull-up
+        net.tft(f"{pfx}M4_{k}", vout, vin, vss, s.w4, L)         # output pull-down
     if kind in ("pCb", "pCzb") and s.cboot > 0:
-        net.cap(vout, x, s.cboot)
+        net.cap(vout, x, s.cboot * mult)
     return x
 
 
